@@ -1,0 +1,16 @@
+com.priceline.kiara.adapters
+com.priceline.kiara.constants
+com.priceline.kiara.domain
+com.priceline.kiara.domain.annotations
+com.priceline.kiara.exception
+com.priceline.kiara.loader
+com.priceline.kiara.parser
+com.priceline.kiara.search
+com.priceline.kiara.test.adapters
+com.priceline.kiara.test.domain
+com.priceline.kiara.test.integration
+com.priceline.kiara.test.loader
+com.priceline.kiara.test.objects
+com.priceline.kiara.test.parser
+com.priceline.kiara.test.util
+com.priceline.kiara.util
