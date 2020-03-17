@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.kapoorlabs</groupId>
 	<artifactId>kiara</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 
 	<packaging>jar</packaging>
 	<name>Kiara</name>
@@ -86,7 +86,7 @@
 			<url>https://repo1.maven.org/maven2/</url>
 		</repository>
 	</repositories>
-
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -227,7 +227,7 @@
 				</configuration>
 			</plugin>
 
-			<plugin>
+ 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
 				<version>3.0.1</version>
@@ -254,12 +254,9 @@
 						<goals>
 							<goal>jar</goal>
 						</goals>
-						<configuration>
-							<source>8</source>
-						</configuration>
 					</execution>
 				</executions>
-			</plugin>
+			</plugin> 
 		</plugins>
 	</build>
 
