@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.kapoorlabs</groupId>
 	<artifactId>kiara</artifactId>
@@ -83,7 +85,7 @@
 			<url>https://repo1.maven.org/maven2/</url>
 		</repository>
 	</repositories>
-	
+
 	<build>
 		<plugins>
 			<plugin>
@@ -224,7 +226,7 @@
 				</configuration>
 			</plugin>
 
- 			<plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
 				<version>3.0.1</version>
@@ -251,9 +253,12 @@
 						<goals>
 							<goal>jar</goal>
 						</goals>
+						<configuration>
+							<source>8</source>
+						</configuration>
 					</execution>
 				</executions>
-			</plugin> 
+			</plugin>
 		</plugins>
 	</build>
 
