@@ -18,6 +18,7 @@ import com.kapoorlabs.kiara.adapters.PojoAdapter;
 import com.kapoorlabs.kiara.domain.Condition;
 import com.kapoorlabs.kiara.domain.Operator;
 import com.kapoorlabs.kiara.domain.Store;
+import com.kapoorlabs.kiara.exception.LoadDataException;
 import com.kapoorlabs.kiara.loader.StoreLoader;
 import com.kapoorlabs.kiara.search.StoreSearch;
 import com.kapoorlabs.kiara.test.objects.FlightCommissionTestObject;
@@ -45,9 +46,15 @@ public class FlightCommisionTest {
 
 				FlightCommissionTestObject flightCommission = new FlightCommissionTestObject();
 				flightCommission.setFlightNumbers(words[0]);
-				flightCommission.setCommission(words[1] != null && !words[1].isEmpty() ? Integer.parseInt(words[1]) : null);
+				flightCommission
+						.setCommission(words[1] != null && !words[1].isEmpty() ? Integer.parseInt(words[1]) : null);
 
-				storeLoader.loadTable(flightCommission);
+				try {
+					storeLoader.loadTable(flightCommission);
+				} catch (LoadDataException ex) {
+					continue;
+				}
+
 			}
 
 			storeLoader.prepareForSearch();
@@ -64,8 +71,7 @@ public class FlightCommisionTest {
 			}
 		}
 	}
-	
-	
+
 	@Test
 	public void flightCommissionTest_1() {
 
@@ -73,14 +79,13 @@ public class FlightCommisionTest {
 
 		List<Condition> conditions = new LinkedList<>();
 
-		conditions.add(new Condition("flightnumbers",Operator.CONTAINS_EITHER, "AA101"));
+		conditions.add(new Condition("flightnumbers", Operator.CONTAINS_EITHER, "AA101"));
 		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
 
 		assertEquals(0, result.size());
 
-
 	}
-	
+
 	@Test
 	public void flightCommissionTest_2() {
 
@@ -95,7 +100,7 @@ public class FlightCommisionTest {
 		assertEquals("2", result.get(0).get("COMMISSION"));
 
 	}
-	
+
 	@Test
 	public void flightCommissionTest_3() {
 
@@ -109,9 +114,8 @@ public class FlightCommisionTest {
 		assertEquals(1, result.size());
 		assertEquals("2", result.get(0).get("COMMISSION"));
 
-
 	}
-	
+
 	@Test
 	public void flightCommissionTest_4() {
 
@@ -120,16 +124,16 @@ public class FlightCommisionTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		List<String> values = new LinkedList<>();
-		
+
 		values.add("AA99");
 		values.add("DL500");
 		values.add("AA2300");
-		
+
 		conditions.add(new Condition("flightnumbers", Operator.CONTAINS_EITHER, values));
 		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
-		
+
 		Set<String> expectedCommission = new HashSet<>();
-		
+
 		expectedCommission.add("2");
 		expectedCommission.add("1");
 
@@ -139,7 +143,7 @@ public class FlightCommisionTest {
 		}
 
 	}
-	
+
 	@Test
 	public void flightCommissionTest_5() {
 
@@ -148,19 +152,18 @@ public class FlightCommisionTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		List<String> values = new LinkedList<>();
-		
+
 		values.add("AA99");
 		values.add("DL500");
 		values.add("AA2300");
-		
+
 		conditions.add(new Condition("flightnumbers", Operator.CONTAINS_ALL, values));
 		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
 
 		assertEquals(0, result.size());
 
-
 	}
-	
+
 	@Test
 	public void flightCommissionTest_6() {
 
@@ -169,18 +172,18 @@ public class FlightCommisionTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		List<String> values = new LinkedList<>();
-		
+
 		values.add("AA55");
 		values.add("AA10");
 		values.add("JB300");
 		values.add("JB400");
 		values.add("DL2100");
-		
+
 		conditions.add(new Condition("flightnumbers", Operator.CONTAINS_ALL, values));
 		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
 
 		Set<String> expectedCommission = new HashSet<>();
-		
+
 		expectedCommission.add("2");
 
 		assertEquals(1, result.size());
@@ -188,9 +191,8 @@ public class FlightCommisionTest {
 			assertTrue(expectedCommission.contains(result.get(i).get("COMMISSION")));
 		}
 
-
 	}
-	
+
 	@Test
 	public void flightCommissionTest_7() {
 
@@ -199,14 +201,14 @@ public class FlightCommisionTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		List<String> values = new LinkedList<>();
-		
+
 		values.add("DL5000");
-		
+
 		conditions.add(new Condition("flightnumbers", Operator.CONTAINS_EITHER, values));
 		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
 
 		Set<String> expectedCommission = new HashSet<>();
-		
+
 		expectedCommission.add("7");
 		expectedCommission.add("4");
 
@@ -215,10 +217,8 @@ public class FlightCommisionTest {
 			assertTrue(expectedCommission.contains(result.get(i).get("COMMISSION")));
 		}
 
-
 	}
-	
-	
+
 	@Test
 	public void flightCommissionTest_8() {
 
@@ -227,15 +227,15 @@ public class FlightCommisionTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		List<String> values = new LinkedList<>();
-		
+
 		values.add("AA50");
 		values.add("JB201");
-		
+
 		conditions.add(new Condition("flightnumbers", Operator.CONTAINS_ALL, values));
 		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
 
 		Set<String> expectedCommission = new HashSet<>();
-		
+
 		expectedCommission.add("2");
 
 		assertEquals(1, result.size());
@@ -243,9 +243,8 @@ public class FlightCommisionTest {
 			assertTrue(expectedCommission.contains(result.get(i).get("COMMISSION")));
 		}
 
-
 	}
-	
+
 	@Test
 	public void flightCommissionTest_9() {
 
@@ -254,14 +253,14 @@ public class FlightCommisionTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		List<String> values = new LinkedList<>();
-		
+
 		values.add("B6200");
-		
+
 		conditions.add(new Condition("flightnumbers", Operator.CONTAINS_ALL, values));
 		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
 
 		Set<String> expectedCommission = new HashSet<>();
-		
+
 		expectedCommission.add("3");
 
 		assertEquals(1, result.size());
@@ -269,9 +268,8 @@ public class FlightCommisionTest {
 			assertTrue(expectedCommission.contains(result.get(i).get("COMMISSION")));
 		}
 
-
 	}
-	
+
 	@Test
 	public void flightCommissionTest_10() {
 
@@ -280,14 +278,14 @@ public class FlightCommisionTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		List<String> values = new LinkedList<>();
-		
+
 		values.add("B668");
-		
+
 		conditions.add(new Condition("flightnumbers", Operator.CONTAINS_ALL, values));
 		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
 
 		Set<String> expectedCommission = new HashSet<>();
-		
+
 		expectedCommission.add("3");
 
 		assertEquals(1, result.size());
@@ -295,9 +293,8 @@ public class FlightCommisionTest {
 			assertTrue(expectedCommission.contains(result.get(i).get("COMMISSION")));
 		}
 
-
 	}
-	
+
 	@Test
 	public void flightCommissionTest_11() {
 
@@ -306,14 +303,14 @@ public class FlightCommisionTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		List<String> values = new LinkedList<>();
-		
+
 		values.add("-~");
-		
+
 		conditions.add(new Condition("flightnumbers", Operator.CONTAINS_ALL, values));
 		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
 
 		Set<String> expectedCommission = new HashSet<>();
-		
+
 		expectedCommission.add("7");
 
 		assertEquals(1, result.size());
@@ -321,9 +318,8 @@ public class FlightCommisionTest {
 			assertTrue(expectedCommission.contains(result.get(i).get("COMMISSION")));
 		}
 
-
 	}
-	
+
 	@Test
 	public void flightCommissionTest_12() {
 
@@ -332,14 +328,14 @@ public class FlightCommisionTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		List<String> values = new LinkedList<>();
-		
+
 		values.add("-A4");
-		
+
 		conditions.add(new Condition("flightnumbers", Operator.CONTAINS_ALL, values));
 		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
 
 		Set<String> expectedCommission = new HashSet<>();
-		
+
 		expectedCommission.add("1");
 
 		assertEquals(1, result.size());
@@ -347,7 +343,6 @@ public class FlightCommisionTest {
 			assertTrue(expectedCommission.contains(result.get(i).get("COMMISSION")));
 		}
 
-
 	}
-	
+
 }

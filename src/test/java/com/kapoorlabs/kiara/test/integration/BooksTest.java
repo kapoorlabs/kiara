@@ -18,6 +18,7 @@ import com.kapoorlabs.kiara.adapters.PojoAdapter;
 import com.kapoorlabs.kiara.domain.Condition;
 import com.kapoorlabs.kiara.domain.Operator;
 import com.kapoorlabs.kiara.domain.Store;
+import com.kapoorlabs.kiara.exception.LoadDataException;
 import com.kapoorlabs.kiara.loader.StoreLoader;
 import com.kapoorlabs.kiara.search.StoreSearch;
 import com.kapoorlabs.kiara.test.objects.BooksTestObject;
@@ -52,8 +53,13 @@ public class BooksTest {
 				books.setTitle(words[4]);
 				books.setLanguage(words[5]);
 				books.setRating(Double.parseDouble(words[6]));
-
-				storeLoader.loadTable(books);
+				
+				try {
+					storeLoader.loadTable(books);
+				} catch (LoadDataException ex) {
+					continue;
+				}
+				
 			}
 
 			storeLoader.prepareForSearch();

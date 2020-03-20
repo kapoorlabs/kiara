@@ -24,6 +24,8 @@ import com.kapoorlabs.kiara.domain.SecondaryCollectionDataType;
 import com.kapoorlabs.kiara.domain.SecondarySingleDataType;
 import com.kapoorlabs.kiara.domain.Store;
 import com.kapoorlabs.kiara.exception.EmptyColumnException;
+import com.kapoorlabs.kiara.exception.IndexingException;
+import com.kapoorlabs.kiara.exception.LoadDataException;
 import com.kapoorlabs.kiara.parser.RangeParser;
 
 import lombok.Getter;
@@ -49,7 +51,25 @@ public class StoreLoader {
 		this.store = store;
 	}
 
-	public void loadTable(Object pojo) {
+	/**
+	 * This function loads a record into the in-memory table. The Table is stored in
+	 * a de-depulicated Trie based structure.
+	 * 
+	 * <p>
+	 * 
+	 * If any record fails to load, it will be ignored, and the program will
+	 * 
+	 * @param pojo This argument represents the parent pojo object that represents a
+	 *             record in the table or document.
+	 * 
+	 * 
+	 * @throws LoadDataException It throws this exception when the load function
+	 *                           fails to load an object in memory, primarily
+	 *                           because the pojo object does not matches the class
+	 *                           using which the store was created. or if the getter
+	 *                           methods are not public.
+	 */
+	public void loadTable(Object pojo) throws LoadDataException {
 
 		SdqlNode nextLevelParentNode = trieRoot;
 
@@ -59,9 +79,11 @@ public class StoreLoader {
 				currentNode.setParent(nextLevelParentNode);
 				nextLevelParentNode = getMatchingChild(nextLevelParentNode, currentNode);
 			}
-		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			log.error("Static data load failed");
-			log.error(e.getStackTrace().toString());
+		} catch (Exception e) {
+			String message = "Static data load failed for pojo: " + pojo;
+			log.error(message);
+			e.printStackTrace();
+			throw new LoadDataException(message);
 		}
 
 	}
@@ -137,7 +159,8 @@ public class StoreLoader {
 		} else {
 			numericValue = null;
 			Object value = store.getSdqlColumns()[level].getGetter().invoke(pojo);
-			stringValue = value != null && !value.toString().isEmpty() ? value.toString().trim() : SdqlConstants.NULL;
+			stringValue = value != null && !value.toString().trim().isEmpty() ? value.toString().trim()
+					: SdqlConstants.NULL;
 		}
 
 		SdqlNode sdqlNode = new SdqlNode(stringValue, numericValue);
@@ -150,6 +173,9 @@ public class StoreLoader {
 	 * This function prepares the store for optimized searching, this includes
 	 * indexing all the columns, sorting ordered keys and preparing interval trees.
 	 * 
+	 * @throws IndexingException it throws this exception when the function is not
+	 *                           able to create indexes for the store, due to data
+	 *                           format issues.
 	 */
 	public void prepareForSearch() {
 
@@ -157,9 +183,18 @@ public class StoreLoader {
 
 		int level = -1;
 
-		performDfs(trieRoot, count, level);
-		sortOrderedKeys();
-		prepareIntervalTrees();
+		try {
+
+			performDfs(trieRoot, count, level);
+			sortOrderedKeys();
+			prepareIntervalTrees();
+
+		} catch (Exception e) {
+			String message = "Static data indexing failure";
+			log.error(message);
+			e.printStackTrace();
+			throw new IndexingException(message);
+		}
 
 	}
 
@@ -196,8 +231,13 @@ public class StoreLoader {
 
 						longKeys = new Long[keys.length];
 
+						String stringKey = null;
+
 						for (int i = 0; i < longKeys.length; i++) {
-							longKeys[i] = Long.parseLong(keys[i].trim());
+							stringKey = keys[i].trim();
+							longKeys[i] = stringKey.equalsIgnoreCase(SdqlConstants.NULL) || stringKey.isEmpty()
+									? SdqlConstants.LONG_NULL
+									: Long.parseLong(stringKey);
 						}
 
 					} else if (store.getSdqlColumns()[level].getSecondaryType()
@@ -215,8 +255,12 @@ public class StoreLoader {
 
 						DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormat);
 
+						String stringKey = null;
 						for (int i = 0; i < longKeys.length; i++) {
-							longKeys[i] = LocalDate.parse(keys[i].trim(), formatter).toEpochDay();
+							stringKey = keys[i].trim();
+							longKeys[i] = stringKey.equalsIgnoreCase(SdqlConstants.NULL) || stringKey.isEmpty()
+									? SdqlConstants.LONG_NULL
+									: LocalDate.parse(stringKey, formatter).toEpochDay();
 
 						}
 
@@ -235,10 +279,12 @@ public class StoreLoader {
 						}
 
 						DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateTimeFormat);
-
+						String stringKey = null;
 						for (int i = 0; i < longKeys.length; i++) {
-							longKeys[i] = LocalDateTime.parse(keys[i].trim(), formatter)
-									.toEpochSecond(ZoneOffset.of("Z"));
+							stringKey = keys[i].trim();
+							longKeys[i] = stringKey.equalsIgnoreCase(SdqlConstants.NULL) || stringKey.isEmpty()
+									? SdqlConstants.LONG_NULL
+									: LocalDateTime.parse(keys[i].trim(), formatter).toEpochSecond(ZoneOffset.of("Z"));
 						}
 
 					} else if (store.getSdqlColumns()[level].getSecondaryType()
@@ -271,7 +317,10 @@ public class StoreLoader {
 							dateFormat = SdqlConstants.DEFAULT_DATE_FORMAT;
 						}
 						DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormat);
-						longKeys[0] = LocalDate.parse(node.getStringValue().trim(), formatter).toEpochDay();
+						String stringKey = node.getStringValue().trim();
+						longKeys[0] = stringKey.equalsIgnoreCase(SdqlConstants.NULL) || stringKey.isEmpty()
+								? SdqlConstants.LONG_NULL
+								: LocalDate.parse(stringKey, formatter).toEpochDay();
 
 					} else if (store.getSdqlColumns()[level].getSecondaryType()
 							.getSecondarySingleType() == SecondarySingleDataType.DATE_TIME) {
@@ -285,8 +334,11 @@ public class StoreLoader {
 							dateTimeFormat = SdqlConstants.DEFAULT_DATE_TIME_FORMAT;
 						}
 						DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateTimeFormat);
-						longKeys[0] = LocalDateTime.parse(node.getStringValue().trim(), formatter)
-								.toEpochSecond(ZoneOffset.of("Z"));
+						String stringKey = node.getStringValue().trim();
+						longKeys[0] = stringKey.equalsIgnoreCase(SdqlConstants.NULL) || stringKey.isEmpty()
+								? SdqlConstants.LONG_NULL
+								: LocalDateTime.parse(stringKey, formatter)
+										.toEpochSecond(ZoneOffset.of("Z"));
 
 					} else if (store.getSdqlColumns()[level].getSecondaryType()
 							.getSecondarySingleType() == SecondarySingleDataType.NUMERIC_RANGE) {
@@ -490,7 +542,8 @@ public class StoreLoader {
 			BfsSerialzeNode currentNode = nodeQueue.poll();
 			result.append(currentNode.parentId).append(SdqlConstants.SERIALIZER_PARENT_IDENTIFIER);
 			if (currentNode.getNodeValue().getDoubleValue() != null) {
-				result.append(String.format("%.2f",currentNode.getNodeValue().getDoubleValue())).append(SdqlConstants.SERIALIZER_DELIMITER);
+				result.append(String.format("%.2f", currentNode.getNodeValue().getDoubleValue()))
+						.append(SdqlConstants.SERIALIZER_DELIMITER);
 			} else {
 				result.append(currentNode.getNodeValue().getStringValue()).append(SdqlConstants.SERIALIZER_DELIMITER);
 			}

@@ -136,7 +136,7 @@ public class CreateNodeTest {
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 3);
 		assertEquals(null, sdQlNode.getDoubleValue());
-		assertEquals("",sdQlNode.getStringValue());	
+		assertEquals(SdqlConstants.NULL,sdQlNode.getStringValue());	
 	}
 	
 	@Test()

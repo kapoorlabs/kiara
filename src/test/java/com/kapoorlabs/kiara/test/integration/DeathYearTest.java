@@ -12,6 +12,7 @@ import com.kapoorlabs.kiara.adapters.PojoAdapter;
 import com.kapoorlabs.kiara.domain.Condition;
 import com.kapoorlabs.kiara.domain.Operator;
 import com.kapoorlabs.kiara.domain.Store;
+import com.kapoorlabs.kiara.exception.LoadDataException;
 import com.kapoorlabs.kiara.loader.StoreLoader;
 import com.kapoorlabs.kiara.search.StoreSearch;
 import com.kapoorlabs.kiara.test.objects.DeathRecordsTestObject;
@@ -43,7 +44,13 @@ public class DeathYearTest {
 				deathRecords.setGender(words[0]);
 				deathRecords.setBirthDeathRange(words[1]);
 				deathRecords.setRecordDate(words[2]);
-				storeLoader.loadTable(deathRecords);
+				
+				try {
+					storeLoader.loadTable(deathRecords);
+				} catch (LoadDataException ex) {
+					continue;
+				}
+				
 			}
 			
 			storeLoader.prepareForSearch();
