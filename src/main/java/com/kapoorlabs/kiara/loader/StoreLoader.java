@@ -153,9 +153,11 @@ public class StoreLoader {
 			Object value = store.getSdqlColumns()[level].getGetter().invoke(pojo);
 			if (value != null) {
 				numericValue = Double.parseDouble(value.toString());
+				if (numericValue.isNaN()) {
+					numericValue = null;
+				}
 			}
-			stringValue = numericValue != null && !numericValue.isNaN() ? numericValue.longValue() + ""
-					: SdqlConstants.NULL;
+			stringValue = numericValue != null ? String.format("%.2f", numericValue) : SdqlConstants.NULL;
 		} else {
 			numericValue = null;
 			Object value = store.getSdqlColumns()[level].getGetter().invoke(pojo);
@@ -237,7 +239,7 @@ public class StoreLoader {
 							stringKey = keys[i].trim();
 							longKeys[i] = stringKey.equalsIgnoreCase(SdqlConstants.NULL) || stringKey.isEmpty()
 									? SdqlConstants.LONG_NULL
-									: Long.parseLong(stringKey);
+									: ((Double)Double.parseDouble(stringKey)).longValue();
 						}
 
 					} else if (store.getSdqlColumns()[level].getSecondaryType()
@@ -337,8 +339,7 @@ public class StoreLoader {
 						String stringKey = node.getStringValue().trim();
 						longKeys[0] = stringKey.equalsIgnoreCase(SdqlConstants.NULL) || stringKey.isEmpty()
 								? SdqlConstants.LONG_NULL
-								: LocalDateTime.parse(stringKey, formatter)
-										.toEpochSecond(ZoneOffset.of("Z"));
+								: LocalDateTime.parse(stringKey, formatter).toEpochSecond(ZoneOffset.of("Z"));
 
 					} else if (store.getSdqlColumns()[level].getSecondaryType()
 							.getSecondarySingleType() == SecondarySingleDataType.NUMERIC_RANGE) {
@@ -410,13 +411,17 @@ public class StoreLoader {
 
 					} else {
 						for (String key : keys) {
-							ArrayList<SdqlNode> columLevelIndex = store.getInvertedIndex().get(level).get(key.trim());
+							key = key.trim();
+							if (key.equalsIgnoreCase(SdqlConstants.NULL) || key.isEmpty() ) {
+								key = SdqlConstants.NULL;
+							}
+							ArrayList<SdqlNode> columLevelIndex = store.getInvertedIndex().get(level).get(key);
 							OrderedKeys<NullableOrderedString> orderedKeys = store.getInvertedIndexKeys().get(level);
 
 							if (columLevelIndex == null) {
 								columLevelIndex = new ArrayList<>();
-								store.getInvertedIndex().get(level).put(key.trim(), columLevelIndex);
-								orderedKeys.insertKey(new NullableOrderedString(key.trim()));
+								store.getInvertedIndex().get(level).put(key, columLevelIndex);
+								orderedKeys.insertKey(new NullableOrderedString(key));
 							}
 
 							columLevelIndex.add(node);

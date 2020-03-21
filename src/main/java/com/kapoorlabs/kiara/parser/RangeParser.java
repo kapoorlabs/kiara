@@ -55,8 +55,8 @@ public class RangeParser {
 		
 		int numericStartIndex = store.getSdqlColumns()[colIndex].getSecondaryType().getNumericStartPos();
 
-		if (inputStr == null || inputStr.isEmpty()) {
-			range.setPrefix("");
+		if (inputStr == null || inputStr.isEmpty() || inputStr.equalsIgnoreCase(SdqlConstants.NULL)) {
+			range.setPrefix(SdqlConstants.NULL);
 			range.setLowerLimit(SdqlConstants.LONG_NULL);
 			range.setUpperLimit(SdqlConstants.LONG_NULL);
 			return range;

@@ -12,11 +12,11 @@ import com.kapoorlabs.kiara.loader.StoreLoader;
 import com.kapoorlabs.kiara.test.objects.DummyTestObject;
 
 
-public class MatchingChildTests {
+public class MatchingChildTest {
 
 	SdqlNode[] nodesToAdd;
 
-	public MatchingChildTests() {
+	public MatchingChildTest() {
 
 		nodesToAdd = new SdqlNode[10];
 

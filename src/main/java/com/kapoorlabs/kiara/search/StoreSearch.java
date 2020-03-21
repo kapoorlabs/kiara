@@ -681,10 +681,9 @@ public class StoreSearch {
 	private void writeResultObject(SdqlNode currentNode, int lastConditionColPos, Map<String, String> resultObject,
 			Store store) {
 		String columnName = store.getSdqlColumns()[lastConditionColPos].getColumnName();
-		if (store.getSdqlColumns()[lastConditionColPos].isNumeric() && currentNode.getDoubleValue() != null
-				&& !currentNode.getDoubleValue().isNaN()) {
-			String numericString = String.format("%.2f", currentNode.getDoubleValue());
-			if (numericString.endsWith(".00")) {
+		if (store.getSdqlColumns()[lastConditionColPos].isNumeric()) {
+			String numericString = currentNode.getStringValue();
+			if (currentNode.getStringValue().endsWith(".00")) {
 				numericString = numericString.substring(0, numericString.length() - 3);
 			}
 			resultObject.put(columnName, numericString);

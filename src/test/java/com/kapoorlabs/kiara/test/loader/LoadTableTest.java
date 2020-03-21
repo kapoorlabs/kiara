@@ -10,7 +10,7 @@ import com.kapoorlabs.kiara.exception.LoadDataException;
 import com.kapoorlabs.kiara.loader.StoreLoader;
 import com.kapoorlabs.kiara.test.objects.DummyTestObject;
 
-public class LoadTableTests {
+public class LoadTableTest {
 
 	Store store = new Store(PojoAdapter.getSdqlColumns(DummyTestObject.class));
 
@@ -136,6 +136,22 @@ public class LoadTableTests {
 		storeLoader.loadTable(dummyTestObject);
 		
 		String expectedTrie = "-1#root~0#0.00~1#0.00~2#0.00~3#null~4#0.00~5#false~6#null~7#null~8#null~9#null~10#null~11#null~12#null~13#null~14#null~15#null~16#null~17#null~18#null~19#null~20#null~21#null~22#null~23#null~24#null~25#null~26#null~27#null~28#null~29#null~30#null~31#null~32#null~33#0.00~34#0.00~35#null~36#null";
+
+		assertEquals(expectedTrie, storeLoader.serializeTrie());
+	}
+	
+	@Test
+	public void getLoadTableTests_8() throws LoadDataException {
+
+		StoreLoader storeLoader = new StoreLoader(store);
+
+		DummyTestObject dummyTestObject = new DummyTestObject();
+		dummyTestObject.setStringField("  ");
+		dummyTestObject.setDoubleField(Double.NaN);
+
+		storeLoader.loadTable(dummyTestObject);
+		
+		String expectedTrie = "-1#root~0#0.00~1#0.00~2#0.00~3#null~4#0.00~5#false~6#null~7#null~8#null~9#null~10#null~11#null~12#null~13#null~14#null~15#null~16#null~17#null~18#null~19#null~20#null~21#null~22#null~23#null~24#null~25#null~26#null~27#null~28#null~29#null~30#null~31#null~32#null~33#0.00~34#null~35#null~36#null";
 
 		assertEquals(expectedTrie, storeLoader.serializeTrie());
 	}

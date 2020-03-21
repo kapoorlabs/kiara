@@ -14,7 +14,6 @@ import com.kapoorlabs.kiara.domain.SdqlColumn;
 import com.kapoorlabs.kiara.domain.SecondaryCollectionDataType;
 import com.kapoorlabs.kiara.domain.SecondarySingleDataType;
 import com.kapoorlabs.kiara.test.objects.AirportTestObject;
-import com.kapoorlabs.kiara.test.objects.BooksTestObject;
 import com.kapoorlabs.kiara.test.objects.DummyTestObject;
 import com.kapoorlabs.kiara.test.objects.PartialGetterObject;
 import com.kapoorlabs.kiara.test.objects.PoiTestObject;
@@ -225,7 +224,7 @@ public class PojoAdapterTest {
 		List<SdqlColumn> sdqlColumns = dummyTestColumns;
 		
 		assertEquals(SecondaryCollectionDataType.DATE,sdqlColumns.get(7).getSecondaryType().getSecondaryCollectionType());
-		assertEquals("MMM-dd",sdqlColumns.get(7).getSecondaryType().getFormat());
+		assertEquals("yyyy-MMM-dd",sdqlColumns.get(7).getSecondaryType().getFormat());
 		assertEquals(null,sdqlColumns.get(7).getSecondaryType().getSecondarySingleType());
 	
 	}
@@ -265,7 +264,7 @@ public class PojoAdapterTest {
 		List<SdqlColumn> sdqlColumns = dummyTestColumns;
 		
 		assertEquals(SecondaryCollectionDataType.DATE_TIME,sdqlColumns.get(11).getSecondaryType().getSecondaryCollectionType());
-		assertEquals("MMM-dd HH:mm",sdqlColumns.get(11).getSecondaryType().getFormat());
+		assertEquals("yyyy-MMM-dd HH:mm",sdqlColumns.get(11).getSecondaryType().getFormat());
 		assertEquals(null,sdqlColumns.get(11).getSecondaryType().getSecondarySingleType());
 	
 	}

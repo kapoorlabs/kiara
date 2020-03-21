@@ -37,7 +37,7 @@ public class CreateNodeTest {
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 0);
 		assertEquals(new Double(0), sdQlNode.getDoubleValue());
-		assertEquals("0", sdQlNode.getStringValue());	
+		assertEquals("0.00", sdQlNode.getStringValue());	
 	}
 	
 	@Test()
@@ -48,7 +48,7 @@ public class CreateNodeTest {
 		dummyTestObject.setIntField(3);
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 0);
 		assertEquals(new Double(3), sdQlNode.getDoubleValue());
-		assertEquals("3",sdQlNode.getStringValue());	
+		assertEquals("3.00",sdQlNode.getStringValue());	
 	}
 	
 	@Test()
@@ -59,7 +59,7 @@ public class CreateNodeTest {
 		dummyTestObject.setIntField(Integer.MIN_VALUE);
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 0);
 		assertEquals(new Double(-2147483648), sdQlNode.getDoubleValue());
-		assertEquals("-2147483648", sdQlNode.getStringValue());	
+		assertEquals("-2147483648.00", sdQlNode.getStringValue());	
 	}
 	
 	@Test()
@@ -70,7 +70,7 @@ public class CreateNodeTest {
 		dummyTestObject.setIntField(Integer.MAX_VALUE);
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 0);
 		assertEquals(new Double(2147483647), sdQlNode.getDoubleValue());
-		assertEquals("2147483647", sdQlNode.getStringValue());	
+		assertEquals("2147483647.00", sdQlNode.getStringValue());	
 	}
 	
 	@Test()
@@ -80,7 +80,7 @@ public class CreateNodeTest {
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 1);
 		assertEquals(new Double(0), sdQlNode.getDoubleValue());
-		assertEquals("0", sdQlNode.getStringValue());	
+		assertEquals("0.00", sdQlNode.getStringValue());	
 	}
 	
 	@Test()
@@ -92,7 +92,7 @@ public class CreateNodeTest {
 		dummyTestObject.setShortField(shortField);
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 1);
 		assertEquals(new Double(4), sdQlNode.getDoubleValue());
-		assertEquals("4", sdQlNode.getStringValue());	
+		assertEquals("4.00", sdQlNode.getStringValue());	
 	}
 	
 	@Test()
@@ -104,7 +104,7 @@ public class CreateNodeTest {
 		dummyTestObject.setShortField(shortField);
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 1);
 		assertEquals(new Double(-32768), sdQlNode.getDoubleValue());
-		assertEquals("-32768", sdQlNode.getStringValue());	
+		assertEquals("-32768.00", sdQlNode.getStringValue());	
 	}
 	
 	@Test()
@@ -114,7 +114,7 @@ public class CreateNodeTest {
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 2);
 		assertEquals(new Double(0), sdQlNode.getDoubleValue());
-		assertEquals("0", sdQlNode.getStringValue());	
+		assertEquals("0.00", sdQlNode.getStringValue());	
 	}
 	
 	@Test()
@@ -126,7 +126,7 @@ public class CreateNodeTest {
 		dummyTestObject.setByteField(byteField);
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 2);
 		assertEquals(new Double(127), sdQlNode.getDoubleValue());
-		assertEquals("127",sdQlNode.getStringValue());	
+		assertEquals("127.00",sdQlNode.getStringValue());	
 	}
 	
 	@Test()
@@ -158,7 +158,7 @@ public class CreateNodeTest {
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 4);
 		assertEquals(new Double(0), sdQlNode.getDoubleValue());
-		assertEquals("0",sdQlNode.getStringValue());		
+		assertEquals("0.00",sdQlNode.getStringValue());		
 	}
 	
 	@Test()
@@ -170,7 +170,7 @@ public class CreateNodeTest {
 		dummyTestObject.setLongField(longValue);
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 4);
 		assertEquals(new Double(1), sdQlNode.getDoubleValue());
-		assertEquals("1",sdQlNode.getStringValue());		
+		assertEquals("1.00",sdQlNode.getStringValue());		
 	}
 	
 	@Test()
@@ -182,8 +182,9 @@ public class CreateNodeTest {
 		dummyTestObject.setLongField(longValue);
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 4);
 	
-		assertEquals(new Double(-9223372036854775808L), sdQlNode.getDoubleValue());
-		assertEquals("-9223372036854775808",sdQlNode.getStringValue());		
+		assertEquals(new Double(-9223372036854775808.2), sdQlNode.getDoubleValue());
+		//precision till 15 digits
+		assertEquals("-9223372036854776000.00",sdQlNode.getStringValue());		
 	}
 	
 	
@@ -196,7 +197,7 @@ public class CreateNodeTest {
 		dummyTestObject.setLongField(longValue);
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 4);
 		assertEquals(new Double(9223372036854775807L), sdQlNode.getDoubleValue());
-		assertEquals("9223372036854775807",sdQlNode.getStringValue());		
+		assertEquals("9223372036854776000.00",sdQlNode.getStringValue());		
 	}
 	
 	@Test()
@@ -274,7 +275,7 @@ public class CreateNodeTest {
 		dummyTestObject.setIntegerObjectField(Integer.MIN_VALUE);
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 27);
 		assertEquals(new Double(-2147483648.0),sdQlNode.getDoubleValue());
-		assertEquals("-2147483648",sdQlNode.getStringValue());		
+		assertEquals("-2147483648.00",sdQlNode.getStringValue());		
 	
 	}
 	
@@ -297,7 +298,7 @@ public class CreateNodeTest {
 		dummyTestObject.setShortObjectField((short)45);
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 28);
 		assertEquals(new Double(45.0),sdQlNode.getDoubleValue());
-		assertEquals("45",sdQlNode.getStringValue());		
+		assertEquals("45.00",sdQlNode.getStringValue());		
 	
 	}
 	
@@ -320,7 +321,7 @@ public class CreateNodeTest {
 		dummyTestObject.setByteObjectField((byte)45);
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 29);
 		assertEquals(new Double(45.0),sdQlNode.getDoubleValue());
-		assertEquals("45",sdQlNode.getStringValue());		
+		assertEquals("45.00",sdQlNode.getStringValue());		
 	
 	}
 	
@@ -366,7 +367,7 @@ public class CreateNodeTest {
 		dummyTestObject.setLongObjectField(Long.MAX_VALUE);
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 31);
 		assertEquals(new Double(9223372036854775807L),sdQlNode.getDoubleValue());
-		assertEquals("9223372036854775807",sdQlNode.getStringValue());		
+		assertEquals("9223372036854776000.00",sdQlNode.getStringValue());		
 	
 	}
 	
@@ -400,7 +401,7 @@ public class CreateNodeTest {
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 33);
 		assertEquals(new Double(0.0),sdQlNode.getDoubleValue());
-		assertEquals("0",sdQlNode.getStringValue());		
+		assertEquals("0.00",sdQlNode.getStringValue());		
 	
 	}
 	
@@ -412,7 +413,7 @@ public class CreateNodeTest {
 		dummyTestObject.setFloatField(2.1009F);
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 33);
 		assertEquals(new Double(2.1009),sdQlNode.getDoubleValue());
-		assertEquals("2",sdQlNode.getStringValue());		
+		assertEquals("2.10",sdQlNode.getStringValue());		
 	
 	}
 	
@@ -423,7 +424,7 @@ public class CreateNodeTest {
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 34);
 		assertEquals(new Double(0),sdQlNode.getDoubleValue());
-		assertEquals("0",sdQlNode.getStringValue());		
+		assertEquals("0.00",sdQlNode.getStringValue());		
 	
 	}
 	
@@ -435,7 +436,7 @@ public class CreateNodeTest {
 		dummyTestObject.setDoubleField(255565.33556);
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 34);
 		assertEquals(new Double(255565.33556),sdQlNode.getDoubleValue());
-		assertEquals("255565",sdQlNode.getStringValue());		
+		assertEquals("255565.34",sdQlNode.getStringValue());		
 	
 	}
 	
@@ -447,7 +448,7 @@ public class CreateNodeTest {
 		dummyTestObject.setDoubleField(-255565.33556);
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 34);
 		assertEquals(new Double(-255565.33556),sdQlNode.getDoubleValue());
-		assertEquals("-255565",sdQlNode.getStringValue());		
+		assertEquals("-255565.34",sdQlNode.getStringValue());		
 	
 	}
 	
@@ -470,7 +471,7 @@ public class CreateNodeTest {
 		dummyTestObject.setFloatObject(2565.335F);
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 35);
 		assertEquals(new Double(2565.335),sdQlNode.getDoubleValue());
-		assertEquals("2565",sdQlNode.getStringValue());		
+		assertEquals("2565.34",sdQlNode.getStringValue());		
 	
 	}
 
@@ -494,7 +495,7 @@ public class CreateNodeTest {
 		dummyTestObject.setDoubleObject(-253365.32235);
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 36);
 		assertEquals(new Double(-253365.32235),sdQlNode.getDoubleValue());
-		assertEquals("-253365",sdQlNode.getStringValue());		
+		assertEquals("-253365.32",sdQlNode.getStringValue());		
 	
 	}
 	
@@ -506,7 +507,7 @@ public class CreateNodeTest {
 		dummyTestObject.setDoubleObject(9223372036854775807.3);
 		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 36);
 		assertEquals(9223372036854775807L,sdQlNode.getDoubleValue().longValue());
-		assertEquals("9223372036854775807",sdQlNode.getStringValue());		
+		assertEquals("9223372036854776000.00",sdQlNode.getStringValue());		
 	
 	}
 	
