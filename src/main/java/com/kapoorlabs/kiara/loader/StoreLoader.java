@@ -8,10 +8,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Queue;
+import java.util.Set;
 
 import com.kapoorlabs.kiara.constants.Delimiters;
 import com.kapoorlabs.kiara.constants.SdqlConstants;
@@ -370,7 +372,12 @@ public class StoreLoader {
 				}
 
 				if (isNumericType) {
+					Set<Long> uniqueKey = new HashSet<>();
 					for (Long key : longKeys) {
+						if (uniqueKey.contains(key)) {
+							continue;
+						}
+						uniqueKey.add(key);
 						ArrayList<SdqlNode> columLevelIndex = store.getInvertedNumericIndex().get(level).get(key);
 						OrderedKeys<Long> orderedKeys = store.getInvertedNumericIndexKeys().get(level);
 
@@ -386,8 +393,14 @@ public class StoreLoader {
 
 				} else {
 					if (isRangeType) {
+						Set<String> uniqueKey = new HashSet<>();
 						for (String key : keys) {
-							Range range = RangeParser.parseRange(key.trim(), store, level);
+							key = key.trim();
+							if (uniqueKey.contains(key)) {
+								continue;
+							}
+							uniqueKey.add(key);
+							Range range = RangeParser.parseRange(key, store, level);
 							ArrayList<SdqlNode> columLevelIndex = store.getInvertedIndex().get(level)
 									.get(range.toString());
 							HashMap<String, SearchableRange> intervalIndex = store.getRanges().get(level);
@@ -410,11 +423,16 @@ public class StoreLoader {
 						}
 
 					} else {
+						Set<String> uniqueKey = new HashSet<>();
 						for (String key : keys) {
 							key = key.trim();
 							if (key.equalsIgnoreCase(SdqlConstants.NULL) || key.isEmpty() ) {
 								key = SdqlConstants.NULL;
 							}
+							if (uniqueKey.contains(key)) {
+								continue;
+							}
+							uniqueKey.add(key);
 							ArrayList<SdqlNode> columLevelIndex = store.getInvertedIndex().get(level).get(key);
 							OrderedKeys<NullableOrderedString> orderedKeys = store.getInvertedIndexKeys().get(level);
 

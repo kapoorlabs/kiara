@@ -225,7 +225,7 @@ public class RangeParserTest {
 
 		Range range = RangeParser.parseRange("null", flightOnTimeStore,
 				flightOnTimeStore.getColumnIndex().get("DATES"));
-		assertEquals(SdqlConstants.NULL, range.getPrefix());
+		assertEquals("", range.getPrefix());
 		assertEquals(SdqlConstants.LONG_NULL, range.getLowerLimit());
 		assertEquals(SdqlConstants.LONG_NULL, range.getUpperLimit());
 	}
@@ -235,7 +235,7 @@ public class RangeParserTest {
 
 		Range range = RangeParser.parseRange("Null", flightOnTimeStore,
 				flightOnTimeStore.getColumnIndex().get("DATES"));
-		assertEquals(SdqlConstants.NULL, range.getPrefix());
+		assertEquals("", range.getPrefix());
 		assertEquals(SdqlConstants.LONG_NULL, range.getLowerLimit());
 		assertEquals(SdqlConstants.LONG_NULL, range.getUpperLimit());
 	}
@@ -245,7 +245,7 @@ public class RangeParserTest {
 
 		Range range = RangeParser.parseRange("NULL", flightOnTimeStore,
 				flightOnTimeStore.getColumnIndex().get("DATES"));
-		assertEquals(SdqlConstants.NULL, range.getPrefix());
+		assertEquals("", range.getPrefix());
 		assertEquals(SdqlConstants.LONG_NULL, range.getLowerLimit());
 		assertEquals(SdqlConstants.LONG_NULL, range.getUpperLimit());
 	}

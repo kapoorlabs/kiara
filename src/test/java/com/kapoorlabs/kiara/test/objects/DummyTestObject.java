@@ -72,25 +72,25 @@ public class DummyTestObject {
 	@DateTimeRange
 	String dateTimeRange;
 	//19
-	@DateTimeRange(value="yy/MMM HH:mm")
+	@DateTimeRange(value="yy/MMM/dd HH:mm")
 	String dateTimeRange2;
 	//20
 	@DateRange
 	String dateRange;
 	//21
-	@DateRange(value="yy/MMM")
+	@DateRange(value="yy/MMM/dd")
 	String dateRange2;
 	//22
 	@CommaSeperatedDateTimeRanges
 	String dateTimeRanges;
 	//23
-	@CommaSeperatedDateTimeRanges(value="yy/MMM HH:mm")
+	@CommaSeperatedDateTimeRanges(value="yy/MMM/dd HH:mm")
 	String dateTimeRanges2;
 	//24
 	@CommaSeperatedDateRanges
 	String dateRanges;
 	//25
-	@CommaSeperatedDateRanges(value="yy/MMM")
+	@CommaSeperatedDateRanges(value="yy/MMM/dd")
 	String dateRanges2;
 	//26
 	String stringField;

@@ -69,7 +69,7 @@
 69,7442912,Veronica Roth,2012.0,"Insurgent (Divergent, #2)",eng,4.07
 70,812550706,Orson Scott Card,1985.0,"Ender's Game (Ender's Saga, #1)",eng,4.3
 71,141439475,"Mary Wollstonecraft Shelley, Percy Bysshe Shelley, Maurice Hindle",1818.0,Frankenstein,eng,3.75
-72,450040186,Stephen King,1977.0,"The Shining (The Shining #1)",eng,4.17
+72,450040186,Stephen King,1977.0,The Shining (The Shining #1),eng,4.17
 73,316068047,Stephenie Meyer,2008.0,"The Host (The Host, #1)",en-US,3.84
 74,142402516,John Green,2005.0,Looking for Alaska,eng,4.09
 75,014028009X,Helen Fielding,1996.0,"Bridget Jones's Diary (Bridget Jones, #1)",eng,3.75
@@ -84,7 +84,7 @@
 84,030734813X,Michael Crichton,1990.0,"Jurassic Park (Jurassic Park, #1)",spa,3.96
 85,60256656,Shel Silverstein,1964.0,The Giving Tree,eng,4.38
 86,385338600,John Grisham,1989.0,A Time to Kill,eng,4.03
-87,374500010,"Elie Wiesel, Marion Wiesel",1958.0,"Night (The Night Trilogy #1)",eng,4.3
+87,374500010,"Elie Wiesel, Marion Wiesel",1958.0,Night (The Night Trilogy #1),eng,4.3
 88,014241493X,John Green,2008.0,Paper Towns,en-US,3.88
 89,345418263,William Goldman,1973.0,The Princess Bride,en-US,4.25
 90,014038572X,S.E. Hinton,1967.0,The Outsiders,en-US,4.06
@@ -123,7 +123,7 @@
 123,582418275,John Grisham,1991.0,"The Firm (Penguin Readers, Level 5)",eng,3.99
 124,316098337,Emma Donoghue,2010.0,Room,eng,4.03
 125,521618746,"William Shakespeare, Richard Andrews, Rex Gibson",1600.0,Hamlet,eng,4.0
-126,340839937,Frank Herbert,1965.0,"Dune (Dune Chronicles #1)",eng,4.19
+126,340839937,Frank Herbert,1965.0,Dune (Dune Chronicles #1),eng,4.19
 127,316346624,Malcolm Gladwell,2000.0,The Tipping Point: How Little Things Can Make a Big Difference,eng,3.92
 128,1451648537,Walter Isaacson,2011.0,Steve Jobs,eng,4.09
 129,451163966,Ken Kesey,1962.0,One Flew Over the Cuckoo's Nest,eng,4.18
@@ -273,7 +273,7 @@
 273,812968069,Lisa See,2005.0,Snow Flower and the Secret Fan,eng,4.05
 274,451205766,"Mario Puzo, Robert Thompson, Peter Bart",1969.0,The Godfather,eng,4.36
 275,525476881,John Green,2006.0,An Abundance of Katherines,eng,3.63
-276,553803719,Isaac Asimov,1951.0,"Foundation (Foundation #1)",eng,4.13
+276,553803719,Isaac Asimov,1951.0,Foundation (Foundation #1),eng,4.13
 277,62255657,Neil Gaiman,2013.0,The Ocean at the End of the Lane,eng,3.99
 278,60513063,Shel Silverstein,1981.0,A Light in the Attic,eng,4.34
 279,751565350,"John Tiffany, Jack Thorne, J.K. Rowling",2016.0,"Harry Potter and the Cursed Child - Parts One and Two (Harry Potter, #8)",eng,3.75
@@ -581,7 +581,7 @@
 581,312642962,Marissa Meyer,2013.0,"Scarlet (The Lunar Chronicles, #2)",eng,4.3
 582,751532711,Robert T. Kiyosaki,1997.0,"Rich Dad, Poor Dad",eng,3.95
 583,1442426640,Becca Fitzpatrick,2011.0,"Silence (Hush, Hush, #3)",eng,4.16
-584,670020559,Lev Grossman,2009.0,"The Magicians (The Magicians #1)",eng,3.47
+584,670020559,Lev Grossman,2009.0,The Magicians (The Magicians #1),eng,3.47
 585,1421501686,"Tsugumi Ohba, Takeshi Obata",2004.0,"Death Note, Vol. 1: Boredom (Death Note, #1)",eng,4.42
 586,689875347,Libba Bray,2003.0,"A Great and Terrible Beauty (Gemma Doyle, #1)",eng,3.79
 587,60529709,Jonathan Safran Foer,2002.0,Everything Is Illuminated,eng,3.9
@@ -763,7 +763,7 @@
 763,452287065,Toni Morrison,1970.0,The Bluest Eye,eng,3.99
 764,1416563687,Philippa Gregory,2009.0,"The White Queen (The Plantagenet and Tudor Novels, #2)",eng,3.9
 765,345350685,"Malcolm X, Alex Haley",1965.0,The Autobiography of Malcolm X,eng,4.29
-766,1563892278,"Neil Gaiman, Sam Kieth, Mike Dringenberg, Malcolm Jones III, Todd Klein, Karen  Berger",1989.0,"Preludes & Nocturnes (The Sandman #1)",eng,4.3
+766,1563892278,"Neil Gaiman, Sam Kieth, Mike Dringenberg, Malcolm Jones III, Todd Klein, Karen  Berger",1989.0,Preludes & Nocturnes (The Sandman #1),eng,4.3
 767,345465083,Laura Hillenbrand,1999.0,Seabiscuit: An American Legend,en-US,4.2
 768,038073186X,Dennis Lehane,2003.0,Shutter Island,eng,4.07
 769,553328255,Arthur Conan Doyle,1894.0,The Complete Sherlock Holmes,eng,4.5
@@ -786,7 +786,7 @@
 786,60513098,Shel Silverstein,1996.0,Falling Up,en-US,4.33
 787,61992704,Justin Halpern,2010.0,Sh*t My Dad Says,,3.98
 788,2020336464,"Irvine Welsh, Eric Lindor Fall",1993.0,Trainspotting,fre,4.07
-789,553803727,Isaac Asimov,1952.0,"Foundation and Empire (Foundation #2)",eng,4.2
+789,553803727,Isaac Asimov,1952.0,Foundation and Empire (Foundation #2),eng,4.2
 790,1878424505,Miguel Ruiz,1997.0,The Four Agreements: A Practical Guide to Personal Freedom,,4.12
 791,743296435,Jodi Picoult,2010.0,House Rules,en-US,4.01
 792,394709306,"Jacob Grimm, Wilhelm Grimm, Josef Scharl, Padraic Colum, Joseph Campbell, Margaret Raine Hunt, James Stern",1812.0,The Complete Grimm's Fairy Tales,eng,4.31
@@ -822,7 +822,7 @@
 822,224094157,Julian Barnes,2011.0,The Sense of an Ending,eng,3.7
 823,312938993,Sue Grafton,1982.0,"A is for Alibi (Kinsey Millhone, #1)",en-US,3.82
 824,1580495931,"Sophocles, J.E. Thomas",-430.0,"Oedipus Rex  (The Theban Plays, #1)",eng,3.67
-825,1400067111,Lisa See,2009.0,"Shanghai Girls (Shanghai Girls #1)",eng,3.87
+825,1400067111,Lisa See,2009.0,Shanghai Girls (Shanghai Girls #1),eng,3.87
 826,143039091,"Kenneth Grahame, Gillian Avery",1908.0,The Wind in the Willows,eng,3.98
 827,,Jenny Han,2014.0,"To All the Boys I've Loved Before (To All the Boys I've Loved Before, #1)",eng,4.11
 828,037571457X,"Marjane Satrapi, Mattias Ripa",2000.0,"Persepolis: The Story of a Childhood (Persepolis, #1)",eng,4.23
@@ -887,7 +887,7 @@
 887,067973225X,William Faulkner,1930.0,As I Lay Dying,eng,3.72
 888,747532036,Crockett Johnson,1955.0,Harold and the Purple Crayon,eng,4.24
 889,451218043,J.R. Ward,2006.0,"Lover Eternal (Black Dagger Brotherhood, #2)",eng,4.35
-890,553803735,Isaac Asimov,1953.0,"Second Foundation (Foundation #3)",eng,4.23
+890,553803735,Isaac Asimov,1953.0,Second Foundation (Foundation #3),eng,4.23
 891,451458125,Jim Butcher,2001.0,"Fool Moon (The Dresden Files, #2)",eng,4.04
 892,316204366,Malcolm Gladwell,2011.0,"David and Goliath: Underdogs, Misfits, and the Art of Battling Giants",eng,3.9
 893,1591169208,"Hiromu Arakawa, Akira Watanabe",2002.0,"Fullmetal Alchemist, Vol. 1 (Fullmetal Alchemist, #1)",eng,4.49
@@ -934,7 +934,7 @@
 934,,Samuel Beckett,1952.0,Waiting for Godot,eng,3.81
 935,439236193,Jack London,1906.0,White Fang,eng,3.94
 936,141651693X,"Stephen King, Bernie Wrightson",2003.0,"Wolves of the Calla (The Dark Tower, #5)",eng,4.17
-937,440238609,Philip Pullman,2000.0,"His Dark Materials (His Dark Materials #1-3)",eng,4.25
+937,440238609,Philip Pullman,2000.0,His Dark Materials (His Dark Materials #1-3),eng,4.25
 938,1480095532,J.A. Redmerski,2012.0,"The Edge of Never (The Edge of Never, #1)",en-US,4.26
 939,006222543X,Kimberly McCreight,2013.0,Reconstructing Amelia,eng,3.82
 940,525426582,Jojo Moyes,2014.0,One Plus One,eng,3.94
@@ -974,7 +974,7 @@
 974,679740678,Philip K. Dick,1962.0,The Man in the High Castle,eng,3.66
 975,393322238,"Vincent Bugliosi, Curt Gentry",1974.0,Helter Skelter: The True Story of the Manson Murders,en-GB,4.0
 976,793551617,"Robert Kapilow, Dr. Seuss",,"Dr. Seuss's Green Eggs and Ham: For Soprano, Boy Soprano, and Orchestra",,4.44
-977,812970063,"Dante Alighieri, Anthony M. Esolen",1320.0,"Inferno (The Divine Comedy #1)",,3.99
+977,812970063,"Dante Alighieri, Anthony M. Esolen",1320.0,Inferno (The Divine Comedy #1),,3.99
 978,670023485,Deborah Harkness,2012.0,"Shadow of Night (All Souls Trilogy, #2)",eng,4.04
 979,345544927,Jodi Picoult,2014.0,Leaving Time,eng,3.94
 980,441013813,Patricia Briggs,2006.0,"Moon Called (Mercy Thompson, #1)",eng,4.18
@@ -1039,7 +1039,7 @@
 1039,1594743347,"Seth Grahame-Smith, Jane Austen",2009.0,"Pride and Prejudice and Zombies (Pride and Prejudice and Zombies, #1)",eng,3.28
 1040,316154695,David Sedaris,2013.0,Let's Explore Diabetes with Owls,eng,3.8
 1041,679642420,"Fyodor Dostoyevsky, Constance Garnett, Alan Myers, Joseph Frank, Anna Brailovsky",1868.0,The Idiot,eng,4.18
-1042,671746723,Douglas Adams,1987.0,"Dirk Gently's Holistic Detective Agency (Dirk Gently #1)",en-US,3.97
+1042,671746723,Douglas Adams,1987.0,Dirk Gently's Holistic Detective Agency (Dirk Gently #1),en-US,3.97
 1043,810994739,Jeff Kinney,2008.0,"Rodrick Rules (Diary of a Wimpy Kid, #2)",en-US,4.1
 1044,804138141,Mindy Kaling,2015.0,Why Not Me?,eng,3.89
 1045,62285688,Veronica Roth,2014.0,"Four: A Divergent Story Collection (Divergent, #0.1 - 0.4)",eng,4.1
@@ -1048,7 +1048,7 @@
 1048,393050327,Sebastian Junger,1997.0,The Perfect Storm: A True Story of Men Against the Sea,en-US,4.07
 1049,765350378,Brandon Sanderson,2005.0,"Elantris (Elantris, #1)",eng,4.17
 1050,1406310255,Patrick Ness,2008.0,"The Knife of Never Letting Go (Chaos Walking, #1)",eng,3.96
-1051,312199430,Jim Fergus,1998.0,"One Thousand White Women: The Journals of May Dodd (One Thousand White Women#1)",eng,3.88
+1051,312199430,Jim Fergus,1998.0,One Thousand White Women: The Journals of May Dodd (One Thousand White Women#1),eng,3.88
 1052,743296419,Jodi Picoult,2009.0,Handle with Care,eng,3.96
 1053,1416521496,"Stephen King, Darrel Anderson",2004.0,"Song of Susannah (The Dark Tower, #6)",eng,3.98
 1054,525423664,Ally Condie,2012.0,"Reached (Matched, #3)",,3.56
@@ -1078,7 +1078,7 @@
 1078,142000280,David    Allen,2001.0,Getting Things Done: The Art of Stress-Free Productivity,en-GB,3.98
 1079,446671002,James Redfield,1993.0,"The Celestine Prophecy (Celestine Prophecy, #1)",en-US,3.6
 1080,803736991,Huntley Fitzpatrick,2012.0,My Life Next Door,eng,4.02
-1081,525952926,Ken Follett,2012.0,"Winter of the World (The Century Trilogy #2)",eng,4.29
+1081,525952926,Ken Follett,2012.0,Winter of the World (The Century Trilogy #2),eng,4.29
 1082,385352107,"Haruki Murakami, Philip Gabriel",2013.0,Colorless Tsukuru Tazaki and His Years of Pilgrimage,eng,3.82
 1083,033041836X,Alice Sebold,1999.0,Lucky,eng,3.77
 1084,140679239X,Virginia Woolf,1927.0,To the Lighthouse,eng,3.76
@@ -1102,7 +1102,7 @@
 1102,312423799,Augusten Burroughs,2003.0,Dry,eng,4.01
 1103,446613347,James Patterson,2001.0,Sam's Letters to Jennifer,,4.15
 1104,1101946342,E.L. James,2015.0,"Grey (Fifty Shades, #4)",en-GB,3.76
-1105,441172695,Frank Herbert,1969.0,"Dune Messiah (Dune Chronicles #2)",eng,3.86
+1105,441172695,Frank Herbert,1969.0,Dune Messiah (Dune Chronicles #2),eng,3.86
 1106,6280560,C.S. Lewis,1945.0,The Great Divorce,en-US,4.28
 1107,1416528636,Jennifer Weiner,2004.0,Little Earthquakes,,3.76
 1108,517092913,"Hans Christian Andersen, Lily Owens, Arthur Rackham, Hans Richter",1835.0,The Complete Fairy Tales,eng,4.28
@@ -1184,7 +1184,7 @@
 1184,068480154X,F. Scott Fitzgerald,1933.0,Tender Is the Night,en-US,3.83
 1185,038531258X,Olive Ann Burns,1984.0,Cold Sassy Tree,,3.99
 1186,811214044,Tennessee Williams,1945.0,The Glass Menagerie,eng,3.67
-1187,1609450787,"Elena Ferrante, Ann Goldstein",2011.0,"My Brilliant Friend (The Neapolitan Novels #1)",eng,3.88
+1187,1609450787,"Elena Ferrante, Ann Goldstein",2011.0,My Brilliant Friend (The Neapolitan Novels #1),eng,3.88
 1188,307353133,Timothy Ferriss,2007.0,The 4-Hour Workweek,eng,3.84
 1189,62515675,Robin S. Sharma,1996.0,The Monk Who Sold His Ferrari: A Fable About Fulfilling Your Dreams  Reaching Your Destiny,eng,3.77
 1190,670022691,Amor Towles,2011.0,Rules of Civility,eng,3.99
@@ -1227,7 +1227,7 @@
 1227,61662763,Kelley Armstrong,2009.0,"The Awakening (Darkest Powers, #2)",eng,4.16
 1228,451459407,Jim Butcher,2003.0,"Death Masks (The Dresden Files, #5)",eng,4.32
 1229,152802177,Janell Cannon,1993.0,Stellaluna,en-US,4.22
-1230,575077883,Joe Abercrombie,2007.0,"Before They Are Hanged (The First Law #2)",eng,4.27
+1230,575077883,Joe Abercrombie,2007.0,Before They Are Hanged (The First Law #2),eng,4.27
 1231,345494997,Nancy Horan,2007.0,Loving Frank,en-US,3.73
 1232,312983867,"Janet Evanovich, Lorelei King",2002.0,"Hard Eight (Stephanie Plum, #8)",en-US,4.17
 1233,60566221,"Lemony Snicket, Brett Helquist",2001.0,"The Vile Village (A Series of Unfortunate Events, #7)",eng,3.94
@@ -1259,7 +1259,7 @@
 1259,60278250,Garth Nix,2003.0,"Abhorsen (Abhorsen, #3)",en-US,4.29
 1260,446612545,"James Patterson, Peter de Jonge",2002.0,The Beach House,eng,3.82
 1261,751504572,Stephen King,1987.0,The Eyes of the Dragon,eng,3.92
-1262,441104029,Frank Herbert,1976.0,"Children of Dune (Dune Chronicles #3)",eng,3.9
+1262,441104029,Frank Herbert,1976.0,Children of Dune (Dune Chronicles #3),eng,3.9
 1263,1841499889,James S.A. Corey,2011.0,"Leviathan Wakes (The Expanse, #1)",eng,4.2
 1264,1619636042,Sarah J. Maas,2015.0,"Queen of Shadows (Throne of Glass, #4)",eng,4.6
 1265,679729771,Art Spiegelman,1991.0,"Maus II: A Survivor's Tale: And Here My Troubles Began (Maus, #2)",eng,4.41
@@ -1364,7 +1364,7 @@
 1364,451529553,"Fyodor Dostoyevsky, Andrew R. MacAndrew, Ben Marcus",1864.0,"Notes from Underground, White Nights, The Dream of a Ridiculous Man, and Selections from The House of the Dead",eng,4.17
 1365,618084746,Carson McCullers,1940.0,The Heart is a Lonely Hunter,eng,3.97
 1366,,Rick Yancey,2014.0,"The Infinite Sea (The 5th Wave, #2)",eng,3.94
-1367,441627404,T.H. White,1958.0,"The Once and Future King (The Once and Future King #1-4)",eng,4.08
+1367,441627404,T.H. White,1958.0,The Once and Future King (The Once and Future King #1-4),eng,4.08
 1368,552152978,Terry Pratchett,1992.0,"Small Gods (Discworld, #13)",en-GB,4.27
 1369,385323069,Christopher Paul Curtis,1999.0,"Bud, Not Buddy",eng,3.89
 1370,618477942,Alison Bechdel,2006.0,Fun Home: A Family Tragicomic,eng,4.12
@@ -1380,7 +1380,7 @@
 1380,141014083,Art Spiegelman,1986.0,"The Complete Maus (Maus, #1-2)",en-GB,4.53
 1381,142001805,Jasper Fforde,2001.0,"The Eyre Affair (Thursday Next, #1)",en-US,3.92
 1382,345373944,"Faye Perozich, Anne Rice, John Bolton, Daerick Gröss",1989.0,Anne Rice's The Vampire Lestat: A Graphic Novel,en-GB,4.17
-1383,747571775,"Louis Sachar, Adam McCauley",1978.0,"Sideways Stories from Wayside School (Wayside School #1)",eng,4.14
+1383,747571775,"Louis Sachar, Adam McCauley",1978.0,Sideways Stories from Wayside School (Wayside School #1),eng,4.14
 1384,1573221112,"Dalai Lama XIV, Howard C. Cutler",1998.0,The Art of Happiness,eng,4.14
 1385,1400065674,David Mitchell,2014.0,The Bone Clocks,eng,3.81
 1386,385333137,Anna Quindlen,1998.0,Black and Blue,eng,3.86
@@ -1431,7 +1431,7 @@
 1431,1862301387,Brian Jacques,1986.0,"Redwall (Redwall, #1)",eng,4.11
 1432,140447571,"Karl Marx, Friedrich Engels, Gareth Stedman Jones",1848.0,The Communist Manifesto,eng,3.51
 1433,1501132938,Ruth Ware,2016.0,The Woman in Cabin 10,eng,3.67
-1434,553213296,James Fenimore Cooper,1826.0,"The Last of the Mohicans (The Leatherstocking Tales #2)",eng,3.69
+1434,553213296,James Fenimore Cooper,1826.0,The Last of the Mohicans (The Leatherstocking Tales #2),eng,3.69
 1435,679736379,William Styron,1979.0,Sophie's Choice,eng,4.18
 1436,044024191X,Sophie Kinsella,2004.0,"Shopaholic and Sister (Shopaholic, #4)",eng,3.64
 1437,373210132,Julie Kagawa,2010.0,The Iron Daughter,eng,4.13
@@ -1440,7 +1440,7 @@
 1440,786868724,Mitch Albom,2009.0,Have a Little Faith: a True Story,en-US,4.16
 1441,1400043468,"Julia Child, Alex Prud'Homme",2006.0,My Life in France,eng,4.16
 1442,1922182109,Graeme Simsion,2014.0,"The Rosie Effect (Don Tillman, #2)",eng,3.56
-1443,9380658797,Amish Tripathi,2011.0,"The Secret of the Nagas (Shiva Trilogy #2)",eng,3.98
+1443,9380658797,Amish Tripathi,2011.0,The Secret of the Nagas (Shiva Trilogy #2),eng,3.98
 1444,006117758X,Charles Bukowski,1982.0,Ham on Rye,,4.16
 1445,375825444,Wendelin Van Draanen,2001.0,Flipped,en-US,3.94
 1446,974320625,"Travis Bradberry, Jean Greaves, Patrick Lencioni",2003.0,Emotional Intelligence 2.0,,3.81
@@ -1466,7 +1466,7 @@
 1466,451171357,"Irving Stone, שמואל שניצר",1958.0,The Agony and the Ecstasy,eng,4.09
 1467,385528701,"Carlos Ruiz Zafón, Lucia Graves",2008.0,"The Angel's Game (The Cemetery of Forgotten Books, #2)",eng,3.86
 1468,786891084,Cecelia Ahern,2004.0,"Love, Rosie",en-US,3.95
-1469,64441555,"Peggy Parish, Fritz Siebel",1963.0,"Amelia Bedelia  (Amelia Bedelia #1)",eng,4.15
+1469,64441555,"Peggy Parish, Fritz Siebel",1963.0,Amelia Bedelia  (Amelia Bedelia #1),eng,4.15
 1470,,Jodi Ellen Malpas,2012.0,"This Man (This Man, #1)",eng,4.13
 1471,765326264,W. Bruce Cameron,2010.0,"A Dog's Purpose (A Dog's Purpose, #1)",en-US,4.35
 1472,1595148035,Sabaa Tahir,2015.0,"An Ember in the Ashes (An Ember in the Ashes, #1)",eng,4.32
@@ -1508,7 +1508,7 @@
 1508,1846558913,Ruth Ware,2015.0,"In a Dark, Dark Wood",eng,3.65
 1509,1844082938,"Edith Wharton, Nina Bawden",1905.0,The House of Mirth,eng,3.94
 1510,345501330,"Hiro Mashima, William Flanagan",2006.0,"Fairy Tail, Vol. 1 (Fairy Tail, #1)",eng,4.4
-1511,756410436,"Patrick Rothfuss, Nate  Taylor",2014.0,"The Slow Regard of Silent Things (The Kingkiller Chronicle #2.5)",eng,3.92
+1511,756410436,"Patrick Rothfuss, Nate  Taylor",2014.0,The Slow Regard of Silent Things (The Kingkiller Chronicle #2.5),eng,3.92
 1512,,Solomon Northup,1853.0,Twelve Years a Slave,eng,4.15
 1513,451229851,J.R. Ward,2010.0,"Lover Mine (Black Dagger Brotherhood, #8)",eng,4.41
 1514,141001828,Nathaniel Philbrick,1999.0,In the Heart of the Sea: The Tragedy of the Whaleship Essex,en-US,4.16
@@ -1569,7 +1569,7 @@
 1569,141693586X,"O. Henry, Lisbeth Zwerger",1905.0,The Gift of the Magi,eng,4.07
 1570,553380648,Tom Wolfe,1968.0,The Electric Kool-Aid Acid Test,en-US,3.92
 1571,802140181,"William S. Burroughs, James Grauerholz, Barry  Miles",1959.0,Naked Lunch,en-US,3.46
-1572,156389226X,"Neil Gaiman, Kelley Jones, Charles Vess, Colleen Doran, Malcolm Jones III, Steve Erickson",1991.0,"Dream Country (The Sandman #3)",eng,4.28
+1572,156389226X,"Neil Gaiman, Kelley Jones, Charles Vess, Colleen Doran, Malcolm Jones III, Steve Erickson",1991.0,Dream Country (The Sandman #3),eng,4.28
 1573,385337930,John Grisham,2001.0,A Painted House,eng,3.67
 1574,441007317,"Ursula K. Le Guin, Lech Jęczmyk",1969.0,The Left Hand of Darkness,eng,4.05
 1575,142412147,"John Green, Maureen Johnson, Lauren Myracle",2008.0,Let It Snow: Three Holiday Romances,eng,3.84
@@ -1704,7 +1704,7 @@
 1704,385334141,Kurt Vonnegut Jr.,1961.0,Mother Night,en-US,4.21
 1705,006124189X,Robert B. Cialdini,1984.0,Influence: The Psychology of Persuasion,eng,4.18
 1706,451526759,"Edgar Allan Poe, Stephen Marlowe",1960.0,The Fall of the House of Usher and Other Tales,,4.14
-1707,440416795,Louise Fitzhugh,1964.0,"Harriet the Spy (Harriet the Spy #1)",eng,3.96
+1707,440416795,Louise Fitzhugh,1964.0,Harriet the Spy (Harriet the Spy #1),eng,3.96
 1708,1594633118,Sarah Waters,2014.0,The Paying Guests,en-US,3.39
 1709,553588265,Dean Koontz,2005.0,"Forever Odd (Odd Thomas, #2)",en-US,3.96
 1710,767919386,Bill Bryson,2010.0,At Home: A Short History of Private Life,eng,3.96
@@ -1721,7 +1721,7 @@
 1721,1586608290,Oswald Chambers,1926.0,My Utmost for His Highest,eng,4.39
 1722,60012382,Terry Pratchett,2003.0,"The Wee Free Men (Discworld, #30; Tiffany Aching, #1)",eng,4.25
 1723,385344430,Diana Gabaldon,2014.0,"Written in My Own Heart's Blood (Outlander, #8)",eng,4.5
-1724,039925482X,Andrea Cremer,2010.0,"Nightshade (Nightshade #1; Nightshade World #4)",eng,4.03
+1724,039925482X,Andrea Cremer,2010.0,Nightshade (Nightshade #1; Nightshade World #4),eng,4.03
 1725,,"Lewis Carroll, John Tenniel",1865.0,Alice's Adventures in Wonderland,eng,3.99
 1726,190444248X,Cornelia Funke,1997.0,"Dragon Rider (Dragon Rider, #1)",eng,3.94
 1727,671742515,Douglas Adams,1988.0,"The Long Dark Tea-Time of the Soul (Dirk Gently, #2)",en-US,4.05
@@ -1837,7 +1837,7 @@
 1837,,Hugh Howey,2013.0,"Shift (Silo, #2)",en-US,4.12
 1838,440339340,Lee Child,2010.0,"Worth Dying For (Jack Reacher, #15)",eng,4.2
 1839,307395987,John Elder Robison,2007.0,Look Me in the Eye: My Life with Asperger's,en-US,3.91
-1840,312979975,Sherrilyn Kenyon,2002.0,"Fantasy Lover (Dark-Hunterverse #1)",eng,4.17
+1840,312979975,Sherrilyn Kenyon,2002.0,Fantasy Lover (Dark-Hunterverse #1),eng,4.17
 1841,031601477X,"James Patterson, Gabrielle Charbonnet",2008.0,Sundays at Tiffany's,eng,3.74
 1842,743418735,Jodi Picoult,2002.0,Perfect Match,eng,3.93
 1843,081297235X,Curtis Sittenfeld,2005.0,Prep,eng,3.36
@@ -1859,7 +1859,7 @@
 1859,385480016,Anne Lamott,1994.0,Bird by Bird: Some Instructions on Writing and Life,,4.22
 1860,805092528,"Kerstin Gier, Anthea Bell",2009.0,"Ruby Red (Precious Stone Trilogy, #1)",en-US,4.12
 1861,031259044X,Alyson Noel,2009.0,"Shadowland (The Immortals, #3)",eng,3.66
-1862,553296124,Timothy Zahn,1991.0,"Heir to the Empire (Star Wars: The Thrawn Trilogy #1)",eng,4.12
+1862,553296124,Timothy Zahn,1991.0,Heir to the Empire (Star Wars: The Thrawn Trilogy #1),eng,4.12
 1863,689878575,Tamora Pierce,1988.0,"Lioness Rampant (Song of the Lioness, #4)",en-US,4.28
 1864,042510687X,Robin Cook,1987.0,"Outbreak (Dr. Marissa Blumenthal, #1)",eng,3.96
 1865,8176210773,Louise L. Hay,1984.0,You Can Heal Your Life,eng,4.14
@@ -1889,12 +1889,12 @@
 1889,1841496863,Patricia Briggs,2009.0,"Bone Crossed (Mercy Thompson, #4)",en-GB,4.34
 1890,159514319X,Richelle Mead,2013.0,"The Indigo Spell (Bloodlines, #3)",eng,4.41
 1891,385341652,Karen Marie Moning,2009.0,"Dreamfever (Fever, #4)",en-US,4.43
-1892,316010707,Kate Atkinson,2004.0,"Case Histories (Jackson Brodie #1)",eng,3.82
+1892,316010707,Kate Atkinson,2004.0,Case Histories (Jackson Brodie #1),eng,3.82
 1893,345544110,J. Kenner,2013.0,"Release Me (Stark Trilogy, #1)",eng,4.14
 1894,812984277,Sophie Kinsella,2013.0,Wedding Night,eng,3.4
-1895,1563892251,"Neil Gaiman, Steve Parkhouse, Chris Bachalo, Michael Zulli, Mike Dringenberg, Malcolm Jones III, Todd Klein, Clive Barker",1990.0,"The Doll's House (The Sandman #2)",eng,4.44
+1895,1563892251,"Neil Gaiman, Steve Parkhouse, Chris Bachalo, Michael Zulli, Mike Dringenberg, Malcolm Jones III, Todd Klein, Clive Barker",1990.0,The Doll's House (The Sandman #2),eng,4.44
 1896,689849109,Eleanor H. Porter,1912.0,"Pollyanna (Pollyanna, #1)",eng,3.95
-1897,1558745157,Dave Pelzer,1997.0,"The Lost Boy (Dave Pelzer #2)",eng,4.08
+1897,1558745157,Dave Pelzer,1997.0,The Lost Boy (Dave Pelzer #2),eng,4.08
 1898,1490904387,Hugh Howey,2013.0,"Dust (Silo, #3)",eng,4.26
 1899,1439102759,Jodi Picoult,2012.0,Lone Wolf,eng,3.67
 1900,450610098,Stephen King,1993.0,Nightmares and Dreamscapes,eng,3.9
@@ -1911,7 +1911,7 @@
 1911,670021873,Tana French,2010.0,"Faithful Place (Dublin Murder Squad, #3)",eng,3.97
 1912,802122558,Lily King,2014.0,Euphoria,eng,3.84
 1913,60090383,Marian Keyes,1997.0,"Rachel's Holiday (Walsh Family, #2)",eng,3.93
-1914,586008357,Isaac Asimov,1954.0,"The Caves of Steel (Robot #1)",eng,4.14
+1914,586008357,Isaac Asimov,1954.0,The Caves of Steel (Robot #1),eng,4.14
 1915,99448769,Haruki Murakami,1988.0,"Dance Dance Dance (The Rat, #4)",eng,4.03
 1916,380709244,"Beverly Cleary, Louis Darling, Tracy Dockray",1965.0,"The Mouse and the Motorcycle (Ralph S. Mouse, #1)",en-US,3.9
 1917,575090855,Carrie Ryan,2009.0,"The Forest of Hands and Teeth (The Forest of Hands and Teeth, #1)",eng,3.59
@@ -1940,11 +1940,11 @@
 1940,684853159,Iain Banks,1984.0,The Wasp Factory,en-US,3.85
 1941,140006788X,Marisha Pessl,2013.0,Night Film,eng,3.78
 1942,080509329X,Rob Lowe,2011.0,Stories I Only Tell My Friends,en-US,3.77
-1943,385536976,Kevin Kwan,2013.0,"Crazy Rich Asians (Crazy Rich Asians #1)",eng,3.7
+1943,385536976,Kevin Kwan,2013.0,Crazy Rich Asians (Crazy Rich Asians #1),eng,3.7
 1944,385733410,Libba Bray,2005.0,"Rebel Angels (Gemma Doyle, #2)",eng,3.98
 1945,038533916X,Karen Marie Moning,2007.0,"Bloodfever (Fever, #2)",eng,4.3
 1946,385341636,Karen Marie Moning,2008.0,"Faefever (Fever, #3)",en-US,4.34
-1947,,Robert Dugoni,2014.0,"My Sister's Grave (Tracy Crosswhite #1)",eng,4.0
+1947,,Robert Dugoni,2014.0,My Sister's Grave (Tracy Crosswhite #1),eng,4.0
 1948,159474758X,Ransom Riggs,2015.0,"Library of Souls (Miss Peregrine's Peculiar Children, #3)",eng,4.15
 1949,486424545,E.M. Forster,1910.0,Howards End,eng,3.95
 1950,1593070942,"Mike Mignola, John Byrne",1994.0,"Hellboy, Vol. 1: Seed of Destruction (Hellboy, #1)",eng,4.11
@@ -2042,7 +2042,7 @@
 2042,1451695195,Eben Alexander,2012.0,Proof of Heaven: A Neurosurgeon's Journey into the Afterlife,en-US,3.68
 2043,61092193,Terry Pratchett,1993.0,"Men at Arms (Discworld, #15; City Watch #2)",eng,4.36
 2044,743291476,A.J. Jacobs,2007.0,The Year of Living Biblically: One Man's Humble Quest to Follow the Bible as Literally as Possible,en-US,3.76
-2045,575075066,Frank Herbert,1981.0,"God Emperor of Dune (Dune Chronicles #4)",eng,3.81
+2045,575075066,Frank Herbert,1981.0,God Emperor of Dune (Dune Chronicles #4),eng,3.81
 2046,034554689X,Emily Giffin,2014.0,The One & Only,eng,3.11
 2047,553381660,Jean M. Auel,1982.0,"The Valley of Horses (Earth's Children, #2)",en-US,3.98
 2048,525953485,Harlan Coben,2013.0,Six Years,eng,3.8
@@ -2080,7 +2080,7 @@
 2080,1594634718,Elizabeth Gilbert,2015.0,Big Magic: Creative Living Beyond Fear,eng,3.9
 2081,451464397,Jim Butcher,2014.0,"Skin Game (The Dresden Files, #15)",eng,4.55
 2082,,Anonymous,609.0,The Qur'an / القرآن الكريم,ara,4.34
-2083,373772467,Gena Showalter,2008.0,"The Darkest Night (Lords of the Underworld #1)",eng,4.09
+2083,373772467,Gena Showalter,2008.0,The Darkest Night (Lords of the Underworld #1),eng,4.09
 2084,61474096,Neal Stephenson,2008.0,Anathem,eng,4.18
 2085,60852577,Barbara Kingsolver,2009.0,The Lacuna,eng,3.76
 2086,552154288,Terry Pratchett,1996.0,"Hogfather (Discworld, #20; Death, #4)",eng,4.22
@@ -2097,7 +2097,7 @@
 2097,3518367064,Hermann Hesse,1919.0,Demian. Die Geschichte von Emil Sinclairs Jugend,ger,4.1
 2098,385333471,Kurt Vonnegut Jr.,1965.0,"God Bless You, Mr. Rosewater",eng,3.94
 2099,1421505851,"Yoshiki Nakamura, Tomo Kimura",2002.0,"Skip Beat!, Vol. 01",eng,4.26
-2100,,Frank Miller,1986.0,"Batman: The Dark Knight Returns #1",eng,4.21
+2100,,Frank Miller,1986.0,Batman: The Dark Knight Returns #1,eng,4.21
 2101,439249546,"J.K. Rowling, Mary GrandPré",1999.0,"The Harry Potter Collection 1-4 (Harry Potter, #1-4)",eng,4.66
 2102,1597801577,Paolo Bacigalupi,2009.0,The Windup Girl,eng,3.74
 2103,140436065,"Oscar Wilde, Richard Allen Cave",1954.0,The Importance of Being Earnest and Other Plays,eng,4.26
@@ -2148,7 +2148,7 @@
 2148,64407314,Walter Dean Myers,1999.0,Monster,eng,3.7
 2149,345529057,George R.R. Martin,2011.0,"A Song of Ice and Fire (A Song of Ice and Fire, #1-4)",en-US,4.63
 2150,743493915,Patricia Cornwell,1991.0,"Body of Evidence (Kay Scarpetta, #2)",en-US,4.0
-2151,,"Brian K. Vaughan, Fiona Staples",2012.0,"Saga #1",eng,4.15
+2151,,"Brian K. Vaughan, Fiona Staples",2012.0,Saga #1,eng,4.15
 2152,60887370,Sara Shepard,2007.0,"Perfect (Pretty Little Liars, #3)",eng,4.02
 2153,1939045010,Jessica Sorensen,2012.0,"The Secret of Ella and Micha (The Secret, #1)",eng,4.01
 2154,345522478,Kevin Hearne,2011.0,"Hounded (The Iron Druid Chronicles, #1)",eng,4.12
@@ -2193,7 +2193,7 @@
 2193,3426615355,Nick Hornby,2001.0,How to Be Good,,3.18
 2194,1442468351,Cassandra Clare,2016.0,"Lady Midnight (The Dark Artifices, #1)",eng,4.47
 2195,1905294719,Cornelia Funke,2007.0,"Inkdeath (Inkworld, #3)",eng,3.93
-2196,553293389,Isaac Asimov,1982.0,"Foundation's Edge (Foundation #4)",eng,4.08
+2196,553293389,Isaac Asimov,1982.0,Foundation's Edge (Foundation #4),eng,4.08
 2197,486452433,Thomas Hardy,1895.0,Jude the Obscure,en-US,3.8
 2198,345335651,David Eddings,1982.0,"Queen of Sorcery (The Belgariad, #2)",en-US,4.13
 2199,374529531,Shirley Jackson,1949.0,The Lottery and Other Stories,en-US,4.06
@@ -2215,7 +2215,7 @@
 2215,142408808,Judy Blume,1980.0,"Superfudge (Fudge, #3)",eng,3.98
 2216,735221081,Shari Lapena,2016.0,The Couple Next Door,eng,3.74
 2217,61996181,Cynthia Hand,2012.0,"Hallowed (Unearthly, #2)",eng,4.15
-2218,031624662X,Ann Leckie,2013.0,"Ancillary Justice (Imperial Radch #1)",eng,3.97
+2218,031624662X,Ann Leckie,2013.0,Ancillary Justice (Imperial Radch #1),eng,3.97
 2219,765340747,Terry Goodkind,2001.0,"The Pillars of Creation (Sword of Truth, #7)",en-GB,3.67
 2220,60566108,"James C. Collins, Jerry I. Porras",1994.0,Built to Last: Successful Habits of Visionary Companies,eng,3.98
 2221,1616149981,Allen Eskens,2014.0,The Life We Bury,,3.93
@@ -2227,7 +2227,7 @@
 2227,1906427135,Lucy Christopher,2009.0,Stolen: A Letter to My Captor,eng,3.93
 2228,,Stanisław Lem,1961.0,Solaris,eng,3.97
 2229,1573225126,Elizabeth Wurtzel,1994.0,Prozac Nation,en-US,3.57
-2230,080508049X,Lloyd Alexander,1965.0,"The Black Cauldron (The Chronicles of Prydain #2)",eng,4.13
+2230,080508049X,Lloyd Alexander,1965.0,The Black Cauldron (The Chronicles of Prydain #2),eng,4.13
 2231,525949690,Daniel J. Levitin,2006.0,This Is Your Brain on Music: The Science of a Human Obsession,,3.86
 2232,62294377,Mitch Albom,2013.0,The First Phone Call from Heaven,eng,3.73
 2233,031242681X,Augusten Burroughs,2006.0,Possible Side Effects,en-US,3.97
@@ -2270,7 +2270,7 @@
 2270,385729367,Ann Brashares,2007.0,"Forever in Blue: The Fourth Summer of the Sisterhood (Sisterhood, #4)",eng,3.8
 2271,552153257,Terry Pratchett,1996.0,"Feet of Clay (Discworld, #19; City Watch, #3)",,4.26
 2272,307594777,"Stieg Larsson, Reg Keeland",2005.0,"The Millennium Trilogy (Millennium Trilogy, #1-3)",eng,4.46
-2273,,Dot Hutchison,2016.0,"The Butterfly Garden (The Collector #1)",eng,4.07
+2273,,Dot Hutchison,2016.0,The Butterfly Garden (The Collector #1),eng,4.07
 2274,1842430343,Tom Robbins,1990.0,Skinny Legs and All,,4.03
 2275,61583219,Jeaniene Frost,2009.0,"Destined for an Early Grave (Night Huntress, #4)",en-US,4.34
 2276,,R.K. Lilley,2012.0,"In Flight (Up in the Air, #1)",eng,4.1
@@ -2319,7 +2319,7 @@
 2319,1423116380,Ally Carter,2009.0,"Don't Judge a Girl by Her Cover (Gallagher Girls, #3)",en-US,4.2
 2320,743244583,Bob Dylan,2004.0,"Chronicles, Vol. 1",eng,3.98
 2321,60920084,Bill Bryson,1989.0,The Lost Continent: Travels in Small Town America,en-US,3.83
-2322,140006712X,Lisa See,2011.0,"Dreams of Joy (Shanghai Girls #2)",en-CA,4.06
+2322,140006712X,Lisa See,2011.0,Dreams of Joy (Shanghai Girls #2),en-CA,4.06
 2323,446607207,Sidney Sheldon,1998.0,Tell Me Your Dreams,eng,3.93
 2324,60885416,"Laura Ingalls Wilder, Garth Williams",1939.0,"By the Shores of Silver Lake  (Little House, #5)",,4.16
 2325,61053562,Iain M. Banks,1988.0,"The Player of Games (Culture, #2)",eng,4.26
@@ -2350,7 +2350,7 @@
 2350,1594487014,Laura Moriarty,2012.0,The Chaperone,en-US,3.84
 2351,684193957,Patricia Cornwell,1992.0,"All That Remains (Kay Scarpetta, #3)",en-US,4.05
 2352,451191013,"Richard Bachman, Stephen King",1996.0,The Regulators,eng,3.63
-2353,1563890356,"Neil Gaiman, Matt Wagner, George Pratt, Dick Giordano, Kelley Jones, P. Craig Russell, Mike Dringenberg, Malcolm Jones III, Todd Klein, Harlan Ellison",1990.0,"Season of Mists (The Sandman #4)",eng,4.54
+2353,1563890356,"Neil Gaiman, Matt Wagner, George Pratt, Dick Giordano, Kelley Jones, P. Craig Russell, Mike Dringenberg, Malcolm Jones III, Todd Klein, Harlan Ellison",1990.0,Season of Mists (The Sandman #4),eng,4.54
 2354,316013935,"James Patterson, Andrew Gross",2006.0,Judge & Jury,eng,3.98
 2355,1416500340,George Eliot,1861.0,Silas Marner,,3.6
 2356,1622660757,Jennifer L. Armentrout,2013.0,"Origin (Lux, #4)",eng,4.44
@@ -2460,7 +2460,7 @@
 2460,1421540320,"Kazue Kato, John Werry",2009.0,"Blue Exorcist, Vol. 1  (Blue Exorcist, #1)",eng,4.36
 2461,765315238,Terry Goodkind,2007.0,"Confessor (Sword of Truth, #11)",en-US,4.08
 2462,151013047,Mohsin Hamid,2007.0,The Reluctant Fundamentalist,eng,3.67
-2463,545284139,Jennifer A. Nielsen,2012.0,"The False Prince (The Ascendance Trilogy #1)",eng,4.22
+2463,545284139,Jennifer A. Nielsen,2012.0,The False Prince (The Ascendance Trilogy #1),eng,4.22
 2464,449911659,John Updike,1960.0,"Rabbit, Run (Rabbit Angstrom #1)",eng,3.57
 2465,1400077427,Daniel Todd Gilbert,2006.0,Stumbling on Happiness,eng,3.82
 2466,015694877X,T.S. Eliot,1922.0,The Waste Land and Other Poems,en-US,4.23
@@ -2488,7 +2488,7 @@
 2488,1599903385,Carrie Jones,2008.0,"Need (Need, #1)",eng,3.71
 2489,61020613,Terry Pratchett,1991.0,"Witches Abroad (Discworld, #12; Witches #3)",eng,4.2
 2490,014043769X,"Geoffrey Crayon, Washington Irving, William L. Hedges",1819.0,The Legend of Sleepy Hollow and Other Stories,eng,3.93
-2491,441328008,Frank Herbert,1984.0,"Heretics of Dune (Dune Chronicles #5)",eng,3.83
+2491,441328008,Frank Herbert,1984.0,Heretics of Dune (Dune Chronicles #5),eng,3.83
 2492,515090255,"David Wilkerson, John Sherrill, Elizabeth Sherrill",1963.0,The Cross and the Switchblade,,4.2
 2493,441015271,Jim Butcher,2007.0,"Captain's Fury (Codex Alera, #4)",eng,4.38
 2494,385671105,Chuck Palahniuk,2011.0,"Damned (Damned, #1)",eng,3.38
@@ -2532,7 +2532,7 @@
 2532,62248162,Kiera Cass,2013.0,"The Prince (The Selection, #0.5)",,3.93
 2533,374384681,Marie Rutkoski,2014.0,"The Winner's Curse (The Winner's Trilogy, #1)",eng,4.03
 2534,679766758,Sapphire,1996.0,Push,eng,3.82
-2535,1609451341,"Elena Ferrante, Ann Goldstein",2012.0,"The Story of a New Name (The Neapolitan Novels #2)",eng,4.37
+2535,1609451341,"Elena Ferrante, Ann Goldstein",2012.0,The Story of a New Name (The Neapolitan Novels #2),eng,4.37
 2536,345413970,Arthur C. Clarke,1982.0,"2010: Odyssey Two (Space Odyssey, #2)",eng,3.89
 2537,759530017,Atsushi Ohkubo,2004.0,"Soul Eater, Vol. 01 (Soul Eater, #1)",en-US,4.3
 2538,1451645821,William Kent Krueger,2013.0,Ordinary Grace,eng,4.14
@@ -2542,7 +2542,7 @@
 2542,991686004,K.A. Tucker,2012.0,"Ten Tiny Breaths (Ten Tiny Breaths, #1)",eng,4.16
 2543,1400065453,David Mitchell,2010.0,The Thousand Autumns of Jacob de Zoet,eng,4.03
 2544,486282082,Christopher Marlowe,1604.0,Dr. Faustus,eng,3.79
-2545,312984839,Sherrilyn Kenyon,2003.0,"Dance with the Devil (Dark-Hunter #3)",eng,4.39
+2545,312984839,Sherrilyn Kenyon,2003.0,Dance with the Devil (Dark-Hunter #3),eng,4.39
 2546,786887079,Candace Bushnell,2005.0,Lipstick Jungle,eng,3.39
 2547,446611212,James Patterson,2001.0,"Violets Are Blue (Alex Cross, #7)",eng,3.94
 2548,671791540,"Anthony Robbins, Tony Robbins, Frederick L. Covan",1992.0,"Awaken the Giant Within: How to Take Immediate Control of Your Mental, Emotional, Physical and Financial Destiny!",eng,4.1
@@ -2583,18 +2583,18 @@
 2583,145161778X,Jennifer Weiner,2014.0,All Fall Down,eng,3.61
 2584,015626224X,George Orwell,1933.0,Down and Out in Paris and London,en-US,4.1
 2585,1427814031,Hiro Fujiwara,2006.0,"Maid-sama! Vol. 01 (Maid-sama!, #1)",eng,4.4
-2586,1551924013,Nick Bantock,1991.0,"Griffin and Sabine (Griffin & Sabine #1)",eng,4.01
+2586,1551924013,Nick Bantock,1991.0,Griffin and Sabine (Griffin & Sabine #1),eng,4.01
 2587,080509461X,Leigh Bardugo,2014.0,"Ruin and Rising (Shadow and Bone, #3)",eng,4.17
 2588,9773513912,أحمد خالد توفيق,2008.0,يوتوبيا,ara,3.9
-2589,743294254,Jennifer Weiner,2000.0,"Certain Girls (Cannie Shapiro #2)",eng,3.7
+2589,743294254,Jennifer Weiner,2000.0,Certain Girls (Cannie Shapiro #2),eng,3.7
 2590,030794932X,Cheryl Strayed,2012.0,Tiny Beautiful Things: Advice on Love and Life from Dear Sugar,,4.29
 2591,440244161,Karen Marie Moning,1999.0,"Beyond the Highland Mist (Highlander, #1)",eng,3.99
 2592,451203267,Ann Rule,1980.0,The Stranger Beside Me: Ted Bundy The Shocking Inside Story,en-GB,4.13
 2593,61284408,Claudia Gray,2009.0,"Stargazer (Evernight, #2)",eng,3.8
 2594,606298231,Michael Crichton,1992.0,Rising Sun,eng,3.61
-2595,440060672,Sidney Sheldon,1973.0,"The Other Side of Midnight (Midnight #1)",eng,3.89
+2595,440060672,Sidney Sheldon,1973.0,The Other Side of Midnight (Midnight #1),eng,3.89
 2596,316069485,Michael Connelly,2010.0,"The Reversal (Harry Bosch, #16; Mickey Haller, #4; Harry Bosch Universe, #19)",eng,4.13
-2597,380731509,"Louis Sachar, Joel Schick",1989.0,"Wayside School Is Falling Down (Wayside School #2)",eng,4.17
+2597,380731509,"Louis Sachar, Joel Schick",1989.0,Wayside School Is Falling Down (Wayside School #2),eng,4.17
 2598,307713547,"Julie Orringer, Arthur Morey",2010.0,The Invisible Bridge,eng,4.19
 2599,61974618,Pittacus Lore,2013.0,"The Fall of Five (Lorien Legacies, #4)",eng,4.24
 2600,141439785,"Thomas Hardy, Keith Wilson",1886.0,The Mayor of Casterbridge,eng,3.8
@@ -2643,7 +2643,7 @@
 2643,60929782,"Richard Wright, Jerry W. Ward Jr.",1945.0,Black Boy,en-US,4.02
 2644,446678457,Lalita Tademy,2001.0,Cane River,en-US,4.04
 2645,765305240,Terry Goodkind,2006.0,"Phantom (Sword of Truth, #10)",,3.99
-2646,553587579,Isaac Asimov,1986.0,"Foundation and Earth (Foundation #5)",eng,4.02
+2646,553587579,Isaac Asimov,1986.0,Foundation and Earth (Foundation #5),eng,4.02
 2647,553384155,"James D. Bradley, Ron Powers",2000.0,Flags of Our Fathers,,4.18
 2648,525444475,"A.A. Milne, Ernest H. Shepard",1926.0,"The World of Winnie-the-Pooh (Winnie-the-Pooh, #1-2)",eng,4.43
 2649,807059099,Mahatma Gandhi,1940.0,The Story of My Experiments With Truth,eng,4.07
@@ -2786,7 +2786,7 @@
 2786,64400581,"Jean Craighead George, John Schoenherr",1972.0,"Julie of the Wolves (Julie of the Wolves, #1)",eng,3.79
 2787,033039780X,Judy Blume,1975.0,Forever . . .,eng,3.63
 2788,1476728747,David McCullough,2015.0,The Wright Brothers,eng,4.16
-2789,752858556,Robert Ludlum,1979.0,"The Matarese Circle (Matarese #1)",,4.03
+2789,752858556,Robert Ludlum,1979.0,The Matarese Circle (Matarese #1),,4.03
 2790,1400063256,Jon Meacham,2008.0,American Lion: Andrew Jackson in the White House,en-US,3.76
 2791,446573051,David Baldacci,2012.0,"The Forgotten (John Puller, #2)",eng,4.07
 2792,765378558,Brandon Sanderson,2015.0,"Shadows of Self (Mistborn, #5)",eng,4.3
@@ -2814,7 +2814,7 @@
 2814,316134074,Laini Taylor,2014.0,"Dreams of Gods & Monsters (Daughter of Smoke & Bone, #3)",eng,4.23
 2815,385525001,John Grisham,2007.0,Playing for Pizza,en-US,3.41
 2816,1402784031,Colleen Houck,2011.0,"Tiger's Curse (The Tiger Saga, #1)",eng,4.07
-2817,441102670,Frank Herbert,1985.0,"Chapterhouse: Dune (Dune Chronicles #6)",eng,3.89
+2817,441102670,Frank Herbert,1985.0,Chapterhouse: Dune (Dune Chronicles #6),eng,3.89
 2818,399252517,Jacqueline Woodson,2014.0,Brown Girl Dreaming,eng,4.11
 2819,316081051,Mira Grant,2010.0,"Feed (Newsflesh Trilogy, #1)",en-US,3.86
 2820,142000205,Gwyn Hyman Rubio,1998.0,Icy Sparks,eng,3.68
@@ -2852,9 +2852,9 @@
 2852,156931778X,"Koushun Takami, Yuji Oniki",1999.0,Battle Royale,eng,4.24
 2853,553807218,Sarah Addison Allen,2010.0,The Girl Who Chased the Moon,en-US,3.97
 2854,1842323008,Nevil Shute,1950.0,A Town Like Alice,eng,4.12
-2855,039916927X,Sophia Amoruso,2014.0,"#GIRLBOSS",eng,3.71
+2855,039916927X,Sophia Amoruso,2014.0,#GIRLBOSS,eng,3.71
 2856,778325318,Diane Chamberlain,2006.0,The Secret Life of CeeCee Wilkes,eng,4.09
-2857,445406518,Elizabeth Peters,1975.0,"Crocodile on the Sandbank (Amelia Peabody #1)",en-US,4.02
+2857,445406518,Elizabeth Peters,1975.0,Crocodile on the Sandbank (Amelia Peabody #1),en-US,4.02
 2858,425230074,Nora Roberts,2009.0,"Bed of Roses (Bride Quartet, #2)",eng,4.11
 2859,425147584,Tom Clancy,1994.0,"Debt of Honor (Jack Ryan Universe, #8)",en-US,4.03
 2860,156904365,C.S. Lewis,1956.0,Till We Have Faces,en-US,4.19
@@ -2895,7 +2895,7 @@
 2895,62218360,"Steven D. Levitt, Stephen J. Dubner",2014.0,Think Like a Freak,eng,3.82
 2896,545326990,"Raina Telgemeier, Gurihiru",2012.0,Drama,eng,4.14
 2897,074326004X,Sarah Vowell,2005.0,Assassination Vacation,en-US,3.98
-2898,380014300,Roger Zelazny,1970.0,"Nine Princes in Amber (The Chronicles of Amber #1)",en-US,4.1
+2898,380014300,Roger Zelazny,1970.0,Nine Princes in Amber (The Chronicles of Amber #1),en-US,4.1
 2899,1451693567,Alice Hoffman,2014.0,The Museum of Extraordinary Things,eng,3.73
 2900,765304961,Orson Scott Card,2008.0,"Ender in Exile (Ender's Saga, #1.2)",en-US,3.89
 2901,042519485X,MaryJanice Davidson,2004.0,"Undead and Unwed (Undead, #1)",en-US,3.81
@@ -2934,7 +2934,7 @@
 2934,61129739,"Erich Fromm, Peter D. Kramer, Rainer Funk",1956.0,The Art of Loving,eng,4.01
 2935,043979143X,Suzanne Collins,2007.0,"Gregor and the Code of Claw (Underland Chronicles, #5)",,4.25
 2936,380821214,Terry Pratchett,1990.0,"Eric (Discworld, #9; Rincewind #4)",en-US,3.72
-2937,1563890933,"Neil Gaiman, Shawn McManus, Colleen Doran, Bryan Talbot, George Pratt, Stan Woch, Dick Giordano, Todd Klein",1993.0,"A Game of You (The Sandman #5)",eng,4.43
+2937,1563890933,"Neil Gaiman, Shawn McManus, Colleen Doran, Bryan Talbot, George Pratt, Stan Woch, Dick Giordano, Todd Klein",1993.0,A Game of You (The Sandman #5),eng,4.43
 2938,60731486,Marian Keyes,2004.0,The Other Side of the Story,,3.77
 2939,553381539,Pat Conroy,1975.0,Beach Music,eng,4.13
 2940,842313079,Francine Rivers,1994.0,"An Echo in the Darkness (Mark of the Lion, #2)",en-US,4.6
@@ -2948,7 +2948,7 @@
 2948,1439177805,Portia de Rossi,2010.0,Unbearable Lightness: A Story of Loss and Gain,,3.83
 2949,312949804,Lisa Kleypas,2007.0,"Mine Till Midnight (The Hathaways, #1)",eng,4.08
 2950,1416522913,"Carl Bernstein, Bob Woodward",1974.0,All the President's Men,eng,4.17
-2951,399254838,Andrea Cremer,2011.0,"Wolfsbane (Nightshade #2; Nightshade World #5)",eng,4.12
+2951,399254838,Andrea Cremer,2011.0,Wolfsbane (Nightshade #2; Nightshade World #5),eng,4.12
 2952,141439629,"George Eliot, A.S. Byatt",1860.0,The Mill on the Floss,eng,3.77
 2953,1400066409,Gary Shteyngart,2010.0,Super Sad True Love Story,eng,3.44
 2954,441068804,Robin McKinley,1982.0,"The Blue Sword (Damar, #1)",,4.24
@@ -3000,7 +3000,7 @@
 3000,552154164,Terry Pratchett,1997.0,"Jingo (Discworld, #21; City Watch, #4)",eng,4.11
 3001,553589377,Lara Adrian,2007.0,"Kiss of Midnight (Midnight Breed,  #1)",eng,3.93
 3002,375753737,"D.H. Lawrence, Geoff Dyer",1913.0,Sons and Lovers,en-US,3.61
-3003,031235326X,Barbara Taylor Bradford,1979.0,"A Woman of Substance (Emma Harte Saga #1)",eng,4.16
+3003,031235326X,Barbara Taylor Bradford,1979.0,A Woman of Substance (Emma Harte Saga #1),eng,4.16
 3004,,Nicole  Williams,2012.0,"Crash (Crash, #1)",eng,4.02
 3005,1455521213,David Baldacci,2013.0,"The Hit (Will Robie, #2)",eng,4.05
 3006,441013678,William Gibson,1986.0,"Count Zero (Sprawl, #2)",en-US,4.0
@@ -3010,7 +3010,7 @@
 3010,1605980927,"Camilla Läckberg, Steven T. Murray",2004.0,"The Ice Princess (Patrik Hedström, #1)",eng,3.69
 3011,767907817,Jane Green,2000.0,Bookends,eng,3.7
 3012,,Donna Mabry,2014.0,Maude,,4.05
-3013,765316978,John Scalzi,2007.0,"The Last Colony (Old Man's War #3)",en-US,4.03
+3013,765316978,John Scalzi,2007.0,The Last Colony (Old Man's War #3),en-US,4.03
 3014,60283289,"Laura Joffe Numeroff, Felicia Bond",2002.0,If You Take a Mouse to School,en-US,4.26
 3015,147677143X,Colleen Hoover,2013.0,"Finding Cinderella (Hopeless, #2.5)",eng,4.3
 3016,60086246,Marian Keyes,1999.0,Last Chance Saloon,en-US,3.78
@@ -3057,7 +3057,7 @@
 3057,62208195,Tahereh Mafi,2012.0,"Destroy Me (Shatter Me, #1.5)",eng,4.27
 3058,553588079,Lisa Gardner,2006.0,"Gone (Quincy & Rainie, #5)",eng,4.18
 3059,1400062756,Carol S. Dweck,2006.0,Mindset: The New Psychology of Success,en-US,4.04
-3060,545060443,Jude Watson,2009.0,"Beyond the Grave (The 39 Clues #4)",eng,3.92
+3060,545060443,Jude Watson,2009.0,Beyond the Grave (The 39 Clues #4),eng,3.92
 3061,6280935,C.S. Lewis,1940.0,The Problem of Pain,eng,4.12
 3062,300122233,"Richard H. Thaler, Cass R. Sunstein",2008.0,"Nudge: Improving Decisions About Health, Wealth, and Happiness",eng,3.8
 3063,1416949658,Susan Cooper,1973.0,"The Dark Is Rising (The Dark is Rising, #2)",eng,4.07
@@ -3069,7 +3069,7 @@
 3069,812975219,Nassim Nicholas Taleb,2001.0,Fooled by Randomness: The Hidden Role of Chance in Life and in the Markets,eng,4.05
 3070,425213978,Kate Mosse,2005.0,"Labyrinth (Languedoc, #1)",eng,3.55
 3071,375705244,Joseph J. Ellis,2000.0,Founding Brothers: The Revolutionary Generation,en-GB,3.92
-3072,553565079,Isaac Asimov,1993.0,"Forward the Foundation (Foundation: Prequel #2)",eng,4.13
+3072,553565079,Isaac Asimov,1993.0,Forward the Foundation (Foundation: Prequel #2),eng,4.13
 3073,3401063472,Kerstin Gier,2010.0,"Saphirblau (Edelstein-Trilogie, #2)",ger,4.19
 3074,307700666,Lawrence Wright,2013.0,"Going Clear: Scientology, Hollywood, and the Prison of Belief",eng,4.02
 3075,759529434,"Young Kim, Stephenie Meyer",2010.0,"Twilight: The Graphic Novel, Vol. 1 (Twilight: The Graphic Novel, #1)",en-US,3.74
@@ -3079,11 +3079,11 @@
 3079,582461502,John Steinbeck,1935.0,Tortilla Flat,eng,3.82
 3080,812966295,H. Rider Haggard,1885.0,"King Solomon's Mines (Allan Quatermain, #1)",eng,3.8
 3081,,Tina Reber,2012.0,"Love Unrehearsed (Love, #2)",eng,4.26
-3082,1563891379,"Neil Gaiman, Jill Thompson, Vince Locke, Peter Straub",1994.0,"Brief Lives (The Sandman #7)",eng,4.55
+3082,1563891379,"Neil Gaiman, Jill Thompson, Vince Locke, Peter Straub",1994.0,Brief Lives (The Sandman #7),eng,4.55
 3083,61720771,L.J. Smith,2009.0,"Nightfall (The Vampire Diaries: The Return, #1)",en-US,3.57
 3084,375828257,Jeanne DuPrau,2004.0,"The People of Sparks (Book of Ember, #2)",eng,3.65
 3085,374506841,"Hermann Hesse, Ursule Molinaro",1930.0,Narcissus and Goldmund,eng,4.19
-3086,1563891069,"Neil Gaiman, Bryan Talbot, Stan Woch, P. Craig Russell, Shawn McManus, John Watkiss, Jill Thompson, Duncan Eagleson, Kent Williams, Todd Klein",1990.0,"Fables and Reflections (The Sandman #6)",eng,4.45
+3086,1563891069,"Neil Gaiman, Bryan Talbot, Stan Woch, P. Craig Russell, Shawn McManus, John Watkiss, Jill Thompson, Duncan Eagleson, Kent Williams, Todd Klein",1990.0,Fables and Reflections (The Sandman #6),eng,4.45
 3087,1620401398,Samantha Shannon,2013.0,"The Bone Season (The Bone Season, #1)",eng,3.75
 3088,141439963,"Charles Dickens, Helen Small, Stephen Wall",1855.0,Little Dorrit,eng,3.97
 3089,142406139,Anthony Horowitz,2003.0,"Eagle Strike (Alex Rider, #4)",,4.11
@@ -3112,12 +3112,12 @@
 3112,316096156,"James Patterson, Maxine Paetro",2010.0,"Private (Private, #1)",eng,3.88
 3113,312652917,Janet Evanovich,2009.0,"Wicked Appetite (Lizzy & Diesel, #1)",en-US,3.77
 3114,1416980067,Rachel Renée Russell,2009.0,"Tales from a Not-So-Fabulous Life (Dork Diaries, #1)",eng,4.16
-3115,1416509879,Kresley Cole,2006.0,"A Hunger Like No Other (Immortals After Dark #2)",eng,4.21
+3115,1416509879,Kresley Cole,2006.0,A Hunger Like No Other (Immortals After Dark #2),eng,4.21
 3116,159514398X,Beth Revis,2012.0,"A Million Suns (Across the Universe, #2)",eng,4.04
 3117,1841493155,Trudi Canavan,2002.0,"The High Lord (Black Magician Trilogy, #3)",eng,4.15
 3118,62107313,Amy Tan,2013.0,The Valley of Amazement,eng,3.6
 3119,446694851,"Nicholas Sparks, Micah Sparks",2004.0,Three Weeks With My Brother,eng,4.01
-3120,080508052X,Lloyd Alexander,1968.0,"The High King (The Chronicles of Prydain #5)",eng,4.26
+3120,080508052X,Lloyd Alexander,1968.0,The High King (The Chronicles of Prydain #5),eng,4.26
 3121,62004018,Amy Plum,2011.0,"Die for Me (Revenants, #1)",eng,4.0
 3122,394724550,Anne Morrow Lindbergh,1955.0,Gift from the Sea,,4.18
 3123,452287081,John Perkins,2004.0,Confessions of an Economic Hit Man,en-US,3.83
@@ -3125,7 +3125,7 @@
 3125,425141233,John Sandford,1993.0,"Winter Prey (Lucas Davenport, #5)",eng,4.24
 3126,684843323,Ernest Hemingway,1925.0,The Complete Short Stories,en-US,4.28
 3127,671037706,Ray Bradbury,1957.0,"Dandelion Wine (Green Town, #1)",eng,4.08
-3128,009947137X,Anne Rice,1989.0,"The Mummy (Ramses the Damned #1)",eng,3.81
+3128,009947137X,Anne Rice,1989.0,The Mummy (Ramses the Damned #1),eng,3.81
 3129,385528752,"Chip Heath, Dan Heath",2010.0,Switch: How to Change Things When Change Is Hard,eng,4.02
 3130,,Sejal Badani,2015.0,Trail of Broken Wings,eng,3.94
 3131,99470470,John Fowles,1963.0,The Collector,eng,3.99
@@ -3145,7 +3145,7 @@
 3145,,Jasinda Wilder,2013.0,"Falling into You (Falling, #1)",eng,4.04
 3146,1101874082,Paulo Coelho,2014.0,Adultery,eng,3.01
 3147,,Brandon Sanderson,2013.0,"The Rithmatist (The Rithmatist, #1)",eng,4.25
-3148,312289510,Donna VanLiere,2001.0,"The Christmas Shoes (Christmas Hope #1)",en-US,4.22
+3148,312289510,Donna VanLiere,2001.0,The Christmas Shoes (Christmas Hope #1),en-US,4.22
 3149,762424931,"Rory Freedman, Kim Barnouin",2005.0,Skinny Bitch,en-US,3.34
 3150,,Kristen Ashley,2011.0,"Mystery Man (Dream Man, #1)",eng,4.25
 3151,395181585,"Margret Rey, H.A. Rey",1966.0,Curious George Goes to the Hospital,eng,4.22
@@ -3180,13 +3180,13 @@
 3180,374193681,David Levithan,2011.0,The Lover's Dictionary,en-US,3.89
 3181,155050907,"Helen Gardner, Fred S. Kleiner, Christin J. Mamiya",1926.0,Art Through the Ages,eng,3.84
 3182,1857231325,Terry Brooks,1985.0,"The Wishsong of Shannara (The Original Shannara Trilogy, #3)",eng,3.97
-3183,373772327,Gena Showalter,2008.0,"The Darkest Kiss (Lords of the Underworld #2)",eng,4.26
+3183,373772327,Gena Showalter,2008.0,The Darkest Kiss (Lords of the Underworld #2),eng,4.26
 3184,553805495,Sarah Addison Allen,2008.0,The Sugar Queen,en-US,3.98
 3185,983157227,Jennifer L. Armentrout,2012.0,"Pure (Covenant, #2)",eng,4.34
 3186,7189885,Chimamanda Ngozi Adichie,2003.0,Purple Hibiscus,,4.11
 3187,743299396,Miranda July,2005.0,No One Belongs Here More Than You,,3.81
 3188,345522486,Kevin Hearne,2011.0,"Hammered (The Iron Druid Chronicles, #3)",eng,4.22
-3189,1416509887,Kresley Cole,2006.0,"No Rest for the Wicked (Immortals After Dark #3)",en-CA,4.3
+3189,1416509887,Kresley Cole,2006.0,No Rest for the Wicked (Immortals After Dark #3),en-CA,4.3
 3190,1416599398,Vince Flynn,2008.0,"Extreme Measures (Mitch Rapp, #11)",eng,4.32
 3191,1632150778,"Brian K. Vaughan, Fiona Staples",2014.0,"Saga, Vol. 4 (Saga, #4)",eng,4.47
 3192,1476759545,Jamie McGuire,2013.0,"A Beautiful Wedding (Beautiful, #2.5)",eng,4.08
@@ -3197,8 +3197,8 @@
 3197,349116652,Alexander McCall Smith,2000.0,"Tears of the Giraffe (No. 1 Ladies' Detective Agency, #2)",en-GB,3.95
 3198,044661758X,Michael Connelly,1994.0,"The Concrete Blonde (Harry Bosch, #3; Harry Bosch Universe, #3)",eng,4.12
 3199,,C.J. Roberts,2012.0,"Seduced in the Dark (The Dark Duet, #2)",en-GB,4.32
-3200,61051586,Terry Pratchett,1998.0,"Carpe Jugulum (Discworld #23; Witches #6)",eng,4.12
-3201,,Kresley Cole,2006.0,"The Warlord Wants Forever (Immortals After Dark #1)",eng,4.09
+3200,61051586,Terry Pratchett,1998.0,Carpe Jugulum (Discworld #23; Witches #6),eng,4.12
+3201,,Kresley Cole,2006.0,The Warlord Wants Forever (Immortals After Dark #1),eng,4.09
 3202,038533351X,Kurt Vonnegut Jr.,1987.0,Bluebeard,en-US,4.02
 3203,684847817,"Brian Froud, Terry Windling",1998.0,Good Faeries/Bad Faeries,en-US,3.88
 3204,316043877,Elin Hilderbrand,2010.0,The Island,,3.88
@@ -3212,7 +3212,7 @@
 3212,140432108,"Anne Brontë, Angeline Goreau",1847.0,Agnes Grey,,3.65
 3213,399153721,Nora Roberts,2006.0,Angels Fall,en-US,3.98
 3214,1416595163,Vince Flynn,2009.0,"Pursuit of Honor (Mitch Rapp, #12)",en-US,4.35
-3215,312362153,Sherrilyn Kenyon,2008.0,"Acheron (Dark-Hunter #14)",en-US,4.59
+3215,312362153,Sherrilyn Kenyon,2008.0,Acheron (Dark-Hunter #14),en-US,4.59
 3216,038541305X,Pat Conroy,2009.0,South of Broad,eng,3.78
 3217,676977731,Ami McKay,2006.0,The Birth House,,3.99
 3218,1416953582,Lisa McMann,2009.0,"Fade (Wake, #2)",eng,3.95
@@ -3291,7 +3291,7 @@
 3291,756402972,Tad Williams,1990.0,"Stone of Farewell (Memory, Sorrow, and Thorn, #2)",en-US,4.09
 3292,517203383,"Adrian Conan Doyle, John Dickson Carr",1954.0,The Exploits of Sherlock Holmes,eng,4.4
 3293,812976185,Anna Quindlen,1994.0,One True Thing,,4.01
-3294,1609452232,"Elena Ferrante, Ann Goldstein",2013.0,"Those Who Leave and Those Who Stay (The Neapolitan Novels #3)",eng,4.29
+3294,1609452232,"Elena Ferrante, Ann Goldstein",2013.0,Those Who Leave and Those Who Stay (The Neapolitan Novels #3),eng,4.29
 3295,1841493147,Trudi Canavan,2002.0,"The Novice (Black Magician Trilogy, #2)",eng,4.07
 3296,316016381,Joshua Ferris,2007.0,Then We Came to the End,eng,3.45
 3297,098836946X,Monica  Murphy,2013.0,"One Week Girlfriend (One Week Girlfriend, #1)",eng,3.94
@@ -3337,7 +3337,7 @@
 3337,1442423684,Neal Shusterman,2012.0,"UnWholly (Unwind, #2)",,4.25
 3338,316156116,David Foster Wallace,2005.0,Consider the Lobster and Other Essays,eng,4.25
 3339,1423128192,Eoin Colfer,2010.0,"The Atlantis Complex (Artemis Fowl, #7)",en-US,3.97
-3340,345422406,Anne Rice,2000.0,"Merrick (The Vampire Chronicles #7)",eng,3.71
+3340,345422406,Anne Rice,2000.0,Merrick (The Vampire Chronicles #7),eng,3.71
 3341,,Brandon Sanderson,2016.0,"The Bands of Mourning (Mistborn, #6)",eng,4.45
 3342,679733736,"Albert Camus, Justin O'Brien",1942.0,The Myth of Sisyphus and Other Essays,eng,4.18
 3343,345532740,Lauren Graham,2013.0,"Someday, Someday, Maybe",eng,3.49
@@ -3352,7 +3352,7 @@
 3352,014029628X,Susan Vreeland,1999.0,Girl in Hyacinth Blue,en-US,3.72
 3353,067166154X,William Steig,1969.0,Sylvester and the Magic Pebble,eng,4.14
 3354,184737459X,Philippa Gregory,2011.0,"The Lady of the Rivers (The Plantagenet and Tudor Novels, #1)",eng,3.96
-3355,525952063,Harlan Coben,2011.0,"Live Wire (Myron Bolitar #10)",eng,4.07
+3355,525952063,Harlan Coben,2011.0,Live Wire (Myron Bolitar #10),eng,4.07
 3356,767927567,"Carolyn Jessop, Laura Palmer",2007.0,Escape,en-US,3.96
 3357,044653109X,David Baldacci,2006.0,"The Collectors (Camel Club, #2)",en-US,4.01
 3358,330316117,Douglas Adams,1986.0,The Hitchhiker's Guide to the Galaxy: A Trilogy in Four Parts,eng,4.51
@@ -3387,13 +3387,13 @@
 3387,143039482,"John Steinbeck, Susan Shillinglaw",1961.0,The Winter of Our Discontent,eng,3.99
 3388,679732187,William Faulkner,1936.0,"Absalom, Absalom!",eng,3.96
 3389,141357274,"Zoe Sugg, Siobhan Curham",2014.0,"Girl Online (Girl Online, #1)",eng,3.77
-3390,1416940286,Carol Ryrie Brink,1935.0,"Caddie Woodlawn  (Caddie Woodlawn #1)",eng,3.99
+3390,1416940286,Carol Ryrie Brink,1935.0,Caddie Woodlawn  (Caddie Woodlawn #1),eng,3.99
 3391,345542967,Janet Evanovich,2015.0,"Tricky Twenty-Two (Stephanie Plum, #22)",eng,3.92
 3392,083081650X,J.I. Packer,1973.0,Knowing God,eng,4.31
 3393,786938250,R.A. Salvatore,1990.0,"The Halfling's Gem (Forgotten Realms: Icewind Dale, #3; Legend of Drizzt, #6)",en-US,4.15
 3394,525950608,Harlan Coben,2008.0,Hold Tight,en-US,3.94
-3395,1563892049,"Neil Gaiman, Marc Hempel, Richard Case, D'Israeli, Teddy Kristiansen, Glyn Dillon, Charles Vess, Dean Ormston, Kevin Nowlan, Todd Klein, Frank McConnell",1996.0,"The Kindly Ones (The Sandman #9)",eng,4.59
-3396,1563891700,"Neil Gaiman, Mike Allred, Gary Amaro, Mark Buckingham, David Giordano, Tony Harris, Steve Leialoha, Vince Locke, Shea Anton Pensa, Alec Stevens, Bryan Talbot, John Watkiss, Todd Klein, Michael Zulli, Stephen King",1995.0,"Worlds' End (The Sandman #8)",eng,4.48
+3395,1563892049,"Neil Gaiman, Marc Hempel, Richard Case, D'Israeli, Teddy Kristiansen, Glyn Dillon, Charles Vess, Dean Ormston, Kevin Nowlan, Todd Klein, Frank McConnell",1996.0,The Kindly Ones (The Sandman #9),eng,4.59
+3396,1563891700,"Neil Gaiman, Mike Allred, Gary Amaro, Mark Buckingham, David Giordano, Tony Harris, Steve Leialoha, Vince Locke, Shea Anton Pensa, Alec Stevens, Bryan Talbot, John Watkiss, Todd Klein, Michael Zulli, Stephen King",1995.0,Worlds' End (The Sandman #8),eng,4.48
 3397,140013083,John Wyndham,1955.0,The Chrysalids,en-US,3.92
 3398,068815932X,"Hans Christian Andersen, Jerry Pinkney",1843.0,The Ugly Duckling,eng,4.1
 3399,1878424440,Miguel Ruiz,1999.0,The Mastery of Love: A Practical Guide to the Art of Relationship --Toltec Wisdom Book,,4.25
@@ -3434,7 +3434,7 @@
 3434,,Nicole  Williams,2012.0,"Clash (Crash, #2)",eng,4.17
 3435,62224077,"Neil Gaiman, Skottie Young",2013.0,"Fortunately, the Milk",eng,4.04
 3436,078519021X,"G. Willow Wilson, Adrian Alphona",2014.0,"Ms. Marvel, Vol. 1: No Normal",eng,4.13
-3437,425212866,Nalini Singh,2006.0,"Slave to Sensation (Psy-Changeling #1)",en-US,4.12
+3437,425212866,Nalini Singh,2006.0,Slave to Sensation (Psy-Changeling #1),en-US,4.12
 3438,,أثير عبدالله النشمي,2013.0,فلتغفري,ara,3.5
 3439,142403709,Gennifer Choldenko,2004.0,"Al Capone Does My Shirts (Al Capone at Alcatraz, #1)",eng,3.83
 3440,61558222,"Guillermo del Toro, Chuck Hogan",2009.0,"The Fall (The Strain Trilogy, #2)",eng,3.8
@@ -3451,7 +3451,7 @@
 3451,486422453,"Rainer Maria Rilke, Reginald Snell, Franz Xaver Kappus",1929.0,Letters to a Young Poet,en-US,4.34
 3452,64472795,Meg Cabot,2001.0,"Princess in the Spotlight (The Princess Diaries, #2)",eng,3.67
 3453,1250003326,Anna Banks,2012.0,"Of Poseidon (The Syrena Legacy, #1)",eng,4.04
-3454,312984820,Sherrilyn Kenyon,2002.0,"Night Embrace (Dark-Hunter #2)",en-US,4.25
+3454,312984820,Sherrilyn Kenyon,2002.0,Night Embrace (Dark-Hunter #2),en-US,4.25
 3455,446696587,James Patterson,2003.0,"The Lake House (When the Wind Blows, #2)",eng,3.79
 3456,61340634,Ann Patchett,2007.0,Run,eng,3.53
 3457,879234628,"Charles Baudelaire, Richard Howard",1857.0,Les Fleurs du Mal,eng,4.26
@@ -3568,7 +3568,7 @@
 3568,965030067,Haven Kimmel,2001.0,A Girl Named Zippy,,3.79
 3569,,Sidney Sheldon,1994.0,Nothing Lasts Forever,eng,3.82
 3570,670037605,Nathaniel Philbrick,2006.0,"Mayflower: A Story of Courage, Community, and War",eng,3.86
-3571,1416547037,Kresley Cole,2007.0,"Wicked Deeds on a Winter's Night (Immortals After Dark #4)",en-CA,4.37
+3571,1416547037,Kresley Cole,2007.0,Wicked Deeds on a Winter's Night (Immortals After Dark #4),en-CA,4.37
 3572,1400032539,Joseph J. Ellis,2004.0,His Excellency: George Washington,eng,3.9
 3573,60539828,"William Gibson, Bruce Sterling",1986.0,"Burning Chrome (Sprawl, #0)",eng,4.05
 3574,7311001,Lauren Weisberger,2010.0,Last Night at Chateau Marmont,en-GB,3.51
@@ -3657,7 +3657,7 @@
 3657,375829873,Robert Cormier,1974.0,"The Chocolate War (Chocolate War, #1)",eng,3.48
 3658,736421971,"Teddy Slater, Ron Dias, Ric González",1991.0,Beauty and the Beast (Disney),,4.4
 3659,125006662X,Michael Punke,2002.0,The Revenant,,3.92
-3660,1563892871,"Neil Gaiman, Michael Zulli, Jon J. Muth, Charles Vess, Mikal Gilmore",1996.0,"The Wake (The Sandman #10)",eng,4.53
+3660,1563892871,"Neil Gaiman, Michael Zulli, Jon J. Muth, Charles Vess, Mikal Gilmore",1996.0,The Wake (The Sandman #10),eng,4.53
 3661,60521996,Clayton M. Christensen,1997.0,The Innovator's Dilemma: The Revolutionary Book that Will Change the Way You Do Business (Collins Business Essentials),,4.0
 3662,030700113X,"Teddy Slater, Bill Langley, Ron Dias, Walt Disney Company",1940.0,Lady and the Tramp,eng,4.36
 3663,,Tamora Pierce,2001.0,"Squire (Protector of the Small, #3)",eng,4.27
@@ -3735,7 +3735,7 @@
 3735,452253802,"Stephen King, Bernie Wrightson, Michele Wrightson",1982.0,Creepshow,en-US,4.06
 3736,62101897,Bob McCabe,2011.0,Harry Potter Page to Screen: The Complete Filmmaking Journey,,4.56
 3737,1841580651,Jeff Shaara,1996.0,"Gods and Generals (The Civil War Trilogy, #1)",eng,4.05
-3738,373773102,Gena Showalter,2008.0,"The Darkest Pleasure (Lords of the Underworld #3)",eng,4.28
+3738,373773102,Gena Showalter,2008.0,The Darkest Pleasure (Lords of the Underworld #3),eng,4.28
 3739,312368577,Madeleine L'Engle,1986.0,"Many Waters (A Wrinkle in Time Quintet, #4)",en-US,4.01
 3740,805017585,"Bill Martin Jr., Eric Carle",2003.0,"Panda Bear, Panda Bear, What Do You See?",en-US,4.21
 3741,553807250,Lisa Gardner,2011.0,"Love You More (Tessa Leoni, #1; Detective D.D. Warren, #5)",eng,4.15
@@ -3751,7 +3751,7 @@
 3751,140006872X,Gabrielle Hamilton,2001.0,"Blood, Bones, and Butter: The Inadvertent Education of a Reluctant Chef",en-US,3.71
 3752,,Agatha Christie,1924.0,"Poirot Investiga (Hércules Poirot, #3)",spa,4.07
 3753,439827604,J.K. Rowling,2005.0,"Harry Potter Collection (Harry Potter, #1-6)",eng,4.73
-3754,586010165,Isaac Asimov,1957.0,"The Naked Sun (Robot #2)",en-US,4.12
+3754,586010165,Isaac Asimov,1957.0,The Naked Sun (Robot #2),en-US,4.12
 3755,974607800,Herman Melville,1853.0,Bartleby the Scrivener,eng,3.9
 3756,1501111671,Stephen King,2015.0,The Bazaar of Bad Dreams,eng,3.92
 3757,374173958,"Lars Kepler, Ann Long",2009.0,"The Hypnotist (Joona Linna, #1)",eng,3.63
@@ -3762,7 +3762,7 @@
 3762,7169973,"Theo LeSieg, Roy McKie",1961.0,Ten Apples Up On Top!,eng,4.11
 3763,451527704,"Theodore Dreiser, Richard R. Lingeman",1925.0,An American Tragedy,eng,3.94
 3764,684862212,Ernest Hemingway,1938.0,The Snows of Kilimanjaro and Other Stories,eng,3.88
-3765,1560601760,"Brynne Stephens, Lela Dowling, Cynthia Martin, Anne McCaffrey",1991.0,"Anne McCaffrey's Dragonflight #1",eng,4.44
+3765,1560601760,"Brynne Stephens, Lela Dowling, Cynthia Martin, Anne McCaffrey",1991.0,Anne McCaffrey's Dragonflight #1,eng,4.44
 3766,031609966X,Elin Hilderbrand,2011.0,Silver Girl,en-US,3.87
 3767,425190374,Alice Hoffman,1995.0,Practical Magic,eng,3.8
 3768,034553364X,Kevin Hearne,2012.0,"Trapped (The Iron Druid Chronicles, #5)",eng,4.28
@@ -3771,7 +3771,7 @@
 3771,812521390,Glen Cook,1984.0,"The Black Company (The Chronicles of the Black Company, #1)",eng,3.96
 3772,316954993,Herman Wouk,1978.0,"War and Remembrance (The Henry Family, #2)",eng,4.38
 3773,1567921892,"Susan Hill, John Lawrence",1983.0,The Woman in Black,eng,3.68
-3774,64402754,Barbara Robinson,1972.0,"The Best Christmas Pageant Ever (The Herdmans #1)",en-US,4.18
+3774,64402754,Barbara Robinson,1972.0,The Best Christmas Pageant Ever (The Herdmans #1),en-US,4.18
 3775,,George R.R. Martin,1996.0,"A Game of Thrones / A Clash of Kings (A Song of Ice and Fire, #1-2)",,4.53
 3776,385333765,James Clavell,1962.0,"King Rat (Asian Saga, #4)",eng,4.1
 3777,61449156,Michael  Grant,2012.0,"Fear (Gone, #5)",en-US,4.25
@@ -3828,7 +3828,7 @@
 3828,375713271,"Haruki Murakami, Jay Rubin",2000.0,After the Quake,eng,3.78
 3829,316018783,James Patterson,2009.0,"I, Alex Cross (Alex Cross, #16)",eng,3.98
 3830,64409597,Sharon Creech,2001.0,"Love That Dog (Jack, #1)",en-US,4.01
-3831,452281903,Dave Pelzer,1999.0,"A Man Named Dave (Dave Pelzer #3)",en-US,3.87
+3831,452281903,Dave Pelzer,1999.0,A Man Named Dave (Dave Pelzer #3),en-US,3.87
 3832,515142816,Laurell K. Hamilton,2006.0,"Danse Macabre (Anita Blake, Vampire Hunter, #14)",eng,3.81
 3833,809599813,Edgar Rice Burroughs,1912.0,"Tarzan of the Apes (Tarzan, #1)",eng,3.88
 3834,345341678,Anne McCaffrey,1978.0,"The White Dragon (Pern, #3)",,4.17
@@ -3856,7 +3856,7 @@
 3856,312315732,Tom Perrotta,2004.0,Little Children,,3.61
 3857,394402677,Ira Levin,1976.0,The Boys from Brazil,eng,4.05
 3858,61056901,Terry Pratchett,1994.0,"Interesting Times (Discworld, #17; Rincewind #5)",en-US,4.17
-3859,1416576754,Kresley Cole,2008.0,"Dark Desires After Dusk (Immortals After Dark #6)",en-CA,4.38
+3859,1416576754,Kresley Cole,2008.0,Dark Desires After Dusk (Immortals After Dark #6),en-CA,4.38
 3860,152045651,"Patricia C. Wrede, Peter de Sève",1991.0,"Searching for Dragons (Enchanted Forest Chronicles, #2)",en-US,4.25
 3861,385534795,Chris Bohjalian,2012.0,The Sandcastle Girls,,3.86
 3862,451229738,"Rachel Caine, Cynthia Holloway",2010.0,"Kiss of Death (The Morganville Vampires, #8)",eng,4.22
@@ -3868,7 +3868,7 @@
 3868,140449272,"Plato, Christopher Gill",-385.0,The Symposium,eng,4.01
 3869,571215165,D.B.C. Pierre,2003.0,Vernon God Little,eng,3.58
 3870,446667900,Michael Connelly,2000.0,"A Darkness More Than Night (Harry Bosch, #7; Terry McCaleb, #2; Harry Bosch Universe, #9)",eng,4.12
-3871,142408794,Judy Blume,1972.0,"Otherwise Known as Sheila the Great (Fudge #2)",,3.94
+3871,142408794,Judy Blume,1972.0,Otherwise Known as Sheila the Great (Fudge #2),,3.94
 3872,684843269,Ntozake Shange,1975.0,for colored girls who have considered suicide/when the rainbow is enuf,en-US,4.27
 3873,399175164,Nora Roberts,2016.0,The Obsession,eng,4.18
 3874,515140872,Laurell K. Hamilton,2006.0,"Micah (Anita Blake, Vampire Hunter, #13)",en-US,3.62
@@ -3884,7 +3884,7 @@
 3884,553281747,William Gibson,1988.0,"Mona Lisa Overdrive (Sprawl, #3)",eng,3.97
 3885,385689225,Trevor Noah,2016.0,Born a Crime: Stories From a South African Childhood,eng,4.49
 3886,044022912X,Theodore Taylor,1969.0,"The Cay (The Cay, #1)",en-US,3.74
-3887,671744216,Julie Garwood,1992.0,"The Secret (Highlands' Lairds #1)",eng,4.26
+3887,671744216,Julie Garwood,1992.0,The Secret (Highlands' Lairds #1),eng,4.26
 3888,316025054,Justina Chen,2009.0,North of Beautiful,en-US,3.92
 3889,014023313X,Carol Shields,1993.0,The Stone Diaries,eng,3.84
 3890,736908552,Stormie Omartian,1997.0,The Power of a Praying Woman,,4.38
@@ -3896,14 +3896,14 @@
 3896,743222253,Hillary Rodham Clinton,2003.0,Living History,en-US,3.75
 3897,1563898683,"Jeph Loeb, Tim Sale",2000.0,Batman: Dark Victory,eng,4.11
 3898,374105979,Edmund de Waal,2009.0,The Hare With Amber Eyes: A Family's Century of Art and Loss,eng,3.85
-3899,034525855X,Piers Anthony,1977.0,"A Spell for Chameleon (Xanth #1)",,3.93
+3899,034525855X,Piers Anthony,1977.0,A Spell for Chameleon (Xanth #1),,3.93
 3900,679890483,"Al Perkins, Eric Gurney",1969.0,"Hand, Hand, Fingers, Thumb",,4.22
 3901,385742371,Lissa Price,2012.0,"Starters (Starters, #1)",eng,3.91
-3902,141654707X,Kresley Cole,2008.0,"Dark Needs at Night's Edge (Immortals After Dark #5)",eng,4.32
+3902,141654707X,Kresley Cole,2008.0,Dark Needs at Night's Edge (Immortals After Dark #5),eng,4.32
 3903,802133908,"Juan Rulfo, Margaret Sayers Peden, Susan Sontag",1955.0,Pedro Páramo,eng,4.04
 3904,553213156,L.M. Montgomery,1939.0,"Anne of Ingleside (Anne of Green Gables, #6)",en-US,4.05
 3905,1401303366,Kelly Corrigan,2005.0,The Middle Place,,3.85
-3906,385340605,Harlan Coben,1995.0,"Deal Breaker (Myron Bolitar #1)",eng,3.94
+3906,385340605,Harlan Coben,1995.0,Deal Breaker (Myron Bolitar #1),eng,3.94
 3907,393974995,"T.S. Eliot, Michael North",1922.0,The Waste Land,eng,4.11
 3908,1455557102,"Heather Cocks, Jessica  Morgan",2015.0,The Royal We,eng,3.8
 3909,380815575,Julia Quinn,2000.0,"The Viscount Who Loved Me (Bridgertons, #2)",eng,4.19
@@ -3923,7 +3923,7 @@
 3923,517415283,"Miyamoto Musashi, Victor Harris",1645.0,A Book of Five Rings: The Classic Guide to Strategy,,4.09
 3924,345405137,Dean Koontz,1996.0,Tick Tock,,3.71
 3925,553278002,Robert Ludlum,1988.0,The Icarus Agenda,en-US,3.93
-3926,1439123128,Kresley Cole,2010.0,"Demon from the Dark (Immortals After Dark #10)",eng,4.47
+3926,1439123128,Kresley Cole,2010.0,Demon from the Dark (Immortals After Dark #10),eng,4.47
 3927,,J.R. Ward,2014.0,"The King (Black Dagger Brotherhood, #12)",eng,4.37
 3928,60748125,Irvin D. Yalom,1992.0,When Nietzsche Wept,eng,4.25
 3929,394574753,Cormac McCarthy,1994.0,"The Crossing (The Border Trilogy, #2)",eng,4.11
@@ -3957,7 +3957,7 @@
 3957,312939000,Sue Grafton,1985.0,"B is for Burglar  (Kinsey Millhone, #2)",eng,3.83
 3958,316154857,Kate Atkinson,2008.0,"When Will There Be Good News? (Jackson Brodie, #3)",en-US,3.97
 3959,1401215815,"Brian Azzarello, Lee Bermejo",2008.0,The Joker,eng,4.04
-3960,1401359795,"Sergei Lukyanenko, Andrew Bromfield",1998.0,"Night Watch (Watch #1)",eng,3.97
+3960,1401359795,"Sergei Lukyanenko, Andrew Bromfield",1998.0,Night Watch (Watch #1),eng,3.97
 3961,385350813,Jenny Offill,2014.0,Dept. of Speculation,eng,3.72
 3962,451419928,Susan Meissner,2015.0,Secrets of a Charmed Life,eng,4.17
 3963,553268929,Pat Conroy,1976.0,The Great Santini,eng,4.13
@@ -3975,13 +3975,13 @@
 3975,61996203,Cynthia Hand,2013.0,"Boundless (Unearthly, #3)",eng,4.15
 3976,,John Grisham,2016.0,The Whistler,en-GB,3.87
 3977,1421506238,"Katsura Hoshino, Mayumi Kobayashi",2004.0,"D.Gray-man, Volume 01",eng,4.21
-3978,553299492,Isaac Asimov,1983.0,"The Robots of Dawn (Robot #3)",eng,4.13
+3978,553299492,Isaac Asimov,1983.0,The Robots of Dawn (Robot #3),eng,4.13
 3979,440241359,"Ian Caldwell, Dustin Thomason",2004.0,The Rule of Four,eng,3.22
 3980,751552615,Jessica Sorensen,2013.0,"The Redemption of Callie & Kayden (The Coincidence, #2)",eng,4.11
 3981,1616550546,"Gene Luen Yang, Bryan Konietzko, Michael Dante DiMartino, Dave Marshall, Gurihiru",2013.0,"Avatar: The Last Airbender (The Search, #1)",eng,4.29
 3982,446699551,Michael Connelly,2005.0,"The Closers (Harry Bosch, #11; Harry Bosch Universe, #13)",eng,4.08
 3983,60525592,Erin Hunter,2003.0,"Fire and Ice (Warriors, #2)",eng,4.36
-3984,373773927,Gena Showalter,2009.0,"The Darkest Whisper (Lords of the Underworld #4)",eng,4.33
+3984,373773927,Gena Showalter,2009.0,The Darkest Whisper (Lords of the Underworld #4),eng,4.33
 3985,1400083028,Rob Sheffield,2007.0,Love Is a Mix Tape,en-US,3.83
 3986,802142648,"Legs McNeil, Gillian McCain",1996.0,Please Kill Me: The Uncensored Oral History of Punk,en-US,4.16
 3987,,Marybeth Mayhew Whalen,2016.0,The Things We Wish Were True,eng,3.83
@@ -3995,7 +3995,7 @@
 3995,,Frank Miller,1996.0,"Sin City, Vol. 4: That Yellow Bastard (Sin City, #4)",eng,4.22
 3996,8370540791,Andrzej Sapkowski,1994.0,"Krew elfów (Saga o Wiedźminie, #3)",pol,4.23
 3997,60759968,Rebecca Wells,1992.0,Little Altars Everywhere,,3.55
-3998,60512148,Marian Keyes,2002.0," Angels (Walsh Family, #3)",en-US,3.73
+3998,60512148,Marian Keyes,2002.0,"Angels (Walsh Family, #3)",en-US,3.73
 3999,141699792X,Brandon Mull,2011.0,"A World Without Heroes (Beyonders, #1)",en-US,4.07
 4000,1741663016,John Flanagan,2008.0,"The Kings of Clonmel (Ranger's Apprentice, #8)",eng,4.29
 4001,62200631,Joe Hill,2016.0,The Fireman,eng,3.92
@@ -4064,7 +4064,7 @@
 4064,861661419,"Alan Moore, Eddie Campbell, Pete Mullins",1999.0,From Hell,eng,4.16
 4065,739453823,Nora Roberts,2005.0,"Black Rose (In the Garden, #2)",eng,4.03
 4066,553587692,Lisa Gardner,1997.0,"The Perfect Husband (Quincy & Rainie, #1)",eng,4.01
-4067,345366239,Katherine Neville,1988.0,"The Eight (The Eight #1)",eng,3.92
+4067,345366239,Katherine Neville,1988.0,The Eight (The Eight #1),eng,3.92
 4068,,Jean Webster,1912.0,"Daddy-Long-Legs (Daddy-Long-Legs, #1)",eng,4.09
 4069,152052216,Edith Pattou,2003.0,East,en-US,4.14
 4070,345335082,Anne McCaffrey,1971.0,"Dragonquest (Pern, #2)",en-US,4.09
@@ -4075,7 +4075,7 @@
 4075,785115315,"Joss Whedon, John Cassaday",2004.0,"Astonishing X-Men, Volume 1: Gifted",eng,4.17
 4076,006121471X,Melissa Marr,2009.0,"Fragile Eternity (Wicked Lovely, #3)",en-US,3.83
 4077,,Kristen Ashley,2011.0,"The Gamble (Colorado Mountain, #1)",en-GB,4.29
-4078,006093316X,Clive Barker,1989.0,"The Great and Secret Show (Book of the Art #1)",eng,4.05
+4078,006093316X,Clive Barker,1989.0,The Great and Secret Show (Book of the Art #1),eng,4.05
 4079,380715430,Bill Bryson,1990.0,The Mother Tongue: English and How It Got That Way,en-US,3.95
 4080,446580260,Eric    Weiner,2008.0,The Geography of Bliss: One Grump's Search for the Happiest Places in the World,en-US,3.83
 4081,312424442,Tom Wolfe,2004.0,I am Charlotte Simmons,en-US,3.4
@@ -4102,13 +4102,13 @@
 4102,1502446936,Penelope Ward,2014.0,Stepbrother Dearest,eng,4.14
 4103,140007780X,Alan Lightman,1992.0,Einstein's Dreams,eng,4.08
 4104,679734511,"Fyodor Dostoyevsky, Richard Pevear, Larissa Volokhonsky",1872.0,Demons,eng,4.26
-4105,749935871,Sherrilyn Kenyon,2004.0,"Seize the Night (Dark-Hunter #6)",eng,4.36
+4105,749935871,Sherrilyn Kenyon,2004.0,Seize the Night (Dark-Hunter #6),eng,4.36
 4106,067973452X,"Fyodor Dostoyevsky, Christian Redl, Philip Dossick, Emanuela Guercetti, Michelle-Irène Brudny, Richard Pevear, Norman Dietz, Donald Fanger, coderati, Boris de Schlœzer, Larissa Volokhonsky",1864.0,Notes from Underground,eng,4.15
 4107,1608870081,"Andrew Williamson, Andrew Williamson",2010.0,Harry Potter: A Pop-Up Book: Based on the Film Phenomenon,,4.55
 4108,60898488,"Isabel Allende, Margaret Sayers Peden",2000.0,Portrait in Sepia,,3.93
 4109,,Amy Harmon,2013.0,Making Faces,eng,4.36
 4110,739467042,Vikas Swarup,2005.0,Q & A,eng,3.98
-4111,670026336,Tana French,2016.0,"The Trespasser (Dublin Murder Squad #6)",eng,3.98
+4111,670026336,Tana French,2016.0,The Trespasser (Dublin Murder Squad #6),eng,3.98
 4112,553157248,Donald J. Sobol,1963.0,"Encyclopedia Brown, Boy Detective (Encyclopedia Brown, #1)",eng,4.03
 4113,330411969,C.J. Sansom,2003.0,"Dissolution (Matthew Shardlake, #1)",eng,4.08
 4114,689872992,Lisi Harrison,2004.0,"The Clique (The Clique, #1)",en-GB,3.6
@@ -4245,7 +4245,7 @@
 4245,736423095,Walt Disney Company,1940.0,Dumbo: A Little Golden Book,,4.29
 4246,62290398,Erika Johansen,2015.0,"The Invasion of the Tearling (The Queen of the Tearling, #2)",eng,4.15
 4247,307960471,"Jo Nesbø, Don Bartlett",2011.0,"Phantom (Harry Hole, #9)",,4.11
-4248,312530641,"P.C. Cast, Kristin Cast",,"Marked / Betrayed / Chosen / Untamed / Hunted (House of Night #1-5)",eng,4.43
+4248,312530641,"P.C. Cast, Kristin Cast",,Marked / Betrayed / Chosen / Untamed / Hunted (House of Night #1-5),eng,4.43
 4249,7198914,Cecelia Ahern,2006.0,A Place Called Here,eng,3.66
 4250,307277771,W. Somerset Maugham,1925.0,The Painted Veil,eng,3.9
 4251,99446723,Anne Rice,2002.0,"Blackwood Farm (The Vampire Chronicles, #9)",eng,3.85
@@ -4272,13 +4272,13 @@
 4272,786886811,Nigella Lawson,1998.0,How to Be a Domestic Goddess: Baking and the Art of Comfort Cooking,,4.0
 4273,451528166,"Thomas Malory, Keith Baines, Robert Graves",1485.0,Le Morte d'Arthur: King Arthur and the Legends of the Round Table,eng,3.92
 4274,1400052297,Cupcake Brown,2006.0,A Piece of Cake,eng,4.15
-4275,805080511,Lloyd Alexander,1967.0,"Taran Wanderer (The Chronicles of Prydain #4)",eng,4.14
+4275,805080511,Lloyd Alexander,1967.0,Taran Wanderer (The Chronicles of Prydain #4),eng,4.14
 4276,446612758,"Douglas Preston, Lincoln Child",2004.0,"Brimstone (Pendergast, #5; Diogenes, #1)",en-GB,4.12
 4277,1598183605,Kate Douglas Wiggin,1903.0,Rebecca of Sunnybrook Farm,,3.85
 4278,006056251X,Lisa Kleypas,2006.0,"Devil in Winter (Wallflowers, #3)",en-US,4.26
 4279,152063110,Susan Beth Pfeffer,2008.0,"The Dead and the Gone (Last Survivors, #2)",en-US,3.84
 4280,1595540350,Ted Dekker,2004.0,"White: The Great Pursuit (The Circle, #3)",,4.3
-4281,778303764,Gena Showalter,2010.0,"The Darkest Passion (Lords of the Underworld #5)",eng,4.37
+4281,778303764,Gena Showalter,2010.0,The Darkest Passion (Lords of the Underworld #5),eng,4.37
 4282,385526342,Chuck Palahniuk,2009.0,Pygmy,eng,2.96
 4283,1439136637,Lauren Weisberger,2013.0,"Revenge Wears Prada: The Devil Returns (The Devil Wears Prada, #2)",en-US,2.84
 4284,553381008,"Anton Chekhov, Richard Pevear, Larissa Volokhonsky",1900.0,Selected Stories,eng,4.36
@@ -4368,7 +4368,7 @@
 4368,312194390,Margaret George,1986.0,"The Autobiography of Henry VIII: With Notes by His Fool, Will Somers",en-US,4.25
 4369,385722222,Chuck Palahniuk,2004.0,Stranger than Fiction,eng,3.56
 4370,067003830X,Norman Doidge,2007.0,The Brain That Changes Itself: Stories of Personal Triumph from the Frontiers of Brain Science,en-US,4.2
-4371,345418417,Larry Niven,1979.0,"The Ringworld Engineers (Ringworld #2)",eng,3.86
+4371,345418417,Larry Niven,1979.0,The Ringworld Engineers (Ringworld #2),eng,3.86
 4372,316125849,Barry Lyga,2012.0,"I Hunt Killers (Jasper Dent, #1)",en-CA,4.02
 4373,,K. Bromberg,2014.0,"Crashed (Driven, #3)",eng,4.56
 4374,052542914X,J. Ryan Stradal,2015.0,Kitchens of the Great Midwest,eng,3.77
@@ -4430,7 +4430,7 @@
 4430,399159894,Nora Roberts,2013.0,Whiskey Beach,eng,3.96
 4431,1416535209,Jennifer Weiner,2006.0,The Guy Not Taken: Stories,en-US,3.46
 4432,1582408831,Robert Kirkman,2008.0,"The Walking Dead, Vol. 08: Made to Suffer",eng,4.47
-4433,1416580956,Kresley Cole,2010.0,"Pleasure of a Dark Prince (Immortals After Dark #9)",eng,4.41
+4433,1416580956,Kresley Cole,2010.0,Pleasure of a Dark Prince (Immortals After Dark #9),eng,4.41
 4434,64440028,Syd Hoff,1958.0,Danny and the Dinosaur (An I Can Read Book),en-US,4.0
 4435,140449302,"Giovanni Boccaccio, G.H. McWilliam",1353.0,The Decameron,eng,3.86
 4436,62081012,Sara Shepard,2011.0,"Twisted (Pretty Little Liars, #9)",en-US,4.05
@@ -4442,7 +4442,7 @@
 4442,,Rachel Van Dyken,2013.0,"Ruin (Ruin, #1)",eng,4.19
 4443,394757688,Raymond Chandler,1953.0,"The Long Goodbye (Philip Marlowe, #6)",eng,4.23
 4444,394758277,Raymond Chandler,1940.0,"Farewell, My Lovely (Philip Marlowe, #2)",eng,4.17
-4445,805080503,Lloyd Alexander,1966.0,"The Castle of Llyr (The Chronicles of Prydain #3)",eng,4.07
+4445,805080503,Lloyd Alexander,1966.0,The Castle of Llyr (The Chronicles of Prydain #3),eng,4.07
 4446,451228669,Rachel Caine,2009.0,"Fade Out (The Morganville Vampires, #7)",en-US,4.2
 4447,425195201,Lilian Jackson Braun,1966.0,"The Cat Who Could Read Backwards (Cat Who..., #1)",eng,3.84
 4448,,Nyrae Dawn,2012.0,"Charade (Games, #1)",eng,3.98
@@ -4487,7 +4487,7 @@
 4487,618249060,"Rachel Carson, Linda Lear, Edward O. Wilson",1962.0,Silent Spring,en-US,3.94
 4488,1596064854,Brandon Sanderson,2012.0,"Legion (Legion, #1)",eng,4.13
 4489,62372106,Holly Madison,2015.0,Down the Rabbit Hole: Curious Adventures and Cautionary Tales of a Former Playboy Bunny,eng,3.4
-4490,1846057647,James Patterson,2011.0,"Kill Alex Cross (Alex Cross #18)",eng,4.0
+4490,1846057647,James Patterson,2011.0,Kill Alex Cross (Alex Cross #18),eng,4.0
 4491,62244752,Nadia Hashimi,2014.0,The Pearl That Broke Its Shell,eng,4.12
 4492,1416971750,"Scott Westerfeld, Keith Thompson",2010.0,"Behemoth (Leviathan, #2)",en-US,4.18
 4493,767915828,Martha Stout,2005.0,The Sociopath Next Door,eng,3.75
@@ -4530,7 +4530,7 @@
 4530,765351544,Terry Goodkind,1998.0,"Debt of Bones (Sword of Truth, #0.5)",eng,3.85
 4531,571166938,Milan Kundera,1967.0,The Joke,eng,3.99
 4532,,Philippa Gregory,2013.0,"The White Princess (The Plantagenet and Tudor Novels, #5)",eng,3.85
-4533,1591141273,Stephen Coonts,1986.0,"Flight of the Intruder (Jake Grafton #1)",eng,4.04
+4533,1591141273,Stephen Coonts,1986.0,Flight of the Intruder (Jake Grafton #1),eng,4.04
 4534,689840330,Susan Cooper,1977.0,"Silver on the Tree (The Dark is Rising, #5)",eng,4.16
 4535,1405209496,Enid Bagnold,1935.0,National Velvet,eng,4.09
 4536,812932293,Richard Branson,2011.0,"Losing My Virginity: How I've Survived, Had Fun, and Made a Fortune Doing Business My Way",eng,3.97
@@ -4582,8 +4582,8 @@
 4582,037575718X,"Thomas Hardy, Alexander Theroux",1878.0,The Return of the Native,eng,3.84
 4583,62094734,"Michael Crichton, Richard   Preston",2011.0,Micro,eng,3.38
 4584,679725164,"Jean-Paul Sartre, Stuart Gilbert, Lionel Abel",1947.0,No Exit and Three Other Plays,eng,4.09
-4585,1857237366,Greg Bear,1998.0,"Foundation and Chaos (Second Foundation Trilogy #2)",eng,4.14
-4586,743219570,P.D. James,1962.0,"Cover Her Face (Adam Dalgliesh #1)",eng,3.94
+4585,1857237366,Greg Bear,1998.0,Foundation and Chaos (Second Foundation Trilogy #2),eng,4.14
+4586,743219570,P.D. James,1962.0,Cover Her Face (Adam Dalgliesh #1),eng,3.94
 4587,61985864,Kiersten White,2011.0,"Supernaturally (Paranormalcy, #2)",en-US,3.92
 4588,1857236556,Terry Brooks,1996.0,"First King of Shannara (The Original Shannara Trilogy, #0)",eng,3.94
 4589,312377045,Louise Penny,2010.0,"Bury Your Dead (Chief Inspector Armand Gamache, #6)",en-US,4.33
@@ -4664,7 +4664,7 @@
 4664,979777704,John Medina,2008.0,"Brain Rules: 12 Principles for Surviving and Thriving at Work, Home, and School",,4.0
 4665,1416914161,D.J. MacHale,2007.0,"The Pilgrims of Rayne (Pendragon, #8)",,4.14
 4666,1439165645,Richard C. Morais,2008.0,The Hundred-Foot Journey,en-US,3.54
-4667,399250573,Anthony Horowitz,2011.0,"Scorpia Rising (Alex Rider #9)",eng,4.29
+4667,399250573,Anthony Horowitz,2011.0,Scorpia Rising (Alex Rider #9),eng,4.29
 4668,61944343,Lincoln Peirce,2010.0,"Big Nate: In a Class by Himself (Big Nate Novels, #1)",en-US,4.16
 4669,61232920,Meg Cabot,2008.0,"Forever Princess (The Princess Diaries, #10)",,4.08
 4670,688156819,Tim Burton,1997.0,The Melancholy Death of Oyster Boy and Other Stories,en-US,4.13
@@ -4676,11 +4676,11 @@
 4676,,Essam Youssef,2008.0,1/4 جرام,ara,4.02
 4677,1590523172,Shaunti Feldhahn,2004.0,For Women Only: What You Need to Know about the Inner Lives of Men,en-US,4.06
 4678,553479016,"Dean Koontz, Keith Szarabajka",1998.0,"Seize the Night (Moonlight Bay, #2)",eng,4.07
-4679,60773758,Lynsay Sands,2005.0,"A Quick Bite (Argeneau #1)",en-US,3.91
+4679,60773758,Lynsay Sands,2005.0,A Quick Bite (Argeneau #1),en-US,3.91
 4680,739439065,Nora Roberts,2003.0,"Key of Knowledge (Key Trilogy, #2)",eng,4.09
 4681,312971230,Matthew Reilly,1998.0,"Ice Station (Shane Schofield, #1)",eng,4.1
 4682,440217490,Ken Follett,1993.0,A Dangerous Fortune,eng,3.99
-4683,143034359,Jasper Fforde,2003.0,"The Well of Lost Plots (Thursday Next #3)",eng,4.09
+4683,143034359,Jasper Fforde,2003.0,The Well of Lost Plots (Thursday Next #3),eng,4.09
 4684,553585975,Adam Smith,1776.0,The Wealth of Nations,eng,3.87
 4685,61692042,Richard Ford,2012.0,Canada,eng,3.49
 4686,143037234,Jasper Fforde,2005.0,"The Big Over Easy (Nursery Crime, #1)",en-US,3.92
@@ -4802,7 +4802,7 @@
 4802,345497627,Tess Gerritsen,2008.0,"The Keepsake (Rizzoli & Isles, #7)",en-US,4.09
 4803,316219266,Brad Stone,2013.0,The Everything Store: Jeff Bezos and the Age of Amazon,eng,4.06
 4804,,Brittainy C. Cherry,2015.0,"The Air He Breathes (Elements, #1)",,4.2
-4805,1416580948,Kresley Cole,2009.0,"Kiss of a Demon King (Immortals After Dark #7)",eng,4.35
+4805,1416580948,Kresley Cole,2009.0,Kiss of a Demon King (Immortals After Dark #7),eng,4.35
 4806,553813153,Steven Erikson,2006.0,"The Bonehunters (Malazan Book of the Fallen, #6)",eng,4.42
 4807,988695103,Heidi McLaughlin,2012.0,"Forever My Girl (The Beaumont Series, #1)",eng,4.04
 4808,1477825940,Charlie N. Holmberg,2014.0,"The Glass Magician (The Paper Magician Trilogy, #2)",,3.87
@@ -4856,7 +4856,7 @@
 4856,1400069599,Colum McCann,2013.0,TransAtlantic,eng,3.81
 4857,61783161,Jeaniene Frost,2010.0,"Eternal Kiss of Darkness (Night Huntress World, #2)",en-GB,4.21
 4858,743571355,Lisa Lutz,2007.0,"The Spellman Files (The Spellmans, #1)",eng,3.88
-4859,425165582,Clive Barker,1984.0,"Books of Blood: Volumes One to Three (Books of Blood #1-3)",eng,4.16
+4859,425165582,Clive Barker,1984.0,Books of Blood: Volumes One to Three (Books of Blood #1-3),eng,4.16
 4860,60763892,James Rollins,2007.0,"The Judas Strain (Sigma Force, #4)",eng,4.15
 4861,785263713,Donald Miller,2000.0,Searching for God Knows What,en-US,3.92
 4862,60256710,Shel Silverstein,1976.0,The Missing Piece,,4.27
@@ -4907,7 +4907,7 @@
 4907,142407577,Mike Lupica,2006.0,Heat,en-US,3.97
 4908,60554738,Neil Strauss,2005.0,The Game: Penetrating the Secret Society of Pickup Artists,en-US,3.73
 4909,330348779,Sue Grafton,1998.0,"N is for Noose (Kinsey Millhone, #14)",eng,3.97
-4910,749941995,Julia Quinn,2011.0,"Just Like Heaven (Smythe-Smith Quartet #1)",en-GB,3.93
+4910,749941995,Julia Quinn,2011.0,Just Like Heaven (Smythe-Smith Quartet #1),en-GB,3.93
 4911,1423119509,"Rick Riordan, Tk",2009.0,"Percy Jackson and the Olympians Boxed Set (Percy Jackson and the Olympians, #1-5)",,4.57
 4912,525952764,Lisa Gardner,2012.0,"Catch Me (Detective D.D. Warren, #6)",eng,4.17
 4913,778321606,Debbie Macomber,2003.0,"The Shop on Blossom Street (Blossom Street, #1)",eng,4.04
@@ -4943,7 +4943,7 @@
 4943,9753638027,Sabahattin Ali,1943.0,Kürk Mantolu Madonna,tur,4.49
 4944,345379624,Terry Brooks,1997.0,"Running with the Demon (Word & Void, #1)",eng,3.95
 4945,1557488150,Charles M. Sheldon,1896.0,In His Steps,,4.15
-4946,1439136823,Kresley Cole,2012.0,"Lothaire (Immortals After Dark #12)",eng,4.43
+4946,1439136823,Kresley Cole,2012.0,Lothaire (Immortals After Dark #12),eng,4.43
 4947,1423102991,Mo Willems,2007.0,"Knuffle Bunny Too: A Case of Mistaken Identity (Knuffle Bunny, #2)",en-US,4.28
 4948,446195979,David Baldacci,2008.0,"The Whole Truth (A. Shaw, #1)",eng,4.0
 4949,61628018,"Elissa Wall, Lisa Pulitzer",2008.0,"Stolen Innocence: My Story of Growing Up in a Polygamous Sect, Becoming a Teenage Bride, and Breaking Free of Warren Jeffs",,3.89
@@ -4966,7 +4966,7 @@
 4966,307582396,"Trenton Lee Stewart, Del Roy",2009.0,"The Mysterious Benedict Society and the Prisoner's Dilemma (The Mysterious Benedict Society, #3)",,4.28
 4967,61579033,Kevin    Wilson,2011.0,The Family Fang,en-US,3.6
 4968,60744871,Chris Gardner,2006.0,The Pursuit of Happyness,,4.17
-4969,,Karl Ove Knausgård,2009.0,"Min kamp 1 (Min kamp #1)",nor,4.08
+4969,,Karl Ove Knausgård,2009.0,Min kamp 1 (Min kamp #1),nor,4.08
 4970,385342322,Alan Bradley,2011.0,"A Red Herring Without Mustard (Flavia de Luce, #3)",eng,4.07
 4971,684804484,Doris Kearns Goodwin,1994.0,No Ordinary Time: Franklin and Eleanor Roosevelt: The Home Front in World War II,eng,4.2
 4972,375701907,Richard Russo,1997.0,Straight Man,eng,4.02
@@ -4975,7 +4975,7 @@
 4975,545052394,Wendy Mass,2009.0,"11 Birthdays (Willow Falls, #1)",eng,4.18
 4976,026110215X,"J.R.R. Tolkien, Christopher Tolkien",1980.0,Unfinished Tales of Númenor and Middle-Earth,,3.93
 4977,385521227,Ann Brashares,2011.0,"Sisterhood Everlasting (Sisterhood, #5)",eng,3.9
-4978,451452011,Grant Naylor,1989.0,"Infinity Welcomes Careful Drivers (Red Dwarf #1)",eng,4.03
+4978,451452011,Grant Naylor,1989.0,Infinity Welcomes Careful Drivers (Red Dwarf #1),eng,4.03
 4979,60735430,Christopher Moore,1994.0,Coyote Blue,en-US,3.75
 4980,,"أحلام مستغانمي, Ahlam Mosteghanemi",1997.0,فوضى الحواس,ara,3.83
 4981,160096527X,G.K. Chesterton,1908.0,Orthodoxy,eng,4.23
@@ -4997,7 +4997,7 @@
 4997,1841497967,Patricia Briggs,2012.0,"Fair Game (Alpha & Omega, #3)",en-US,4.34
 4998,1423194551,Rick Riordan,2013.0,"The Son of Sobek (Percy Jackson & Kane Chronicles Crossover, #1)",eng,4.26
 4999,1854596373,"Molière, Martin Sorrell",1664.0,Tartuffe,eng,3.66
-5000,446401056,Larissa Ione,2009.0,"Passion Unleashed (Demonica #3)",eng,4.32
+5000,446401056,Larissa Ione,2009.0,Passion Unleashed (Demonica #3),eng,4.32
 5001,1421514818,Kazune Kawahara,2004.0,"High School Debut, Vol. 01 (High School Debut, #1)",en-GB,4.11
 5002,9953716889,أثير عبدالله النشمي,2011.0,في ديسمبر تنتهي كل الأحلام,ara,3.33
 5003,030711838X,Mercer Mayer,1975.0,Just for You (Little Critter),eng,4.25
@@ -5014,7 +5014,7 @@
 5014,743497295,Mary Higgins Clark,2006.0,Two Little Girls in Blue,en-US,3.85
 5015,055327211X,"Raymond E. Feist, Janny Wurts",1987.0,"Daughter of the Empire (The Empire Trilogy, #1)",eng,4.24
 5016,689872372,Neal Shusterman,2006.0,"Everlost (Skinjacker, #1)",eng,3.94
-5017,1439136807,Kresley Cole,2011.0,"Dreams of a Dark Warrior (Immortals After Dark #11)",en-US,4.39
+5017,1439136807,Kresley Cole,2011.0,Dreams of a Dark Warrior (Immortals After Dark #11),en-US,4.39
 5018,142428698,"John Grisham, Richard Thomas",2010.0,"Theodore Boone: Kid Lawyer (Theodore Boone, #1)",eng,3.72
 5019,224063979,Chris Ware,2000.0,"Jimmy Corrigan, the Smartest Kid on Earth",,4.1
 5020,142300705,Richard Peck,2000.0,"A Year Down Yonder (A Long Way from Chicago, #2)",eng,4.1
@@ -5062,7 +5062,7 @@
 5062,743482883,Linda Howard,2000.0,Mr. Perfect,eng,4.07
 5063,,M. Leighton,2013.0,"Up to Me (The Bad Boys, #2)",eng,4.12
 5064,,Mira Lyn Kelly,2012.0,"Waking Up Married (Waking Up, #1)",en-US,3.53
-5065,055380555X,Linwood Barclay,2007.0,"No Time for Goodbye (No Time For Goodbye #1)",eng,4.0
+5065,055380555X,Linwood Barclay,2007.0,No Time for Goodbye (No Time For Goodbye #1),eng,4.0
 5066,60730269,Katherine Hannigan,2004.0,"Ida B. . . and Her Plans to Maximize Fun, Avoid Disaster, and (Possibly) Save the World",eng,3.86
 5067,7273746,Robin Hobb,2009.0,"The Dragon Keeper (Rain Wild Chronicles, #1)",eng,3.93
 5068,195007778,Aldo Leopold,1949.0,A Sand County Almanac and Sketches Here and There,,4.24
@@ -5112,7 +5112,7 @@
 5112,451225007,J.R. Ward,2008.0,The Black Dagger Brotherhood: An Insider's Guide,eng,4.32
 5113,1600104835,"Joe Hill, Gabriel Rodríguez",2009.0,"Locke & Key, Vol. 2: Head Games",eng,4.36
 5114,192751034,"Beverly Cleary, Alan Tiegreen",1984.0,"Ramona and Her Father (Ramona, #4)",eng,4.02
-5115,1600963943,Agatha Christie,1922.0,"The Secret Adversary (Tommy and Tuppence #1)",eng,3.82
+5115,1600963943,Agatha Christie,1922.0,The Secret Adversary (Tommy and Tuppence #1),eng,3.82
 5116,394752848,"Julio Cortázar, Gregory Rabassa",1963.0,Hopscotch,eng,4.25
 5117,345528204,Karin Slaughter,2011.0,"Fallen (Will Trent, #5)",eng,4.23
 5118,1250091845,Marissa Meyer,2016.0,"Stars Above (The Lunar Chronicles, #4.5)",eng,4.27
@@ -5120,7 +5120,7 @@
 5120,312421435,Naomi Klein,1999.0,No Logo,en-US,3.86
 5121,451210557,Harlan Coben,2003.0,No Second Chance,eng,4.05
 5122,446698229,Hunter S. Thompson,1973.0,Fear and Loathing on the Campaign Trail '72,en-US,4.1
-5123,743219600,P.D. James,1971.0,"Shroud for a Nightingale (Adam Dalgliesh #4)",eng,4.04
+5123,743219600,P.D. James,1971.0,Shroud for a Nightingale (Adam Dalgliesh #4),eng,4.04
 5124,1250019834,Sarah Addison Allen,2015.0,"First Frost (Waverley Family, #2)",eng,3.95
 5125,330426648,Ted Chiang,2002.0,Stories of Your Life and Others,eng,4.27
 5126,9707704667,Mario Vargas Llosa,2006.0,Travesuras de la niña mala,spa,4.04
@@ -5137,7 +5137,7 @@
 5137,,Kristen Ashley,2011.0,"Sweet Dreams (Colorado Mountain, #2)",en-GB,4.42
 5138,345438310,Robert K. Massie,1967.0,Nicholas and Alexandra,eng,4.25
 5139,345527771,Janet Evanovich,2012.0,"Wicked Business (Lizzy & Diesel, #2)",eng,3.76
-5140,037587089X,Chris Grabenstein,2013.0,"Escape from Mr. Lemoncello's Library (Mr. Lemoncello's Library #1)",eng,4.13
+5140,037587089X,Chris Grabenstein,2013.0,Escape from Mr. Lemoncello's Library (Mr. Lemoncello's Library #1),eng,4.13
 5141,345414004,Robert A. Heinlein,1982.0,Friday,eng,3.82
 5142,1414318634,Francine Rivers,2010.0,"Her Mother's Hope (Marta's Legacy, #1)",en-US,4.28
 5143,395870828,David Wiesner,1991.0,Tuesday,,4.17
@@ -5224,13 +5224,13 @@
 5224,61668095,Aprilynne Pike,2011.0,"Illusions (Wings, #3)",en-US,4.12
 5225,451165667,Joe McGinniss,1983.0,Fatal Vision,eng,4.1
 5226,1594201501,Sudhir Venkatesh,2008.0,Gang Leader for a Day: A Rogue Sociologist Takes to the Streets,,4.01
-5227,785127224,"Raymond E. Feist, Michael Avon Oeming, Bryan J.L. Glass, Ryan Stegman",1984.0,"Magician: Apprentice  (Raymond E. Feist's Magician: Apprentice #1)",eng,4.44
+5227,785127224,"Raymond E. Feist, Michael Avon Oeming, Bryan J.L. Glass, Ryan Stegman",1984.0,Magician: Apprentice  (Raymond E. Feist's Magician: Apprentice #1),eng,4.44
 5228,785281126,John C. Maxwell,1993.0,Developing the Leader Within You,,4.18
 5229,7157177,C.S. Lewis,1945.0,"That Hideous Strength (Space Trilogy, #3)",en-GB,3.87
 5230,62331159,Laline Paull,2014.0,The Bees,eng,3.67
 5231,385664443,Sara Gruen,2010.0,Ape House,eng,3.46
 5232,345422554,"David Eddings, Leigh Eddings",1997.0,Polgara the Sorceress (Malloreon),,4.07
-5233,385539088,Kevin Kwan,2015.0,"China Rich Girlfriend (Crazy Rich Asians #2)",eng,3.74
+5233,385539088,Kevin Kwan,2015.0,China Rich Girlfriend (Crazy Rich Asians #2),eng,3.74
 5234,736918833,Elizabeth George,1997.0,A Woman After God's Own Heart,eng,4.29
 5235,1416543694,Brad Thor,2004.0,"State of the Union (Scot Harvath, #3)",eng,4.2
 5236,1250015545,Ann Leary,2013.0,The Good House,en-GB,3.66
@@ -5245,7 +5245,7 @@
 5245,316133191,"Stephenie Meyer, Young Kim",2011.0,"Twilight: The Graphic Novel, Vol. 2  (Twilight: The Graphic Novel, #2)",en-US,4.26
 5246,,Belle Aurora,2014.0,"Raw (RAW Family, #1)",eng,4.23
 5247,380809060,Roger Zelazny,1999.0,"The Great Book of Amber (The Chronicles of Amber, #1-10)",eng,4.31
-5248,778303829,Gena Showalter,2010.0,"The Darkest Lie (Lords of the Underworld #6)",eng,4.32
+5248,778303829,Gena Showalter,2010.0,The Darkest Lie (Lords of the Underworld #6),eng,4.32
 5249,8370540910,Andrzej Sapkowski,1995.0,"Czas pogardy (Saga o Wiedźminie, #4)",pol,4.32
 5250,,Jillian Dodd,2011.0,"That Boy (That Boy, #1)",eng,3.96
 5251,385535589,Kate Alcott,2012.0,The Dressmaker,eng,3.44
@@ -5284,7 +5284,7 @@
 5284,399156909,John Sandford,2010.0,"Bad Blood (Virgil Flowers, #4)",eng,4.21
 5285,1577780728,"D.C. Talk, The Voice of the Martyrs",1997.0,"Jesus Freaks: Stories of Those Who Stood for Jesus, the Ultimate Jesus Freaks (Jesus Freaks, #1)",eng,4.2
 5286,1594204217,Michael Pollan,2013.0,Cooked: A Natural History of Transformation,eng,3.98
-5287,451456718,Anne Bishop,1998.0,"Daughter of the Blood (The Black Jewels #1)",eng,4.12
+5287,451456718,Anne Bishop,1998.0,Daughter of the Blood (The Black Jewels #1),eng,4.12
 5288,765326574,Orson Scott Card,2011.0,"The Lost Gate (Mither Mages, #1)",en-US,3.82
 5289,307960498,"Jo Nesbø, Don Bartlett",2013.0,"Police (Harry Hole, #10)",eng,4.22
 5290,5559609129,Anne Rice,1999.0,"Vittorio, The Vampire (New Tales of the Vampires, #2)",eng,3.5
@@ -5456,7 +5456,7 @@
 5456,452287073,Julia Alvarez,1991.0,How the García Girls Lost Their Accents,eng,3.62
 5457,,"J. Lynn, Jennifer L. Armentrout",2014.0,"Be with Me (Wait for You, #2)",eng,4.15
 5458,1406501077,Louisa May Alcott,1886.0,"Jo's Boys (Little Women, #3)",eng,3.8
-5459,525955100,Harlan Coben,2016.0,"Home (Myron Bolitar #11)",eng,4.2
+5459,525955100,Harlan Coben,2016.0,Home (Myron Bolitar #11),eng,4.2
 5460,872860744,Charles Bukowski,1969.0,Notes of a Dirty Old Man,eng,3.99
 5461,525952896,"Jussi Adler-Olsen, K.E. Semmel",2008.0,"The Absent One (Department Q, #2)",eng,3.85
 5462,1594486344,James McBride,2013.0,The Good Lord Bird,eng,3.75
@@ -5557,7 +5557,7 @@
 5557,316405345,"James Patterson, David Ellis",2014.0,Invisible,eng,4.05
 5558,425210758,Dean Koontz,1993.0,Mr. Murder,eng,3.72
 5559,316074144,Gail Carriger,2010.0,"Changeless (Parasol Protectorate, #2)",eng,4.0
-5560,812505182,L.E. Modesitt Jr.,1991.0,"The Magic of Recluce (The Saga of Recluce #1)",eng,3.84
+5560,812505182,L.E. Modesitt Jr.,1991.0,The Magic of Recluce (The Saga of Recluce #1),eng,3.84
 5561,451211030,John Jakes,1974.0,"The Bastard (Kent Family Chronicles, #1)",en-GB,4.09
 5562,1594745765,Ben H. Winters,2012.0,"The Last Policeman (The Last Policeman, #1)",eng,3.76
 5563,345487133,George R. Stewart,1949.0,Earth Abides,eng,3.96
@@ -5565,7 +5565,7 @@
 5565,316106534,Darren Shan,2002.0,"Allies of the Night (Cirque du Freak, #8)",,4.19
 5566,425241505,Thea Harrison,2011.0,"Dragon Bound (Elder Races, #1)",eng,4.13
 5567,553269216,L.M. Montgomery,1919.0,"Rainbow Valley (Anne of Green Gables, #7)",eng,4.0
-5568,843955848,Stephen King,2005.0,"The Colorado Kid (Hard Case Crime #13)",eng,3.28
+5568,843955848,Stephen King,2005.0,The Colorado Kid (Hard Case Crime #13),eng,3.28
 5569,194232638,"Diane Mowat, W.W. Jacobs",1902.0,The Monkey's Paw (Oxford Bookworms),eng,3.85
 5570,553297260,John Saul,1991.0,Darkness,,3.92
 5571,157683932X,"Jerry Bridges, Foster W. Cline, Jim Fay",1978.0,The Pursuit of Holiness,eng,4.28
@@ -5608,7 +5608,7 @@
 5608,1605045535,Cherrie Lynn,2009.0,"Unleashed (Ross Siblings, #1)",eng,3.89
 5609,345443586,Laurell K. Hamilton,2006.0,"Mistral's Kiss (Merry Gentry, #5)",en-US,4.03
 5610,743287932,Stephen R. Covey,,The 8th Habit: From Effectiveness to Greatness,en-US,3.99
-5611,044640098X,Larissa Ione,2009.0,"Desire Unchained (Demonica #2)",eng,4.25
+5611,044640098X,Larissa Ione,2009.0,Desire Unchained (Demonica #2),eng,4.25
 5612,399146261,"Dean Koontz, Leigh Nichols",2000.0,Cold Fire / Hideaway / The Key to Midnight,eng,4.16
 5613,765327821,Dan Wells,2009.0,"I Am Not A Serial Killer (John Cleaver, #1)",eng,3.77
 5614,1476789258,Laura Dave,2015.0,Eight Hundred Grapes,,3.58
@@ -5627,7 +5627,7 @@
 5627,226500667,Norman Maclean,1976.0,A River Runs Through It and Other Stories,eng,4.17
 5628,1451616880,"María Dueñas, Daniel Hahn",2009.0,The Time in Between,eng,4.04
 5629,452280397,Toni Morrison,1997.0,Paradise,eng,3.77
-5630,425190455,William Gibson,1996.0,"Idoru (Bridge #2)",eng,3.78
+5630,425190455,William Gibson,1996.0,Idoru (Bridge #2),eng,3.78
 5631,373777922,Kristan Higgins,2013.0,"The Best Man (Blue Heron, #1)",eng,3.93
 5632,64473457,Diana Wynne Jones,1990.0,"Castle in the Air (Howl's Moving Castle, #2)",,3.93
 5633,545298407,Jude Watson,2011.0,"A King's Ransom (The 39 Clues: Cahills vs. Vespers, #2)",eng,4.14
@@ -5656,7 +5656,7 @@
 5656,399158987,Sue Grafton,2013.0,"W is for Wasted (Kinsey Millhone, #23)",eng,3.86
 5657,1584790830,Alton Brown,2002.0,I'm Just Here for the Food: Food + Heat = Cooking,en-US,4.21
 5658,312335288,James Herriot,1976.0,All Things Wise and Wonderful,,4.39
-5659,312934327,Sherrilyn Kenyon,2005.0,"Sins of the Night (Dark-Hunter #7)",eng,4.18
+5659,312934327,Sherrilyn Kenyon,2005.0,Sins of the Night (Dark-Hunter #7),eng,4.18
 5660,1595143998,Beth Revis,2013.0,"Shades of Earth (Across the Universe, #3)",eng,4.11
 5661,1416509631,Ursula K. Le Guin,1990.0,"Tehanu (Earthsea Cycle, #4)",eng,3.89
 5662,62217070,Amy Tintera,2013.0,"Reboot (Reboot, #1)",eng,3.92
@@ -5752,22 +5752,22 @@
 5752,1563897156,"Garth Ennis, Steve Dillon",2001.0,"Preacher, Volume 9: Alamo",eng,4.33
 5753,1500453307,Becky  Chambers,2014.0,"The Long Way to a Small, Angry Planet (Wayfarers, #1)",eng,4.18
 5754,140286802,"Jorge Luis Borges, Andrew Hurley",1998.0,Collected Fictions,eng,4.58
-5755,689868235,Holly Black,2002.0,"Valiant (Modern Faerie Tales #2)",eng,3.92
+5755,689868235,Holly Black,2002.0,Valiant (Modern Faerie Tales #2),eng,3.92
 5756,743464664,John le Carré,1989.0,The Russia House,,3.9
 5757,1606840592,Jennifer Lynn Barnes,2010.0,"Raised by Wolves (Raised by Wolves, #1)",eng,3.94
-5758,451219244,Harlan Coben,2006.0,"Promise Me (Myron Bolitar #8)",eng,3.96
+5758,451219244,Harlan Coben,2006.0,Promise Me (Myron Bolitar #8),eng,3.96
 5759,61720852,L.J. Smith,2011.0,"Midnight (The Vampire Diaries: The Return, #3)",en-US,3.78
 5760,312934343,Sherrilyn Kenyon,2006.0,"Dark Side of the Moon (Dark-Hunter #9, Were-Hunter #3)",en-US,4.15
 5761,151010986,"Carol Tavris, Elliot Aronson",2007.0,"Mistakes Were Made (But Not by Me): Why We Justify Foolish Beliefs, Bad Decisions, and Hurtful Acts",en-US,3.99
-5762,,T.R. Ragan,2011.0,"Abducted (Lizzy Gardner #1)",eng,3.94
+5762,,T.R. Ragan,2011.0,Abducted (Lizzy Gardner #1),eng,3.94
 5763,451197879,"Richard Bachman, Stephen King",1981.0,Roadwork,en-US,3.59
 5764,425204049,Clive Cussler,2001.0,"Valhalla Rising (Dirk Pitt, #16)",en-US,3.92
 5765,60845503,Jared Diamond,1991.0,The Third Chimpanzee: The Evolution and Future of the Human Animal,eng,4.04
-5766,688163181,Dennis Lehane,2008.0,"The Given Day (Coughlin #1)",en-US,4.03
+5766,688163181,Dennis Lehane,2008.0,The Given Day (Coughlin #1),en-US,4.03
 5767,613026667,"Gina Mayer, Mercer Mayer",1994.0,Just Me in the Tub (Mercer Mayer's Little Critter),,4.24
 5768,62267175,Nicole  Williams,2013.0,"Crush (Crash, #3)",en-US,4.24
 5769,031608106X,Mira Grant,2011.0,"Deadline (Newsflesh Trilogy, #2)",en-US,4.1
-5770,525951059,Harlan Coben,2009.0,"Long Lost  (Myron Bolitar #9)",eng,3.94
+5770,525951059,Harlan Coben,2009.0,Long Lost  (Myron Bolitar #9),eng,3.94
 5771,440242916,Karin Slaughter,2005.0,"Faithless (Grant County, #5)",en-US,4.11
 5772,1430300612,Jill Bolte Taylor,2006.0,My Stroke of Insight: A Brain Scientist's Personal Journey,en-US,3.86
 5773,1582406847,"Robert Kirkman, Charlie Adlard, Cliff Rathburn",2007.0,"The Walking Dead, Vol. 06: This Sorrowful Life",eng,4.32
@@ -5779,14 +5779,14 @@
 5779,60517123,"Geoffrey A. Moore, Regis McKenna",1991.0,Crossing the Chasm: Marketing and Selling High-Tech Products to Mainstream Customers,en-US,4.0
 5780,345497457,Peach-Pit,2006.0,"Shugo Chara!, Vol. 1: Who Do You Want to Be? (Shugo Chara!, #1)",,4.11
 5781,045121577X,Harlan Coben,2005.0,The Innocent,eng,3.95
-5782,586062009,Isaac Asimov,1985.0,"Robots and Empire (Robot #4)",eng,4.17
+5782,586062009,Isaac Asimov,1985.0,Robots and Empire (Robot #4),eng,4.17
 5783,60085495,Aldous Huxley,1962.0,Island,eng,3.87
 5784,375424474,Neil Shubin,2008.0,Your Inner Fish: A Journey into the 3.5-Billion-Year History of the Human Body,,3.97
 5785,573613052,Jean-Paul Sartre,1944.0,No Exit,eng,4.13
 5786,1591841666,Seth Godin,2007.0,The Dip: A Little Book That Teaches You When to Quit (and When to Stick),,3.83
 5787,618982507,Alison Bechdel,2012.0,Are You My Mother?,eng,3.66
 5788,9719234202,Bob Ong,2001.0,ABNKKBSNPLAKo?! (Mga Kwentong Chalk ni Bob Ong),fil,4.2
-5789,1780481012,Robin Hobb,2011.0,"The Farseer Trilogy (Farseer Trilogy #1-3)",eng,4.33
+5789,1780481012,Robin Hobb,2011.0,The Farseer Trilogy (Farseer Trilogy #1-3),eng,4.33
 5790,312992629,Elin Hilderbrand,2005.0,The Blue Bistro,en-US,4.0
 5791,1250001544,Darynda Jones,2012.0,"Third Grave Dead Ahead (Charley Davidson, #3)",eng,4.39
 5792,60930314,"Milan Kundera, Linda Asher",1997.0,Identity,eng,3.68
@@ -5841,7 +5841,7 @@
 5841,,"Cook's Illustrated Magazine, John Burgoyne, Carl Tremblay",1995.0,The New Best Recipe,,4.2
 5842,399171622,Renee Ahdieh,2016.0,"The Rose & the Dagger (The Wrath & the Dawn, #2)",eng,4.2
 5843,553418297,Peter Clines,2015.0,The Fold,eng,3.82
-5844,1250022088,Louise Penny,2015.0,"The Nature of the Beast (Chief Inspector Armand Gamache #11)",eng,4.21
+5844,1250022088,Louise Penny,2015.0,The Nature of the Beast (Chief Inspector Armand Gamache #11),eng,4.21
 5845,60520620,Laura C. Schlessinger,2003.0,The Proper Care and Feeding of Husbands,,3.71
 5846,1595542884,Ted Dekker,2009.0,"Green: The Beginning and the End (The Circle, #0)",eng,4.03
 5847,,Yana Toboso,2007.0,"Black Butler, Vol. 3 (Black Butler, #3)",ind,4.53
@@ -5854,7 +5854,7 @@
 5854,62273264,Cora Carmack,2013.0,"Faking It (Losing It, #2)",eng,3.96
 5855,439545285,Jenny Nimmo,2005.0,"Charlie Bone and the Castle of Mirrors (The Children of the Red King, #4)",,3.89
 5856,,Shelly Crane,2011.0,"Accordance (Significance, #2)",eng,4.28
-5857,399256121,Andrea Cremer,2012.0,"Bloodrose (Nightshade #3; Nightshade World #6)",eng,4.06
+5857,399256121,Andrea Cremer,2012.0,Bloodrose (Nightshade #3; Nightshade World #6),eng,4.06
 5858,425205959,Agatha Christie,1936.0,"Cards on the Table (Hercule Poirot, #15)",eng,3.9
 5859,1442449616,Rachel Renée Russell,2012.0,"Tales from a Not-So-Smart Miss Know-It-All (Dork Diaries, #5)",eng,4.42
 5860,038070952X,Beverly Cleary,1980.0,"Ramona and Her Mother (Ramona, #5)",eng,4.08
@@ -5898,8 +5898,8 @@
 5898,073642198X,"Michael Teitelbaum, Walt Disney Company",1986.0,Sleeping Beauty: a Little Golden Book (Disney Princess),eng,4.32
 5899,380815583,Julia Quinn,2001.0,"An Offer From a Gentleman (Bridgertons, #3)",en-US,4.08
 5900,62327186,Julie   Murphy,2015.0,"Dumplin' (Dumplin', #1)",eng,3.87
-5901,356502422,Ann Leckie,2015.0,"Ancillary Mercy (Imperial Radch #3)",eng,4.2
-5902,373775814,Gena Showalter,2011.0,"The Darkest Surrender  (Lords of the Underworld #8)",eng,4.42
+5901,356502422,Ann Leckie,2015.0,Ancillary Mercy (Imperial Radch #3),eng,4.2
+5902,373775814,Gena Showalter,2011.0,The Darkest Surrender  (Lords of the Underworld #8),eng,4.42
 5903,042518160X,Stephen King,1981.0,Danse Macabre,eng,3.62
 5904,,Gina L. Maxwell,2012.0,"Seducing Cinderella (Fighting for Love, #1)",eng,3.94
 5905,1400075718,Alexander McCall Smith,2006.0,"Blue Shoes and Happiness (No. 1 Ladies' Detective Agency, #7)",eng,4.06

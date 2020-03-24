@@ -55,17 +55,18 @@ public class RangeParser {
 		
 		int numericStartIndex = store.getSdqlColumns()[colIndex].getSecondaryType().getNumericStartPos();
 
-		if (inputStr == null || inputStr.isEmpty() || inputStr.equalsIgnoreCase(SdqlConstants.NULL)) {
-			range.setPrefix(SdqlConstants.NULL);
-			range.setLowerLimit(SdqlConstants.LONG_NULL);
-			range.setUpperLimit(SdqlConstants.LONG_NULL);
-			return range;
-		}
 
 		if (store.getSdqlColumns()[colIndex].getSecondaryType()
 				.getSecondaryCollectionType() == SecondaryCollectionDataType.NUMERIC_RANGE
 				|| store.getSdqlColumns()[colIndex].getSecondaryType()
 						.getSecondarySingleType() == SecondarySingleDataType.NUMERIC_RANGE) {
+			
+			if (inputStr == null || inputStr.isEmpty() || inputStr.equalsIgnoreCase(SdqlConstants.NULL)) {
+				range.setPrefix(SdqlConstants.NULL);
+				range.setLowerLimit(SdqlConstants.LONG_NULL);
+				range.setUpperLimit(SdqlConstants.LONG_NULL);
+				return range;
+			}
 
 			int indexOfRangeDelimiter = inputStr.lastIndexOf(Delimiters.RANGE_DELIMITER);
 
@@ -84,6 +85,14 @@ public class RangeParser {
 			}
 
 		} else {
+			
+			if (inputStr == null || inputStr.isEmpty() || inputStr.equalsIgnoreCase(SdqlConstants.NULL)) {
+				range.setPrefix("");
+				range.setLowerLimit(SdqlConstants.LONG_NULL);
+				range.setUpperLimit(SdqlConstants.LONG_NULL);
+				return range;
+			}
+			
 			String format = store.getSdqlColumns()[colIndex].getSecondaryType().getFormat();
 
 			range.setPrefix("");

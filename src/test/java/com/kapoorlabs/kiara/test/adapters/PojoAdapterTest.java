@@ -344,7 +344,7 @@ public class PojoAdapterTest {
 		List<SdqlColumn> sdqlColumns = dummyTestColumns;
 		
 		assertEquals(null,sdqlColumns.get(19).getSecondaryType().getSecondaryCollectionType());
-		assertEquals("yy/MMM HH:mm",sdqlColumns.get(19).getSecondaryType().getFormat());
+		assertEquals("yy/MMM/dd HH:mm",sdqlColumns.get(19).getSecondaryType().getFormat());
 		assertEquals(SecondarySingleDataType.DATE_TIME_RANGE,sdqlColumns.get(19).getSecondaryType().getSecondarySingleType());
 	
 	}
@@ -364,7 +364,7 @@ public class PojoAdapterTest {
 		List<SdqlColumn> sdqlColumns = dummyTestColumns;
 		
 		assertEquals(null,sdqlColumns.get(21).getSecondaryType().getSecondaryCollectionType());
-		assertEquals("yy/MMM",sdqlColumns.get(21).getSecondaryType().getFormat());
+		assertEquals("yy/MMM/dd",sdqlColumns.get(21).getSecondaryType().getFormat());
 		assertEquals(SecondarySingleDataType.DATE_RANGE,sdqlColumns.get(21).getSecondaryType().getSecondarySingleType());
 	
 	}
@@ -384,7 +384,7 @@ public class PojoAdapterTest {
 		List<SdqlColumn> sdqlColumns = dummyTestColumns;
 		
 		assertEquals(SecondaryCollectionDataType.DATE_TIME_RANGE,sdqlColumns.get(23).getSecondaryType().getSecondaryCollectionType());
-		assertEquals("yy/MMM HH:mm",sdqlColumns.get(23).getSecondaryType().getFormat());
+		assertEquals("yy/MMM/dd HH:mm",sdqlColumns.get(23).getSecondaryType().getFormat());
 		assertEquals(null,sdqlColumns.get(23).getSecondaryType().getSecondarySingleType());
 	
 	}
@@ -404,7 +404,7 @@ public class PojoAdapterTest {
 		List<SdqlColumn> sdqlColumns = dummyTestColumns;
 		
 		assertEquals(SecondaryCollectionDataType.DATE_RANGE,sdqlColumns.get(25).getSecondaryType().getSecondaryCollectionType());
-		assertEquals("yy/MMM",sdqlColumns.get(25).getSecondaryType().getFormat());
+		assertEquals("yy/MMM/dd",sdqlColumns.get(25).getSecondaryType().getFormat());
 		assertEquals(null,sdqlColumns.get(25).getSecondaryType().getSecondarySingleType());
 	
 	}
