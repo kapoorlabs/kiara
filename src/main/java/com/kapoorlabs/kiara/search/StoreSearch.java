@@ -24,6 +24,7 @@ import com.kapoorlabs.kiara.domain.Store;
 import com.kapoorlabs.kiara.exception.ColumnNotFoundException;
 import com.kapoorlabs.kiara.exception.InsufficientDataException;
 import com.kapoorlabs.kiara.exception.NonSupportedOperationException;
+import com.kapoorlabs.kiara.exception.RangeOutOfOrderException;
 import com.kapoorlabs.kiara.parser.RangeParser;
 import com.kapoorlabs.kiara.util.LogicalUtil;
 import com.kapoorlabs.kiara.util.NumericUtil;
@@ -73,25 +74,27 @@ public class StoreSearch {
 	 *                   present in the result, if this parameter is null, all the
 	 *                   columns (which are there in the store) will be present in
 	 *                   the result.
-	 * @result List It returns a list of Map with Key as column Name and Value as
+	 * @return List It returns a list of Map with Key as column Name and Value as
 	 *         the value of the column. All values are represented as a String. The
 	 *         column names are stored in upper case form. Therefore, each map is a
 	 *         individual record, that satisfied the mentioned conditions, and we
 	 *         return list of such records.
 	 * 
-	 * @throws ColumnNotFoundException   This exception is thrown when the column
-	 *                                   mentioned in the condition, is not found in
-	 *                                   the store.
-	 * @throws InsufficientDataException This exception is raised when between
-	 *                                   operator is used in a condition, and both
-	 *                                   lower and upper ranges are not specified.
-	 * @throws NonSupportedException     This exception is raised if any operator
-	 *                                   (inside a condition) other than EQUALS
-	 *                                   ,CONTAINS_EITHER or CONTAINS_ALL is used in
-	 *                                   range based data.
-	 * @throws RangeOutOfOrder           This exception is raised when we try to
-	 *                                   parse a range with higher range value,
-	 *                                   which is less than lower range.
+	 * @throws ColumnNotFoundException        This exception is thrown when the
+	 *                                        column mentioned in the condition, is
+	 *                                        not found in the store.
+	 * @throws InsufficientDataException      This exception is raised when between
+	 *                                        operator is used in a condition, and
+	 *                                        both lower and upper ranges are not
+	 *                                        specified.
+	 * @throws NonSupportedOperationException This exception is raised if any
+	 *                                        operator (inside a condition) other
+	 *                                        than EQUALS ,CONTAINS_EITHER or
+	 *                                        CONTAINS_ALL is used in range based
+	 *                                        data.
+	 * @throws RangeOutOfOrderException       This exception is raised when we try
+	 *                                        to parse a range with higher range
+	 *                                        value, which is less than lower range.
 	 * 
 	 */
 	public List<Map<String, String>> query(Store store, List<Condition> conditions, Set<String> filterSet) {
