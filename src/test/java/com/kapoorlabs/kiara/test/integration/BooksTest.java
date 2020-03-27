@@ -289,6 +289,42 @@ public class BooksTest {
 		
 
 	}
+	
+	@Test
+	public void booksTest_10() {
+
+		StoreSearch storeSearch = new StoreSearch();
+
+		List<Condition> conditions = new LinkedList<>();
+		List<String> values = new LinkedList<String>();
+		values.add("eng");
+		values.add("en-US");
+		
+		List<String> authors = new LinkedList<String>();
+		authors.add("Stephen King");
+		authors.add("George R.R. Martin");
+		
+		
+
+		conditions.add(new Condition("rating", Operator.GREATER_THAN_EQUAL, "4"));
+		conditions.add(new Condition("language", Operator.CONTAINS_EITHER, values));
+		conditions.add(new Condition("year", Operator.BETWEEN, "2010", "2012"));
+		conditions.add(new Condition("year", Operator.NOT_EQUAL, "2011"));
+		conditions.add(new Condition("authors", Operator.CONTAINS_EITHER, authors));
+		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+
+		Set<String> resultId = new HashSet<>();
+		
+		resultId.add("1576");
+		resultId.add("2412");
+
+		assertEquals(2, result.size());
+		for (int i = 0; i < result.size(); i++) {
+			assertTrue(resultId.contains(result.get(i).get("ID")));
+		}
+		
+
+	}
 
 
 

@@ -245,6 +245,18 @@ public class CreateNodeTest {
 	}
 	
 	@Test()
+	public void createNodeTest_21_1() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		Store store = new Store(PojoAdapter.getSdqlColumns(DummyTestObject.class));
+		StoreLoader storeLoader = new StoreLoader(store);
+		DummyTestObject dummyTestObject = new DummyTestObject();
+		dummyTestObject.setDate("2018/05/18");
+		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 8);
+		assertEquals(null,sdQlNode.getDoubleValue());
+		assertEquals("2018/05/18",sdQlNode.getStringValue());		
+	
+	}
+	
+	@Test()
 	public void createNodeTest_22() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		Store store = new Store(PojoAdapter.getSdqlColumns(DummyTestObject.class));
 		StoreLoader storeLoader = new StoreLoader(store);

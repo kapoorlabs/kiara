@@ -65,6 +65,11 @@ public class Store {
 	 * Interval tree for ranges type
 	 */
 	private ArrayList<HashMap<String, SearchableRange>> ranges;
+	
+	/**
+	 * Inverted Full key Index for collection type
+	 */
+	private ArrayList<HashMap<String, ArrayList<SdqlNode>>> collectionFullKeyIndex;
 
 
 	public Store(List<SdqlColumn> sdqlColumns) {
@@ -80,6 +85,7 @@ public class Store {
 		this.invertedNumericIndex = new ArrayList<>();
 		this.invertedIndexKeys = new ArrayList<>();
 		this.invertedNumericIndexKeys = new ArrayList<>();
+		this.collectionFullKeyIndex = new ArrayList<>();
 		this.ranges = new ArrayList<>();
 
 		for (int i = 0; i < this.sdqlColumns.length; i++) {
@@ -88,10 +94,12 @@ public class Store {
 			OrderedKeys<NullableOrderedString> orderedStringkeys = new OrderedKeys<>();
 			OrderedKeys<Long> orderedNumerickeys = new OrderedKeys<>();
 			HashMap<String, SearchableRange> rangeMap = new HashMap<>();
+			HashMap<String, ArrayList<SdqlNode>> fullKeyIndex = new HashMap<>();
 			this.invertedIndex.add(columnIndex);
 			this.invertedNumericIndex.add(columnNumericIndex);
 			this.invertedIndexKeys.add(orderedStringkeys);
 			this.invertedNumericIndexKeys.add(orderedNumerickeys);
+			this.collectionFullKeyIndex.add(fullKeyIndex);
 			this.ranges.add(rangeMap);
 			this.columnIndex.put(this.sdqlColumns[i].getColumnName(), i);
 		}

@@ -2,6 +2,7 @@ package com.kapoorlabs.kiara.test.objects;
 
 public class PartialGetterObject {
 	
+	@SuppressWarnings("unused")
 	private String testField1;
 	
 	private String testField2;

@@ -21,6 +21,7 @@ import com.kapoorlabs.kiara.domain.Range;
 import com.kapoorlabs.kiara.domain.SdqlNode;
 import com.kapoorlabs.kiara.domain.SearchableRange;
 import com.kapoorlabs.kiara.domain.Store;
+import com.kapoorlabs.kiara.exception.ColumnNotFoundException;
 import com.kapoorlabs.kiara.exception.InsufficientDataException;
 import com.kapoorlabs.kiara.exception.NonSupportedOperationException;
 import com.kapoorlabs.kiara.parser.RangeParser;
@@ -36,6 +37,18 @@ public class StoreSearch {
 	@Getter
 	private List<Map<String, String>> result;
 
+	/**
+	 * Condition Merger class is used to merge results if more than one condition is
+	 * specified on the same column.
+	 * 
+	 * similarSdqlNodes specifies all the columns that are returned by the query on
+	 * the particular column.
+	 * 
+	 * nextIndex specifies the index in the conditions array, that should be
+	 * processed next.
+	 * 
+	 */
+
 	private class ConditionMerger {
 		ArrayList<SdqlNode> similarSdqlNodes;
 		int nextIndex;
@@ -45,6 +58,42 @@ public class StoreSearch {
 		result = new LinkedList<>();
 	}
 
+	/**
+	 * This function will search/query the store with provided conditions, and
+	 * return the results. The results can be filtered with only the
+	 * columns/data-attributes, you want in the result, using the filterSet
+	 * argument.
+	 * 
+	 * @param store      This parameter will pass the store, which will be searched.
+	 * 
+	 * @param conditions This parameter will pass all the conditions that your
+	 *                   result should satisfy.
+	 * 
+	 * @param filterSet  This parameter will pass a set of columns that should be
+	 *                   present in the result, if this parameter is null, all the
+	 *                   columns (which are there in the store) will be present in
+	 *                   the result.
+	 * @result List It returns a list of Map with Key as column Name and Value as
+	 *         the value of the column. All values are represented as a String. The
+	 *         column names are stored in upper case form. Therefore, each map is a
+	 *         individual record, that satisfied the mentioned conditions, and we
+	 *         return list of such records.
+	 * 
+	 * @throws ColumnNotFoundException   This exception is thrown when the column
+	 *                                   mentioned in the condition, is not found in
+	 *                                   the store.
+	 * @throws InsufficientDataException This exception is raised when between
+	 *                                   operator is used in a condition, and both
+	 *                                   lower and upper ranges are not specified.
+	 * @throws NonSupportedException     This exception is raised if any operator
+	 *                                   (inside a condition) other than EQUALS
+	 *                                   ,CONTAINS_EITHER or CONTAINS_ALL is used in
+	 *                                   range based data.
+	 * @throws RangeOutOfOrder           This exception is raised when we try to
+	 *                                   parse a range with higher range value,
+	 *                                   which is less than lower range.
+	 * 
+	 */
 	public List<Map<String, String>> query(Store store, List<Condition> conditions, Set<String> filterSet) {
 
 		if (conditions == null) {
@@ -260,6 +309,72 @@ public class StoreSearch {
 
 			currentColumnNodes = qualifyingNodes != null ? qualifyingNodes : currentColumnNodes;
 
+		} else if (condition.getOperator() == Operator.NOT_CONTAINS) {
+
+			if (store.getSdqlColumns()[condition.getColumnIndex()].getSecondaryType() == null
+					|| store.getSdqlColumns()[condition.getColumnIndex()].getSecondaryType()
+							.getSecondaryCollectionType() == null) {
+
+				String message = "Not_Contains operator is not supported for single data types. It is only supported for collections"
+						+ condition;
+				log.error(message);
+				throw new NonSupportedOperationException(message);
+
+			}
+
+			Set<String> keysToSkip = new HashSet<>();
+
+			if (LogicalUtil.isIndexNumeric(store, condition)) {
+				HashMap<Long, ArrayList<SdqlNode>> columnNumericMap = store.getInvertedNumericIndex()
+						.get(condition.getColumnIndex());
+				for (String value : condition.getValue()) {
+					Long numericValue = NumericUtil.getNumericValue(store, value, condition.getColumnIndex());
+					if (columnNumericMap.get(numericValue) != null) {
+						for (SdqlNode matchingNode : columnNumericMap.get(numericValue)) {
+							keysToSkip.add(matchingNode.getStringValue());
+						}
+					}
+				}
+			} else {
+				HashMap<String, ArrayList<SdqlNode>> columnMap = store.getInvertedIndex()
+						.get(condition.getColumnIndex());
+
+				if (LogicalUtil.isRangeType(store, condition)) {
+					HashMap<String, SearchableRange> rangeMap = store.getRanges().get(condition.getColumnIndex());
+					for (String value : condition.getValue()) {
+						Range rangeCondition = RangeParser.parseRange(value, store, condition.getColumnIndex());
+						SearchableRange searchableRange = rangeMap.get(rangeCondition.getPrefix());
+						if (searchableRange != null) {
+							List<Range> qualifiedRanges = searchableRange.getInRange(rangeCondition.getLowerLimit());
+							for (Range qualifiedRange : qualifiedRanges) {
+								for (SdqlNode matchingNode : columnMap.get(qualifiedRange.toString())) {
+									keysToSkip.add(matchingNode.getStringValue());
+								}
+							}
+						}
+					}
+
+				} else {
+					for (String value : condition.getValue()) {
+						if (columnMap.get(value) != null) {
+							for (SdqlNode matchingNode : columnMap.get(value)) {
+								keysToSkip.add(matchingNode.getStringValue());
+							}
+						}
+					}
+				}
+
+			}
+
+			HashMap<String, ArrayList<SdqlNode>> fullKeyMap = store.getCollectionFullKeyIndex()
+					.get(condition.getColumnIndex());
+
+			for (Entry<String, ArrayList<SdqlNode>> entry : fullKeyMap.entrySet()) {
+				if (!keysToSkip.contains(entry.getKey())) {
+					currentColumnNodes = mergeIndexNodes(currentColumnNodes, entry.getValue());
+				}
+			}
+
 		} else if (condition.getOperator() == Operator.NOT_EQUAL) {
 			if (LogicalUtil.isIndexNumeric(store, condition)) {
 
@@ -441,7 +556,7 @@ public class StoreSearch {
 
 	}
 
-	public TreeSet<Integer> getFilterColPos(Set<String> filterSet, Store store) {
+	private TreeSet<Integer> getFilterColPos(Set<String> filterSet, Store store) {
 
 		TreeSet<Integer> colPosSet = new TreeSet<>();
 
@@ -460,7 +575,7 @@ public class StoreSearch {
 		return colPosSet;
 	}
 
-	public Condition[] sortConditions(Store store, List<Condition> conditions) {
+	private Condition[] sortConditions(Store store, List<Condition> conditions) {
 
 		Condition[] resultantConditions = new Condition[conditions.size()];
 		Map<String, Integer> columnIndex = store.getColumnIndex();
@@ -483,6 +598,10 @@ public class StoreSearch {
 					condition.setUpperValue(condition.getUpperValue().trim());
 				}
 
+			} else {
+				String message = condition.getColumnName() + " is not a valid column";
+				log.error(message);
+				throw new ColumnNotFoundException(message);
 			}
 		}
 
@@ -504,7 +623,7 @@ public class StoreSearch {
 	 *         bound number of the node.
 	 */
 
-	public ArrayList<SdqlNode> mergeIndexNodes(ArrayList<SdqlNode> currentValue, ArrayList<SdqlNode> nextValue) {
+	private ArrayList<SdqlNode> mergeIndexNodes(ArrayList<SdqlNode> currentValue, ArrayList<SdqlNode> nextValue) {
 
 		if (currentValue == null) {
 			currentValue = new ArrayList<>();
@@ -550,7 +669,7 @@ public class StoreSearch {
 
 	}
 
-	public ArrayList<SdqlNode> binarySearchCurrentNodes(ArrayList<SdqlNode> prevColumnNodes,
+	private ArrayList<SdqlNode> binarySearchCurrentNodes(ArrayList<SdqlNode> prevColumnNodes,
 			ArrayList<SdqlNode> currentColumnNodes) {
 
 		ArrayList<SdqlNode> searchResultNodes = new ArrayList<>();
@@ -564,7 +683,7 @@ public class StoreSearch {
 
 	}
 
-	public boolean isContained(ArrayList<SdqlNode> prevColumnNodes, SdqlNode sdqlNode) {
+	private boolean isContained(ArrayList<SdqlNode> prevColumnNodes, SdqlNode sdqlNode) {
 
 		int left = 0;
 		int right = prevColumnNodes.size() - 1;
@@ -589,7 +708,7 @@ public class StoreSearch {
 
 	}
 
-	public ArrayList<SdqlNode> inverseBinarySearchCurrentNodes(ArrayList<SdqlNode> prevColumnNodes,
+	private ArrayList<SdqlNode> inverseBinarySearchCurrentNodes(ArrayList<SdqlNode> prevColumnNodes,
 			ArrayList<SdqlNode> currentColumnNodes) {
 
 		ArrayList<SdqlNode> searchResultNodes = new ArrayList<>();
@@ -601,7 +720,7 @@ public class StoreSearch {
 
 	}
 
-	public void addAllContainedNodes(ArrayList<SdqlNode> currentColumnNodes, SdqlNode prevNode,
+	private void addAllContainedNodes(ArrayList<SdqlNode> currentColumnNodes, SdqlNode prevNode,
 			ArrayList<SdqlNode> searchResultNodes) {
 
 		int left = 0;
@@ -656,12 +775,12 @@ public class StoreSearch {
 		}
 	}
 
-	public boolean doesContain(SdqlNode prevNode, SdqlNode currentNode) {
+	private boolean doesContain(SdqlNode prevNode, SdqlNode currentNode) {
 		return prevNode.getLowerBound() < currentNode.getLowerBound()
 				&& prevNode.getUpperBound() > currentNode.getUpperBound();
 	}
 
-	public void buildPreFixMap(SdqlNode currentNode, int lastConditionColPos, TreeSet<Integer> filterColPos,
+	private void buildPreFixMap(SdqlNode currentNode, int lastConditionColPos, TreeSet<Integer> filterColPos,
 			Map<String, String> resultObject, Store store) {
 
 		int firstColPos = filterColPos.first();
@@ -692,7 +811,7 @@ public class StoreSearch {
 		}
 	}
 
-	public void buildPostfixMap(SdqlNode currentNode, int nextColPos, TreeSet<Integer> filterColPos, int lasColPos,
+	private void buildPostfixMap(SdqlNode currentNode, int nextColPos, TreeSet<Integer> filterColPos, int lasColPos,
 			Map<String, String> resultObject, Store store) {
 
 		if (nextColPos > lasColPos) {
@@ -717,18 +836,27 @@ public class StoreSearch {
 	 * @param store      First sorted list of sdql nodes.
 	 * @param conditions Second sorted list of sdql nodes.
 	 */
-	public void normalizeNull(Store store, Condition[] conditions) {
+	private void normalizeNull(Store store, Condition[] conditions) {
 
 		for (Condition condition : conditions) {
 
 			if (condition.getValue() != null) {
+				boolean isNullFound = false;
 				for (int i = 0; i < condition.getValue().size(); i++) {
 					if (condition.getValue().get(i).equalsIgnoreCase(SdqlConstants.NULL)) {
 						if (store.getSdqlColumns()[condition.getColumnIndex()].isNumeric()) {
 							condition.getValue().set(i, SdqlConstants.LONG_NULL.toString());
+							isNullFound = true;
 						} else {
 							condition.getValue().set(i, SdqlConstants.NULL);
+							isNullFound = true;
 						}
+					}
+				}
+				if (condition.getOperator() == Operator.CONTAINS_EITHER_INCLUDING_NULL) {
+					condition.setOperator(Operator.CONTAINS_EITHER);
+					if (!isNullFound) {
+						condition.getValue().add(SdqlConstants.NULL);
 					}
 				}
 			} else {
@@ -760,7 +888,8 @@ public class StoreSearch {
 	 * @param newQualifyingNodes Second sorted list of sdql nodes.
 	 * @return It returns the duplicate nodes in two sorted lists.
 	 */
-	public ArrayList<SdqlNode> getDuplicates(ArrayList<SdqlNode> currentNodes, ArrayList<SdqlNode> newQualifyingNodes) {
+	private ArrayList<SdqlNode> getDuplicates(ArrayList<SdqlNode> currentNodes,
+			ArrayList<SdqlNode> newQualifyingNodes) {
 
 		if (currentNodes == null) {
 			currentNodes = new ArrayList<>();

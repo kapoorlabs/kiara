@@ -222,10 +222,25 @@ public class StoreLoader {
 
 				if (store.getSdqlColumns()[level].getSecondaryType() != null) {
 
+					if (store.getSdqlColumns()[level].getSecondaryType().getSecondaryCollectionType() != null) {
+						
+						ArrayList<SdqlNode> fullKeyIndexNodes = store.getCollectionFullKeyIndex().get(level)
+								.get(node.getStringValue());
+
+						if (fullKeyIndexNodes == null) {
+							fullKeyIndexNodes = new ArrayList<SdqlNode>();
+							store.getCollectionFullKeyIndex().get(level).put(node.getStringValue(), fullKeyIndexNodes);
+						}
+
+						fullKeyIndexNodes.add(node);
+
+					}
+
 					if (store.getSdqlColumns()[level].getSecondaryType()
 							.getSecondaryCollectionType() == SecondaryCollectionDataType.STRING) {
 
 						keys = node.getStringValue().split(Delimiters.COMMA);
+
 
 					} else if (store.getSdqlColumns()[level].getSecondaryType()
 							.getSecondaryCollectionType() == SecondaryCollectionDataType.NUMBER) {
@@ -241,7 +256,7 @@ public class StoreLoader {
 							stringKey = keys[i].trim();
 							longKeys[i] = stringKey.equalsIgnoreCase(SdqlConstants.NULL) || stringKey.isEmpty()
 									? SdqlConstants.LONG_NULL
-									: ((Double)Double.parseDouble(stringKey)).longValue();
+									: ((Double) Double.parseDouble(stringKey)).longValue();
 						}
 
 					} else if (store.getSdqlColumns()[level].getSecondaryType()
@@ -426,7 +441,7 @@ public class StoreLoader {
 						Set<String> uniqueKey = new HashSet<>();
 						for (String key : keys) {
 							key = key.trim();
-							if (key.equalsIgnoreCase(SdqlConstants.NULL) || key.isEmpty() ) {
+							if (key.equalsIgnoreCase(SdqlConstants.NULL) || key.isEmpty()) {
 								key = SdqlConstants.NULL;
 							}
 							if (uniqueKey.contains(key)) {

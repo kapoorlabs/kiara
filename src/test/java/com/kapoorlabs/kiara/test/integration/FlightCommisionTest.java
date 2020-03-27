@@ -19,6 +19,7 @@ import com.kapoorlabs.kiara.domain.Condition;
 import com.kapoorlabs.kiara.domain.Operator;
 import com.kapoorlabs.kiara.domain.Store;
 import com.kapoorlabs.kiara.exception.LoadDataException;
+import com.kapoorlabs.kiara.exception.NonSupportedOperationException;
 import com.kapoorlabs.kiara.loader.StoreLoader;
 import com.kapoorlabs.kiara.search.StoreSearch;
 import com.kapoorlabs.kiara.test.objects.FlightCommissionTestObject;
@@ -342,6 +343,132 @@ public class FlightCommisionTest {
 		for (int i = 0; i < result.size(); i++) {
 			assertTrue(expectedCommission.contains(result.get(i).get("COMMISSION")));
 		}
+
+	}
+	
+	@Test
+	public void flightCommissionTest_13() {
+
+		StoreSearch storeSearch = new StoreSearch();
+
+		List<Condition> conditions = new LinkedList<>();
+
+		List<String> values = null;
+
+		conditions.add(new Condition("flightnumbers", Operator.CONTAINS_EITHER, values));
+		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+
+		Set<String> expectedCommission = new HashSet<>();
+
+		expectedCommission.add("0");
+
+		assertEquals(1, result.size());
+		for (int i = 0; i < result.size(); i++) {
+			assertTrue(expectedCommission.contains(result.get(i).get("COMMISSION")));
+		}
+
+	}
+	
+	@Test
+	public void flightCommissionTest_14() {
+
+		StoreSearch storeSearch = new StoreSearch();
+
+		List<Condition> conditions = new LinkedList<>();
+
+		List<String> values = new LinkedList<>();
+
+		values.add("Al1");
+		conditions.add(new Condition("flightnumbers", Operator.CONTAINS_EITHER, values));
+		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+
+		Set<String> expectedCommission = new HashSet<>();
+
+		expectedCommission.add("0");
+
+		assertEquals(0, result.size());
+		for (int i = 0; i < result.size(); i++) {
+			assertTrue(expectedCommission.contains(result.get(i).get("COMMISSION")));
+		}
+
+	}
+	
+	@Test
+	public void flightCommissionTest_15() {
+
+		StoreSearch storeSearch = new StoreSearch();
+
+		List<Condition> conditions = new LinkedList<>();
+
+		List<String> values = new LinkedList<>();
+
+		values.add("Al1");
+		conditions.add(new Condition("flightnumbers", Operator.CONTAINS_EITHER_INCLUDING_NULL, values));
+		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+
+		Set<String> expectedCommission = new HashSet<>();
+
+		expectedCommission.add("0");
+
+		assertEquals(1, result.size());
+		for (int i = 0; i < result.size(); i++) {
+			assertTrue(expectedCommission.contains(result.get(i).get("COMMISSION")));
+		}
+
+	}
+	
+	@Test
+	public void flightCommissionTest_16() {
+
+		StoreSearch storeSearch = new StoreSearch();
+
+		List<Condition> conditions = new LinkedList<>();
+
+		List<String> values = new LinkedList<>();
+
+		values.add("AA11");
+		conditions.add(new Condition("flightnumbers", Operator.NOT_CONTAINS, values));
+		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+
+
+		assertEquals(7, result.size());
+
+	}
+	
+	@Test
+	public void flightCommissionTest_17() {
+
+		StoreSearch storeSearch = new StoreSearch();
+
+		List<Condition> conditions = new LinkedList<>();
+
+		List<String> values = new LinkedList<>();
+
+		values.add("AA11");
+		values.add("CA2");
+		values.add("DL5000");
+		conditions.add(new Condition("flightnumbers", Operator.NOT_CONTAINS, values));
+		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+
+
+		assertEquals(4, result.size());
+
+	}
+	
+	@Test(expected=NonSupportedOperationException.class)
+	public void flightCommissionTest_18() {
+
+		StoreSearch storeSearch = new StoreSearch();
+
+		List<Condition> conditions = new LinkedList<>();
+
+		List<String> values = new LinkedList<>();
+
+		values.add("2");
+		conditions.add(new Condition("commission", Operator.NOT_CONTAINS, values));
+		@SuppressWarnings("unused")
+		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+
 
 	}
 

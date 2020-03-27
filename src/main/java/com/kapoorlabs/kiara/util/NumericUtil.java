@@ -5,12 +5,25 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 
+import com.kapoorlabs.kiara.constants.Delimiters;
 import com.kapoorlabs.kiara.constants.SdqlConstants;
 import com.kapoorlabs.kiara.domain.SecondaryCollectionDataType;
 import com.kapoorlabs.kiara.domain.SecondarySingleDataType;
 import com.kapoorlabs.kiara.domain.Store;
 
 public class NumericUtil {
+
+	public static long[] getNumericValues(Store store, String value, int colIndex) {
+
+		String[] values = value.split(Delimiters.COMMA);
+		long[] longValues = new long[values.length];
+
+		for (int i = 0; i < longValues.length; i++) {
+			longValues[i] = getNumericValue(store, values[i], colIndex);
+		}
+
+		return longValues;
+	}
 
 	/**
 	 * This function parses the string value into a numeric value based on the
@@ -33,12 +46,12 @@ public class NumericUtil {
 	 */
 	public static Long getNumericValue(Store store, String value, int colIndex) {
 
-		if (value == null || value.equals(SdqlConstants.NULL)) {
+		if (value == null || value.equals(SdqlConstants.NULL) || value.isEmpty()) {
 			return SdqlConstants.LONG_NULL;
 		}
 
 		if (store.getSdqlColumns()[colIndex].isNumeric()) {
-			return Long.parseLong(value);
+			return ((Double) Double.parseDouble(value)).longValue();
 		}
 
 		if (store.getSdqlColumns()[colIndex].getSecondaryType() != null && (store.getSdqlColumns()[colIndex]
@@ -66,7 +79,7 @@ public class NumericUtil {
 		if (store.getSdqlColumns()[colIndex].getSecondaryType() != null && store.getSdqlColumns()[colIndex]
 				.getSecondaryType().getSecondaryCollectionType() == SecondaryCollectionDataType.NUMBER) {
 
-			return Long.parseLong(value);
+			return ((Double) Double.parseDouble(value)).longValue();
 
 		}
 

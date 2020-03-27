@@ -2,7 +2,7 @@ package com.kapoorlabs.kiara.exception;
 
 /**
  * This exception is raised during search time, when between operator is used in
- * a condition and both lower and upper ranges are not specified
+ * a condition and both lower and upper ranges are not specified.
  *
  * @author Anuj Kapoor
  * @author www.priceline.com
