@@ -1,10 +1,14 @@
 package com.kapoorlabs.kiara.util;
 
+import com.kapoorlabs.kiara.constants.SdqlConstants;
 import com.kapoorlabs.kiara.domain.Condition;
 import com.kapoorlabs.kiara.domain.SecondaryCollectionDataType;
 import com.kapoorlabs.kiara.domain.SecondarySingleDataType;
 import com.kapoorlabs.kiara.domain.Store;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class LogicalUtil {
 	
 	/**
@@ -69,6 +73,70 @@ public class LogicalUtil {
 										.getSecondarySingleType() == SecondarySingleDataType.DATE_RANGE
 								|| store.getSdqlColumns()[condition.getColumnIndex()].getSecondaryType()
 										.getSecondarySingleType() == SecondarySingleDataType.DATE_TIME_RANGE));
+	}
+	
+	public static Long getLongValue(String input) {
+		if (input == null || input.isEmpty() || input.equalsIgnoreCase(SdqlConstants.NULL)) {
+			return null;
+		}
+		Long result = null;
+		try {
+			result = Long.parseLong(input);
+		} catch (Exception ex) {
+			log.error("Error while transforming, number expected, but got string for :" + input);
+			result = null;
+		}
+		return result;
+	}
+	
+	public static Integer getIntValue(String input) {
+		if (input == null || input.isEmpty() || input.equalsIgnoreCase(SdqlConstants.NULL)) {
+			return null;
+		}
+		Integer result = null;
+		try {
+			result = Integer.parseInt(input);
+		} catch (Exception ex) {
+			log.error("Error while transforming, number expected, but got string for :" + input);
+			result = null;
+		}
+		return result;
+	}
+
+	public static Double getDoubleValue(String input) {
+		if (input == null || input.isEmpty() || input.equalsIgnoreCase(SdqlConstants.NULL)) {
+			return null;
+		}
+		Double result = null;
+		try {
+			result = Double.parseDouble(input);
+		} catch (Exception ex) {
+			log.error("Error while transforming, double expected, but got string for :" + input);
+			result = null;
+		}
+		return result;
+
+	}
+
+	public static String getStringValue(String input) {
+		if (input == null || input.isEmpty() || input.equalsIgnoreCase(SdqlConstants.NULL)) {
+			return null;
+		}
+		return input;
+	}
+	
+	public static Boolean getBooleanValue(String input) {
+		if (input == null || input.isEmpty() || input.equalsIgnoreCase(SdqlConstants.NULL)) {
+			return null;
+		}
+		Boolean result = null;
+		try {
+			result = Boolean.parseBoolean(input);
+		} catch (Exception ex) {
+			log.error("Error while transforming, boolean expected, but got string for :" + input);
+			result = null;
+		}
+		return result;
 	}
 
 }

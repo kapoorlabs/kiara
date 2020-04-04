@@ -1,5 +1,6 @@
 package com.kapoorlabs.kiara.domain;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -51,6 +52,58 @@ public class Condition implements Comparable<Condition> {
 	 *                                        ,CONTAINS_EITHER or CONTAINS_ALL is
 	 *                                        used in range based data.
 	 */
+	public Condition(String columnName, Operator operator, Number lowerValue, Number upperValue) {
+
+		if (operator != Operator.BETWEEN) {
+			String message = "Only BETWEEN operation is allowed on lower and upper values.";
+			log.error(message + "Column :" + columnName);
+			throw new NonSupportedOperationException(message);
+		}
+
+		columnIndex = -1;
+		this.columnName = columnName;
+		this.operator = operator;
+		this.lowerValue = lowerValue == null ? SdqlConstants.NULL : lowerValue.toString();
+		this.upperValue = upperValue == null ? SdqlConstants.NULL : upperValue.toString();
+
+	}
+
+	/**
+	 * Creates a range based condition lowerRange &lt;= column's value &lt;=
+	 * upperRange.
+	 * 
+	 * @param columnName Column's name or the SdqlfieldName on which condition is
+	 *                   created
+	 * @param lowerValue lower value of the range.
+	 * @param upperValue upper Value of the range.
+	 * 
+	 */
+	public Condition(String columnName, Number lowerValue, Number upperValue) {
+
+		columnIndex = -1;
+		this.columnName = columnName;
+		this.operator = Operator.BETWEEN;
+		this.lowerValue = lowerValue == null ? SdqlConstants.NULL : lowerValue.toString();
+		this.upperValue = upperValue == null ? SdqlConstants.NULL : upperValue.toString();
+
+	}
+	
+	/**
+	 * Creates a range based condition lowerRange &lt;= column's value &lt;=
+	 * upperRange.
+	 * 
+	 * @param columnName Column's name or the SdqlfieldName on which condition is
+	 *                   created
+	 * @param operator   Only Between operator is allowed up to this version.
+	 * @param lowerValue lower value of the range.
+	 * @param upperValue upper Value of the range.
+	 * 
+	 * @throws NonSupportedOperationException Throws an
+	 *                                        NonSupportedOperationException if any
+	 *                                        operator other than EQUALS
+	 *                                        ,CONTAINS_EITHER or CONTAINS_ALL is
+	 *                                        used in range based data.
+	 */
 	public Condition(String columnName, Operator operator, String lowerValue, String upperValue) {
 
 		if (operator != Operator.BETWEEN) {
@@ -62,8 +115,8 @@ public class Condition implements Comparable<Condition> {
 		columnIndex = -1;
 		this.columnName = columnName;
 		this.operator = operator;
-		this.lowerValue = lowerValue == null ? SdqlConstants.NULL : lowerValue;
-		this.upperValue = upperValue == null ? SdqlConstants.NULL : upperValue;
+		this.lowerValue = lowerValue == null ? SdqlConstants.NULL : lowerValue.toString();
+		this.upperValue = upperValue == null ? SdqlConstants.NULL : upperValue.toString();
 
 	}
 
@@ -82,8 +135,8 @@ public class Condition implements Comparable<Condition> {
 		columnIndex = -1;
 		this.columnName = columnName;
 		this.operator = Operator.BETWEEN;
-		this.lowerValue = lowerValue == null ? SdqlConstants.NULL : lowerValue;
-		this.upperValue = upperValue == null ? SdqlConstants.NULL : upperValue;
+		this.lowerValue = lowerValue == null ? SdqlConstants.NULL : lowerValue.toString();
+		this.upperValue = upperValue == null ? SdqlConstants.NULL : upperValue.toString();
 
 	}
 
@@ -98,7 +151,7 @@ public class Condition implements Comparable<Condition> {
 	 * 
 	 */
 
-	public Condition(String columnName, Operator operator, List<String> values) {
+	public Condition(String columnName, Operator operator, Iterable<? extends Serializable> values) {
 
 		columnIndex = -1;
 		this.columnName = columnName;
@@ -117,7 +170,7 @@ public class Condition implements Comparable<Condition> {
 	 *                   first value in the list is compared
 	 * 
 	 */
-	public Condition(String columnName, List<String> values) {
+	public Condition(String columnName, Iterable<? extends Serializable> values) {
 
 		columnIndex = -1;
 		this.columnName = columnName;
@@ -135,13 +188,13 @@ public class Condition implements Comparable<Condition> {
 	 * @param value      The value based on which the condition is built on.
 	 * 
 	 */
-	public Condition(String columnName, String value) {
+	public Condition(String columnName, Serializable value) {
 
 		columnIndex = -1;
 		this.columnName = columnName;
 		this.operator = Operator.EQUAL;
 		List<String> values = new LinkedList<>();
-		values.add(value == null ? SdqlConstants.NULL : value);
+		values.add(value == null ? SdqlConstants.NULL : value.toString());
 		this.value = values;
 
 	}
@@ -156,13 +209,13 @@ public class Condition implements Comparable<Condition> {
 	 * @param value      The value based on which the condition is built on.
 	 * 
 	 */
-	public Condition(String columnName, Operator operator, String value) {
+	public Condition(String columnName, Operator operator, Serializable value) {
 
 		columnIndex = -1;
 		this.columnName = columnName;
 		this.operator = operator != null ? operator : Operator.EQUAL;
 		List<String> values = new LinkedList<>();
-		values.add(value == null ? SdqlConstants.NULL : value);
+		values.add(value == null ? SdqlConstants.NULL : value.toString());
 		this.value = values;
 
 	}
@@ -217,17 +270,17 @@ public class Condition implements Comparable<Condition> {
 				+ lowerValue + ", upperValue=" + upperValue + ", columnIndex=" + columnIndex + "]";
 	}
 	
-	private List<String> getCleanedValues(List<String> values) {
+	private List<String> getCleanedValues(Iterable<? extends Serializable> values) {
 		List<String> cleanedValues = new LinkedList<>();
 
 		if (values == null) {
 			cleanedValues.add(SdqlConstants.NULL);
 		} else {
-			for (String value : values) {
+			for (Serializable value : values) {
 				if (value == null) {
 					cleanedValues.add(SdqlConstants.NULL);
 				} else {
-					cleanedValues.add(value);
+					cleanedValues.add(value.toString());
 				}
 			}
 		}
