@@ -8,8 +8,8 @@ Kiara DB is a NoSql Trie based in-memory database, especially engineered for dat
 
 > You can query by any column or any permutation/combination of columns at consistent high performance without having to create a single composite index. So you might as well generate queries at runtime, without having to worry about performance
 
-There is no existing database that provides this feature. Databases like Redis and Sql Lite are based on Hash indexes and B*-Tree indexes, which can provide very limited searching capabilities. In fact it is impossible. In fact, in hash and B*-Tree index based databases, if you need to have the freedom for searching by any combination of columns, the required number of indexes required will increase exponentially, precisely being (2^n)/n. 
-If n(number of columns) even gets as big as 15 or 20, we are talking about million indexes, thus its an impossible task for other databases (in this case Kiara will only create 20 indexes, as opposed to 1 million)
+There is no existing database that provides this feature. Databases like Redis and Sql Lite are based on Hash indexes and B*-Tree indexes, which can provide very limited searching capabilities. In fact it is impossible. With hash and B*-Tree index based databases, if you need to have the freedom for searching by any combination of columns, the required number of indexes will increase exponentially, precisely by (2^n)/n. 
+If n(number of columns) even gets as big as 20, we are talking about million indexes, thus its an impossible task for other databases to provide a capability of searching by any condition with consistent high performance. (In this case Kiara will only create 20 indexes, as opposed to 1 million)
 
 Plus there are many other power unique features like memory de-duplication, range based searching,  partial or full collection search, partial exclusions which are discussed further.
 
