@@ -59,20 +59,26 @@ public class NumericUtil {
 				|| store.getSdqlColumns()[colIndex].getSecondaryType()
 						.getSecondarySingleType() == SecondarySingleDataType.DATE)) {
 
-			String dateFormat = store.getSdqlColumns()[colIndex].getSecondaryType().getFormat();
-
-			return getNumericValueFromDate(value, dateFormat);
+			try {
+				return LocalDate.parse(value).toEpochDay();
+			} catch (Exception ex) {
+				String dateFormat = store.getSdqlColumns()[colIndex].getSecondaryType().getFormat();
+				return getNumericValueFromDate(value, dateFormat);
+			}
 
 		}
 
 		if (store.getSdqlColumns()[colIndex].getSecondaryType() != null && (store.getSdqlColumns()[colIndex]
 				.getSecondaryType().getSecondaryCollectionType() == SecondaryCollectionDataType.DATE_TIME
 				|| store.getSdqlColumns()[colIndex].getSecondaryType()
-						.getSecondarySingleType() == SecondarySingleDataType.DATE)) {
+						.getSecondarySingleType() == SecondarySingleDataType.DATE_TIME)) {
 
-			String dateTimeFormat = store.getSdqlColumns()[colIndex].getSecondaryType().getFormat();
-
-			return getNumericValueFromDateTime(value, dateTimeFormat);
+			try {
+				return LocalDateTime.parse(value).toEpochSecond(ZoneOffset.of("Z"));
+			} catch (Exception ex) {
+				String dateTimeFormat = store.getSdqlColumns()[colIndex].getSecondaryType().getFormat();
+				return getNumericValueFromDateTime(value, dateTimeFormat);
+			}
 
 		}
 

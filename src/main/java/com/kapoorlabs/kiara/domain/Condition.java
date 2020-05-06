@@ -258,6 +258,45 @@ public class Condition implements Comparable<Condition> {
 		this.value = getCleanedValues(valueArray);
 
 	}
+	
+	/**
+	 * Creates a condition for operations such as EQUALS, CONTAINS_EITHER,
+	 * CONTAINS_ALL, LESS_THAN, LESS_THAN_EQUAL. GREATER_THAN, GREATER_THAN_EQUAL
+	 * 
+	 * @param columnName Column's name or the SdqlfieldName on which condition is
+	 *                   created
+	 * @param operator   If operator is null, EQUAL operation is assumed by default.
+	 * @param valueArray The array of values based on which the condition is built
+	 *                   on.
+	 * 
+	 */
+	public Condition(String columnName, Operator operator, Number[] valueArray) {
+
+		columnIndex = -1;
+		this.columnName = columnName;
+		this.operator = operator != null ? operator : Operator.EQUAL;
+		this.value = getCleanedValues(valueArray);
+
+	}
+	
+	/**
+	 * Creates a condition for EQUALS operation, whether the column is equal to a
+	 * particular value
+	 * 
+	 * @param columnName Column's name or the SdqlfieldName on which condition is
+	 *                   created
+	 * @param valueArray The array of values, the condition is built on. Only the
+	 *                   first value in array list is compared.
+	 * 
+	 */
+	public Condition(String columnName, Number[] valueArray) {
+
+		columnIndex = -1;
+		this.columnName = columnName;
+		this.operator = Operator.EQUAL;
+		this.value = getCleanedValues(valueArray);
+
+	}
 
 	@Override
 	public int compareTo(Condition o) {
@@ -298,6 +337,23 @@ public class Condition implements Comparable<Condition> {
 					cleanedValues.add(SdqlConstants.NULL);
 				} else {
 					cleanedValues.add(value);
+				}
+			}
+		}
+		return cleanedValues;
+	}
+	
+	private List<String> getCleanedValues(Number[] values) {
+		List<String> cleanedValues = new LinkedList<>();
+
+		if (values == null) {
+			cleanedValues.add(SdqlConstants.NULL);
+		} else {
+			for (Number value : values) {
+				if (value == null) {
+					cleanedValues.add(SdqlConstants.NULL);
+				} else {
+					cleanedValues.add(value.toString());
 				}
 			}
 		}
