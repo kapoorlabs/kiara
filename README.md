@@ -15,4 +15,4 @@ Plus there are many other power unique features like memory de-duplication, rang
 
 Currently, kiara only supports Java.
 
-Documentation is expected to be released by May 2020.
+Documentation is expected to be released by June 2020.
