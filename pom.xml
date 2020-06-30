@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.kapoorlabs</groupId>
 	<artifactId>kiara</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.1.0</version>
 
 	<packaging>jar</packaging>
 	<name>Kiara</name>
@@ -41,7 +41,7 @@
 		<connection>scm:git:https://github.com/kapoorlabs/kiara.git</connection>
 		<developerConnection>scm:git:https://github.com/kapoorlabs/kiara.git</developerConnection>
 		<url>https://github.com/kapoorlabs/kiara</url>
-		<tag>HEAD</tag>
+		<tag>kiara-1.1.0</tag>
 	</scm>
 
 	<dependencies>
