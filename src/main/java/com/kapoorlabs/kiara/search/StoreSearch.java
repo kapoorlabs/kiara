@@ -12,6 +12,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeSet;
 
+import com.kapoorlabs.kiara.constants.ExceptionConstants;
 import com.kapoorlabs.kiara.constants.SdqlConstants;
 import com.kapoorlabs.kiara.domain.Condition;
 import com.kapoorlabs.kiara.domain.NullableOrderedString;
@@ -51,7 +52,7 @@ public class StoreSearch {
 	 */
 
 	private class ConditionMerger {
-		ArrayList<SdqlNode> similarSdqlNodes;
+		ArrayList<ArrayList<SdqlNode>> similarSdqlNodesCollection;
 		int nextIndex;
 	}
 
@@ -99,8 +100,8 @@ public class StoreSearch {
 	 */
 	public List<Map<String, String>> query(Store store, List<Condition> conditions, Set<String> filterSet) {
 
-		if (conditions == null) {
-			conditions = new LinkedList<>();
+		if (conditions == null || conditions.isEmpty()) {
+			throw new InsufficientDataException(ExceptionConstants.CONDITIONS_NOT_PRESENT);
 		}
 
 		if (filterSet == null) {
@@ -113,20 +114,27 @@ public class StoreSearch {
 
 		normalizeNull(store, sortedConditions);
 
-		ArrayList<SdqlNode> prevColumnNodes = new ArrayList<>();
+		ArrayList<ArrayList<SdqlNode>> prevColumnNodesCollection = new ArrayList<>();
 
 		for (int i = 0; i < sortedConditions.length; i++) {
 
 			ConditionMerger conditionMerger = getNextQualifyingNodes(sortedConditions, i, store);
+
+			if (conditionMerger.similarSdqlNodesCollection.isEmpty()) {
+				return new LinkedList<>();
+			}
+
 			if (i == 0) {
-				prevColumnNodes = conditionMerger.similarSdqlNodes;
+				prevColumnNodesCollection = conditionMerger.similarSdqlNodesCollection;
 			} else {
 
-				if (conditionMerger.similarSdqlNodes.size() < prevColumnNodes.size()) {
-					prevColumnNodes = binarySearchCurrentNodes(prevColumnNodes, conditionMerger.similarSdqlNodes);
+				if (LogicalUtil.getCollectionSize(conditionMerger.similarSdqlNodesCollection) < LogicalUtil
+						.getCollectionSize(prevColumnNodesCollection)) {
+					prevColumnNodesCollection = LogicalUtil.binarySearchCurrentNodes(prevColumnNodesCollection,
+							conditionMerger.similarSdqlNodesCollection);
 				} else {
-					prevColumnNodes = inverseBinarySearchCurrentNodes(prevColumnNodes,
-							conditionMerger.similarSdqlNodes);
+					prevColumnNodesCollection = LogicalUtil.inverseBinarySearchCurrentNodes(prevColumnNodesCollection,
+							conditionMerger.similarSdqlNodesCollection);
 				}
 
 			}
@@ -137,14 +145,22 @@ public class StoreSearch {
 
 		int lastConditionColPos = sortedConditions[sortedConditions.length - 1].getColumnIndex();
 
-		for (SdqlNode resultNode : prevColumnNodes) {
-			Map<String, String> resultObject = new HashMap<>();
-			if (filterColPos.first() <= lastConditionColPos) {
-				buildPreFixMap(resultNode, lastConditionColPos, filterColPos, resultObject, store);
-			}
+		Set<SdqlNode> resultNodeSet = new HashSet<SdqlNode>();
 
-			buildPostfixMap(resultNode, lastConditionColPos + 1, filterColPos, filterColPos.last(), resultObject,
-					store);
+		for (ArrayList<SdqlNode> prevColumnNodes : prevColumnNodesCollection) {
+			for (SdqlNode resultNode : prevColumnNodes) {
+				if (resultNodeSet.contains(resultNode)) {
+					continue;
+				}
+				resultNodeSet.add(resultNode);
+				Map<String, String> resultObject = new HashMap<>();
+				if (filterColPos.first() <= lastConditionColPos) {
+					buildPreFixMap(resultNode, lastConditionColPos, filterColPos, resultObject, store);
+				}
+
+				buildPostfixMap(resultNode, lastConditionColPos + 1, filterColPos, filterColPos.last(), resultObject,
+						store);
+			}
 		}
 
 		return result;
@@ -153,38 +169,40 @@ public class StoreSearch {
 	private ConditionMerger getNextQualifyingNodes(Condition[] conditions, int currentIndex, Store store) {
 
 		ConditionMerger conditionMerger = new ConditionMerger();
-		ArrayList<SdqlNode> currentColumnNodes = new ArrayList<>();
-		ArrayList<SdqlNode> nextColumnNodes = new ArrayList<>();
+		ArrayList<ArrayList<SdqlNode>> currentColumnNodesCollection = new ArrayList<>();
+		ArrayList<ArrayList<SdqlNode>> nextColumnNodesCollection = new ArrayList<>();
 		int colIndex = conditions[currentIndex].getColumnIndex();
 
 		for (int i = currentIndex; i < conditions.length; i++) {
 
 			if (i == currentIndex) {
-				currentColumnNodes = getQualifyingNodes(conditions[i], store, new ArrayList<>());
+				currentColumnNodesCollection = getQualifyingNodes(conditions[i], store);
 				continue;
 			}
 
 			if (colIndex != conditions[i].getColumnIndex()) {
-				conditionMerger.similarSdqlNodes = currentColumnNodes;
+				conditionMerger.similarSdqlNodesCollection = currentColumnNodesCollection;
 				conditionMerger.nextIndex = i;
 				break;
 			} else {
-				nextColumnNodes = getQualifyingNodes(conditions[i], store, new ArrayList<>());
-				currentColumnNodes = getDuplicates(currentColumnNodes, nextColumnNodes);
+				nextColumnNodesCollection = getQualifyingNodes(conditions[i], store);
+				currentColumnNodesCollection = LogicalUtil.getDuplicatesFromCollection(currentColumnNodesCollection,
+						nextColumnNodesCollection);
 			}
 
 		}
 
-		if (conditionMerger.similarSdqlNodes == null) {
-			conditionMerger.similarSdqlNodes = currentColumnNodes;
+		if (conditionMerger.similarSdqlNodesCollection == null) {
+			conditionMerger.similarSdqlNodesCollection = currentColumnNodesCollection;
 			conditionMerger.nextIndex = conditions.length;
 		}
 
 		return conditionMerger;
 	}
 
-	private ArrayList<SdqlNode> getQualifyingNodes(Condition condition, Store store,
-			ArrayList<SdqlNode> currentColumnNodes) {
+	private ArrayList<ArrayList<SdqlNode>> getQualifyingNodes(Condition condition, Store store) {
+		
+		ArrayList<ArrayList<SdqlNode>> currentColumnNodesCollection = new ArrayList<>();
 
 		if (condition.getOperator() == Operator.EQUAL || condition.getOperator() == Operator.CONTAINS_EITHER) {
 			if (LogicalUtil.isIndexNumeric(store, condition)) {
@@ -193,7 +211,7 @@ public class StoreSearch {
 				for (String value : condition.getValue()) {
 					Long numericValue = NumericUtil.getNumericValue(store, value, condition.getColumnIndex());
 					if (columnNumericMap.get(numericValue) != null) {
-						currentColumnNodes = mergeIndexNodes(currentColumnNodes, columnNumericMap.get(numericValue));
+						currentColumnNodesCollection.add(columnNumericMap.get(numericValue));
 					}
 				}
 			} else {
@@ -208,8 +226,7 @@ public class StoreSearch {
 						if (searchableRange != null) {
 							List<Range> qualifiedRanges = searchableRange.getInRange(rangeCondition.getLowerLimit());
 							for (Range qualifiedRange : qualifiedRanges) {
-								currentColumnNodes = mergeIndexNodes(currentColumnNodes,
-										columnMap.get(qualifiedRange.toString()));
+								currentColumnNodesCollection.add(columnMap.get(qualifiedRange.toString()));
 							}
 						}
 					}
@@ -221,7 +238,7 @@ public class StoreSearch {
 							value = rangeCondition.toString();
 						}
 						if (columnMap.get(value) != null) {
-							currentColumnNodes = mergeIndexNodes(currentColumnNodes, columnMap.get(value));
+							currentColumnNodesCollection.add(columnMap.get(value));
 						}
 					}
 				}
@@ -238,8 +255,7 @@ public class StoreSearch {
 				for (String value : condition.getValue()) {
 					Long numericValue = NumericUtil.getNumericValue(store, value, condition.getColumnIndex());
 					if (columnNumericMap.get(numericValue) == null) {
-						currentColumnNodes = new ArrayList<>();
-						return currentColumnNodes;
+						return new ArrayList<>();
 					} else {
 						if (qualifyingNodes == null) {
 							qualifyingNodes = columnNumericMap.get(numericValue);
@@ -261,13 +277,11 @@ public class StoreSearch {
 						Range rangeCondition = RangeParser.parseRange(value, store, condition.getColumnIndex());
 						SearchableRange searchableRange = rangeMap.get(rangeCondition.getPrefix());
 						if (searchableRange == null) {
-							currentColumnNodes = new ArrayList<>();
-							return currentColumnNodes;
+							return new ArrayList<>();
 						} else {
 							List<Range> qualifiedRanges = searchableRange.getInRange(rangeCondition.getLowerLimit());
 							if (qualifiedRanges.size() == 0) {
-								currentColumnNodes = new ArrayList<>();
-								return currentColumnNodes;
+								return new ArrayList<>();
 							}
 
 							ArrayList<SdqlNode> currentSetNodes = null;
@@ -275,7 +289,7 @@ public class StoreSearch {
 								if (currentSetNodes == null) {
 									currentSetNodes = columnMap.get(qualifiedRange.toString());
 								} else {
-									currentSetNodes = mergeIndexNodes(currentSetNodes,
+									currentSetNodes = LogicalUtil.mergeIndexNodes(currentSetNodes,
 											columnMap.get(qualifiedRange.toString()));
 
 								}
@@ -295,8 +309,7 @@ public class StoreSearch {
 
 					for (String value : condition.getValue()) {
 						if (columnMap.get(value) == null) {
-							currentColumnNodes = new ArrayList<>();
-							return currentColumnNodes;
+							return new ArrayList<>();
 						} else {
 							if (qualifyingNodes == null) {
 								qualifyingNodes = columnMap.get(value);
@@ -310,7 +323,9 @@ public class StoreSearch {
 
 			}
 
-			currentColumnNodes = qualifyingNodes != null ? qualifyingNodes : currentColumnNodes;
+			if (qualifyingNodes != null) {
+				currentColumnNodesCollection.add(qualifyingNodes);
+			}
 
 		} else if (condition.getOperator() == Operator.NOT_CONTAINS) {
 
@@ -374,7 +389,7 @@ public class StoreSearch {
 
 			for (Entry<String, ArrayList<SdqlNode>> entry : fullKeyMap.entrySet()) {
 				if (!keysToSkip.contains(entry.getKey())) {
-					currentColumnNodes = mergeIndexNodes(currentColumnNodes, entry.getValue());
+					currentColumnNodesCollection.add(entry.getValue());
 				}
 			}
 
@@ -391,7 +406,7 @@ public class StoreSearch {
 
 				for (Entry<Long, ArrayList<SdqlNode>> entry : columnNumericMap.entrySet()) {
 					if (!conditionValues.contains(entry.getKey())) {
-						currentColumnNodes = mergeIndexNodes(currentColumnNodes, entry.getValue());
+						currentColumnNodesCollection.add(entry.getValue());
 					}
 				}
 
@@ -403,7 +418,7 @@ public class StoreSearch {
 
 				for (Entry<String, ArrayList<SdqlNode>> entry : columnMap.entrySet()) {
 					if (!conditionValues.contains(entry.getKey())) {
-						currentColumnNodes = mergeIndexNodes(currentColumnNodes, entry.getValue());
+						currentColumnNodesCollection.add(entry.getValue());
 					}
 				}
 
@@ -437,7 +452,7 @@ public class StoreSearch {
 				}
 
 				for (Long key : eligibleKeys) {
-					currentColumnNodes = mergeIndexNodes(currentColumnNodes, columnNumericMap.get(key));
+					currentColumnNodesCollection.add(columnNumericMap.get(key));
 				}
 			} else {
 				HashMap<String, ArrayList<SdqlNode>> columnMap = store.getInvertedIndex()
@@ -454,7 +469,7 @@ public class StoreSearch {
 				}
 
 				for (NullableOrderedString key : eligibleKeys) {
-					currentColumnNodes = mergeIndexNodes(currentColumnNodes, columnMap.get(key.toString()));
+					currentColumnNodesCollection.add(columnMap.get(key.toString()));
 				}
 			}
 
@@ -485,7 +500,7 @@ public class StoreSearch {
 							.getAllGreaterThan(NumericUtil.getNumericValue(store, value, condition.getColumnIndex()));
 				}
 				for (Long key : eligibleKeys) {
-					currentColumnNodes = mergeIndexNodes(currentColumnNodes, columnNumericMap.get(key));
+					currentColumnNodesCollection.add(columnNumericMap.get(key));
 				}
 			} else {
 				HashMap<String, ArrayList<SdqlNode>> columnMap = store.getInvertedIndex()
@@ -501,7 +516,7 @@ public class StoreSearch {
 					eligibleKeys = orderedStringkeys.getAllGreaterThan(new NullableOrderedString(value));
 				}
 				for (NullableOrderedString key : eligibleKeys) {
-					currentColumnNodes = mergeIndexNodes(currentColumnNodes, columnMap.get(key.toString()));
+					currentColumnNodesCollection.add(columnMap.get(key.toString()));
 				}
 			}
 
@@ -535,7 +550,7 @@ public class StoreSearch {
 						NumericUtil.getNumericValue(store, upperValue, condition.getColumnIndex()));
 
 				for (Long key : eligibleKeys) {
-					currentColumnNodes = mergeIndexNodes(currentColumnNodes, columnNumericMap.get(key));
+					currentColumnNodesCollection.add(columnNumericMap.get(key));
 				}
 			} else {
 				HashMap<String, ArrayList<SdqlNode>> columnMap = store.getInvertedIndex()
@@ -549,13 +564,13 @@ public class StoreSearch {
 						new NullableOrderedString(upperValue));
 
 				for (NullableOrderedString key : eligibleKeys) {
-					currentColumnNodes = mergeIndexNodes(currentColumnNodes, columnMap.get(key.toString()));
+					currentColumnNodesCollection.add(columnMap.get(key.toString()));
 				}
 			}
 
 		}
 
-		return currentColumnNodes;
+		return currentColumnNodesCollection;
 
 	}
 
@@ -613,176 +628,6 @@ public class StoreSearch {
 		return resultantConditions;
 	}
 
-	/**
-	 * This function takes two sorted lists of Sdql Nodes and returns a merged and
-	 * sorted list.
-	 *
-	 * @param currentValue nodes is the present, merged sorted list of nodes
-	 *                     satisfying conditions so far.
-	 * @param nextValue    nodes is the next qualifying nodes matching the next
-	 *                     criteria. This will be merged with current value nodes
-	 * @return This functions returns the sorted merged list of currentValue Nodes
-	 *         and nextValue nodes. Sorting is done based on lower bound and upper
-	 *         bound number of the node.
-	 */
-
-	private ArrayList<SdqlNode> mergeIndexNodes(ArrayList<SdqlNode> currentValue, ArrayList<SdqlNode> nextValue) {
-
-		if (currentValue == null) {
-			currentValue = new ArrayList<>();
-		}
-
-		if (nextValue == null) {
-			nextValue = new ArrayList<>();
-		}
-
-		ArrayList<SdqlNode> mergedList = new ArrayList<SdqlNode>(currentValue.size() + nextValue.size());
-
-		int currentValuePointer = 0;
-		int nextValuePointer = 0;
-
-		while (currentValuePointer < currentValue.size() || nextValuePointer < nextValue.size()) {
-
-			if (currentValuePointer >= currentValue.size()) {
-				mergedList.add(nextValue.get(nextValuePointer));
-				nextValuePointer++;
-				continue;
-			} else if (nextValuePointer >= nextValue.size()) {
-				mergedList.add(currentValue.get(currentValuePointer));
-				currentValuePointer++;
-				continue;
-			}
-
-			if (currentValue.get(currentValuePointer).getLowerBound() <= nextValue.get(nextValuePointer)
-					.getLowerBound()) {
-				mergedList.add(currentValue.get(currentValuePointer));
-				if (currentValue.get(currentValuePointer).getLowerBound() == nextValue.get(nextValuePointer)
-						.getLowerBound()) {
-					nextValuePointer++;
-				}
-				currentValuePointer++;
-			} else {
-				mergedList.add(nextValue.get(nextValuePointer));
-				nextValuePointer++;
-			}
-
-		}
-
-		return mergedList;
-
-	}
-
-	private ArrayList<SdqlNode> binarySearchCurrentNodes(ArrayList<SdqlNode> prevColumnNodes,
-			ArrayList<SdqlNode> currentColumnNodes) {
-
-		ArrayList<SdqlNode> searchResultNodes = new ArrayList<>();
-
-		for (SdqlNode sdqlNode : currentColumnNodes) {
-			if (isContained(prevColumnNodes, sdqlNode)) {
-				searchResultNodes.add(sdqlNode);
-			}
-		}
-		return searchResultNodes;
-
-	}
-
-	private boolean isContained(ArrayList<SdqlNode> prevColumnNodes, SdqlNode sdqlNode) {
-
-		int left = 0;
-		int right = prevColumnNodes.size() - 1;
-
-		boolean isContained = false;
-
-		while (left <= right) {
-			int mid = left + (right - left) / 2;
-			if (sdqlNode.getLowerBound() < prevColumnNodes.get(mid).getLowerBound()) {
-				right = mid - 1;
-				continue;
-			} else if (sdqlNode.getUpperBound() < prevColumnNodes.get(mid).getUpperBound()) {
-				isContained = true;
-				break;
-			} else if (sdqlNode.getUpperBound() > prevColumnNodes.get(mid).getUpperBound()) {
-				left = mid + 1;
-				continue;
-			}
-		}
-
-		return isContained;
-
-	}
-
-	private ArrayList<SdqlNode> inverseBinarySearchCurrentNodes(ArrayList<SdqlNode> prevColumnNodes,
-			ArrayList<SdqlNode> currentColumnNodes) {
-
-		ArrayList<SdqlNode> searchResultNodes = new ArrayList<>();
-
-		for (SdqlNode sdqlNode : prevColumnNodes) {
-			addAllContainedNodes(currentColumnNodes, sdqlNode, searchResultNodes);
-		}
-		return searchResultNodes;
-
-	}
-
-	private void addAllContainedNodes(ArrayList<SdqlNode> currentColumnNodes, SdqlNode prevNode,
-			ArrayList<SdqlNode> searchResultNodes) {
-
-		int left = 0;
-		int right = currentColumnNodes.size() - 1;
-
-		int lowerIndex = -1;
-		int upperIndex = -1;
-
-		while (left <= right) {
-			int mid = left + (right - left) / 2;
-			if (prevNode.getLowerBound() > currentColumnNodes.get(mid).getLowerBound()) {
-				left = mid + 1;
-				continue;
-			} else if (prevNode.getLowerBound() < currentColumnNodes.get(mid).getLowerBound()
-					&& prevNode.getUpperBound() < currentColumnNodes.get(mid).getLowerBound()) {
-				right = mid - 1;
-				continue;
-			} else if (doesContain(prevNode, currentColumnNodes.get(mid))) {
-				lowerIndex = mid;
-				upperIndex = mid;
-
-				int i = mid - 1;
-				while (i >= 0) {
-					if (doesContain(prevNode, currentColumnNodes.get(i))) {
-						lowerIndex = i;
-					} else {
-						break;
-					}
-
-					i--;
-				}
-
-				i = mid + 1;
-
-				while (i <= currentColumnNodes.size() - 1) {
-					if (doesContain(prevNode, currentColumnNodes.get(i))) {
-						upperIndex = i;
-					} else {
-						break;
-					}
-
-					i++;
-				}
-				break;
-			}
-		}
-
-		if (lowerIndex != -1) {
-			for (int i = lowerIndex; i <= upperIndex; i++) {
-				searchResultNodes.add(currentColumnNodes.get(i));
-			}
-		}
-	}
-
-	private boolean doesContain(SdqlNode prevNode, SdqlNode currentNode) {
-		return prevNode.getLowerBound() < currentNode.getLowerBound()
-				&& prevNode.getUpperBound() > currentNode.getUpperBound();
-	}
-
 	private void buildPreFixMap(SdqlNode currentNode, int lastConditionColPos, TreeSet<Integer> filterColPos,
 			Map<String, String> resultObject, Store store) {
 
@@ -836,8 +681,8 @@ public class StoreSearch {
 	 * This function just normalizes null text in all conditions, to either its
 	 * appropriate string or long value
 	 * 
-	 * @param store      First sorted list of sdql nodes.
-	 * @param conditions Second sorted list of sdql nodes.
+	 * @param store      The data store being searched
+	 * @param conditions list of conditions or search criteria.
 	 */
 	private void normalizeNull(Store store, Condition[] conditions) {
 
