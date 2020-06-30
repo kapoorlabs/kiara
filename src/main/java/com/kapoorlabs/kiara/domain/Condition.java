@@ -87,7 +87,7 @@ public class Condition implements Comparable<Condition> {
 		this.upperValue = upperValue == null ? SdqlConstants.NULL : upperValue.toString();
 
 	}
-	
+
 	/**
 	 * Creates a range based condition lowerRange &lt;= column's value &lt;=
 	 * upperRange.
@@ -115,8 +115,10 @@ public class Condition implements Comparable<Condition> {
 		columnIndex = -1;
 		this.columnName = columnName;
 		this.operator = operator;
-		this.lowerValue = lowerValue == null ? SdqlConstants.NULL : lowerValue.toString();
-		this.upperValue = upperValue == null ? SdqlConstants.NULL : upperValue.toString();
+		this.lowerValue = lowerValue == null || lowerValue.trim().isEmpty() ? SdqlConstants.NULL
+				: lowerValue.toString();
+		this.upperValue = upperValue == null || upperValue.trim().isEmpty() ? SdqlConstants.NULL
+				: upperValue.toString();
 
 	}
 
@@ -135,8 +137,10 @@ public class Condition implements Comparable<Condition> {
 		columnIndex = -1;
 		this.columnName = columnName;
 		this.operator = Operator.BETWEEN;
-		this.lowerValue = lowerValue == null ? SdqlConstants.NULL : lowerValue.toString();
-		this.upperValue = upperValue == null ? SdqlConstants.NULL : upperValue.toString();
+		this.lowerValue = lowerValue == null || lowerValue.trim().isEmpty() ? SdqlConstants.NULL
+				: lowerValue.toString();
+		this.upperValue = upperValue == null || upperValue.trim().isEmpty() ? SdqlConstants.NULL
+				: upperValue.toString();
 
 	}
 
@@ -166,7 +170,7 @@ public class Condition implements Comparable<Condition> {
 	 * 
 	 * @param columnName Column's name or the SdqlfieldName on which condition is
 	 *                   created
-	 * @param values      The list of values, the condition is built on. Only the
+	 * @param values     The list of values, the condition is built on. Only the
 	 *                   first value in the list is compared
 	 * 
 	 */
@@ -194,7 +198,7 @@ public class Condition implements Comparable<Condition> {
 		this.columnName = columnName;
 		this.operator = Operator.EQUAL;
 		List<String> values = new LinkedList<>();
-		values.add(value == null ? SdqlConstants.NULL : value.toString());
+		values.add(value == null || value.toString().trim().isEmpty() ? SdqlConstants.NULL : value.toString());
 		this.value = values;
 
 	}
@@ -215,7 +219,7 @@ public class Condition implements Comparable<Condition> {
 		this.columnName = columnName;
 		this.operator = operator != null ? operator : Operator.EQUAL;
 		List<String> values = new LinkedList<>();
-		values.add(value == null ? SdqlConstants.NULL : value.toString());
+		values.add(value == null || value.toString().trim().isEmpty() ? SdqlConstants.NULL : value.toString());
 		this.value = values;
 
 	}
@@ -258,7 +262,7 @@ public class Condition implements Comparable<Condition> {
 		this.value = getCleanedValues(valueArray);
 
 	}
-	
+
 	/**
 	 * Creates a condition for operations such as EQUALS, CONTAINS_EITHER,
 	 * CONTAINS_ALL, LESS_THAN, LESS_THAN_EQUAL. GREATER_THAN, GREATER_THAN_EQUAL
@@ -278,7 +282,7 @@ public class Condition implements Comparable<Condition> {
 		this.value = getCleanedValues(valueArray);
 
 	}
-	
+
 	/**
 	 * Creates a condition for EQUALS operation, whether the column is equal to a
 	 * particular value
@@ -308,7 +312,7 @@ public class Condition implements Comparable<Condition> {
 		return "Condition [columnName=" + columnName + ", operator=" + operator + ", value=" + value + ", lowerValue="
 				+ lowerValue + ", upperValue=" + upperValue + ", columnIndex=" + columnIndex + "]";
 	}
-	
+
 	private List<String> getCleanedValues(Iterable<? extends Serializable> values) {
 		List<String> cleanedValues = new LinkedList<>();
 
@@ -316,7 +320,7 @@ public class Condition implements Comparable<Condition> {
 			cleanedValues.add(SdqlConstants.NULL);
 		} else {
 			for (Serializable value : values) {
-				if (value == null) {
+				if (value == null || value.toString().trim().isEmpty()) {
 					cleanedValues.add(SdqlConstants.NULL);
 				} else {
 					cleanedValues.add(value.toString());
@@ -325,7 +329,7 @@ public class Condition implements Comparable<Condition> {
 		}
 		return cleanedValues;
 	}
-	
+
 	private List<String> getCleanedValues(String[] values) {
 		List<String> cleanedValues = new LinkedList<>();
 
@@ -342,7 +346,7 @@ public class Condition implements Comparable<Condition> {
 		}
 		return cleanedValues;
 	}
-	
+
 	private List<String> getCleanedValues(Number[] values) {
 		List<String> cleanedValues = new LinkedList<>();
 
