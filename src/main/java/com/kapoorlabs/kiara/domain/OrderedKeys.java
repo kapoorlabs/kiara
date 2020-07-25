@@ -13,7 +13,6 @@ import lombok.Data;
  * than, greater than equal, between and equal operations.
  *
  * @author Anuj Kapoor
- * @author www.priceline.com
  * @version 1.0
  * @since 1.0
  */

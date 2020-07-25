@@ -13,7 +13,6 @@ import com.kapoorlabs.kiara.constants.SdqlConstants;
 import com.kapoorlabs.kiara.domain.SdqlColumn;
 import com.kapoorlabs.kiara.domain.SecondaryCollectionDataType;
 import com.kapoorlabs.kiara.domain.SecondarySingleDataType;
-import com.kapoorlabs.kiara.test.objects.AirportTestObject;
 import com.kapoorlabs.kiara.test.objects.DummyTestObject;
 import com.kapoorlabs.kiara.test.objects.PartialGetterObject;
 import com.kapoorlabs.kiara.test.objects.PoiTestObject;
@@ -53,18 +52,6 @@ public class PojoAdapterTest {
 		assertTrue(PojoAdapter.isNumeric("LOng"));
 	}
 	
-	@Test
-	public void airportObjectTest() {
-		List<SdqlColumn> sdqlColumns = PojoAdapter.getSdqlColumns(AirportTestObject.class);
-		assertEquals(7,sdqlColumns.size());
-		assertEquals(false,sdqlColumns.get(0).isNumeric());
-		assertEquals(false,sdqlColumns.get(1).isNumeric());
-		assertEquals(false,sdqlColumns.get(2).isNumeric());
-		assertEquals(false,sdqlColumns.get(3).isNumeric());
-		assertEquals(false,sdqlColumns.get(4).isNumeric());
-		assertEquals(true,sdqlColumns.get(5).isNumeric());
-		assertEquals(false,sdqlColumns.get(6).isNumeric());
-	}
 	
 	@Test
 	public void poiObjectTest() {

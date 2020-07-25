@@ -14,7 +14,6 @@ import lombok.Data;
  * and null will be assigned to array;list to free up the space.
  *
  * @author Anuj Kapoor
- * @author www.priceline.com
  * @version 1.0
  * @since 1.0
  */

@@ -133,7 +133,6 @@
 							<outputDirectory>target/jacoco-ut</outputDirectory>
 
 							<excludes>
-								<!-- <exclude>com/priceline/constants/*</exclude> -->
 							</excludes>
 
 						</configuration>
@@ -160,7 +159,6 @@
 										</limit>
 									</limits>
 									<excludes>
-										<!-- <exclude>com/priceline/constants/*</exclude> -->
 									</excludes>
 								</rule>
 							</rules>

@@ -6,4 +6,10 @@ com.kapoorlabs.kiara.exception
 com.kapoorlabs.kiara.loader
 com.kapoorlabs.kiara.parser
 com.kapoorlabs.kiara.search
+com.kapoorlabs.kiara.test.adapters
+com.kapoorlabs.kiara.test.domain
+com.kapoorlabs.kiara.test.integration
+com.kapoorlabs.kiara.test.loader
+com.kapoorlabs.kiara.test.objects
+com.kapoorlabs.kiara.test.util
 com.kapoorlabs.kiara.util

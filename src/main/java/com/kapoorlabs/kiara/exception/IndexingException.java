@@ -5,7 +5,6 @@ package com.kapoorlabs.kiara.exception;
  * data, such conditions can occur, for example an invalid Range.
  *
  * @author Anuj Kapoor
- * @author www.priceline.com
  * @version 1.0
  * @since 1.0
  */

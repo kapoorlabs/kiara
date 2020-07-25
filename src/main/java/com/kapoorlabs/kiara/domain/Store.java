@@ -22,7 +22,6 @@ import lombok.extern.slf4j.Slf4j;
  * 
  *
  * @author Anuj Kapoor
- * @author www.priceline.com
  * @version 1.0
  * @since 1.0
  */

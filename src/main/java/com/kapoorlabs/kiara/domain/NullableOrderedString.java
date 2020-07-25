@@ -7,7 +7,6 @@ import com.kapoorlabs.kiara.constants.SdqlConstants;
  * values are ordered in the lowest position.
  *
  * @author Anuj Kapoor
- * @author www.priceline.com
  * @version 1.0
  * @since 1.0
  */

@@ -5,7 +5,6 @@ package com.kapoorlabs.kiara.constants;
  * used to split string based fields.
  *
  * @author Anuj Kapoor
- * @author www.priceline.com
  * @version 1.0
  * @since 1.0
  */

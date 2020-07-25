@@ -10,7 +10,6 @@ import lombok.Data;
  * field appropriately.
  *
  * @author Anuj Kapoor
- * @author www.priceline.com
  * @version 1.0
  * @since 1.0
  */

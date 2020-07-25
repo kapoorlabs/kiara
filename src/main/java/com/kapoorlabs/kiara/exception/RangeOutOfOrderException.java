@@ -5,7 +5,6 @@ package com.kapoorlabs.kiara.exception;
  * a range with higher range value, which is less than lower range.
  *
  * @author Anuj Kapoor
- * @author www.priceline.com
  * @version 1.0
  * @since 1.0
  */
