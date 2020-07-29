@@ -6,7 +6,6 @@ package com.kapoorlabs.kiara.exception;
  * inaccessible private getter method.
  *
  * @author Anuj Kapoor
- * @author www.priceline.com
  * @version 1.0
  * @since 1.0
  */

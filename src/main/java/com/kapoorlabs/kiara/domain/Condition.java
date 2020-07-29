@@ -16,7 +16,6 @@ import lombok.extern.slf4j.Slf4j;
  * country = "US", then there are 2 Conditions, one for each criteria.
  *
  * @author Anuj Kapoor
- * @author www.priceline.com
  * @version 1.0
  * @since 1.0
  */

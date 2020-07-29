@@ -33,7 +33,6 @@ import lombok.extern.slf4j.Slf4j;
  * schema, Each schema is a seperate store in memory.
  *
  * @author Anuj Kapoor
- * @author www.priceline.com
  * @version 1.0
  * @since 1.0
  */

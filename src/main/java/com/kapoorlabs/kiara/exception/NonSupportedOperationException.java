@@ -6,7 +6,6 @@ package com.kapoorlabs.kiara.exception;
  * the operator NOT_CONTAINS is used for single data type columns.
  *
  * @author Anuj Kapoor
- * @author www.priceline.com
  * @version 1.0
  * @since 1.0
  */

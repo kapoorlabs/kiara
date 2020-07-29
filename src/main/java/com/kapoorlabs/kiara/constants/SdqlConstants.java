@@ -5,7 +5,6 @@ package com.kapoorlabs.kiara.constants;
  * constants.
  *
  * @author Anuj Kapoor
- * @author www.priceline.com
  * @version 1.0
  * @since 1.0
  */
