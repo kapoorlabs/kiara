@@ -19,6 +19,7 @@ import com.kapoorlabs.kiara.domain.Condition;
 import com.kapoorlabs.kiara.domain.Operator;
 import com.kapoorlabs.kiara.domain.Store;
 import com.kapoorlabs.kiara.exception.LoadDataException;
+import com.kapoorlabs.kiara.exception.NonSupportedOperationException;
 import com.kapoorlabs.kiara.loader.StoreLoader;
 import com.kapoorlabs.kiara.search.StoreSearch;
 import com.kapoorlabs.kiara.test.objects.BooksTestObject;
@@ -325,6 +326,22 @@ public class BooksTest {
 		
 
 	}
+	
+	@Test(expected=NonSupportedOperationException.class)
+	public void booksTest_11() {
+
+		StoreSearch storeSearch = new StoreSearch();
+
+		List<Condition> conditions = new LinkedList<>();
+
+		conditions.add(new Condition("id", "some value"));
+		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+
+		assertEquals(0, result.size());
+		
+
+	}
+	
 
 
 

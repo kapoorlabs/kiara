@@ -32,6 +32,7 @@ import com.kapoorlabs.kiara.parser.RangeParser;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import opennlp.tools.stemmer.snowball.SnowballStemmer;
 
 @Slf4j
 public class StoreLoader {
@@ -212,7 +213,7 @@ public class StoreLoader {
 
 		node.setUpperBound(count++);
 
-		if (level >= 0) {
+		if (level >= 0 && store.getSdqlColumns()[level].isIndexed()) {
 
 			if (!store.getSdqlColumns()[level].isNumeric()) {
 				String[] keys = null;
@@ -453,11 +454,23 @@ public class StoreLoader {
 
 							if (columLevelIndex == null) {
 								columLevelIndex = new ArrayList<>();
-								store.getInvertedIndex().get(level).put(key, columLevelIndex);
+								
+								
+								if (store.getSdqlColumns()[level].isStemmedIndex()) {
+									SnowballStemmer stemmer = new SnowballStemmer(SnowballStemmer.ALGORITHM.ENGLISH);
+									String stemmedKey = stemmer.stem(key.toLowerCase()).toString().toUpperCase();
+									store.getInvertedIndex().get(level).put(stemmedKey, columLevelIndex);
+								} else  {
+									store.getInvertedIndex().get(level).put(key, columLevelIndex);
+								}
 								orderedKeys.insertKey(new NullableOrderedString(key));
 							}
 
 							columLevelIndex.add(node);
+
+							if (store.getSdqlColumns()[level].isOneEditCapable()) {
+								store.getSpellCheckTrie().insert(key);
+							}
 
 						}
 					}
