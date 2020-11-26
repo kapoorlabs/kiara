@@ -24,7 +24,10 @@ import com.kapoorlabs.kiara.domain.annotations.DateFormat;
 import com.kapoorlabs.kiara.domain.annotations.DateRange;
 import com.kapoorlabs.kiara.domain.annotations.DateTimeFormat;
 import com.kapoorlabs.kiara.domain.annotations.DateTimeRange;
+import com.kapoorlabs.kiara.domain.annotations.IgnoreIndex;
 import com.kapoorlabs.kiara.domain.annotations.NumericRange;
+import com.kapoorlabs.kiara.domain.annotations.OneEditAway;
+import com.kapoorlabs.kiara.domain.annotations.StemmedIndex;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -196,6 +199,18 @@ public class PojoAdapter {
 					secondaryType.setSecondarySingleType(SecondarySingleDataType.DATE_TIME_RANGE);
 					secondaryType.setFormat(dateTimeRange.value());
 					sdqlColumn.setSecondaryType(secondaryType);
+				}
+				
+				if (anno.annotationType().equals(IgnoreIndex.class)) {
+					sdqlColumn.setIndexed(false);
+				}
+				
+				if (anno.annotationType().equals(OneEditAway.class)) {
+					sdqlColumn.setOneEditCapable(true);
+				}
+				
+				if (anno.annotationType().equals(StemmedIndex.class)) {
+					sdqlColumn.setStemmedIndex(true);
 				}
 			}
 

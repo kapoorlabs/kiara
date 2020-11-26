@@ -20,6 +20,12 @@ public class SdqlColumn {
 	private String columnName;
 
 	private boolean isNumeric;
+	
+	private boolean isIndexed;
+	
+	private boolean isOneEditCapable;
+	
+	private boolean isStemmedIndex;
 
 	private Method getter;
 
@@ -27,6 +33,7 @@ public class SdqlColumn {
 
 	public SdqlColumn() {
 		super();
+		this.isIndexed = true;
 	}
 
 }

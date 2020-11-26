@@ -601,6 +601,11 @@ public class StoreSearch {
 		for (Condition condition : conditions) {
 			Integer colIndex = columnIndex.get(condition.getColumnName().toUpperCase());
 			if (colIndex != null) {
+				if (!store.getSdqlColumns()[colIndex].isIndexed()) {
+					String message = condition.getColumnName() + " is restriced from being searched";
+					log.error(message);
+					throw new NonSupportedOperationException(message);
+				}
 				resultantConditions[i++] = condition;
 				condition.setColumnIndex(colIndex);
 

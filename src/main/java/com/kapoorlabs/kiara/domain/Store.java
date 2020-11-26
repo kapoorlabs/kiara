@@ -70,6 +70,11 @@ public class Store {
 	 */
 	private ArrayList<HashMap<String, ArrayList<SdqlNode>>> collectionFullKeyIndex;
 
+	/**
+	 * Spell Check trie for implementing One Edit away
+	 */
+	private SpellCheckTrie spellCheckTrie;
+
 
 	public Store(List<SdqlColumn> sdqlColumns) {
 
@@ -86,6 +91,7 @@ public class Store {
 		this.invertedNumericIndexKeys = new ArrayList<>();
 		this.collectionFullKeyIndex = new ArrayList<>();
 		this.ranges = new ArrayList<>();
+		this.spellCheckTrie = new SpellCheckTrie();
 
 		for (int i = 0; i < this.sdqlColumns.length; i++) {
 			HashMap<String, ArrayList<SdqlNode>> columnIndex = new HashMap<>();
