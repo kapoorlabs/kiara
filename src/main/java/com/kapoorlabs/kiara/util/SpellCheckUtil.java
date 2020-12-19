@@ -19,7 +19,7 @@ public class SpellCheckUtil {
     }
 
     public static String removeStopWords(String inpStr) {
-        return inpStr.replaceAll("[,.:;?+=\\-_*&^%$#@!~'`\"|\\\\/]", " ")
+        return inpStr.replaceAll("[,.:;?+=\\-*&^%$#@!~'`\"|\\\\/]", " ")
                 .replaceAll("[\\[\\]{}()]", "");
     }
 

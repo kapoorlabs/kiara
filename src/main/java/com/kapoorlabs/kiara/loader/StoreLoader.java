@@ -224,7 +224,7 @@ public class StoreLoader {
 				if (store.getSdqlColumns()[level].getSecondaryType() != null) {
 
 					if (store.getSdqlColumns()[level].getSecondaryType().getSecondaryCollectionType() != null) {
-						
+
 						ArrayList<SdqlNode> fullKeyIndexNodes = store.getCollectionFullKeyIndex().get(level)
 								.get(node.getStringValue());
 
@@ -241,7 +241,6 @@ public class StoreLoader {
 							.getSecondaryCollectionType() == SecondaryCollectionDataType.STRING) {
 
 						keys = node.getStringValue().split(Delimiters.COMMA);
-
 
 					} else if (store.getSdqlColumns()[level].getSecondaryType()
 							.getSecondaryCollectionType() == SecondaryCollectionDataType.NUMBER) {
@@ -445,6 +444,11 @@ public class StoreLoader {
 							if (key.equalsIgnoreCase(SdqlConstants.NULL) || key.isEmpty()) {
 								key = SdqlConstants.NULL;
 							}
+
+							if (store.getSdqlColumns()[level].isStemmedIndex()) {
+								SnowballStemmer stemmer = new SnowballStemmer(SnowballStemmer.ALGORITHM.ENGLISH);
+								key = stemmer.stem(key).toString();
+							}
 							if (uniqueKey.contains(key)) {
 								continue;
 							}
@@ -454,15 +458,9 @@ public class StoreLoader {
 
 							if (columLevelIndex == null) {
 								columLevelIndex = new ArrayList<>();
-								
-								
-								if (store.getSdqlColumns()[level].isStemmedIndex()) {
-									SnowballStemmer stemmer = new SnowballStemmer(SnowballStemmer.ALGORITHM.ENGLISH);
-									String stemmedKey = stemmer.stem(key.toLowerCase()).toString().toUpperCase();
-									store.getInvertedIndex().get(level).put(stemmedKey, columLevelIndex);
-								} else  {
-									store.getInvertedIndex().get(level).put(key, columLevelIndex);
-								}
+
+								store.getInvertedIndex().get(level).put(key, columLevelIndex);
+
 								orderedKeys.insertKey(new NullableOrderedString(key));
 							}
 
