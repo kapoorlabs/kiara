@@ -32,6 +32,7 @@ import com.kapoorlabs.kiara.util.NumericUtil;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import opennlp.tools.stemmer.snowball.SnowballStemmer;
 
 @Slf4j
 public class StoreSearch {
@@ -606,6 +607,7 @@ public class StoreSearch {
 					log.error(message);
 					throw new NonSupportedOperationException(message);
 				}
+				
 				resultantConditions[i++] = condition;
 				condition.setColumnIndex(colIndex);
 
@@ -614,6 +616,10 @@ public class StoreSearch {
 
 					while (conditionValueIterator.hasNext()) {
 						String value = conditionValueIterator.next().trim();
+						if (store.getSdqlColumns()[colIndex].isStemmedIndex()) {
+							SnowballStemmer stemmer = new SnowballStemmer(SnowballStemmer.ALGORITHM.ENGLISH);
+							value = stemmer.stem(value).toString();
+						}
 						conditionValueIterator.set(value);
 					}
 				} else if (condition.getLowerValue() != null && condition.getUpperValue() != null) {

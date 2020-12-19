@@ -42,7 +42,7 @@ public class KeywordUtil {
 
         for (String keyword : keywords) {
 
-            keyword = keyword.trim().toUpperCase();
+            keyword = keyword.trim();
 
             MatchesForKeyword matchesForKeyword = new MatchesForKeyword(keyword);
 
@@ -51,7 +51,7 @@ public class KeywordUtil {
             	if (store.getSdqlColumns()[i].isStemmedIndex()) {
             		
             		SnowballStemmer stemmer = new SnowballStemmer(SnowballStemmer.ALGORITHM.ENGLISH);
-					String stemmedKey = stemmer.stem(keyword.toLowerCase()).toString().toUpperCase();
+					String stemmedKey = stemmer.stem(keyword).toString();
             		
                     if (store.getInvertedIndex().get(i).containsKey(stemmedKey)) {
                         matchesForKeyword.getColMatches().add(i);
@@ -99,7 +99,7 @@ public class KeywordUtil {
                                             int keywordPos, HashMap<Integer, Set<String>> combination) {
 
         KeywordSearchResult keywordSearchResult = new KeywordSearchResult(new HashSet<>(), new LinkedList<>());
-        sentence = SpellCheckUtil.removeStopWords(sentence).toUpperCase();
+        sentence = SpellCheckUtil.removeStopWords(sentence);
         Set<String> keywords = new HashSet<>(Arrays.asList(sentence.split(" ")));
         ArrayList<MatchesForKeyword> matchesForKeywords = getMatchesForKeyword(keywords, store);
 
