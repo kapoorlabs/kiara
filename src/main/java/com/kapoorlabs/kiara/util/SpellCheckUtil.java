@@ -21,7 +21,7 @@ public class SpellCheckUtil {
 	/**
 	 * Removes Stop words from a input string sentence.
 	 * 
-	 * @param inpStr
+	 * @param inpStr A String input
 	 * @return String with no stop words
 	 */
 	public static String removeStopWords(String inpStr) {

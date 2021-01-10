@@ -105,7 +105,7 @@ public class KeywordSearch {
 	 * that should be searched and returns the best match keyword result.
 	 * Keywords in the String are separated by spaces.
 	 * 
-	 * @param keywords - A String containing words that could individually has a
+	 * @param sentence - A String containing words that could individually has a
 	 *                 match in store.
 	 * @param store    - Data store that is being searched
 	 * @return It returns a set of keywords that best matched and List of results.
