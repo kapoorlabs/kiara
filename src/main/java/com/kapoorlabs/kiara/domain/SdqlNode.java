@@ -1,7 +1,7 @@
 package com.kapoorlabs.kiara.domain;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.LinkedList;
+import java.util.List;
 
 import lombok.Data;
 
@@ -21,7 +21,7 @@ public class SdqlNode {
 
 	private Double doubleValue;
 
-	private Map<String, SdqlNode> children;
+	private List<SdqlNode> children;
 
 	private SdqlNode parent;
 
@@ -33,7 +33,7 @@ public class SdqlNode {
 
 		this.stringValue = stringValue;
 		this.doubleValue = doubleValue;
-		this.children = new HashMap<>();
+		this.children = new LinkedList<>();
 
 	}
 

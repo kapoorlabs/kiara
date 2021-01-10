@@ -16,11 +16,13 @@ import org.junit.Test;
 
 import com.kapoorlabs.kiara.adapters.PojoAdapter;
 import com.kapoorlabs.kiara.domain.Condition;
+import com.kapoorlabs.kiara.domain.KeywordSearchResult;
 import com.kapoorlabs.kiara.domain.Operator;
 import com.kapoorlabs.kiara.domain.Store;
 import com.kapoorlabs.kiara.exception.LoadDataException;
 import com.kapoorlabs.kiara.exception.NonSupportedOperationException;
 import com.kapoorlabs.kiara.loader.StoreLoader;
+import com.kapoorlabs.kiara.search.KeywordSearch;
 import com.kapoorlabs.kiara.search.StoreSearch;
 import com.kapoorlabs.kiara.test.objects.BooksTestObject;
 import com.opencsv.CSVReader;
@@ -340,6 +342,20 @@ public class BooksTest {
 		assertEquals(0, result.size());
 		
 
+	}
+	
+	@Test
+	public void booksTest_12() {
+
+		KeywordSearch keywordSearch = new KeywordSearch();
+		Set<String> keywords = new HashSet<>();
+		keywords.add("The Diary of a Young Girl");
+		
+
+		KeywordSearchResult result = keywordSearch.getBestMatch( keywords, store);
+
+		assertEquals(1, result.getKeywords().size());
+		assertEquals("The Diary of a Young Girl", result.getResult().get(0).get("TITLE"));
 	}
 	
 

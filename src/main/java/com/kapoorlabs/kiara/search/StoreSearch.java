@@ -100,6 +100,8 @@ public class StoreSearch {
 	 * 
 	 */
 	public List<Map<String, String>> query(Store store, List<Condition> conditions, Set<String> filterSet) {
+		
+		result = new LinkedList<>();
 
 		if (conditions == null || conditions.isEmpty()) {
 			throw new InsufficientDataException(ExceptionConstants.CONDITIONS_NOT_PRESENT);
@@ -680,11 +682,11 @@ public class StoreSearch {
 			return;
 		}
 
-		for (Entry<String, SdqlNode> entry : currentNode.getChildren().entrySet()) {
+		for (SdqlNode childNode : currentNode.getChildren()) {
 			if (filterColPos.contains(nextColPos)) {
-				writeResultObject(entry.getValue(), nextColPos, resultObject, store);
+				writeResultObject(childNode, nextColPos, resultObject, store);
 			}
-			buildPostfixMap(entry.getValue(), nextColPos + 1, filterColPos, lasColPos, resultObject, store);
+			buildPostfixMap(childNode, nextColPos + 1, filterColPos, lasColPos, resultObject, store);
 		}
 	}
 

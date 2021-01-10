@@ -69,8 +69,8 @@ public class MatchingChildTest {
 			assertEquals(nodesToAdd[i], storeLoader.getMatchingChild(storeLoader.getTrieRoot(), nodesToAdd[i]));
 		}
 
-		assertEquals(nodesToAdd[1], storeLoader.getTrieRoot().getChildren().get("k"));
-		assertEquals(nodesToAdd[0], storeLoader.getTrieRoot().getChildren().get("K"));
+		assertEquals(nodesToAdd[0], storeLoader.getTrieRoot().getChildren().get(0));
+		assertEquals(nodesToAdd[1], storeLoader.getTrieRoot().getChildren().get(1));
 
 	}
 
@@ -83,9 +83,9 @@ public class MatchingChildTest {
 			assertEquals(nodesToAdd[i], storeLoader.getMatchingChild(storeLoader.getTrieRoot(), nodesToAdd[i]));
 		}
 
-		assertEquals(storeLoader.getMatchingChild(storeLoader.getTrieRoot().getChildren().get("K"), nodesToAdd[2]),
+		assertEquals(storeLoader.getMatchingChild(storeLoader.getTrieRoot().getChildren().get(0), nodesToAdd[2]),
 				nodesToAdd[2]);
-		assertEquals(storeLoader.getMatchingChild(storeLoader.getTrieRoot().getChildren().get("K"), nodesToAdd[3]),
+		assertEquals(storeLoader.getMatchingChild(storeLoader.getTrieRoot().getChildren().get(0), nodesToAdd[3]),
 				nodesToAdd[3]);
 		
 		assertEquals("-1#root~0#K~0#k~1#-23.01~1#2018.00", storeLoader.serializeTrie());
@@ -101,8 +101,8 @@ public class MatchingChildTest {
 			assertEquals(nodesToAdd[i], storeLoader.getMatchingChild(storeLoader.getTrieRoot(), nodesToAdd[i]));
 		}
 
-		assertEquals(nodesToAdd[2],storeLoader.getMatchingChild(storeLoader.getTrieRoot().getChildren().get("K"), nodesToAdd[2]));
-		assertEquals(nodesToAdd[3],storeLoader.getMatchingChild(storeLoader.getTrieRoot().getChildren().get("K"), nodesToAdd[3]));
+		assertEquals(nodesToAdd[2],storeLoader.getMatchingChild(storeLoader.getTrieRoot().getChildren().get(0), nodesToAdd[2]));
+		assertEquals(nodesToAdd[3],storeLoader.getMatchingChild(storeLoader.getTrieRoot().getChildren().get(0), nodesToAdd[3]));
 		
 		assertEquals("-1#root~0#K~0#k~1#-23.01~1#2018.00", storeLoader.serializeTrie());
 
@@ -117,8 +117,8 @@ public class MatchingChildTest {
 			assertEquals(nodesToAdd[i], storeLoader.getMatchingChild(storeLoader.getTrieRoot(), nodesToAdd[i]));
 		}
 
-		assertEquals(nodesToAdd[2], storeLoader.getMatchingChild(storeLoader.getTrieRoot().getChildren().get("K"), nodesToAdd[2]));
-		assertEquals(nodesToAdd[3], storeLoader.getMatchingChild(storeLoader.getTrieRoot().getChildren().get("K"), nodesToAdd[3]));
+		assertEquals(nodesToAdd[2], storeLoader.getMatchingChild(storeLoader.getTrieRoot().getChildren().get(0), nodesToAdd[2]));
+		assertEquals(nodesToAdd[3], storeLoader.getMatchingChild(storeLoader.getTrieRoot().getChildren().get(0), nodesToAdd[3]));
 		
 		assertEquals(nodesToAdd[4],storeLoader.getMatchingChild(nodesToAdd[2], nodesToAdd[4]));
 		
@@ -135,8 +135,8 @@ public class MatchingChildTest {
 			assertEquals(nodesToAdd[i], storeLoader.getMatchingChild(storeLoader.getTrieRoot(), nodesToAdd[i]));
 		}
 
-		assertEquals(nodesToAdd[2], storeLoader.getMatchingChild(storeLoader.getTrieRoot().getChildren().get("K"), nodesToAdd[2]));
-		assertEquals(nodesToAdd[3], storeLoader.getMatchingChild(storeLoader.getTrieRoot().getChildren().get("K"), nodesToAdd[3]));
+		assertEquals(nodesToAdd[2], storeLoader.getMatchingChild(storeLoader.getTrieRoot().getChildren().get(0), nodesToAdd[2]));
+		assertEquals(nodesToAdd[3], storeLoader.getMatchingChild(storeLoader.getTrieRoot().getChildren().get(0), nodesToAdd[3]));
 		
 		assertEquals(nodesToAdd[4],storeLoader.getMatchingChild(nodesToAdd[2], nodesToAdd[4]));
 		
@@ -155,8 +155,8 @@ public class MatchingChildTest {
 			assertEquals(nodesToAdd[i], storeLoader.getMatchingChild(storeLoader.getTrieRoot(), nodesToAdd[i]));
 		}
 
-		assertEquals(nodesToAdd[2], storeLoader.getMatchingChild(storeLoader.getTrieRoot().getChildren().get("K"), nodesToAdd[2]));
-		assertEquals(nodesToAdd[3], storeLoader.getMatchingChild(storeLoader.getTrieRoot().getChildren().get("K"), nodesToAdd[3]));
+		assertEquals(nodesToAdd[2], storeLoader.getMatchingChild(storeLoader.getTrieRoot().getChildren().get(0), nodesToAdd[2]));
+		assertEquals(nodesToAdd[3], storeLoader.getMatchingChild(storeLoader.getTrieRoot().getChildren().get(0), nodesToAdd[3]));
 		
 		assertEquals(nodesToAdd[4],storeLoader.getMatchingChild(nodesToAdd[2], nodesToAdd[4]));
 		

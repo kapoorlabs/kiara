@@ -6,12 +6,12 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Queue;
 import java.util.Set;
 
@@ -110,14 +110,28 @@ public class StoreLoader {
 			throw new EmptyColumnException();
 		}
 
+		SdqlNode matchingChild = null;
+		
 		String key = currentNode.getDoubleValue() != null ? currentNode.getDoubleValue().toString()
 				: currentNode.getStringValue().trim();
 
-		if (parentNode.getChildren().get(key) == null) {
-			parentNode.getChildren().put(key, currentNode);
+		for (SdqlNode child : parentNode.getChildren()) {
+			
+			String childKey = child.getDoubleValue() != null ? child.getDoubleValue().toString()
+					: child.getStringValue().trim();
+			
+			if (childKey.equals(key)) {
+				matchingChild = child;
+				break;
+			}
 		}
 
-		return parentNode.getChildren().get(key);
+		if (matchingChild == null) {
+			parentNode.getChildren().add(currentNode);
+			matchingChild = currentNode;
+		}
+
+		return matchingChild;
 	}
 
 	/**
@@ -207,8 +221,8 @@ public class StoreLoader {
 
 		node.setLowerBound(count++);
 
-		for (Entry<String, SdqlNode> childNodeEntry : node.getChildren().entrySet()) {
-			count = performDfs(childNodeEntry.getValue(), count, level + 1);
+		for (SdqlNode childNode : node.getChildren()) {
+			count = performDfs(childNode, count, level + 1);
 		}
 
 		node.setUpperBound(count++);
@@ -596,15 +610,11 @@ public class StoreLoader {
 			} else {
 				result.append(currentNode.getNodeValue().getStringValue()).append(SdqlConstants.SERIALIZER_DELIMITER);
 			}
-
-			String[] keys = new String[currentNode.getNodeValue().getChildren().keySet().size()];
-			currentNode.getNodeValue().getChildren().keySet().toArray(keys);
-			Arrays.sort(keys);
-
-			for (int i = 0; i < keys.length; i++) {
-				BfsSerialzeNode childNode = new BfsSerialzeNode(currentNode.getNodeId(), ++id,
-						currentNode.getNodeValue().getChildren().get(keys[i]));
-				nodeQueue.add(childNode);
+			
+			for (SdqlNode childNode: currentNode.getNodeValue().getChildren()) {
+				BfsSerialzeNode bfsChildNode = new BfsSerialzeNode(currentNode.getNodeId(), ++id,
+						childNode);
+				nodeQueue.add(bfsChildNode);
 			}
 
 		}

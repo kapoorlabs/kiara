@@ -236,6 +236,18 @@ public class PojoAdapter {
 	public static boolean isNumeric(String type) {
 		return type == null ? false : numericTypes.contains(type.toUpperCase());
 	}
+	
+	/**
+	 * This function returns a boolean indicating if the type passed in argument is
+	 * of array type. It returns null, if null is specified in the argument.
+	 * 
+	 * @param type This string argument represents the data type.
+	 * @return It returns a boolean true, if the supplied argument matches any
+	 *         numeric type.
+	 */
+	public static boolean isArrayType(String type) {
+		return type == null ? false : type.endsWith("[]");
+	}
 
 	/**
 	 * This is an internal function used only for logging warnings
