@@ -24,13 +24,13 @@ import com.opencsv.CSVReader;
 
 public class MovieTest {
 	
-	Store store;
+	static Store store;
 	
-	public MovieTest() {
+	static {
 		store = new Store(PojoAdapter.getSdqlColumns(MovieTestObject.class));
 		StoreLoader storeLoader = new StoreLoader(store);
 
-		ClassLoader classLoader = this.getClass().getClassLoader();
+		ClassLoader classLoader = MovieTest.class.getClassLoader();
 		InputStream csvFile = classLoader.getResourceAsStream("movie_metadata.csv");
 		CSVReader csvReader = null;
 

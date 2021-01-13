@@ -26,13 +26,13 @@ import com.opencsv.CSVReader;
 
 public class CongressResignationsTest {
 
-	Store store;
+	static Store store;
 
-	public CongressResignationsTest() {
+	static {
 		store = new Store(PojoAdapter.getSdqlColumns(CongressResignationsTestObject.class));
 		StoreLoader storeLoader = new StoreLoader(store);
 
-		ClassLoader classLoader = this.getClass().getClassLoader();
+		ClassLoader classLoader = CongressResignationsTest.class.getClassLoader();
 		InputStream csvFile = classLoader.getResourceAsStream("congress-resignations.csv");
 		CSVReader csvReader = null;
 

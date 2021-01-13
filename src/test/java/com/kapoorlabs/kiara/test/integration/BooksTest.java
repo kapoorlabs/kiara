@@ -29,13 +29,13 @@ import com.opencsv.CSVReader;
 
 public class BooksTest {
 
-	Store store;
+	static Store store;
 
-	public BooksTest() {
+	static {
 		store = new Store(PojoAdapter.getSdqlColumns(BooksTestObject.class));
 		StoreLoader storeLoader = new StoreLoader(store);
 
-		ClassLoader classLoader = this.getClass().getClassLoader();
+		ClassLoader classLoader = BooksTest.class.getClassLoader();
 		InputStream csvFile = classLoader.getResourceAsStream("books.csv");
 		CSVReader csvReader = null;
 

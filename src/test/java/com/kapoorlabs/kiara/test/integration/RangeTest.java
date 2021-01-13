@@ -27,13 +27,13 @@ import com.opencsv.CSVReader;
 
 public class RangeTest {
 
-	Store store;
+	static Store store;
 
-	public RangeTest() {
+	static {
 		store = new Store(PojoAdapter.getSdqlColumns(RangeTestObject.class));
 		StoreLoader storeLoader = new StoreLoader(store);
 
-		ClassLoader classLoader = this.getClass().getClassLoader();
+		ClassLoader classLoader = RangeTest.class.getClassLoader();
 		InputStream csvFile = classLoader.getResourceAsStream("range-test.csv");
 		CSVReader csvReader = null;
 

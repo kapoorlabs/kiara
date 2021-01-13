@@ -100,7 +100,7 @@ public class StoreSearch {
 	 * 
 	 */
 	public List<Map<String, String>> query(Store store, List<Condition> conditions, Set<String> filterSet) {
-		
+
 		result = new LinkedList<>();
 
 		if (conditions == null || conditions.isEmpty()) {
@@ -204,7 +204,7 @@ public class StoreSearch {
 	}
 
 	private ArrayList<ArrayList<SdqlNode>> getQualifyingNodes(Condition condition, Store store) {
-		
+
 		ArrayList<ArrayList<SdqlNode>> currentColumnNodesCollection = new ArrayList<>();
 
 		if (condition.getOperator() == Operator.EQUAL || condition.getOperator() == Operator.CONTAINS_EITHER) {
@@ -609,7 +609,7 @@ public class StoreSearch {
 					log.error(message);
 					throw new NonSupportedOperationException(message);
 				}
-				
+
 				resultantConditions[i++] = condition;
 				condition.setColumnIndex(colIndex);
 
@@ -661,15 +661,21 @@ public class StoreSearch {
 	private void writeResultObject(SdqlNode currentNode, int lastConditionColPos, Map<String, String> resultObject,
 			Store store) {
 		String columnName = store.getSdqlColumns()[lastConditionColPos].getColumnName();
-		if (store.getSdqlColumns()[lastConditionColPos].isNumeric()) {
-			String numericString = currentNode.getStringValue();
-			if (currentNode.getStringValue().endsWith(".00")) {
-				numericString = numericString.substring(0, numericString.length() - 3);
-			}
-			resultObject.put(columnName, numericString);
+
+		if (currentNode.getStringValue().equals(SdqlConstants.NULL)) {
+			resultObject.put(columnName, null);
 		} else {
-			resultObject.put(columnName, currentNode.getStringValue());
+			if (store.getSdqlColumns()[lastConditionColPos].isNumeric()) {
+				String numericString = currentNode.getStringValue();
+				if (numericString.endsWith(".00")) {
+					numericString = numericString.substring(0, numericString.length() - 3);
+				}
+				resultObject.put(columnName, numericString);
+			} else {
+				resultObject.put(columnName, currentNode.getStringValue());
+			}
 		}
+
 	}
 
 	private void buildPostfixMap(SdqlNode currentNode, int nextColPos, TreeSet<Integer> filterColPos, int lasColPos,

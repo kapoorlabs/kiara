@@ -28,13 +28,13 @@ import com.opencsv.CSVReader;
 
 public class SurveyTest {
 
-	Store store;
+	static Store store;
 
-	public SurveyTest() {
+	static {
 		store = new Store(PojoAdapter.getSdqlColumns(SurveyTestObject.class));
 		StoreLoader storeLoader = new StoreLoader(store);
 
-		ClassLoader classLoader = this.getClass().getClassLoader();
+		ClassLoader classLoader = SurveyTest.class.getClassLoader();
 		InputStream csvFile = classLoader.getResourceAsStream("survey.csv");
 		CSVReader csvReader = null;
 
@@ -261,7 +261,7 @@ public class SurveyTest {
 		assertEquals("3292214390", result.get(0).get("RESPONDENTID"));
 		assertEquals("Male", result.get(0).get("GENDER"));
 		assertEquals("18-29", result.get(0).get("AGERANGE"));
-		assertEquals(SdqlConstants.NULL, result.get(0).get("INCOMERANGE"));
+		assertEquals(null, result.get(0).get("INCOMERANGE"));
 		assertEquals("Some college or Associate degree", result.get(0).get("EDUCATION"));
 		
 

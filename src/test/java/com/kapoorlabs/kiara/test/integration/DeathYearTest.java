@@ -22,13 +22,13 @@ import static org.junit.Assert.assertEquals;
 
 public class DeathYearTest {
 
-	private Store store;
+	private static Store store;
 
-	public DeathYearTest() {
+	static {
 		store = new Store(PojoAdapter.getSdqlColumns(DeathRecordsTestObject.class));
 		StoreLoader storeLoader = new StoreLoader(store);
 
-		ClassLoader classLoader = this.getClass().getClassLoader();
+		ClassLoader classLoader = DeathYearTest.class.getClassLoader();
 		InputStream csvFile = classLoader.getResourceAsStream("death-records.csv");
 		CSVReader csvReader = null;
 
