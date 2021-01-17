@@ -1,9 +1,10 @@
-package com.kapoorlabs.kiara.domain;
+ package com.kapoorlabs.kiara.domain;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Data in the database is stored in the form of an inverted indexed Trie.
@@ -14,7 +15,8 @@ import lombok.Data;
  * @version 1.0
  * @since 1.0
  */
-@Data
+@Getter
+@Setter
 public class SdqlNode {
 
 	private String stringValue;
@@ -37,7 +39,6 @@ public class SdqlNode {
 
 	}
 
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -49,7 +50,6 @@ public class SdqlNode {
 		return result;
 	}
 
-	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;

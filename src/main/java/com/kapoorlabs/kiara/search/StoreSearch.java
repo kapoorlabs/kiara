@@ -1,5 +1,6 @@
 package com.kapoorlabs.kiara.search;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -19,6 +20,7 @@ import com.kapoorlabs.kiara.domain.NullableOrderedString;
 import com.kapoorlabs.kiara.domain.Operator;
 import com.kapoorlabs.kiara.domain.OrderedKeys;
 import com.kapoorlabs.kiara.domain.Range;
+import com.kapoorlabs.kiara.domain.SdqlColumn;
 import com.kapoorlabs.kiara.domain.SdqlNode;
 import com.kapoorlabs.kiara.domain.SearchableRange;
 import com.kapoorlabs.kiara.domain.Store;
@@ -30,15 +32,11 @@ import com.kapoorlabs.kiara.parser.RangeParser;
 import com.kapoorlabs.kiara.util.LogicalUtil;
 import com.kapoorlabs.kiara.util.NumericUtil;
 
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import opennlp.tools.stemmer.snowball.SnowballStemmer;
 
 @Slf4j
 public class StoreSearch {
-
-	@Getter
-	private List<Map<String, String>> result;
 
 	/**
 	 * Condition Merger class is used to merge results if more than one condition is
@@ -57,15 +55,56 @@ public class StoreSearch {
 		int nextIndex;
 	}
 
-	public StoreSearch() {
-		result = new LinkedList<>();
+	/**
+	 * This function will search the store with provided conditions. The results
+	 * will returned as the List of POJO class, that was used to create the Store.
+	 * 
+	 * @param <T>        Type of Store, for compile time Safety
+	 * @param store      This parameter will pass the store, which will be searched.
+	 * @param conditions This parameter will pass all the conditions that your
+	 *                   result should satisfy.
+	 * @return List - It returns a list of POJO's using the POJO class that was used
+	 *         to create the store.
+	 *         
+	 * @throws ColumnNotFoundException        This exception is thrown when the
+	 *                                        column mentioned in the condition, is
+	 *                                        not found in the store.
+	 * @throws InsufficientDataException      This exception is raised when between
+	 *                                        operator is used in a condition, and
+	 *                                        both lower and upper ranges are not
+	 *                                        specified.
+	 * @throws NonSupportedOperationException This exception is raised if any
+	 *                                        operator (inside a condition) other
+	 *                                        than EQUALS ,CONTAINS_EITHER or
+	 *                                        CONTAINS_ALL is used in range based
+	 *                                        data.
+	 * @throws RangeOutOfOrderException       This exception is raised when we try
+	 *                                        to parse a range with higher range
+	 *                                        value, which is less than lower range.
+	 */
+	@SuppressWarnings("unchecked")
+	public <T> List<T> query(Store<T> store, List<Condition> conditions) {
+
+		List<Object> pojoList = new LinkedList<>();
+
+		checkIfSearchIsValid(store, conditions);
+
+		Condition[] sortedConditions = sortConditions(store, conditions);
+
+		ArrayList<ArrayList<SdqlNode>> prevColumnNodesCollection = getPassingNodes(store, sortedConditions);
+
+		TreeSet<Integer> filterColPos = getFilterColPos(store);
+
+		buidResult(null, pojoList, store, sortedConditions, prevColumnNodesCollection, filterColPos, true,
+				store.getPojoClass());
+
+		return (List<T>) pojoList;
 	}
 
 	/**
-	 * This function will search/query the store with provided conditions, and
-	 * return the results. The results can be filtered with only the
-	 * columns/data-attributes, you want in the result, using the filterSet
-	 * argument.
+	 * This function will search the store with provided conditions,The results can
+	 * be filtered with only the columns/data-attributes, you want in the result,
+	 * using the filterSet argument.
 	 * 
 	 * @param store      This parameter will pass the store, which will be searched.
 	 * 
@@ -99,22 +138,81 @@ public class StoreSearch {
 	 *                                        value, which is less than lower range.
 	 * 
 	 */
-	public List<Map<String, String>> query(Store store, List<Condition> conditions, Set<String> filterSet) {
+	public <T> List<Map<String, String>> query(Store<T> store, List<Condition> conditions, Set<String> filterSet) {
 
-		result = new LinkedList<>();
+		List<Map<String, String>> result = new LinkedList<>();
 
-		if (conditions == null || conditions.isEmpty()) {
-			throw new InsufficientDataException(ExceptionConstants.CONDITIONS_NOT_PRESENT);
-		}
+		checkIfSearchIsValid(store, conditions);
 
 		if (filterSet == null) {
 			filterSet = new HashSet<String>();
 		}
 
-		TreeSet<Integer> filterColPos = getFilterColPos(filterSet, store);
-
 		Condition[] sortedConditions = sortConditions(store, conditions);
 
+		ArrayList<ArrayList<SdqlNode>> prevColumnNodesCollection = getPassingNodes(store, sortedConditions);
+
+		TreeSet<Integer> filterColPos = getFilterColPos(filterSet, store);
+
+		buidResult(result, null, store, sortedConditions, prevColumnNodesCollection, filterColPos, false, null);
+
+		return result;
+	}
+
+	private <T> void buidResult(List<Map<String, String>> result, List<Object> pojoResult, Store<T> store,
+			Condition[] sortedConditions, ArrayList<ArrayList<SdqlNode>> prevColumnNodesCollection,
+			TreeSet<Integer> filterColPos, boolean buildPojo, Class<? extends Object> pojoClass) {
+		int lastConditionColPos = sortedConditions[sortedConditions.length - 1].getColumnIndex();
+
+		Set<SdqlNode> resultNodeSet = new HashSet<SdqlNode>();
+
+		for (ArrayList<SdqlNode> prevColumnNodes : prevColumnNodesCollection) {
+			for (SdqlNode resultNode : prevColumnNodes) {
+				if (resultNodeSet.contains(resultNode)) {
+					continue;
+				}
+				resultNodeSet.add(resultNode);
+
+				Map<String, String> resultObject = null;
+				Object resultPojo = null;
+
+				if (buildPojo && pojoClass != null) {
+					try {
+						resultPojo = pojoClass.newInstance();
+					} catch (InstantiationException | IllegalAccessException e) {
+						e.printStackTrace();
+						throw new RuntimeException(e);
+					}
+				} else {
+					resultObject = new HashMap<>();
+				}
+
+				if (filterColPos.first() <= lastConditionColPos) {
+					buildPreFixMap(resultNode, lastConditionColPos, filterColPos, store, resultObject, resultPojo,
+							buildPojo);
+				}
+
+				buildPostfixMap(result, pojoResult, resultNode, lastConditionColPos + 1, filterColPos,
+						filterColPos.last(), store, resultObject, resultPojo, buildPojo);
+			}
+		}
+	}
+
+	private <T> void checkIfSearchIsValid(Store<T> store, List<Condition> conditions) {
+		if (store == null || store.getSdqlColumns().length == 0) {
+			throw new InsufficientDataException(ExceptionConstants.EMPTY_STORE_SEARCH);
+		}
+
+		if (conditions == null || conditions.isEmpty()) {
+			throw new InsufficientDataException(ExceptionConstants.CONDITIONS_NOT_PRESENT);
+		}
+
+		if (store.getComittedHash() != ~SdqlConstants.UNCOMITTED_HASH) {
+			throw new InsufficientDataException(ExceptionConstants.SEARCHING_UNCOMMTTED_STORE);
+		}
+	}
+
+	private <T> ArrayList<ArrayList<SdqlNode>> getPassingNodes(Store<T> store, Condition[] sortedConditions) {
 		normalizeNull(store, sortedConditions);
 
 		ArrayList<ArrayList<SdqlNode>> prevColumnNodesCollection = new ArrayList<>();
@@ -124,7 +222,7 @@ public class StoreSearch {
 			ConditionMerger conditionMerger = getNextQualifyingNodes(sortedConditions, i, store);
 
 			if (conditionMerger.similarSdqlNodesCollection.isEmpty()) {
-				return new LinkedList<>();
+				return new ArrayList<>();
 			}
 
 			if (i == 0) {
@@ -145,31 +243,10 @@ public class StoreSearch {
 			i = conditionMerger.nextIndex - 1;
 
 		}
-
-		int lastConditionColPos = sortedConditions[sortedConditions.length - 1].getColumnIndex();
-
-		Set<SdqlNode> resultNodeSet = new HashSet<SdqlNode>();
-
-		for (ArrayList<SdqlNode> prevColumnNodes : prevColumnNodesCollection) {
-			for (SdqlNode resultNode : prevColumnNodes) {
-				if (resultNodeSet.contains(resultNode)) {
-					continue;
-				}
-				resultNodeSet.add(resultNode);
-				Map<String, String> resultObject = new HashMap<>();
-				if (filterColPos.first() <= lastConditionColPos) {
-					buildPreFixMap(resultNode, lastConditionColPos, filterColPos, resultObject, store);
-				}
-
-				buildPostfixMap(resultNode, lastConditionColPos + 1, filterColPos, filterColPos.last(), resultObject,
-						store);
-			}
-		}
-
-		return result;
+		return prevColumnNodesCollection;
 	}
 
-	private ConditionMerger getNextQualifyingNodes(Condition[] conditions, int currentIndex, Store store) {
+	private <T> ConditionMerger getNextQualifyingNodes(Condition[] conditions, int currentIndex, Store<T> store) {
 
 		ConditionMerger conditionMerger = new ConditionMerger();
 		ArrayList<ArrayList<SdqlNode>> currentColumnNodesCollection = new ArrayList<>();
@@ -203,7 +280,7 @@ public class StoreSearch {
 		return conditionMerger;
 	}
 
-	private ArrayList<ArrayList<SdqlNode>> getQualifyingNodes(Condition condition, Store store) {
+	private <T> ArrayList<ArrayList<SdqlNode>> getQualifyingNodes(Condition condition, Store<T> store) {
 
 		ArrayList<ArrayList<SdqlNode>> currentColumnNodesCollection = new ArrayList<>();
 
@@ -577,7 +654,7 @@ public class StoreSearch {
 
 	}
 
-	private TreeSet<Integer> getFilterColPos(Set<String> filterSet, Store store) {
+	private <T> TreeSet<Integer> getFilterColPos(Set<String> filterSet, Store<T> store) {
 
 		TreeSet<Integer> colPosSet = new TreeSet<>();
 
@@ -596,7 +673,18 @@ public class StoreSearch {
 		return colPosSet;
 	}
 
-	private Condition[] sortConditions(Store store, List<Condition> conditions) {
+	private <T> TreeSet<Integer> getFilterColPos(Store<T> store) {
+
+		TreeSet<Integer> colPosSet = new TreeSet<>();
+
+		for (int i = 0; i < store.getSdqlColumns().length; i++) {
+			colPosSet.add(i);
+		}
+
+		return colPosSet;
+	}
+
+	private <T> Condition[] sortConditions(Store<T> store, List<Condition> conditions) {
 
 		Condition[] resultantConditions = new Condition[conditions.size()];
 		Map<String, Integer> columnIndex = store.getColumnIndex();
@@ -641,14 +729,14 @@ public class StoreSearch {
 		return resultantConditions;
 	}
 
-	private void buildPreFixMap(SdqlNode currentNode, int lastConditionColPos, TreeSet<Integer> filterColPos,
-			Map<String, String> resultObject, Store store) {
+	private <T> void buildPreFixMap(SdqlNode currentNode, int lastConditionColPos, TreeSet<Integer> filterColPos,
+			Store<T> store, Map<String, String> resultObject, Object resultPojo, boolean buildPojo) {
 
 		int firstColPos = filterColPos.first();
 		while (lastConditionColPos >= firstColPos) {
 
 			if (filterColPos.contains(lastConditionColPos)) {
-				writeResultObject(currentNode, lastConditionColPos, resultObject, store);
+				writeResultObject(currentNode, lastConditionColPos, store, resultObject, resultPojo, buildPojo);
 
 			}
 
@@ -658,42 +746,128 @@ public class StoreSearch {
 
 	}
 
-	private void writeResultObject(SdqlNode currentNode, int lastConditionColPos, Map<String, String> resultObject,
-			Store store) {
+	private <T> void writeResultObject(SdqlNode currentNode, int lastConditionColPos, Store<T> store,
+			Map<String, String> resultObject, Object resultPojo, boolean buildPojo) {
 		String columnName = store.getSdqlColumns()[lastConditionColPos].getColumnName();
 
 		if (currentNode.getStringValue().equals(SdqlConstants.NULL)) {
-			resultObject.put(columnName, null);
+
+			if (buildPojo && resultPojo != null) {
+				writePojoValue(currentNode, lastConditionColPos, store, resultPojo, null);
+
+			} else {
+				resultObject.put(columnName, null);
+			}
+
 		} else {
 			if (store.getSdqlColumns()[lastConditionColPos].isNumeric()) {
 				String numericString = currentNode.getStringValue();
 				if (numericString.endsWith(".00")) {
 					numericString = numericString.substring(0, numericString.length() - 3);
 				}
-				resultObject.put(columnName, numericString);
+				if (buildPojo && resultPojo != null) {
+					writePojoValue(currentNode, lastConditionColPos, store, resultPojo, numericString);
+				} else {
+					resultObject.put(columnName, numericString);
+				}
+
 			} else {
-				resultObject.put(columnName, currentNode.getStringValue());
+				if (buildPojo && resultPojo != null) {
+					writePojoValue(currentNode, lastConditionColPos, store, resultPojo, currentNode.getStringValue());
+				} else {
+					resultObject.put(columnName, currentNode.getStringValue());
+				}
+
 			}
 		}
 
 	}
 
-	private void buildPostfixMap(SdqlNode currentNode, int nextColPos, TreeSet<Integer> filterColPos, int lasColPos,
-			Map<String, String> resultObject, Store store) {
+	private <T> void writePojoValue(SdqlNode currentNode, int lastConditionColPos, Store<T> store, Object resultPojo,
+			String value) {
+
+		SdqlColumn sdqlColumn = store.getSdqlColumns()[lastConditionColPos];
+		Class<?> columnType = sdqlColumn.getGetter().getReturnType();
+
+		try {
+			if (value == null) {
+				if (columnType == java.lang.Character.TYPE) {
+					sdqlColumn.getSetter().invoke(resultPojo, ' ');
+				} else {
+					sdqlColumn.getSetter().invoke(resultPojo, (Object) null);
+				}
+			} else if (sdqlColumn.isNumeric()) {
+				if (columnType == java.lang.Byte.TYPE || columnType == Byte.class) {
+					sdqlColumn.getSetter().invoke(resultPojo, Byte.parseByte(value));
+				} else if (columnType == java.lang.Short.TYPE || columnType == Short.class) {
+					sdqlColumn.getSetter().invoke(resultPojo, Short.parseShort(value));
+				} else if (columnType == java.lang.Integer.TYPE || columnType == Integer.class) {
+					sdqlColumn.getSetter().invoke(resultPojo, Integer.parseInt(value));
+				} else if (columnType == java.lang.Long.TYPE || columnType == Long.class) {
+					sdqlColumn.getSetter().invoke(resultPojo, Long.parseLong(value));
+				} else if (columnType == java.lang.Float.TYPE || columnType == Float.class) {
+					sdqlColumn.getSetter().invoke(resultPojo, Float.parseFloat(value));
+				} else if (columnType == java.lang.Double.TYPE || columnType == Double.class) {
+					sdqlColumn.getSetter().invoke(resultPojo, Double.parseDouble(value));
+				}
+			} else {
+				if (columnType == java.lang.Character.TYPE || columnType == Character.class) {
+					sdqlColumn.getSetter().invoke(resultPojo, value.charAt(0));
+				} else if (columnType == java.lang.Boolean.TYPE || columnType == Boolean.class) {
+					sdqlColumn.getSetter().invoke(resultPojo, Boolean.parseBoolean(value));
+				} else {
+					sdqlColumn.getSetter().invoke(resultPojo, value);
+				}
+			}
+
+		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+			e.printStackTrace();
+			throw new RuntimeException();
+		}
+
+	}
+
+	private <T> void buildPostfixMap(List<Map<String, String>> result, List<Object> pojoResult, SdqlNode currentNode,
+			int nextColPos, TreeSet<Integer> filterColPos, int lasColPos, Store<T> store,
+			Map<String, String> resultObject, Object resultPojo, boolean buildPojo) {
 
 		if (nextColPos > lasColPos) {
-			Map<String, String> newResultObject = new HashMap<>();
-			newResultObject.putAll(resultObject);
-			result.add(newResultObject);
+			if (buildPojo && resultPojo != null) {
+				Object pojoCopy = copyPojo(store, resultPojo);
+				pojoResult.add(pojoCopy);
+			} else {
+				Map<String, String> newResultObject = new HashMap<>();
+				newResultObject.putAll(resultObject);
+				result.add(newResultObject);
+			}
+
 			return;
 		}
 
 		for (SdqlNode childNode : currentNode.getChildren()) {
 			if (filterColPos.contains(nextColPos)) {
-				writeResultObject(childNode, nextColPos, resultObject, store);
+				writeResultObject(childNode, nextColPos, store, resultObject, resultPojo, buildPojo);
 			}
-			buildPostfixMap(childNode, nextColPos + 1, filterColPos, lasColPos, resultObject, store);
+			buildPostfixMap(result, pojoResult, childNode, nextColPos + 1, filterColPos, lasColPos, store, resultObject,
+					resultPojo, buildPojo);
 		}
+	}
+
+	private <T> Object copyPojo(Store<T> store, Object resultPojo) {
+
+		Object pojoCopy;
+		try {
+			pojoCopy = resultPojo.getClass().newInstance();
+			for (SdqlColumn sdqlColumn : store.getSdqlColumns()) {
+				sdqlColumn.getSetter().invoke(pojoCopy, sdqlColumn.getGetter().invoke(resultPojo));
+			}
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
+				| InvocationTargetException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+
+		return pojoCopy;
 	}
 
 	/**
@@ -703,7 +877,7 @@ public class StoreSearch {
 	 * @param store      The data store being searched
 	 * @param conditions list of conditions or search criteria.
 	 */
-	private void normalizeNull(Store store, Condition[] conditions) {
+	private <T> void normalizeNull(Store<T> store, Condition[] conditions) {
 
 		for (Condition condition : conditions) {
 

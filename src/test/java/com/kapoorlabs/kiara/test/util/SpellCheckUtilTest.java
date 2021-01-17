@@ -1,14 +1,11 @@
 package com.kapoorlabs.kiara.test.util;
 
-import com.kapoorlabs.kiara.domain.SdqlNode;
-import com.kapoorlabs.kiara.domain.SpellCheckTrie;
-import com.kapoorlabs.kiara.util.LogicalUtil;
-import com.kapoorlabs.kiara.util.SpellCheckUtil;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
-import java.util.ArrayList;
-
-import static org.junit.Assert.assertEquals;
+import com.kapoorlabs.kiara.domain.SpellCheckTrie;
+import com.kapoorlabs.kiara.util.SpellCheckUtil;
 
 public class SpellCheckUtilTest {
 

@@ -2,7 +2,7 @@ package com.kapoorlabs.kiara.domain;
 
 import lombok.Data;
 
-@Data
+
 /**
  * This class represents a single range. In case of alphanumeric ranges, prefix
  * will hold the aplhanumeric part, while lowerLimit and upperLimit will hold
@@ -14,6 +14,7 @@ import lombok.Data;
  * @version 1.0
  * @since 1.0
  */
+@Data
 public class Range implements Comparable<Range> {
 
 	private String prefix;

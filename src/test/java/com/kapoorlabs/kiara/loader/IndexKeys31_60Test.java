@@ -1,4 +1,4 @@
-package com.kapoorlabs.kiara.test.loader;
+package com.kapoorlabs.kiara.loader;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -12,25 +12,23 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import com.kapoorlabs.kiara.adapters.PojoAdapter;
 import com.kapoorlabs.kiara.constants.SdqlConstants;
 import com.kapoorlabs.kiara.domain.NullableOrderedString;
 import com.kapoorlabs.kiara.domain.Range;
 import com.kapoorlabs.kiara.domain.Store;
 import com.kapoorlabs.kiara.exception.IndexingException;
 import com.kapoorlabs.kiara.exception.LoadDataException;
-import com.kapoorlabs.kiara.loader.StoreLoader;
 import com.kapoorlabs.kiara.test.objects.DummyTestObject;
 
 public class IndexKeys31_60Test {
 	
-	Store store = new Store(PojoAdapter.getSdqlColumns(DummyTestObject.class));
+	Store<DummyTestObject> store = new Store<>(DummyTestObject.class);
 	
 
 	@Test
 	public void prepareForSearchTests_31() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setNumbers("2");
@@ -65,7 +63,7 @@ public class IndexKeys31_60Test {
 	@Test
 	public void prepareForSearchTests_32() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setNumbers("2");
@@ -102,7 +100,7 @@ public class IndexKeys31_60Test {
 	@Test
 	public void prepareForSearchTests_33() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setStrings("2,a,null");
@@ -123,7 +121,7 @@ public class IndexKeys31_60Test {
 	@Test
 	public void prepareForSearchTests_34() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setStrings("2,a,null");
@@ -148,7 +146,7 @@ public class IndexKeys31_60Test {
 	@Test
 	public void prepareForSearchTests_35() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setStrings("2,,null");
@@ -171,7 +169,7 @@ public class IndexKeys31_60Test {
 	@Test
 	public void prepareForSearchTests_36() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setStrings(null);
@@ -188,7 +186,7 @@ public class IndexKeys31_60Test {
 	@Test
 	public void prepareForSearchTests_37() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setNumericRange(null);
@@ -213,7 +211,7 @@ public class IndexKeys31_60Test {
 	@Test
 	public void prepareForSearchTests_38() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setNumericRange("23,,-a1-2");
@@ -234,7 +232,7 @@ public class IndexKeys31_60Test {
 	@Test
 	public void prepareForSearchTests_39() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setNumericRange("AA1-9");
@@ -280,7 +278,7 @@ public class IndexKeys31_60Test {
 	@Test
 	public void prepareForSearchTests_40() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setNumericRange("AA1-9");
@@ -311,7 +309,7 @@ public class IndexKeys31_60Test {
 	@Test
 	public void prepareForSearchTests_41() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setNumericRanges("23,,-a1-2,null,null");
@@ -335,7 +333,7 @@ public class IndexKeys31_60Test {
 	@Test(expected = IndexingException.class)
 	public void prepareForSearchTests_42() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateTimeRange("2018-01-01 12:01:01-2019");
@@ -348,7 +346,7 @@ public class IndexKeys31_60Test {
 	@Test(expected = IndexingException.class)
 	public void prepareForSearchTests_43() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateTimeRange("2018-01-01 12:01:01-null");
@@ -361,7 +359,7 @@ public class IndexKeys31_60Test {
 	@Test(expected = IndexingException.class)
 	public void prepareForSearchTests_44() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateTimeRange("2018-01-01 12:01:01-Null");
@@ -374,7 +372,7 @@ public class IndexKeys31_60Test {
 	@Test
 	public void prepareForSearchTests_45() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateTimeRange("null-Null");
@@ -390,7 +388,7 @@ public class IndexKeys31_60Test {
 	@Test
 	public void prepareForSearchTests_46() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateTimeRange("null-2018-01-01 12:01:01");
@@ -410,7 +408,7 @@ public class IndexKeys31_60Test {
 	@Test
 	public void prepareForSearchTests_47() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateTimeRange2("18/Jan/10 12:01-19/Jan/10 12:01");
@@ -435,7 +433,7 @@ public class IndexKeys31_60Test {
 	@Test(expected = IndexingException.class)
 	public void prepareForSearchTests_48() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateRange("2018-01-01-Null");
@@ -448,7 +446,7 @@ public class IndexKeys31_60Test {
 	@Test(expected = IndexingException.class)
 	public void prepareForSearchTests_49() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateRange("2018-01");
@@ -461,7 +459,7 @@ public class IndexKeys31_60Test {
 	@Test
 	public void prepareForSearchTests_50() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateRange("2018-01-05");
@@ -482,7 +480,7 @@ public class IndexKeys31_60Test {
 	@Test
 	public void prepareForSearchTests_51() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateRange("null-2018-01-05");
@@ -507,7 +505,7 @@ public class IndexKeys31_60Test {
 	@Test(expected = IndexingException.class)
 	public void prepareForSearchTests_52() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateRange2("2018-01-05");
@@ -520,7 +518,7 @@ public class IndexKeys31_60Test {
 	@Test
 	public void prepareForSearchTests_53() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateRange2("18/Jan/05");
@@ -541,7 +539,7 @@ public class IndexKeys31_60Test {
 	@Test(expected = IndexingException.class)
 	public void prepareForSearchTests_54() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateTimeRanges("2018-01-01 12:01:01-null");
@@ -554,7 +552,7 @@ public class IndexKeys31_60Test {
 	@Test(expected = IndexingException.class)
 	public void prepareForSearchTests_55() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateTimeRanges("2018-01-01 12:01:01-Null");
@@ -567,7 +565,7 @@ public class IndexKeys31_60Test {
 	@Test
 	public void prepareForSearchTests_56() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateTimeRanges("null-Null,2018-01-01 12:01:01");
@@ -588,7 +586,7 @@ public class IndexKeys31_60Test {
 	@Test(expected = IndexingException.class)
 	public void prepareForSearchTests_57() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateTimeRanges2("2018-01-01 12:01:01");
@@ -601,7 +599,7 @@ public class IndexKeys31_60Test {
 	@Test(expected = IndexingException.class)
 	public void prepareForSearchTests_58() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateTimeRanges2("null-2018-01-01 12:01:01");
@@ -614,7 +612,7 @@ public class IndexKeys31_60Test {
 	@Test
 	public void prepareForSearchTests_59() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateTimeRanges2("null-Null,18/Jan/01 12:01");
@@ -635,7 +633,7 @@ public class IndexKeys31_60Test {
 	@Test(expected = IndexingException.class)
 	public void prepareForSearchTests_60() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateRanges("null-null,2018-01-01-Null");

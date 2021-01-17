@@ -20,5 +20,7 @@ public class SdqlConstants {
 	public static final String SERIALIZER_PARENT_IDENTIFIER = "#";
 	public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd";
 	public static final String DEFAULT_DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+	
+	public static final int UNCOMITTED_HASH = 1210;
 
 }

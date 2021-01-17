@@ -5,10 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.kapoorlabs.kiara.adapters.PojoAdapter;
 import com.kapoorlabs.kiara.constants.ExceptionConstants;
+import com.kapoorlabs.kiara.constants.SdqlConstants;
 import com.kapoorlabs.kiara.exception.EmptyColumnException;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -26,57 +29,63 @@ import lombok.extern.slf4j.Slf4j;
  * @since 1.0
  */
 @Slf4j
-@Data
-public class Store {
+@Getter
+public class Store<T> {
 
 	/**
 	 * List of Sdql columns and metadata extracted from POJO schema
 	 */
-	private SdqlColumn[] sdqlColumns;
+	private final SdqlColumn[] sdqlColumns;
 
 	/**
 	 * A HashMap that links field/column name to its index position in sdqlColumns
 	 * array.
 	 */
-	private Map<String, Integer> columnIndex;
+	private final Map<String, Integer> columnIndex;
 
 	/**
 	 * Inverted Index for string type
 	 */
-	private ArrayList<HashMap<String, ArrayList<SdqlNode>>> invertedIndex;
+	private final ArrayList<HashMap<String, ArrayList<SdqlNode>>> invertedIndex;
 
 	/**
 	 * Ordered list of keys composing invertedIndex
 	 */
-	private ArrayList<OrderedKeys<NullableOrderedString>> invertedIndexKeys;
+	private final ArrayList<OrderedKeys<NullableOrderedString>> invertedIndexKeys;
 
 	/**
 	 * Inverted Index for numeric type
 	 */
-	private ArrayList<HashMap<Long, ArrayList<SdqlNode>>> invertedNumericIndex;
+	private final ArrayList<HashMap<Long, ArrayList<SdqlNode>>> invertedNumericIndex;
 
 	/**
 	 * Ordered list of keys composing invertedNumericIndexKeys
 	 */
-	private ArrayList<OrderedKeys<Long>> invertedNumericIndexKeys;
+	private final ArrayList<OrderedKeys<Long>> invertedNumericIndexKeys;
 
 	/**
 	 * Interval tree for ranges type
 	 */
-	private ArrayList<HashMap<String, SearchableRange>> ranges;
+	private final ArrayList<HashMap<String, SearchableRange>> ranges;
 	
 	/**
 	 * Inverted Full key Index for collection type
 	 */
-	private ArrayList<HashMap<String, ArrayList<SdqlNode>>> collectionFullKeyIndex;
+	private final ArrayList<HashMap<String, ArrayList<SdqlNode>>> collectionFullKeyIndex;
 
 	/**
 	 * Spell Check trie for implementing One Edit away
 	 */
-	private SpellCheckTrie spellCheckTrie;
+	private final SpellCheckTrie spellCheckTrie;
+	
+	@Setter
+	private int comittedHash;
+	
+	private final Class<T> pojoClass;
 
-
-	public Store(List<SdqlColumn> sdqlColumns) {
+	public Store(Class<T> pojoClass) {
+		
+		List<SdqlColumn> sdqlColumns = PojoAdapter.getSdqlColumns(pojoClass);
 
 		if (sdqlColumns == null || sdqlColumns.isEmpty()) {
 			log.error(ExceptionConstants.EMPTY_COLUMN_STORE);
@@ -92,6 +101,8 @@ public class Store {
 		this.collectionFullKeyIndex = new ArrayList<>();
 		this.ranges = new ArrayList<>();
 		this.spellCheckTrie = new SpellCheckTrie();
+		this.comittedHash = SdqlConstants.UNCOMITTED_HASH;
+		this.pojoClass = pojoClass;
 
 		for (int i = 0; i < this.sdqlColumns.length; i++) {
 			HashMap<String, ArrayList<SdqlNode>> columnIndex = new HashMap<>();
@@ -108,6 +119,7 @@ public class Store {
 			this.ranges.add(rangeMap);
 			this.columnIndex.put(this.sdqlColumns[i].getColumnName(), i);
 		}
+		
 	}
 
 }

@@ -1,4 +1,6 @@
-package com.kapoorlabs.kiara.test.integration;
+package com.kapoorlabs.kiara.test.search;
+
+import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,7 +10,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.kapoorlabs.kiara.adapters.PojoAdapter;
 import com.kapoorlabs.kiara.domain.Condition;
 import com.kapoorlabs.kiara.domain.Operator;
 import com.kapoorlabs.kiara.domain.Store;
@@ -18,15 +19,13 @@ import com.kapoorlabs.kiara.search.StoreSearch;
 import com.kapoorlabs.kiara.test.objects.DeathRecordsTestObject;
 import com.opencsv.CSVReader;
 
-import static org.junit.Assert.assertEquals;
-
 public class DeathYearTest {
 
-	private static Store store;
+	private static Store<DeathRecordsTestObject> store;
 
 	static {
-		store = new Store(PojoAdapter.getSdqlColumns(DeathRecordsTestObject.class));
-		StoreLoader storeLoader = new StoreLoader(store);
+		store = new Store<>(DeathRecordsTestObject.class);
+		StoreLoader<DeathRecordsTestObject> storeLoader = new StoreLoader<>(store);
 
 		ClassLoader classLoader = DeathYearTest.class.getClassLoader();
 		InputStream csvFile = classLoader.getResourceAsStream("death-records.csv");

@@ -1,14 +1,12 @@
-package com.kapoorlabs.kiara.test.loader;
+package com.kapoorlabs.kiara.loader;
+
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-import com.kapoorlabs.kiara.adapters.PojoAdapter;
 import com.kapoorlabs.kiara.domain.SdqlNode;
 import com.kapoorlabs.kiara.domain.Store;
 import com.kapoorlabs.kiara.exception.EmptyColumnException;
-import com.kapoorlabs.kiara.loader.StoreLoader;
 import com.kapoorlabs.kiara.test.objects.DummyTestObject;
 
 
@@ -34,7 +32,7 @@ public class MatchingChildTest {
 	@Test(expected = EmptyColumnException.class)
 	public void getMatchingChildTest_1() {
 
-		StoreLoader storeLoader = new StoreLoader(null);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<DummyTestObject>(null);
 		storeLoader.getMatchingChild(null, null);
 
 	}
@@ -42,8 +40,8 @@ public class MatchingChildTest {
 	@Test(expected = EmptyColumnException.class)
 	public void getMatchingChildTest_2() {
 
-		Store store = new Store(PojoAdapter.getSdqlColumns(DummyTestObject.class));
-		StoreLoader storeLoader = new StoreLoader(store);
+		Store<DummyTestObject> store = new Store<>(DummyTestObject.class);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 		storeLoader.getMatchingChild(storeLoader.getTrieRoot(), null);
 
 	}
@@ -51,8 +49,8 @@ public class MatchingChildTest {
 	@Test
 	public void getMatchingChildTest_3() {
 
-		Store store = new Store(PojoAdapter.getSdqlColumns(DummyTestObject.class));
-		StoreLoader storeLoader = new StoreLoader(store);
+		Store<DummyTestObject> store = new Store<>(DummyTestObject.class);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		for (int i = 0; i < 2; i++) {
 			assertEquals(nodesToAdd[i], storeLoader.getMatchingChild(storeLoader.getTrieRoot(), nodesToAdd[i]));
@@ -63,8 +61,8 @@ public class MatchingChildTest {
 	@Test
 	public void getMatchingChildTest_4() {
 
-		Store store = new Store(PojoAdapter.getSdqlColumns(DummyTestObject.class));
-		StoreLoader storeLoader = new StoreLoader(store);
+		Store<DummyTestObject> store = new Store<>(DummyTestObject.class);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 		for (int i = 0; i < 2; i++) {
 			assertEquals(nodesToAdd[i], storeLoader.getMatchingChild(storeLoader.getTrieRoot(), nodesToAdd[i]));
 		}
@@ -77,8 +75,8 @@ public class MatchingChildTest {
 	@Test
 	public void getMatchingChildTest_5() {
 
-		Store store = new Store(PojoAdapter.getSdqlColumns(DummyTestObject.class));
-		StoreLoader storeLoader = new StoreLoader(store);
+		Store<DummyTestObject> store = new Store<>(DummyTestObject.class);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 		for (int i = 0; i < 2; i++) {
 			assertEquals(nodesToAdd[i], storeLoader.getMatchingChild(storeLoader.getTrieRoot(), nodesToAdd[i]));
 		}
@@ -95,8 +93,8 @@ public class MatchingChildTest {
 	@Test
 	public void getMatchingChildTest_6() {
 
-		Store store = new Store(PojoAdapter.getSdqlColumns(DummyTestObject.class));
-		StoreLoader storeLoader = new StoreLoader(store);
+		Store<DummyTestObject> store = new Store<>(DummyTestObject.class);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 		for (int i = 0; i < 2; i++) {
 			assertEquals(nodesToAdd[i], storeLoader.getMatchingChild(storeLoader.getTrieRoot(), nodesToAdd[i]));
 		}
@@ -111,8 +109,8 @@ public class MatchingChildTest {
 	@Test
 	public void getMatchingChildTest_7() {
 
-		Store store = new Store(PojoAdapter.getSdqlColumns(DummyTestObject.class));
-		StoreLoader storeLoader = new StoreLoader(store);
+		Store<DummyTestObject> store = new Store<>(DummyTestObject.class);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 		for (int i = 0; i < 2; i++) {
 			assertEquals(nodesToAdd[i], storeLoader.getMatchingChild(storeLoader.getTrieRoot(), nodesToAdd[i]));
 		}
@@ -129,8 +127,8 @@ public class MatchingChildTest {
 	@Test
 	public void getMatchingChildTest_8() {
 
-		Store store = new Store(PojoAdapter.getSdqlColumns(DummyTestObject.class));
-		StoreLoader storeLoader = new StoreLoader(store);
+		Store<DummyTestObject> store = new Store<>(DummyTestObject.class);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 		for (int i = 0; i < 2; i++) {
 			assertEquals(nodesToAdd[i], storeLoader.getMatchingChild(storeLoader.getTrieRoot(), nodesToAdd[i]));
 		}
@@ -149,8 +147,8 @@ public class MatchingChildTest {
 	@Test
 	public void getMatchingChildTest_9() {
 
-		Store store = new Store(PojoAdapter.getSdqlColumns(DummyTestObject.class));
-		StoreLoader storeLoader = new StoreLoader(store);
+		Store<DummyTestObject> store = new Store<>(DummyTestObject.class);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 		for (int i = 0; i < 2; i++) {
 			assertEquals(nodesToAdd[i], storeLoader.getMatchingChild(storeLoader.getTrieRoot(), nodesToAdd[i]));
 		}

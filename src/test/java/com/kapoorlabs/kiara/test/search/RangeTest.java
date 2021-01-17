@@ -1,4 +1,4 @@
-package com.kapoorlabs.kiara.test.integration;
+package com.kapoorlabs.kiara.test.search;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -14,7 +14,6 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import com.kapoorlabs.kiara.adapters.PojoAdapter;
 import com.kapoorlabs.kiara.domain.Condition;
 import com.kapoorlabs.kiara.domain.Operator;
 import com.kapoorlabs.kiara.domain.Store;
@@ -27,11 +26,11 @@ import com.opencsv.CSVReader;
 
 public class RangeTest {
 
-	static Store store;
+	static Store<RangeTestObject> store;
 
 	static {
-		store = new Store(PojoAdapter.getSdqlColumns(RangeTestObject.class));
-		StoreLoader storeLoader = new StoreLoader(store);
+		store = new Store<>(RangeTestObject.class);
+		StoreLoader<RangeTestObject> storeLoader = new StoreLoader<>(store);
 
 		ClassLoader classLoader = RangeTest.class.getClassLoader();
 		InputStream csvFile = classLoader.getResourceAsStream("range-test.csv");

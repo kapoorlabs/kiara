@@ -1,15 +1,13 @@
-package com.kapoorlabs.kiara.test.integration;
+package com.kapoorlabs.kiara.test.search;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
 
-import com.kapoorlabs.kiara.adapters.PojoAdapter;
 import com.kapoorlabs.kiara.domain.Condition;
 import com.kapoorlabs.kiara.domain.Operator;
 import com.kapoorlabs.kiara.domain.Store;
@@ -58,8 +56,8 @@ public class NullTest {
 	@Test
 	public void null_test_1() throws LoadDataException
 	{
-		Store store = new Store(PojoAdapter.getSdqlColumns(TestObject.class));
-		StoreLoader storeLoader = new StoreLoader(store);
+		Store<TestObject> store = new Store<>(TestObject.class);
+		StoreLoader<TestObject> storeLoader = new StoreLoader<>(store);
 		
 		TestObject testObject = new TestObject();
 		
@@ -90,8 +88,8 @@ public class NullTest {
 	@Test
 	public void null_test_2() throws LoadDataException
 	{
-		Store store = new Store(PojoAdapter.getSdqlColumns(TestObject.class));
-		StoreLoader storeLoader = new StoreLoader(store);
+		Store<TestObject> store = new Store<>(TestObject.class);
+		StoreLoader<TestObject> storeLoader = new StoreLoader<>(store);
 		
 		TestObject testObject = new TestObject();
 		
@@ -122,8 +120,8 @@ public class NullTest {
 	@Test
 	public void null_test_3() throws LoadDataException
 	{
-		Store store = new Store(PojoAdapter.getSdqlColumns(TestObject.class));
-		StoreLoader storeLoader = new StoreLoader(store);
+		Store<TestObject> store = new Store<>(TestObject.class);
+		StoreLoader<TestObject> storeLoader = new StoreLoader<>(store);
 		
 		TestObject testObject = new TestObject();
 		

@@ -111,12 +111,22 @@ public class PojoAdapter {
 						|| methods[j].getName().toUpperCase().equals("IS" + sdqlColumn.getColumnName()))
 						&& methods[j].getReturnType() != void.class && methods[j].getParameterTypes().length == 0) {
 					sdqlColumn.setGetter(methods[j]);
+				} else if (methods[j].getName().toUpperCase().equals("SET" + sdqlColumn.getColumnName())
+						&& methods[j].getReturnType() == void.class && methods[j].getParameterTypes().length == 1
+						&& methods[j].getParameterTypes()[0] == field.getType()) {
+					sdqlColumn.setSetter(methods[j]);
 				}
 			}
 
 			if (sdqlColumn.getGetter() == null) {
 				logIgnoredWarning(field.getName(),
 						"No getter function found for this field. Getter should follow getFieldName naming convention");
+				continue;
+			}
+
+			if (sdqlColumn.getSetter() == null) {
+				logIgnoredWarning(field.getName(),
+						"No setter function found for this field. Setter should follow setFieldName naming convention");
 				continue;
 			}
 
@@ -184,8 +194,8 @@ public class PojoAdapter {
 					NumericRange numericRanges = (NumericRange) anno;
 					SecondaryType secondaryType = new SecondaryType();
 					secondaryType.setSecondarySingleType(SecondarySingleDataType.NUMERIC_RANGE);
-					secondaryType.setNumericStartPos(numericRanges.numericStartPos() < 0 ? 0
-							: numericRanges.numericStartPos());
+					secondaryType.setNumericStartPos(
+							numericRanges.numericStartPos() < 0 ? 0 : numericRanges.numericStartPos());
 					sdqlColumn.setSecondaryType(secondaryType);
 				} else if (anno.annotationType().equals(DateRange.class)) {
 					DateRange dateRange = (DateRange) anno;
@@ -200,15 +210,15 @@ public class PojoAdapter {
 					secondaryType.setFormat(dateTimeRange.value());
 					sdqlColumn.setSecondaryType(secondaryType);
 				}
-				
+
 				if (anno.annotationType().equals(IgnoreIndex.class)) {
 					sdqlColumn.setIndexed(false);
 				}
-				
+
 				if (anno.annotationType().equals(OneEditAway.class)) {
 					sdqlColumn.setOneEditCapable(true);
 				}
-				
+
 				if (anno.annotationType().equals(StemmedIndex.class)) {
 					sdqlColumn.setStemmedIndex(true);
 				}
@@ -236,7 +246,7 @@ public class PojoAdapter {
 	public static boolean isNumeric(String type) {
 		return type == null ? false : numericTypes.contains(type.toUpperCase());
 	}
-	
+
 	/**
 	 * This function returns a boolean indicating if the type passed in argument is
 	 * of array type. It returns null, if null is specified in the argument.

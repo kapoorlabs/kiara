@@ -1,4 +1,4 @@
-package com.kapoorlabs.kiara.test.integration;
+package com.kapoorlabs.kiara.test.search;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -14,7 +14,6 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import com.kapoorlabs.kiara.adapters.PojoAdapter;
 import com.kapoorlabs.kiara.domain.Condition;
 import com.kapoorlabs.kiara.domain.Operator;
 import com.kapoorlabs.kiara.domain.Store;
@@ -26,11 +25,11 @@ import com.opencsv.CSVReader;
 
 public class CongressResignationsTest {
 
-	static Store store;
+	static Store<CongressResignationsTestObject> store;
 
 	static {
-		store = new Store(PojoAdapter.getSdqlColumns(CongressResignationsTestObject.class));
-		StoreLoader storeLoader = new StoreLoader(store);
+		store = new Store<>(CongressResignationsTestObject.class);
+		StoreLoader<CongressResignationsTestObject> storeLoader = new StoreLoader<>(store);
 
 		ClassLoader classLoader = CongressResignationsTest.class.getClassLoader();
 		InputStream csvFile = classLoader.getResourceAsStream("congress-resignations.csv");

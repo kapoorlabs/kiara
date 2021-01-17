@@ -1,11 +1,12 @@
 package com.kapoorlabs.kiara.domain;
 
-import lombok.Data;
-
-import java.util.HashMap;
 import java.util.TreeMap;
 
-@Data
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class SpellCheckNode {
 
     private char currentChar;

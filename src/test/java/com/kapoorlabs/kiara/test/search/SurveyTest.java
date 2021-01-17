@@ -1,4 +1,4 @@
-package com.kapoorlabs.kiara.test.integration;
+package com.kapoorlabs.kiara.test.search;
 
 import static org.junit.Assert.assertEquals;
 
@@ -13,7 +13,6 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import com.kapoorlabs.kiara.adapters.PojoAdapter;
 import com.kapoorlabs.kiara.constants.SdqlConstants;
 import com.kapoorlabs.kiara.domain.Condition;
 import com.kapoorlabs.kiara.domain.Operator;
@@ -28,11 +27,11 @@ import com.opencsv.CSVReader;
 
 public class SurveyTest {
 
-	static Store store;
+	static Store<SurveyTestObject> store;
 
 	static {
-		store = new Store(PojoAdapter.getSdqlColumns(SurveyTestObject.class));
-		StoreLoader storeLoader = new StoreLoader(store);
+		store = new Store<>(SurveyTestObject.class);
+		StoreLoader<SurveyTestObject> storeLoader = new StoreLoader<>(store);
 
 		ClassLoader classLoader = SurveyTest.class.getClassLoader();
 		InputStream csvFile = classLoader.getResourceAsStream("survey.csv");

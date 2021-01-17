@@ -28,6 +28,8 @@ public class SdqlColumn {
 	private boolean isStemmedIndex;
 
 	private Method getter;
+	
+	private Method setter;
 
 	private SecondaryType secondaryType;
 

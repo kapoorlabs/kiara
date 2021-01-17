@@ -19,6 +19,12 @@ public class MovieTestObject {
 	private String directorName;
 
 	
+	private Integer titleYear;
+	
+	private Double aspectRatio;
+	
+	private long budget;
+	
 	@OneEditAway
 	@CommaSeperatedStrings
 	private String genres;

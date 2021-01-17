@@ -1,4 +1,4 @@
-package com.kapoorlabs.kiara.test.loader;
+package com.kapoorlabs.kiara.loader;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,22 +9,20 @@ import java.time.format.DateTimeFormatter;
 
 import org.junit.Test;
 
-import com.kapoorlabs.kiara.adapters.PojoAdapter;
 import com.kapoorlabs.kiara.constants.SdqlConstants;
 import com.kapoorlabs.kiara.domain.Store;
 import com.kapoorlabs.kiara.exception.LoadDataException;
-import com.kapoorlabs.kiara.loader.StoreLoader;
 import com.kapoorlabs.kiara.test.objects.DummyTestObject;
 
 public class IndexTest1_30Test {
 	
-	Store store = new Store(PojoAdapter.getSdqlColumns(DummyTestObject.class));
+	Store<DummyTestObject> store = new Store<>(DummyTestObject.class);
 	
 
 	@Test
 	public void prepareForSearchTests_5() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		storeLoader.loadTable(dummyTestObject);
@@ -48,7 +46,7 @@ public class IndexTest1_30Test {
 	@Test
 	public void prepareForSearchTests_6() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		storeLoader.loadTable(dummyTestObject);
@@ -74,7 +72,7 @@ public class IndexTest1_30Test {
 	@Test
 	public void prepareForSearchTests_8() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		storeLoader.loadTable(dummyTestObject);
@@ -107,7 +105,7 @@ public class IndexTest1_30Test {
 	@Test
 	public void prepareForSearchTests_14() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDates2("2020-Feb-12");
@@ -133,7 +131,7 @@ public class IndexTest1_30Test {
 	@Test
 	public void prepareForSearchTests_17() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDate("2020-02-12");
@@ -179,7 +177,7 @@ public class IndexTest1_30Test {
 	@Test
 	public void prepareForSearchTests_20() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDate2("20/02/12");
@@ -225,7 +223,7 @@ public class IndexTest1_30Test {
 	@Test
 	public void prepareForSearchTests_21() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateTimes("null, 2020-02-12 12:10:03");
@@ -253,7 +251,7 @@ public class IndexTest1_30Test {
 	@Test
 	public void prepareForSearchTests_23() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateTimes2("null, 2020-Feb-12 12:10");
@@ -285,7 +283,7 @@ public class IndexTest1_30Test {
 	@Test
 	public void prepareForSearchTests_25() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateTime("2020-02-12 12:10:01");
@@ -317,7 +315,7 @@ public class IndexTest1_30Test {
 	@Test
 	public void prepareForSearchTests_27() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateTime2("20/02/12 12");
@@ -348,7 +346,7 @@ public class IndexTest1_30Test {
 	@Test
 	public void prepareForSearchTests_29() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setNumbers("2,null");
@@ -370,7 +368,7 @@ public class IndexTest1_30Test {
 	@Test
 	public void prepareForSearchTests_30() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setNumbers("2,Null");

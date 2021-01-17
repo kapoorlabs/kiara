@@ -1,4 +1,4 @@
-package com.kapoorlabs.kiara.test.integration;
+package com.kapoorlabs.kiara.test.search;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -12,7 +12,6 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import com.kapoorlabs.kiara.adapters.PojoAdapter;
 import com.kapoorlabs.kiara.domain.KeywordSearchResult;
 import com.kapoorlabs.kiara.domain.Store;
 import com.kapoorlabs.kiara.exception.LoadDataException;
@@ -24,11 +23,11 @@ import com.opencsv.CSVReader;
 
 public class MovieTest {
 	
-	static Store store;
+	static Store<MovieTestObject> store;
 	
 	static {
-		store = new Store(PojoAdapter.getSdqlColumns(MovieTestObject.class));
-		StoreLoader storeLoader = new StoreLoader(store);
+		store = new Store<>(MovieTestObject.class);
+		StoreLoader<MovieTestObject> storeLoader = new StoreLoader<>(store);
 
 		ClassLoader classLoader = MovieTest.class.getClassLoader();
 		InputStream csvFile = classLoader.getResourceAsStream("movie_metadata.csv");

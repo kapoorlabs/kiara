@@ -6,11 +6,9 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
@@ -35,13 +33,13 @@ import lombok.extern.slf4j.Slf4j;
 import opennlp.tools.stemmer.snowball.SnowballStemmer;
 
 @Slf4j
-public class StoreLoader {
+public class StoreLoader<T> {
 
 	@Getter
 	private SdqlNode trieRoot;
 
 	@Getter
-	private Store store;
+	private Store<T> store;
 
 	/**
 	 * This function prepares the store for optimized searching, this includes
@@ -49,7 +47,7 @@ public class StoreLoader {
 	 * 
 	 * @param store This takes store as an argument.
 	 */
-	public StoreLoader(Store store) {
+	public StoreLoader(Store<T> store) {
 		this.trieRoot = new SdqlNode("root", null);
 		this.store = store;
 	}
@@ -72,7 +70,7 @@ public class StoreLoader {
 	 *                           using which the store was created. or if the getter
 	 *                           methods are not public.
 	 */
-	public void loadTable(Object pojo) throws LoadDataException {
+	public void loadTable(T pojo) throws LoadDataException {
 
 		SdqlNode nextLevelParentNode = trieRoot;
 
@@ -104,7 +102,7 @@ public class StoreLoader {
 	 *         already found, the function creates a new node and link it to the
 	 *         parent node.
 	 */
-	public SdqlNode getMatchingChild(SdqlNode parentNode, SdqlNode currentNode) {
+	 protected SdqlNode getMatchingChild(SdqlNode parentNode, SdqlNode currentNode) {
 
 		if (parentNode == null || currentNode == null) {
 			throw new EmptyColumnException();
@@ -151,7 +149,7 @@ public class StoreLoader {
 	 *                                   while accessing pojo element via reflection
 	 *                                   api.
 	 */
-	public SdqlNode createNode(Object pojo, int level)
+	 protected SdqlNode createNode(T pojo, int level)
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 
 		if (store == null || pojo == null) {
@@ -207,6 +205,7 @@ public class StoreLoader {
 			performDfs(trieRoot, count, level);
 			sortOrderedKeys();
 			prepareIntervalTrees();
+			store.setComittedHash(~SdqlConstants.UNCOMITTED_HASH);
 
 		} catch (Exception e) {
 			String message = "Static data indexing failure";
@@ -217,7 +216,7 @@ public class StoreLoader {
 
 	}
 
-	public int performDfs(SdqlNode node, int count, int level) {
+	protected int performDfs(SdqlNode node, int count, int level) {
 
 		node.setLowerBound(count++);
 
@@ -513,7 +512,7 @@ public class StoreLoader {
 	 * optimized searching.
 	 * 
 	 */
-	public void sortOrderedKeys() {
+	protected void sortOrderedKeys() {
 
 		for (OrderedKeys<NullableOrderedString> orderedKeys : store.getInvertedIndexKeys()) {
 			orderedKeys.prepareForSearch();
@@ -532,7 +531,7 @@ public class StoreLoader {
 	 * will be balanced.
 	 * 
 	 */
-	public void prepareIntervalTrees() {
+	protected void prepareIntervalTrees() {
 
 		for (HashMap<String, SearchableRange> rangeMap : store.getRanges()) {
 			for (Map.Entry<String, SearchableRange> entry : rangeMap.entrySet()) {

@@ -1,4 +1,4 @@
-package com.kapoorlabs.kiara.test.loader;
+package com.kapoorlabs.kiara.loader;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -10,22 +10,20 @@ import java.util.Set;
 
 import org.junit.Test;
 
-import com.kapoorlabs.kiara.adapters.PojoAdapter;
 import com.kapoorlabs.kiara.constants.SdqlConstants;
 import com.kapoorlabs.kiara.domain.Store;
 import com.kapoorlabs.kiara.exception.LoadDataException;
-import com.kapoorlabs.kiara.loader.StoreLoader;
 import com.kapoorlabs.kiara.test.objects.DummyTestObject;
 
 public class IndexTest61_90Test {
 	
-	Store store = new Store(PojoAdapter.getSdqlColumns(DummyTestObject.class));
+	Store<DummyTestObject> store = new Store<>(DummyTestObject.class);
 	
 
 	@Test
 	public void prepareForSearchTests_62() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateRanges("2018-01-05, null");
@@ -48,7 +46,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_63() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateRanges("null-2018-01-05,   2010-01-01-2012-01-01");
@@ -73,7 +71,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_65() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDateRanges2("18/Jan/05, null");
@@ -96,7 +94,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_66() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setStringField(null);
@@ -112,7 +110,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_67() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setStringField("null");
@@ -128,7 +126,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_68() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setStringField("Null");
@@ -144,7 +142,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_69() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setStringField("Nulls");
@@ -159,7 +157,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_70() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setStringField("Null");
@@ -197,7 +195,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_71() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setIntegerObjectField(null);
@@ -215,7 +213,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_72() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setIntegerObjectField(null);
@@ -251,7 +249,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_73() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setShortObjectField(null);
@@ -269,7 +267,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_74() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setShortObjectField(null);
@@ -304,7 +302,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_75() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setByteObjectField(null);
@@ -321,7 +319,7 @@ public class IndexTest61_90Test {
 
 	public void prepareForSearchTests_76() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setByteObjectField(null);
@@ -357,7 +355,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_77() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setCharacterObjectField(null);
@@ -373,7 +371,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_78() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setCharacterObjectField(null);
@@ -411,7 +409,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_79() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setLongObjectField(null);
@@ -428,7 +426,7 @@ public class IndexTest61_90Test {
 
 	public void prepareForSearchTests_80() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setLongObjectField(null);
@@ -474,7 +472,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_81() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setBooleanFieldObject(null);
@@ -491,7 +489,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_82() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setBooleanFieldObject(null);
@@ -527,7 +525,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_83() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setFloatField(Float.NaN);
@@ -544,7 +542,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_84() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setFloatField(1.44F);
@@ -575,7 +573,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_85() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDoubleField(Double.NaN);
@@ -592,7 +590,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_86() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDoubleField(1.44F);
@@ -627,7 +625,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_87() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setFloatObject(Float.NaN);
@@ -644,7 +642,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_88() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setFloatObject(Float.NaN);
@@ -665,7 +663,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_89() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setFloatObject(1.44F);
@@ -696,7 +694,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_90() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDoubleObject(Double.NaN);
@@ -714,7 +712,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_91() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDoubleObject(Double.NaN);
@@ -736,7 +734,7 @@ public class IndexTest61_90Test {
 	@Test
 	public void prepareForSearchTests_92() throws LoadDataException {
 
-		StoreLoader storeLoader = new StoreLoader(store);
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		dummyTestObject.setDoubleObject(1.44);

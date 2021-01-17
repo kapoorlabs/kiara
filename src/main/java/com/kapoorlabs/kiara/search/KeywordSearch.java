@@ -42,7 +42,7 @@ public class KeywordSearch {
 	 * @return list of matching column id's for every given keyword
 	 */
 
-	private ArrayList<MatchesForKeyword> getMatchesForKeyword(Set<String> keywords, Store store) {
+	private <T> ArrayList<MatchesForKeyword> getMatchesForKeyword(Set<String> keywords, Store<T> store) {
 
 		ArrayList<MatchesForKeyword> matchesForKeywords = new ArrayList<>();
 
@@ -110,7 +110,7 @@ public class KeywordSearch {
 	 * @param store    - Data store that is being searched
 	 * @return It returns a set of keywords that best matched and List of results.
 	 */
-	public KeywordSearchResult getBestMatch(String sentence, Store store) {
+	public <T> KeywordSearchResult getBestMatch(String sentence, Store<T> store) {
 
 		if (sentence == null) {
 			return new KeywordSearchResult(new HashSet<>(), new LinkedList<>());
@@ -131,7 +131,7 @@ public class KeywordSearch {
 	 * @param store    - Data store that is being searched
 	 * @return It returns a set of keywords that best matched and List of results.
 	 */
-	public KeywordSearchResult getBestMatch(Set<String> keywords, Store store) {
+	public <T> KeywordSearchResult getBestMatch(Set<String> keywords, Store<T> store) {
 
 		KeywordSearchResult keywordSearchResult = new KeywordSearchResult(new HashSet<>(), new LinkedList<>());
 
@@ -168,7 +168,7 @@ public class KeywordSearch {
 
 	}
 
-	private void getBestMatchHelper(ArrayList<MatchesForKeyword> matchesForKeywords, Store store, int keywordPos,
+	private <T> void getBestMatchHelper(ArrayList<MatchesForKeyword> matchesForKeywords, Store<T> store, int keywordPos,
 			HashMap<Integer, Set<String>> combination, Set<String> keywords) {
 
 		if (result != null) {
@@ -236,7 +236,7 @@ public class KeywordSearch {
 
 	}
 
-	private static List<Condition> formConditions(Store store, HashMap<Integer, Set<String>> combination) {
+	private <T> List<Condition> formConditions(Store<T> store, HashMap<Integer, Set<String>> combination) {
 
 		List<Condition> formedConditions = new LinkedList<Condition>();
 
@@ -251,7 +251,7 @@ public class KeywordSearch {
 
 	}
 
-	private void processQueryStack(int index, Store store) {
+	private <T> void processQueryStack(int index, Store<T> store) {
 
 		Stack<KeywordConditionsPair> stack = queryStack[index];
 
