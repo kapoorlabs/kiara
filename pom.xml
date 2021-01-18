@@ -18,7 +18,7 @@
 	<properties>
 		<java.version>1.8</java.version>
 		<slf4j.version>1.7.30</slf4j.version>
-		<jacoco.version>0.8.6</jacoco.version>
+<!-- 		<jacoco.version>0.8.6</jacoco.version> -->
 	</properties>
 
 	<licenses>
@@ -105,7 +105,7 @@
 				<groupId>pl.project13.maven</groupId>
 				<artifactId>git-commit-id-plugin</artifactId>
 			</plugin>
-			<plugin>
+<!-- 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>${jacoco.version}</version>
@@ -131,10 +131,10 @@
 						</goals>
 						<configuration>
 
-							<!-- Sets the path to the file which contains the execution data. -->
+							Sets the path to the file which contains the execution data.
 
 							<dataFile>target/jacoco.exec</dataFile>
-							<!-- Sets the output directory for the code coverage report. -->
+							Sets the output directory for the code coverage report.
 							<outputDirectory>target/jacoco-ut</outputDirectory>
 
 							<excludes>
@@ -175,7 +175,7 @@
 						<jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
 					</systemPropertyVariables>
 				</configuration>
-			</plugin>
+			</plugin> -->
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
