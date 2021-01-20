@@ -41,7 +41,7 @@ public class MovieTest {
 			csvReader.readNext();
 			while ((words = csvReader.readNext()) != null) {
 
-				MovieTestObject movieTestObject = new MovieTestObject();
+				MovieTestObject movieTestObject = MovieTestObject.builder().build();
 				movieTestObject.setColor(words[0]);
 				movieTestObject.setDirectorName(words[1]);
 				movieTestObject.setGenres(words[6]);

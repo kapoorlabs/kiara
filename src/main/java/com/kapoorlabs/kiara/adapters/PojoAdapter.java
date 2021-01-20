@@ -112,7 +112,7 @@ public class PojoAdapter {
 						&& methods[j].getReturnType() != void.class && methods[j].getParameterTypes().length == 0) {
 					sdqlColumn.setGetter(methods[j]);
 				} else if (methods[j].getName().toUpperCase().equals("SET" + sdqlColumn.getColumnName())
-						&& methods[j].getReturnType() == void.class && methods[j].getParameterTypes().length == 1
+						&& methods[j].getParameterTypes().length == 1
 						&& methods[j].getParameterTypes()[0] == field.getType()) {
 					sdqlColumn.setSetter(methods[j]);
 				}

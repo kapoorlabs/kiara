@@ -4,9 +4,13 @@ import com.kapoorlabs.kiara.domain.annotations.CommaSeperatedStrings;
 import com.kapoorlabs.kiara.domain.annotations.OneEditAway;
 import com.kapoorlabs.kiara.domain.annotations.StemmedIndex;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 @Data
+@Builder
+@Accessors(chain=true)
 public class MovieTestObject {
 	
 	private String color;
