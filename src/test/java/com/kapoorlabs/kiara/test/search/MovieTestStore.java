@@ -82,8 +82,8 @@ public class MovieTestStore {
 		List<Condition> conditions = new LinkedList<>();
 		
 		conditions.add(new Condition("movieTitle", Operator.EQUAL, "Titanic"));
-		
 		List<MovieTestObject> movieResults = storeSearch.query(store, conditions);
+		long end = System.currentTimeMillis();
 	
 		assertEquals(1, movieResults.size());
 		assertEquals("Titanic", movieResults.get(0).getMovieTitle());

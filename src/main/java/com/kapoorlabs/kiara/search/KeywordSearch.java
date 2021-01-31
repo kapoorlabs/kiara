@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
@@ -18,21 +17,19 @@ import com.kapoorlabs.kiara.domain.Operator;
 import com.kapoorlabs.kiara.domain.Store;
 import com.kapoorlabs.kiara.util.SpellCheckUtil;
 
+import lombok.extern.slf4j.Slf4j;
 import opennlp.tools.stemmer.snowball.SnowballStemmer;
 
+@Slf4j
 public class KeywordSearch {
 
-	private KeywordSearchResult result;
-
-	private int bestPossibleMatchScore;
-
-	private Stack<KeywordConditionsPair>[] queryStack;
-
-	private long[] processedQueryCount;
-
-	private long[] maxQueryCount;
-
 	private long[] factorialMap;
+
+	public KeywordSearch(int maxKeywords) {
+
+		generateFactorialMap(maxKeywords);
+
+	}
 
 	/**
 	 * This method returns a list of matching column id's for every given keyword
@@ -45,6 +42,10 @@ public class KeywordSearch {
 	private <T> ArrayList<MatchesForKeyword> getMatchesForKeyword(Set<String> keywords, Store<T> store) {
 
 		ArrayList<MatchesForKeyword> matchesForKeywords = new ArrayList<>();
+
+		if (keywords == null || keywords.isEmpty()) {
+			return matchesForKeywords;
+		}
 
 		for (String keyword : keywords) {
 
@@ -74,6 +75,12 @@ public class KeywordSearch {
 			}
 
 			if (!matchesForKeyword.getColMatches().isEmpty()) {
+				if (matchesForKeywords.size() >= factorialMap.length - 1) {
+					log.error(
+							"Given size of keywords exceeds maximum limit {}. Limiting the keywords search under maximum limit",
+							factorialMap.length - 1);
+					break;
+				}
 				matchesForKeywords.add(matchesForKeyword);
 			} else {
 				String autoCorrectedWord = SpellCheckUtil.getOneEditKeyword(keyword, store.getSpellCheckTrie());
@@ -89,6 +96,12 @@ public class KeywordSearch {
 					}
 
 					if (!matchesForKeyword.getColMatches().isEmpty()) {
+						if (matchesForKeywords.size() >= factorialMap.length - 1) {
+							log.error(
+									"Given size of keywords exceeds maximum limit {}. Limiting the keywords search under maximum limit",
+									factorialMap.length - 1);
+							break;
+						}
 						matchesForKeywords.add(matchesForKeyword);
 					}
 
@@ -101,25 +114,18 @@ public class KeywordSearch {
 	}
 
 	/**
-	 * This public method takes in a Strings and the Data Store
-	 * that should be searched and returns the best match keyword result.
-	 * Keywords in the String are separated by spaces.
+	 * This public method takes in a Strings and the Data Store that should be
+	 * searched and returns the best match keyword result. Keywords in the String
+	 * are separated by spaces.
 	 * 
 	 * @param sentence - A String containing words that could individually has a
 	 *                 match in store.
 	 * @param store    - Data store that is being searched
 	 * @return It returns a set of keywords that best matched and List of results.
 	 */
-	public <T> KeywordSearchResult getBestMatch(String sentence, Store<T> store) {
+	public <T> KeywordSearchResult<T> getBestMatch(String sentence, Store<T> store) {
 
-		if (sentence == null) {
-			return new KeywordSearchResult(new HashSet<>(), new LinkedList<>());
-		}
-
-		sentence = SpellCheckUtil.removeStopWords(sentence);
-		Set<String> keywords = new HashSet<>(Arrays.asList(sentence.split(" ")));
-
-		return getBestMatch(keywords, store);
+		return getBestMatch(sentence, store, null);
 
 	}
 
@@ -131,9 +137,48 @@ public class KeywordSearch {
 	 * @param store    - Data store that is being searched
 	 * @return It returns a set of keywords that best matched and List of results.
 	 */
-	public <T> KeywordSearchResult getBestMatch(Set<String> keywords, Store<T> store) {
+	public <T> KeywordSearchResult<T> getBestMatch(Set<String> keywords, Store<T> store) {
 
-		KeywordSearchResult keywordSearchResult = new KeywordSearchResult(new HashSet<>(), new LinkedList<>());
+		return getBestMatch(keywords, store, null);
+	}
+
+	/**
+	 * This public method takes in a Strings and the Data Store that should be
+	 * searched and returns the best match keyword result. Keywords in the String
+	 * are separated by spaces.
+	 * 
+	 * @param sentence      - A String containing words that could individually has
+	 *                      a match in store.
+	 * @param store         - Data store that is being searched
+	 * @param preConditions - preconditions that should apply to keyword search
+	 * @return It returns a set of keywords that best matched and List of results.
+	 */
+	public <T> KeywordSearchResult<T> getBestMatch(String sentence, Store<T> store, List<Condition> preConditions) {
+
+		if (sentence == null || sentence.trim().isEmpty()) {
+			return new KeywordSearchResult<T>(new HashSet<>(), new LinkedList<>());
+		}
+
+		sentence = SpellCheckUtil.removeStopWords(sentence);
+		Set<String> keywords = new HashSet<>(Arrays.asList(sentence.split(" ")));
+
+		return getBestMatch(keywords, store, preConditions);
+
+	}
+
+	/**
+	 * This public method takes in a Set of keywords or phrases and the Data Store
+	 * that should be searched and returns the best match keyword/phrase result.
+	 * 
+	 * @param keywords      - A set of keywords/phrases.
+	 * @param store         - Data store that is being searched
+	 * @param preConditions - preconditions that should apply to keyword search
+	 * @return It returns a set of keywords that best matched and List of results.
+	 */
+	public <T> KeywordSearchResult<T> getBestMatch(Set<String> keywords, Store<T> store,
+			List<Condition> preConditions) {
+
+		KeywordSearchResult<T> keywordSearchResult = new KeywordSearchResult<T>(new HashSet<>(), new LinkedList<>());
 
 		ArrayList<MatchesForKeyword> matchesForKeywords = getMatchesForKeyword(keywords, store);
 
@@ -143,22 +188,20 @@ public class KeywordSearch {
 			return keywordSearchResult;
 		}
 
-		bestPossibleMatchScore = totalKeywords;
+		Stack<KeywordConditionsPair>[] queryStack = new Stack[totalKeywords];
+		long[] processedQueryCount = new long[totalKeywords];
+		long[] maxQueryCount = new long[totalKeywords];
 
-		queryStack = new Stack[totalKeywords];
-		processedQueryCount = new long[totalKeywords];
-		maxQueryCount = new long[totalKeywords];
-		generateFactorialMap(totalKeywords);
+		KeywordSearchResult<T> searchResult = getBestMatchHelper(matchesForKeywords, store, 0, new HashMap<>(),
+				new HashSet<>(), totalKeywords, maxQueryCount, processedQueryCount, queryStack, preConditions);
 
-		getBestMatchHelper(matchesForKeywords, store, 0, new HashMap<>(), new HashSet<>());
-
-		if (result != null) {
-			keywordSearchResult = result;
+		if (searchResult != null) {
+			keywordSearchResult = searchResult;
 		} else {
-			for (int i = bestPossibleMatchScore; i >= 1; i--) {
-				processQueryStack(i - 1, store);
-				if (result != null) {
-					keywordSearchResult = result;
+			for (int i = totalKeywords; i >= 1; i--) {
+				searchResult = processQueryStack(i - 1, store, queryStack);
+				if (searchResult != null) {
+					keywordSearchResult = searchResult;
 					break;
 				}
 			}
@@ -168,18 +211,22 @@ public class KeywordSearch {
 
 	}
 
-	private <T> void getBestMatchHelper(ArrayList<MatchesForKeyword> matchesForKeywords, Store<T> store, int keywordPos,
-			HashMap<Integer, Set<String>> combination, Set<String> keywords) {
+	private <T> KeywordSearchResult<T> getBestMatchHelper(ArrayList<MatchesForKeyword> matchesForKeywords,
+			Store<T> store, int keywordPos, HashMap<Integer, Set<String>> combination, Set<String> keywords,
+			int bestPossibleMatchScore, long[] maxQueryCount, long[] processedQueryCount,
+			Stack<KeywordConditionsPair>[] queryStack, List<Condition> preConditions) {
 
-		if (result != null) {
-			return;
-		}
+		KeywordSearchResult<T> result = null;
 
 		if (keywordPos == matchesForKeywords.size()) {
 
+			if (keywords.isEmpty()) {
+				return result;
+			}
+
 			Set<String> keywordClone = new HashSet<>(keywords);
 			KeywordConditionsPair keywordConditionsPair = new KeywordConditionsPair(keywordClone,
-					formConditions(store, combination));
+					formConditions(store, combination, preConditions));
 
 			if (queryStack[keywordClone.size() - 1] == null) {
 				queryStack[keywordClone.size() - 1] = new Stack<>();
@@ -189,7 +236,7 @@ public class KeywordSearch {
 			processedQueryCount[keywordClone.size() - 1]++;
 
 			if (keywordClone.size() == bestPossibleMatchScore) {
-				processQueryStack(bestPossibleMatchScore - 1, store);
+				result = processQueryStack(bestPossibleMatchScore - 1, store, queryStack);
 				long maxQueryNumber = maxQueryCount[bestPossibleMatchScore - 1];
 
 				if (maxQueryNumber == 0) {
@@ -201,15 +248,11 @@ public class KeywordSearch {
 				}
 			}
 
-			return;
+			return result;
 
 		}
 
 		for (int i = 0; i < matchesForKeywords.get(keywordPos).getColMatches().size(); i++) {
-
-			if (result != null) {
-				return;
-			}
 
 			if (!combination.containsKey(matchesForKeywords.get(keywordPos).getColMatches().get(i))) {
 				combination.put(matchesForKeywords.get(keywordPos).getColMatches().get(i), new HashSet<>());
@@ -220,7 +263,12 @@ public class KeywordSearch {
 
 			keywords.add(matchesForKeywords.get(keywordPos).getKeyword());
 
-			getBestMatchHelper(matchesForKeywords, store, keywordPos + 1, combination, keywords);
+			result = getBestMatchHelper(matchesForKeywords, store, keywordPos + 1, combination, keywords,
+					bestPossibleMatchScore, maxQueryCount, processedQueryCount, queryStack, preConditions);
+
+			if (result != null) {
+				return result;
+			}
 
 			if (combination.get(matchesForKeywords.get(keywordPos).getColMatches().get(i)).size() == 1) {
 				combination.remove(matchesForKeywords.get(keywordPos).getColMatches().get(i));
@@ -232,39 +280,75 @@ public class KeywordSearch {
 
 		}
 
-		getBestMatchHelper(matchesForKeywords, store, keywordPos + 1, combination, keywords);
+		return getBestMatchHelper(matchesForKeywords, store, keywordPos + 1, combination, keywords,
+				bestPossibleMatchScore, maxQueryCount, processedQueryCount, queryStack, preConditions);
 
 	}
 
-	private <T> List<Condition> formConditions(Store<T> store, HashMap<Integer, Set<String>> combination) {
+	/**
+	 * This method takes in Typed Store and keyword matches combinations as input
+	 * and returns List of Conditions, that should form the search query.
+	 * 
+	 * @param <T>         Type of the store
+	 * @param store       In memory data store
+	 * @param combination Combination is a hash map that has column indexes as the
+	 *                    keys, and each key points to set of keywords that matches
+	 *                    that column. Combination can be viewed as a set of
+	 *                    possible keyword combinations, that should be checked, if
+	 *                    they match a record.
+	 * @return It returns list of conditions that be executed to get data from the
+	 *         store.
+	 */
+	private <T> List<Condition> formConditions(Store<T> store, HashMap<Integer, Set<String>> combination,
+			List<Condition> preConditions) {
 
 		List<Condition> formedConditions = new LinkedList<Condition>();
 
 		for (Integer key : combination.keySet()) {
-
 			formedConditions.add(new Condition(store.getSdqlColumns()[key].getColumnName(), Operator.CONTAINS_ALL,
 					combination.get(key)));
+		}
 
+		if (preConditions != null && !preConditions.isEmpty()) {
+			formedConditions.addAll(preConditions);
 		}
 
 		return formedConditions;
 
 	}
 
-	private <T> void processQueryStack(int index, Store<T> store) {
+	/**
+	 * This method will process query stack of a given set of keywords and would
+	 * return a result, if query returns any non zero result. For example we will
+	 * call this method to process all queries that matches exactly 3 keywords, This
+	 * method will process all queries that could match 3 keywords.
+	 * 
+	 * @param <T>        Type of store
+	 * @param index      index of stack, which represents the number of keywords
+	 * @param store      Store to search
+	 * @param queryStack List of query stack, the index in the list matches the
+	 *                   number of keywords and the stack has all the queries for
+	 *                   that number of keywords
+	 * @return Returns result if found, else null.
+	 */
+	private <T> KeywordSearchResult<T> processQueryStack(int index, Store<T> store,
+			Stack<KeywordConditionsPair>[] queryStack) {
 
 		Stack<KeywordConditionsPair> stack = queryStack[index];
+		KeywordSearchResult<T> result = null;
 
 		StoreSearch storeSearch = new StoreSearch();
 
 		while (!stack.isEmpty()) {
 			KeywordConditionsPair keywordConditionsPair = stack.pop();
-			List<Map<String, String>> results = storeSearch.query(store, keywordConditionsPair.getConditions(), null);
-			if (results.size() > 0) {
-				result = new KeywordSearchResult(keywordConditionsPair.getKeywords(), results);
+			List<T> serchResults = storeSearch.query(store, keywordConditionsPair.getConditions());
+			if (serchResults.size() > 0) {
+				result = new KeywordSearchResult<>(keywordConditionsPair.getKeywords(), serchResults);
 				break;
 			}
 		}
+
+		return result;
 	}
 
 	private void generateFactorialMap(int n) {
@@ -277,10 +361,29 @@ public class KeywordSearch {
 		}
 	}
 
+	/**
+	 * This evaluates the N choose R number.
+	 * 
+	 * @param n Total number of keywords
+	 * @param r number of keywords that make a match at the same time.
+	 * @return return total number of possible n choose r combinations
+	 */
 	private long getMaxQueryCount(int n, int r) {
 		return factorialMap[n] / (factorialMap[r] * factorialMap[n - r]);
 	}
 
+	/**
+	 * This method gives the total number of possible queries, that can be formed
+	 * for a given subset of keywords, out of total keywords. This takes into
+	 * account that a single keyword can form more than one query depending on its
+	 * matches with other columns.
+	 * 
+	 * @param matchesForKeywords keyword and its column matches
+	 * @param n                  Total number of keywords
+	 * @param r                  Subset of total keywords
+	 * @return total number of queries that can be formed for the given subset of
+	 *         keywords
+	 */
 	private long getMaxQueryCount(ArrayList<MatchesForKeyword> matchesForKeywords, int n, int r) {
 		long baseCount = getMaxQueryCount(n, r);
 

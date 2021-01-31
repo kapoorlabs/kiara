@@ -391,15 +391,15 @@ public class BooksTest {
 	@Test
 	public void booksTest_12() {
 
-		KeywordSearch keywordSearch = new KeywordSearch();
+		KeywordSearch keywordSearch = new KeywordSearch(50);
 		Set<String> keywords = new HashSet<>();
 		keywords.add("The Diary of a Young Girl");
 		
 
-		KeywordSearchResult result = keywordSearch.getBestMatch( keywords, store);
+		KeywordSearchResult<BooksTestObject> result = keywordSearch.getBestMatch( keywords, store);
 
 		assertEquals(1, result.getKeywords().size());
-		assertEquals("The Diary of a Young Girl", result.getResult().get(0).get("TITLE"));
+		assertEquals("The Diary of a Young Girl", result.getResult().get(0).getTitle());
 	}
 	
 

@@ -121,12 +121,16 @@ public class SpellCheckUtil {
 	 * 
 	 * @param inpStr         - The input keyword.
 	 * @param spellCheckTrie - Input spell check Trie
-	 * @return - returns list of text predictions stored in trie that has the same prefix as input keyword..
+	 * @param maxResultSize  - Maximum result size
+	 * @return - returns list of text predictions stored in trie that has the same
+	 *         prefix as input keyword..
 	 */
-	public static List<String> getTextPredictions(String inpStr, SpellCheckTrie spellCheckTrie) {
+	public static List<String> getTextPredictions(String inpStr, SpellCheckTrie spellCheckTrie, int maxResultSize) {
+
+		List<String> result = new LinkedList<>();
 
 		if (inpStr == null || inpStr.trim().isEmpty()) {
-			return null;
+			return result;
 		}
 
 		SpellCheckNode currentNode = spellCheckTrie.getHeadNode();
@@ -136,11 +140,9 @@ public class SpellCheckUtil {
 			if (currentNode.getChildren().containsKey(inpChar)) {
 				currentNode = currentNode.getChildren().get(inpChar);
 			} else {
-				return null;
+				return result;
 			}
 		}
-
-		List<String> result = new LinkedList<>();
 
 		Queue<BfsNode> bfsQueue = new LinkedList<>();
 		bfsQueue.add(new BfsNode(currentNode, inpStr));
@@ -152,10 +154,10 @@ public class SpellCheckUtil {
 			for (char key : bfsNode.spellCheckNode.getChildren().keySet()) {
 
 				if (key == '*') {
-					result.add(bfsNode.strSoFar);
-					if (result.size() == 3) {
-						break;
+					if (result.size() >= maxResultSize) {
+						return result;
 					}
+					result.add(bfsNode.strSoFar);
 				} else {
 					SpellCheckNode bfsSpellCheckNode = bfsNode.spellCheckNode.getChildren().get(key);
 					bfsQueue.add(new BfsNode(bfsSpellCheckNode, bfsNode.strSoFar + key));

@@ -13,12 +13,17 @@ import com.kapoorlabs.kiara.constants.SdqlConstants;
 import com.kapoorlabs.kiara.domain.SdqlColumn;
 import com.kapoorlabs.kiara.domain.SecondaryCollectionDataType;
 import com.kapoorlabs.kiara.domain.SecondarySingleDataType;
+import com.kapoorlabs.kiara.exception.NoDefaultConstructorException;
 import com.kapoorlabs.kiara.test.objects.DummyTestObject;
 import com.kapoorlabs.kiara.test.objects.PartialGetterObject;
 import com.kapoorlabs.kiara.test.objects.PoiTestObject;
 import com.kapoorlabs.kiara.test.objects.TempRangeTestObject;
 
 public class PojoAdapterTest {
+	
+	private static class noDefaultConstructor {
+		
+	}
 	
 	List<SdqlColumn> dummyTestColumns;
 	
@@ -400,6 +405,11 @@ public class PojoAdapterTest {
 	public void pojoAdapterTest_1() {
 		List<SdqlColumn> sdqlColumns = PojoAdapter.getSdqlColumns(null);
 		assertEquals(null,sdqlColumns);
+	}
+	
+	@Test(expected=NoDefaultConstructorException.class)
+	public void pojoAdapterTest_2() {
+		PojoAdapter.getSdqlColumns(noDefaultConstructor.class);
 	}
 	
 	

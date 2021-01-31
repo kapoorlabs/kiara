@@ -1,6 +1,7 @@
 package com.kapoorlabs.kiara.adapters;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.HashSet;
@@ -28,6 +29,7 @@ import com.kapoorlabs.kiara.domain.annotations.IgnoreIndex;
 import com.kapoorlabs.kiara.domain.annotations.NumericRange;
 import com.kapoorlabs.kiara.domain.annotations.OneEditAway;
 import com.kapoorlabs.kiara.domain.annotations.StemmedIndex;
+import com.kapoorlabs.kiara.exception.NoDefaultConstructorException;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -90,6 +92,11 @@ public class PojoAdapter {
 		if (pojoClass == null) {
 			return null;
 		}
+		
+		if (!hasDefaultConstructor(pojoClass)) {
+			throw new NoDefaultConstructorException("Pojo class must have a default constructor");
+		}
+
 
 		Method[] methods = pojoClass.getDeclaredMethods();
 
@@ -266,6 +273,14 @@ public class PojoAdapter {
 
 		log.error(name + " field was ignored, reason: " + reason);
 
+	}
+	
+	private static boolean hasDefaultConstructor(Class<? extends Object> pojoClass) {
+		for (Constructor<? extends Object> constructor : pojoClass.getConstructors()) {
+			if (constructor.getParameterTypes().length == 0)
+				return true;
+		}
+		return false;
 	}
 
 }
