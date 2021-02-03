@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.junit.Test;
 
@@ -24,6 +25,8 @@ import com.kapoorlabs.kiara.search.StoreSearch;
 import lombok.Data;
 
 public class NullTest {
+	
+	static Set<String> NULL_FILTER_SET = null;
 	
 	
 	@Data
@@ -72,7 +75,7 @@ public class NullTest {
 		List<Condition> conditions = new LinkedList<>();
 		conditions.add(new Condition("name", Operator.EQUAL, "John"));
 
-		List<Map<String,String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String,String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		
 		assertEquals("John", result.get(0).get("NAME"));
 		assertEquals("200-250", result.get(0).get("SALARYRANGE"));
@@ -105,7 +108,7 @@ public class NullTest {
 		List<Condition> conditions = new LinkedList<>();
 		conditions.add(new Condition("name", Operator.EQUAL, "John"));
 
-		List<Map<String,String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String,String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		
 		assertEquals("John", result.get(0).get("NAME"));
 		assertEquals("200-250", result.get(0).get("SALARYRANGE"));
@@ -138,7 +141,7 @@ public class NullTest {
 		List<Condition> conditions = new LinkedList<>();
 		conditions.add(new Condition("name", Operator.EQUAL, "John"));
 
-		List<Map<String,String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String,String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		
 		assertEquals("John", result.get(0).get("NAME"));
 		assertEquals("200-250", result.get(0).get("SALARYRANGE"));

@@ -28,6 +28,8 @@ import com.opencsv.CSVReader;
 public class SurveyTest {
 
 	static Store<SurveyTestObject> store;
+	
+	static Set<String> NULL_FILTER_SET = null;
 
 	static {
 		store = new Store<>(SurveyTestObject.class);
@@ -85,7 +87,49 @@ public class SurveyTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		conditions.add(new Condition("gender", "Female"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
+		assertEquals(548, result.size());
+
+	}
+	
+	@Test
+	// how many females, were present in the survey
+	public void surveyTest_1_1() {
+
+		StoreSearch storeSearch = new StoreSearch();
+
+		List<Condition> conditions = new LinkedList<>();
+
+		conditions.add(new Condition("gender", "Female"));
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET, -1);
+		assertEquals(0, result.size());
+
+	}
+	
+	@Test
+	// how many females, were present in the survey
+	public void surveyTest_1_2() {
+
+		StoreSearch storeSearch = new StoreSearch();
+
+		List<Condition> conditions = new LinkedList<>();
+
+		conditions.add(new Condition("gender", "Female"));
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET, 10);
+		assertEquals(10, result.size());
+
+	}
+	
+	@Test
+	// how many females, were present in the survey
+	public void surveyTest_1_3() {
+
+		StoreSearch storeSearch = new StoreSearch();
+
+		List<Condition> conditions = new LinkedList<>();
+
+		conditions.add(new Condition("gender", "Female"));
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET, 600);
 		assertEquals(548, result.size());
 
 	}
@@ -100,7 +144,7 @@ public class SurveyTest {
 
 		conditions.add(new Condition("gender", "Male"));
 		conditions.add(new Condition("ageRange", Operator.CONTAINS_EITHER, "50"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		assertEquals(140, result.size());
 
 	}
@@ -115,7 +159,7 @@ public class SurveyTest {
 
 		conditions.add(new Condition("gender", "Male"));
 		conditions.add(new Condition("age", Operator.CONTAINS_EITHER, "45"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		assertEquals(140, result.size());
 
 	}
@@ -135,7 +179,7 @@ public class SurveyTest {
 
 		conditions.add(new Condition("gender", "Male"));
 		conditions.add(new Condition("ageRange", Operator.CONTAINS_EITHER, possibleAgeValues));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		assertEquals(258, result.size());
 
 	}
@@ -157,7 +201,7 @@ public class SurveyTest {
 		conditions.add(new Condition("gender", "Male"));
 		conditions.add(new Condition("ageRange", Operator.CONTAINS_EITHER, possibleAgeValues));
 		conditions.add(new Condition("incomeRange", Operator.CONTAINS_EITHER, "60000"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		assertEquals(93, result.size());
 
 	}
@@ -171,7 +215,7 @@ public class SurveyTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		conditions.add(new Condition("gender", SdqlConstants.NULL));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		assertEquals(92, result.size());
 
 	}
@@ -185,7 +229,7 @@ public class SurveyTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		conditions.add(new Condition("respondentId", Operator.GREATER_THAN, "3292753795"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		assertEquals(10, result.size());
 
 	}
@@ -199,7 +243,7 @@ public class SurveyTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		conditions.add(new Condition("respondentId", Operator.GREATER_THAN, "INVALID"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		assertEquals(10, result.size());
 
 	}
@@ -213,7 +257,7 @@ public class SurveyTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		conditions.add(new Condition("respondentId", Operator.GREATER_THAN_EQUAL, "3292753795"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		assertEquals(11, result.size());
 
 	}
@@ -227,7 +271,7 @@ public class SurveyTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		conditions.add(new Condition("respondentId", Operator.BETWEEN, "3292753795"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		assertEquals(11, result.size());
 
 	}
@@ -241,7 +285,7 @@ public class SurveyTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		conditions.add(new Condition("respondentId", Operator.BETWEEN, "3292214390", "3292282953"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		assertEquals(5, result.size());
 
 	}
@@ -255,7 +299,7 @@ public class SurveyTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		conditions.add(new Condition("respondentId", Operator.BETWEEN, "3292214389", "3292214391"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		assertEquals(1, result.size());
 		assertEquals("3292214390", result.get(0).get("RESPONDENTID"));
 		assertEquals("Male", result.get(0).get("GENDER"));

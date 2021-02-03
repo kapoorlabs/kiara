@@ -28,6 +28,8 @@ public class RangeTest {
 
 	static Store<RangeTestObject> store;
 
+	static Set<String> NULL_FILTER_SET = null;
+	
 	static {
 		store = new Store<>(RangeTestObject.class);
 		StoreLoader<RangeTestObject> storeLoader = new StoreLoader<>(store);
@@ -80,7 +82,7 @@ public class RangeTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		conditions.add(new Condition("range", Operator.CONTAINS_EITHER, "AA101"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 
 		assertEquals(0, result.size());
 
@@ -94,7 +96,7 @@ public class RangeTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		conditions.add(new Condition("range", Operator.CONTAINS_EITHER, "AA99"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 
 		assertEquals(1, result.size());
 		assertEquals("2", result.get(0).get("VALUE"));
@@ -109,7 +111,7 @@ public class RangeTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		conditions.add(new Condition("range", Operator.EQUAL, "AA10-100"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 
 		assertEquals(1, result.size());
 		assertEquals("2", result.get(0).get("VALUE"));
@@ -130,7 +132,7 @@ public class RangeTest {
 		values.add("AA2300");
 
 		conditions.add(new Condition("range", Operator.CONTAINS_EITHER, values));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 
 		Set<String> expectedvalue = new HashSet<>();
 
@@ -158,7 +160,7 @@ public class RangeTest {
 		values.add("AA2300");
 
 		conditions.add(new Condition("range", Operator.CONTAINS_ALL, values));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 
 		assertEquals(0, result.size());
 
@@ -180,7 +182,7 @@ public class RangeTest {
 		values.add("DL2100");
 
 		conditions.add(new Condition("range", Operator.CONTAINS_ALL, values));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 
 		Set<String> expectedvalue = new HashSet<>();
 
@@ -205,7 +207,7 @@ public class RangeTest {
 		values.add("DL5000");
 
 		conditions.add(new Condition("range", Operator.CONTAINS_EITHER, values));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 
 		Set<String> expectedvalue = new HashSet<>();
 
@@ -232,7 +234,7 @@ public class RangeTest {
 		values.add("JB201");
 
 		conditions.add(new Condition("range", Operator.CONTAINS_ALL, values));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 
 		Set<String> expectedvalue = new HashSet<>();
 
@@ -257,7 +259,7 @@ public class RangeTest {
 		values.add("B6200");
 
 		conditions.add(new Condition("range", Operator.CONTAINS_ALL, values));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 
 		Set<String> expectedvalue = new HashSet<>();
 
@@ -282,7 +284,7 @@ public class RangeTest {
 		values.add("B668");
 
 		conditions.add(new Condition("range", Operator.CONTAINS_ALL, values));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 
 		Set<String> expectedvalue = new HashSet<>();
 
@@ -307,7 +309,7 @@ public class RangeTest {
 		values.add("-~");
 
 		conditions.add(new Condition("range", Operator.CONTAINS_ALL, values));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 
 		Set<String> expectedvalue = new HashSet<>();
 
@@ -332,7 +334,7 @@ public class RangeTest {
 		values.add("-A4");
 
 		conditions.add(new Condition("range", Operator.CONTAINS_ALL, values));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 
 		Set<String> expectedvalue = new HashSet<>();
 
@@ -355,7 +357,7 @@ public class RangeTest {
 		List<String> values = null;
 
 		conditions.add(new Condition("range", Operator.CONTAINS_EITHER, values));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 
 		Set<String> expectedvalue = new HashSet<>();
 
@@ -379,7 +381,7 @@ public class RangeTest {
 
 		values.add("Al1");
 		conditions.add(new Condition("range", Operator.CONTAINS_EITHER, values));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 
 		Set<String> expectedvalue = new HashSet<>();
 
@@ -403,7 +405,7 @@ public class RangeTest {
 
 		values.add("Al1");
 		conditions.add(new Condition("range", Operator.CONTAINS_EITHER_INCLUDING_NULL, values));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 
 		Set<String> expectedvalue = new HashSet<>();
 
@@ -427,7 +429,7 @@ public class RangeTest {
 
 		values.add("AA11");
 		conditions.add(new Condition("range", Operator.NOT_CONTAINS, values));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 
 
 		assertEquals(7, result.size());
@@ -447,7 +449,7 @@ public class RangeTest {
 		values.add("CA2");
 		values.add("DL5000");
 		conditions.add(new Condition("range", Operator.NOT_CONTAINS, values));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 
 
 		assertEquals(4, result.size());
@@ -466,7 +468,7 @@ public class RangeTest {
 		values.add("2");
 		conditions.add(new Condition("value", Operator.NOT_CONTAINS, values));
 		@SuppressWarnings("unused")
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 
 
 	}

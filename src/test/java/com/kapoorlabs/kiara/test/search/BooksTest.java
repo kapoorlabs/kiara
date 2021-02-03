@@ -29,6 +29,8 @@ import com.opencsv.CSVReader;
 public class BooksTest {
 
 	static Store<BooksTestObject> store;
+	
+	static Set<String> NULL_FILTER_SET = null;
 
 	static {
 		store = new Store<>(BooksTestObject.class);
@@ -87,7 +89,7 @@ public class BooksTest {
 		List<Condition> conditions = new LinkedList<>();
 		conditions.add(new Condition("title", "The Hobbit"));
 		
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		List<BooksTestObject> boosResult = storeSearch.query(store, conditions);
 
 		assertEquals(1, result.size());
@@ -119,7 +121,7 @@ public class BooksTest {
 		values.add("John Seelye");
 
 		conditions.add(new Condition("authors", Operator.CONTAINS_ALL, values));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		List<BooksTestObject> boosResult = storeSearch.query(store, conditions);
 
 		Set<String> resultId = new HashSet<>();
@@ -148,7 +150,7 @@ public class BooksTest {
 		values.add("John Seelye");
 
 		conditions.add(new Condition("authors", Operator.CONTAINS_EITHER, values));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		List<BooksTestObject> boosResult = storeSearch.query(store, conditions);
 
 		Set<String> resultId = new HashSet<>();
@@ -183,7 +185,7 @@ public class BooksTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		conditions.add(new Condition("isbn", "null"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		List<BooksTestObject> boosResult = storeSearch.query(store, conditions);
 
 		assertEquals(320, result.size());
@@ -201,7 +203,7 @@ public class BooksTest {
 
 		conditions.add(new Condition("isbn", "null"));
 		conditions.add(new Condition("language", "null"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		List<BooksTestObject> boosResult = storeSearch.query(store, conditions);
 
 		assertEquals(18, result.size());
@@ -219,7 +221,7 @@ public class BooksTest {
 
 		conditions.add(new Condition("isbn", "null"));
 		conditions.add(new Condition("year", "null"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		List<BooksTestObject> boosResult = storeSearch.query(store, conditions);
 
 		assertEquals(2, result.size());
@@ -240,7 +242,7 @@ public class BooksTest {
 		conditions.add(new Condition("rating", Operator.GREATER_THAN_EQUAL, "4"));
 		conditions.add(new Condition("language", Operator.CONTAINS_EITHER, values));
 		conditions.add(new Condition("year", Operator.BETWEEN, "2010", "2012"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		List<BooksTestObject> boosResult = storeSearch.query(store, conditions);
 
 		assertEquals(466, result.size());
@@ -263,7 +265,7 @@ public class BooksTest {
 		conditions.add(new Condition("language", Operator.CONTAINS_EITHER, values));
 		conditions.add(new Condition("year", Operator.BETWEEN, "2010", "2012"));
 		conditions.add(new Condition("authors", "Stephen King"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		List<BooksTestObject> boosResult = storeSearch.query(store, conditions);
 
 		Set<String> resultId = new HashSet<>();
@@ -304,7 +306,7 @@ public class BooksTest {
 		conditions.add(new Condition("language", Operator.CONTAINS_EITHER, values));
 		conditions.add(new Condition("year", Operator.BETWEEN, "2010", "2012"));
 		conditions.add(new Condition("authors", Operator.CONTAINS_EITHER, authors));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		List<BooksTestObject> boosResult = storeSearch.query(store, conditions);
 
 		Set<String> resultId = new HashSet<>();
@@ -353,7 +355,7 @@ public class BooksTest {
 		conditions.add(new Condition("year", Operator.BETWEEN, "2010", "2012"));
 		conditions.add(new Condition("year", Operator.NOT_EQUAL, "2011"));
 		conditions.add(new Condition("authors", Operator.CONTAINS_EITHER, authors));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		List<BooksTestObject> boosResult = storeSearch.query(store, conditions);
 
 		Set<String> resultId = new HashSet<>();
@@ -371,6 +373,43 @@ public class BooksTest {
 
 	}
 	
+	@Test
+	public void booksTest_10_1() {
+
+		StoreSearch storeSearch = new StoreSearch();
+
+		List<Condition> conditions = new LinkedList<>();
+		List<String> values = new LinkedList<String>();
+		values.add("eng");
+		values.add("en-US");
+		
+		List<String> authors = new LinkedList<String>();
+		authors.add("Stephen King");
+		authors.add("George R.R. Martin");
+		
+		
+
+		conditions.add(new Condition("rating", Operator.GREATER_THAN_EQUAL, "4"));
+		conditions.add(new Condition("language", Operator.CONTAINS_EITHER, values));
+		conditions.add(new Condition("year", Operator.BETWEEN, "2010", "2012"));
+		conditions.add(new Condition("year", Operator.NOT_EQUAL, "2011"));
+		conditions.add(new Condition("authors", Operator.CONTAINS_EITHER, authors));
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET, 1);
+		List<BooksTestObject> boosResult = storeSearch.query(store, conditions, 1);
+
+		Set<String> resultId = new HashSet<>();
+		
+		resultId.add("1576");
+
+		assertEquals(1, result.size());
+		for (int i = 0; i < result.size(); i++) {
+			assertTrue(resultId.contains(result.get(i).get("ID")));
+		}
+		assertEquals(1576, boosResult.get(0).getId());
+		
+
+	}
+	
 	@Test(expected=NonSupportedOperationException.class)
 	public void booksTest_11() {
 
@@ -379,7 +418,7 @@ public class BooksTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		conditions.add(new Condition("id", "some value"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		List<BooksTestObject> boosResult = storeSearch.query(store, conditions);
 
 		assertEquals(0, result.size());
@@ -401,6 +440,8 @@ public class BooksTest {
 		assertEquals(1, result.getKeywords().size());
 		assertEquals("The Diary of a Young Girl", result.getResult().get(0).getTitle());
 	}
+	
+	
 	
 
 

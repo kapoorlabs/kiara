@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.Test;
 
@@ -22,6 +23,8 @@ import com.opencsv.CSVReader;
 public class DeathYearTest {
 
 	private static Store<DeathRecordsTestObject> store;
+	
+	static Set<String> NULL_FILTER_SET = null;
 
 	static {
 		store = new Store<>(DeathRecordsTestObject.class);
@@ -79,7 +82,7 @@ public class DeathYearTest {
 		values.add("U");
 		
 		conditions.add(new Condition("gender", Operator.CONTAINS_EITHER,values));
-		assertEquals(31832, storeSearch.query(store, conditions, null).size());
+		assertEquals(31832, storeSearch.query(store, conditions, NULL_FILTER_SET).size());
 
 	}
 	
@@ -91,7 +94,7 @@ public class DeathYearTest {
 		List<Condition> conditions = new LinkedList<>();
 		
 		conditions.add(new Condition("gender","m"));
-		assertEquals(0, storeSearch.query(store, conditions, null).size());
+		assertEquals(0, storeSearch.query(store, conditions, NULL_FILTER_SET).size());
 
 	}
 	
@@ -103,7 +106,7 @@ public class DeathYearTest {
 		List<Condition> conditions = new LinkedList<>();
 		
 		conditions.add(new Condition("gender","F"));
-		assertEquals(16042, storeSearch.query(store, conditions, null).size());
+		assertEquals(16042, storeSearch.query(store, conditions, NULL_FILTER_SET).size());
 
 	}
 	
@@ -115,7 +118,7 @@ public class DeathYearTest {
 		List<Condition> conditions = new LinkedList<>();
 		
 		conditions.add(new Condition("gender","U"));
-		assertEquals(1, storeSearch.query(store, conditions, null).size());
+		assertEquals(1, storeSearch.query(store, conditions, NULL_FILTER_SET).size());
 
 	}
 	
@@ -127,7 +130,7 @@ public class DeathYearTest {
 		List<Condition> conditions = new LinkedList<>();
 		
 		conditions.add(new Condition("gender","M"));
-		assertEquals(15789, storeSearch.query(store, conditions, null).size());
+		assertEquals(15789, storeSearch.query(store, conditions, NULL_FILTER_SET).size());
 
 	}
 	
@@ -139,7 +142,7 @@ public class DeathYearTest {
 		List<Condition> conditions = new LinkedList<>();
 		
 		conditions.add(new Condition("gender","M"));
-		assertEquals(15789, storeSearch.query(store, conditions, null).size());
+		assertEquals(15789, storeSearch.query(store, conditions, NULL_FILTER_SET).size());
 
 	}
 	
@@ -156,7 +159,7 @@ public class DeathYearTest {
 		values.add("U");
 		
 		conditions.add(new Condition("gender", Operator.CONTAINS_ALL, values));
-		assertEquals(0, storeSearch.query(store, conditions, null).size());
+		assertEquals(0, storeSearch.query(store, conditions, NULL_FILTER_SET).size());
 
 	}
 	
@@ -172,7 +175,7 @@ public class DeathYearTest {
 		values.add("U");
 		
 		conditions.add(new Condition("gender", Operator.CONTAINS_EITHER, values));
-		assertEquals(15790, storeSearch.query(store, conditions, null).size());
+		assertEquals(15790, storeSearch.query(store, conditions, NULL_FILTER_SET).size());
 
 	}
 	
@@ -188,7 +191,7 @@ public class DeathYearTest {
 		values.add("U");
 		
 		conditions.add(new Condition("gender", Operator.NOT_EQUAL, values));
-		assertEquals(16042, storeSearch.query(store, conditions, null).size());
+		assertEquals(16042, storeSearch.query(store, conditions, NULL_FILTER_SET).size());
 
 	}
  
@@ -202,7 +205,7 @@ public class DeathYearTest {
 		
 		
 		conditions.add(new Condition("gender", Operator.GREATER_THAN, "M"));
-		assertEquals(1, storeSearch.query(store, conditions, null).size());
+		assertEquals(1, storeSearch.query(store, conditions, NULL_FILTER_SET).size());
 
 	}
 	
@@ -215,7 +218,7 @@ public class DeathYearTest {
 		
 		
 		conditions.add(new Condition("gender", Operator.LESS_THAN, "M"));
-		assertEquals(16042, storeSearch.query(store, conditions, null).size());
+		assertEquals(16042, storeSearch.query(store, conditions, NULL_FILTER_SET).size());
 
 	}
 	
@@ -229,7 +232,7 @@ public class DeathYearTest {
 		
 		
 		conditions.add(new Condition("recordDate", "2012-07-03"));
-		assertEquals(19, storeSearch.query(store, conditions, null).size());
+		assertEquals(19, storeSearch.query(store, conditions, NULL_FILTER_SET).size());
 
 	}
 	
@@ -243,7 +246,7 @@ public class DeathYearTest {
 		
 		
 		conditions.add(new Condition("recordDate", Operator.LESS_THAN, "2012-07-03"));
-		assertEquals(11, storeSearch.query(store, conditions, null).size());
+		assertEquals(11, storeSearch.query(store, conditions, NULL_FILTER_SET).size());
 
 	}
  
@@ -257,7 +260,7 @@ public class DeathYearTest {
 		
 		
 		conditions.add(new Condition("recordDate", Operator.LESS_THAN_EQUAL, "2012-07-03"));
-		assertEquals(30, storeSearch.query(store, conditions, null).size());
+		assertEquals(30, storeSearch.query(store, conditions, NULL_FILTER_SET).size());
 
 	}
 	
@@ -270,7 +273,7 @@ public class DeathYearTest {
 		
 		
 		conditions.add(new Condition("recordDate", Operator.GREATER_THAN, "2012-07-03"));
-		assertEquals(31802, storeSearch.query(store, conditions, null).size());
+		assertEquals(31802, storeSearch.query(store, conditions, NULL_FILTER_SET).size());
 
 	}
  
@@ -284,7 +287,7 @@ public class DeathYearTest {
 		
 		
 		conditions.add(new Condition("recordDate", Operator.GREATER_THAN_EQUAL, "2012-07-03"));
-		assertEquals(31821, storeSearch.query(store, conditions, null).size());
+		assertEquals(31821, storeSearch.query(store, conditions, NULL_FILTER_SET).size());
 
 	}
  
@@ -298,7 +301,7 @@ public class DeathYearTest {
 		
 		
 		conditions.add(new Condition("recordDate", Operator.BETWEEN, "2012-01-01", "2012-12-31"));
-		assertEquals(2321, storeSearch.query(store, conditions, null).size());
+		assertEquals(2321, storeSearch.query(store, conditions, NULL_FILTER_SET).size());
 
 	}
  
@@ -313,7 +316,7 @@ public class DeathYearTest {
 		
 		conditions.add(new Condition("recordDate", Operator.BETWEEN, "2012-01-01", "2012-12-31"));
 		conditions.add(new Condition("gender", "M"));
-		assertEquals(1130, storeSearch.query(store, conditions, null).size());
+		assertEquals(1130, storeSearch.query(store, conditions, NULL_FILTER_SET).size());
 
 	}
 	
@@ -328,7 +331,7 @@ public class DeathYearTest {
 		conditions.add(new Condition("recordDate", Operator.BETWEEN, "2012-01-01", "2012-12-31"));
 		conditions.add(new Condition("gender", "M"));
 		conditions.add(new Condition("birthDeathRange", Operator.CONTAINS_ALL,"1930-07-10"));
-		assertEquals(327, storeSearch.query(store, conditions, null).size());
+		assertEquals(327, storeSearch.query(store, conditions, NULL_FILTER_SET).size());
 
 	}
 	
@@ -343,7 +346,7 @@ public class DeathYearTest {
 		conditions.add(new Condition("recordDate", Operator.BETWEEN, "2012-01-01", "2012-12-31"));
 		conditions.add(new Condition("gender", "M"));
 		conditions.add(new Condition("birthDeathRange", Operator.EQUAL,"1927-06-23-2012-06-28"));
-		assertEquals(1, storeSearch.query(store, conditions, null).size());
+		assertEquals(1, storeSearch.query(store, conditions, NULL_FILTER_SET).size());
 
 	}
 	

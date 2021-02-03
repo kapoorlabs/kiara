@@ -83,7 +83,6 @@ public class MovieTestStore {
 		
 		conditions.add(new Condition("movieTitle", Operator.EQUAL, "Titanic"));
 		List<MovieTestObject> movieResults = storeSearch.query(store, conditions);
-		long end = System.currentTimeMillis();
 	
 		assertEquals(1, movieResults.size());
 		assertEquals("Titanic", movieResults.get(0).getMovieTitle());
@@ -122,6 +121,23 @@ public class MovieTestStore {
 
 	}
 	
+	@Test
+	public void movieTest_2_1() {
+
+		StoreSearch storeSearch = new StoreSearch();
+		List<Condition> conditions = new LinkedList<>();
+		
+		conditions.add(new Condition("actors", Operator.CONTAINS_ALL, new String[] {"Kate Winslet", "Leonardo DiCaprio"}));
+		
+		List<MovieTestObject> movieResults = storeSearch.query(store, conditions, 1);
+	
+		assertEquals(1, movieResults.size());
+		
+		assertEquals("Titanic", movieResults.get(0).getMovieTitle());
+
+
+	}
+	
 	
 	@Test
 	public void movieTest_3() {
@@ -151,5 +167,57 @@ public class MovieTestStore {
 		assertEquals("Journey 2: The Mysterious Island", movieResults.get(3).getMovieTitle());
 
 	}
+	
+	@Test
+	public void movieTest_3_1() {
+
+		StoreSearch storeSearch = new StoreSearch();
+		List<Condition> conditions = new LinkedList<>();
+		
+		conditions.add(new Condition("actors", Operator.CONTAINS_ALL, "Dwayne Johnson"));
+		conditions.add(new Condition("titleYear", Operator.GREATER_THAN, "2011"));
+		
+		List<MovieTestObject> movieResults = storeSearch.query(store, conditions, 2);
+	
+		assertEquals(2, movieResults.size());
+		
+		assertEquals("G.I. Joe: Retaliation", movieResults.get(0).getMovieTitle());
+		assertEquals("San Andreas", movieResults.get(1).getMovieTitle());
+
+
+	}
+	
+	@Test
+	public void movieTest_3_2() {
+
+		StoreSearch storeSearch = new StoreSearch();
+		List<Condition> conditions = new LinkedList<>();
+		
+		conditions.add(new Condition("actors", Operator.CONTAINS_ALL, "Dwayne Johnson"));
+		conditions.add(new Condition("titleYear", Operator.GREATER_THAN, "2011"));
+		
+		List<MovieTestObject> movieResults = storeSearch.query(store, conditions, 0);
+	
+		assertEquals(0, movieResults.size());
+	
+
+	}
+	
+	@Test
+	public void movieTest_3_3() {
+
+		StoreSearch storeSearch = new StoreSearch();
+		List<Condition> conditions = new LinkedList<>();
+		
+		conditions.add(new Condition("actors", Operator.CONTAINS_ALL, "Dwayne Johnson"));
+		conditions.add(new Condition("titleYear", Operator.GREATER_THAN, "2011"));
+		
+		List<MovieTestObject> movieResults = storeSearch.query(store, conditions, 100);
+	
+		assertEquals(7, movieResults.size());
+	
+
+	}
+
 
 }

@@ -65,7 +65,43 @@ public class StoreSearch {
 	 *                   result should satisfy.
 	 * @return List - It returns a list of POJO's using the POJO class that was used
 	 *         to create the store.
-	 *         
+	 * 
+	 * @throws ColumnNotFoundException        This exception is thrown when the
+	 *                                        column mentioned in the condition, is
+	 *                                        not found in the store.
+	 * @throws InsufficientDataException      This exception is raised when between
+	 *                                        operator is used in a condition, and
+	 *                                        both lower and upper ranges are not
+	 *                                        specified.
+	 * @throws NonSupportedOperationException This exception is raised if any
+	 *                                        operator (inside a condition) other
+	 *                                        than EQUALS ,CONTAINS_EITHER or
+	 *                                        CONTAINS_ALL is used in range based
+	 *                                        data.
+	 * @throws RangeOutOfOrderException       This exception is raised when we try
+	 *                                        to parse a range with higher range
+	 *                                        value, which is less than lower range.
+	 */
+	public <T> List<T> query(Store<T> store, List<Condition> conditions) {
+		Integer resultLimit = null;
+		return query(store, conditions, resultLimit);
+	}
+
+	/**
+	 * This function will search the store with provided conditions. The results
+	 * will returned as the List of POJO class, that was used to create the Store.
+	 * 
+	 * @param <T>         Type of Store, for compile time Safety
+	 * @param store       This parameter will pass the store, which will be
+	 *                    searched.
+	 * @param conditions  This parameter will pass all the conditions that your
+	 *                    result should satisfy.
+	 *
+	 * @param resultLimit This integer argument will limit your search results to
+	 *                    this upper limit
+	 * @return List - It returns a list of POJO's using the POJO class that was used
+	 *         to create the store.
+	 * 
 	 * @throws ColumnNotFoundException        This exception is thrown when the
 	 *                                        column mentioned in the condition, is
 	 *                                        not found in the store.
@@ -83,7 +119,7 @@ public class StoreSearch {
 	 *                                        value, which is less than lower range.
 	 */
 	@SuppressWarnings("unchecked")
-	public <T> List<T> query(Store<T> store, List<Condition> conditions) {
+	public <T> List<T> query(Store<T> store, List<Condition> conditions, Integer resultLimit) {
 
 		List<Object> pojoList = new LinkedList<>();
 
@@ -96,7 +132,7 @@ public class StoreSearch {
 		TreeSet<Integer> filterColPos = getFilterColPos(store);
 
 		buidResult(null, pojoList, store, sortedConditions, prevColumnNodesCollection, filterColPos, true,
-				store.getPojoClass());
+				store.getPojoClass(), resultLimit);
 
 		return (List<T>) pojoList;
 	}
@@ -139,6 +175,53 @@ public class StoreSearch {
 	 * 
 	 */
 	public <T> List<Map<String, String>> query(Store<T> store, List<Condition> conditions, Set<String> filterSet) {
+		Integer resultLimit = null;
+		return query(store, conditions, filterSet, resultLimit);
+	}
+
+	/**
+	 * This function will search the store with provided conditions,The results can
+	 * be filtered with only the columns/data-attributes, you want in the result,
+	 * using the filterSet argument.
+	 * 
+	 * @param store       This parameter will pass the store, which will be
+	 *                    searched.
+	 * 
+	 * @param conditions  This parameter will pass all the conditions that your
+	 *                    result should satisfy.
+	 * 
+	 * @param filterSet   This parameter will pass a set of columns that should be
+	 *                    present in the result, if this parameter is null, all the
+	 *                    columns (which are there in the store) will be present in
+	 *                    the result.
+	 * 
+	 * @param resultLimit This integer argument will limit your search results to
+	 *                    this upper limit
+	 * @return List It returns a list of Map with Key as column Name and Value as
+	 *         the value of the column. All values are represented as a String. The
+	 *         column names are stored in upper case form. Therefore, each map is a
+	 *         individual record, that satisfied the mentioned conditions, and we
+	 *         return list of such records.
+	 * 
+	 * @throws ColumnNotFoundException        This exception is thrown when the
+	 *                                        column mentioned in the condition, is
+	 *                                        not found in the store.
+	 * @throws InsufficientDataException      This exception is raised when between
+	 *                                        operator is used in a condition, and
+	 *                                        both lower and upper ranges are not
+	 *                                        specified.
+	 * @throws NonSupportedOperationException This exception is raised if any
+	 *                                        operator (inside a condition) other
+	 *                                        than EQUALS ,CONTAINS_EITHER or
+	 *                                        CONTAINS_ALL is used in range based
+	 *                                        data.
+	 * @throws RangeOutOfOrderException       This exception is raised when we try
+	 *                                        to parse a range with higher range
+	 *                                        value, which is less than lower range.
+	 * 
+	 */
+	public <T> List<Map<String, String>> query(Store<T> store, List<Condition> conditions, Set<String> filterSet,
+			Integer resultLimit) {
 
 		List<Map<String, String>> result = new LinkedList<>();
 
@@ -154,14 +237,15 @@ public class StoreSearch {
 
 		TreeSet<Integer> filterColPos = getFilterColPos(filterSet, store);
 
-		buidResult(result, null, store, sortedConditions, prevColumnNodesCollection, filterColPos, false, null);
+		buidResult(result, null, store, sortedConditions, prevColumnNodesCollection, filterColPos, false, null,
+				resultLimit);
 
 		return result;
 	}
 
 	private <T> void buidResult(List<Map<String, String>> result, List<Object> pojoResult, Store<T> store,
 			Condition[] sortedConditions, ArrayList<ArrayList<SdqlNode>> prevColumnNodesCollection,
-			TreeSet<Integer> filterColPos, boolean buildPojo, Class<? extends Object> pojoClass) {
+			TreeSet<Integer> filterColPos, boolean buildPojo, Class<? extends Object> pojoClass, Integer resultLimit) {
 		int lastConditionColPos = sortedConditions[sortedConditions.length - 1].getColumnIndex();
 
 		Set<SdqlNode> resultNodeSet = new HashSet<SdqlNode>();
@@ -193,7 +277,7 @@ public class StoreSearch {
 				}
 
 				buildPostfixMap(result, pojoResult, resultNode, lastConditionColPos + 1, filterColPos,
-						filterColPos.last(), store, resultObject, resultPojo, buildPojo);
+						filterColPos.last(), store, resultObject, resultPojo, buildPojo, resultLimit);
 			}
 		}
 	}
@@ -829,7 +913,12 @@ public class StoreSearch {
 
 	private <T> void buildPostfixMap(List<Map<String, String>> result, List<Object> pojoResult, SdqlNode currentNode,
 			int nextColPos, TreeSet<Integer> filterColPos, int lasColPos, Store<T> store,
-			Map<String, String> resultObject, Object resultPojo, boolean buildPojo) {
+			Map<String, String> resultObject, Object resultPojo, boolean buildPojo, Integer resultLimit) {
+
+		if (resultLimit != null && ((pojoResult != null && pojoResult.size() >= resultLimit)
+				|| (result != null && result.size() >= resultLimit))) {
+			return;
+		}
 
 		if (nextColPos > lasColPos) {
 			if (buildPojo && resultPojo != null) {
@@ -849,7 +938,7 @@ public class StoreSearch {
 				writeResultObject(childNode, nextColPos, store, resultObject, resultPojo, buildPojo);
 			}
 			buildPostfixMap(result, pojoResult, childNode, nextColPos + 1, filterColPos, lasColPos, store, resultObject,
-					resultPojo, buildPojo);
+					resultPojo, buildPojo, resultLimit);
 		}
 	}
 

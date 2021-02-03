@@ -26,6 +26,8 @@ import com.opencsv.CSVReader;
 public class CongressResignationsTest {
 
 	static Store<CongressResignationsTestObject> store;
+	
+	static Set<String> NULL_FILTER_SET = null;
 
 	static {
 		store = new Store<>(CongressResignationsTestObject.class);
@@ -86,7 +88,7 @@ public class CongressResignationsTest {
 		List<Condition> conditions = new LinkedList<>();
 
 		conditions.add(new Condition("party", "D"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		assertEquals(357, result.size());
 
 	}
@@ -106,7 +108,7 @@ public class CongressResignationsTest {
 
 		conditions.add(new Condition("party", "D"));
 		conditions.add(new Condition("category", Operator.CONTAINS_EITHER, categoryValues));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		assertEquals(50, result.size());
 
 	}
@@ -126,7 +128,7 @@ public class CongressResignationsTest {
 
 		conditions.add(new Condition("party", "D"));
 		conditions.add(new Condition("category", Operator.CONTAINS_ALL, categoryValues));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		assertEquals(1, result.size());
 
 		assertEquals("Rob Andrews", result.get(0).get("MEMBER"));
@@ -157,7 +159,7 @@ public class CongressResignationsTest {
 		conditions.add(new Condition("party", "R"));
 		conditions.add(new Condition("category", Operator.CONTAINS_EITHER, categoryValues));
 		conditions.add(new Condition("resignationDate", Operator.LESS_THAN, "2015-01-05"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		assertEquals(38, result.size());
 
 	}
@@ -180,7 +182,7 @@ public class CongressResignationsTest {
 		conditions.add(new Condition("party", "R"));
 		conditions.add(new Condition("category", Operator.CONTAINS_EITHER, categoryValues));
 		conditions.add(new Condition("resignationDate", Operator.LESS_THAN_EQUAL, "2015-01-05"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		assertEquals(39, result.size());
 
 	}
@@ -203,7 +205,7 @@ public class CongressResignationsTest {
 		conditions.add(new Condition("party", "R"));
 		conditions.add(new Condition("category", Operator.CONTAINS_EITHER, categoryValues));
 		conditions.add(new Condition("resignationDate", Operator.BETWEEN, "1932-12-03", "2015-01-05"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		assertEquals(32, result.size());
 
 	}
@@ -238,7 +240,7 @@ public class CongressResignationsTest {
 		conditions.add(new Condition("party", "R"));
 		conditions.add(new Condition("category", Operator.CONTAINS_EITHER, categoryValues));
 		conditions.add(new Condition("resignationDate", Operator.BETWEEN, "1932-12-03", "1980-01-01"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		assertEquals(10, result.size());
 
 		for (int i = 0; i < result.size(); i++) {
@@ -266,7 +268,7 @@ public class CongressResignationsTest {
 		conditions.add(new Condition("category", Operator.CONTAINS_EITHER, categoryValues));
 		conditions.add(new Condition("resignationDate", Operator.LESS_THAN, "2015-01-05"));
 		conditions.add(new Condition("resignationDate", Operator.NOT_EQUAL, "2004-08-31"));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		assertEquals(37, result.size());
 
 	}
@@ -295,7 +297,7 @@ public class CongressResignationsTest {
 		conditions.add(new Condition("category", Operator.CONTAINS_EITHER, categoryValues));
 		conditions.add(new Condition("resignationDate", Operator.LESS_THAN, "2015-01-05"));
 		conditions.add(new Condition("resignationDate", Operator.NOT_EQUAL, excludedDates));
-		List<Map<String, String>> result = storeSearch.query(store, conditions, null);
+		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		assertEquals(36, result.size());
 
 	}
