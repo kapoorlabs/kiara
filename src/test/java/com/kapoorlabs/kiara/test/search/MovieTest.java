@@ -89,12 +89,86 @@ public class MovieTest {
 		keywords.add("Kate Winslet");
 		keywords.add("ship");
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, null);
 
 		assertEquals(1, keywordSearchResult.getResult().size());
 		assertEquals("Titanic", keywordSearchResult.getResult().get(0).getMovieTitle());
 
 	}
+	
+	@Test
+	public void movieTest_1_1() {
+
+		Set<String> keywords = new HashSet<>();
+
+		keywords.add("Kate Winslet");
+		keywords.add("ship");
+
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, -1);
+
+		assertEquals(0, keywordSearchResult.getResult().size());
+
+	}
+	
+	@Test
+	public void movieTest_1_2() {
+
+		Set<String> keywords = new HashSet<>();
+
+		keywords.add("Kate Winslet");
+		keywords.add("ship");
+
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, 0);
+
+		assertEquals(0, keywordSearchResult.getResult().size());
+
+	}
+	
+	@Test
+	public void movieTest_1_3() {
+
+		Set<String> keywords = new HashSet<>();
+
+		keywords.add("Kate Winslet");
+		keywords.add("ship");
+
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, 1);
+
+		assertEquals(1, keywordSearchResult.getResult().size());
+		assertEquals("Titanic", keywordSearchResult.getResult().get(0).getMovieTitle());
+
+	}
+	
+	@Test
+	public void movieTest_1_4() {
+
+		Set<String> keywords = new HashSet<>();
+
+		keywords.add("Kate Winslet");
+		keywords.add("ship");
+
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, 2);
+
+		assertEquals(1, keywordSearchResult.getResult().size());
+		assertEquals("Titanic", keywordSearchResult.getResult().get(0).getMovieTitle());
+
+	}
+	
+	@Test
+	public void movieTest_1_5() {
+
+		Set<String> keywords = new HashSet<>();
+
+		keywords.add("Kate Winslet");
+		keywords.add("ship");
+
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, 100);
+
+		assertEquals(1, keywordSearchResult.getResult().size());
+		assertEquals("Titanic", keywordSearchResult.getResult().get(0).getMovieTitle());
+
+	}
+
 
 	@Test
 	public void movieTest_2() {
@@ -104,7 +178,7 @@ public class MovieTest {
 		keywords.add("Kae Winslet");
 		keywords.add("ship");
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, null);
 
 		assertEquals(1, keywordSearchResult.getResult().size());
 		assertEquals("Titanic", keywordSearchResult.getResult().get(0).getMovieTitle());
@@ -119,9 +193,25 @@ public class MovieTest {
 		keywords.add("Ka Winslet");
 		keywords.add("ship");
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, null);
 
 		assertEquals(21, keywordSearchResult.getResult().size());
+		assertEquals(1, keywordSearchResult.getKeywords().size());
+		assertTrue(keywordSearchResult.getKeywords().contains("ship"));
+
+	}
+	
+	@Test
+	public void movieTest_3_1() {
+
+		Set<String> keywords = new HashSet<>();
+
+		keywords.add("Ka Winslet");
+		keywords.add("ship");
+
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, 2);
+
+		assertEquals(2, keywordSearchResult.getResult().size());
 		assertEquals(1, keywordSearchResult.getKeywords().size());
 		assertTrue(keywordSearchResult.getKeywords().contains("ship"));
 
@@ -254,7 +344,7 @@ public class MovieTest {
 		expectedMovies.add("Cast Away");
 		expectedMovies.add("The Polar Express");
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, null);
 
 		assertEquals(2, keywordSearchResult.getResult().size());
 		for (MovieTestObject movie : keywordSearchResult.getResult()) {
@@ -272,7 +362,7 @@ public class MovieTest {
 		keywords.add("christmas");
 		keywords.add("survival");
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, null);
 
 		assertEquals(1, keywordSearchResult.getResult().size());
 		assertEquals("Cast Away", keywordSearchResult.getResult().get(0).getMovieTitle());
@@ -288,7 +378,7 @@ public class MovieTest {
 		keywords.add("christmas");
 		keywords.add("survive");
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, null);
 
 		assertEquals(1, keywordSearchResult.getResult().size());
 		assertEquals("Cast Away", keywordSearchResult.getResult().get(0).getMovieTitle());
@@ -313,7 +403,7 @@ public class MovieTest {
 		expectedMatchingKeywords.add("Sam Anderson");
 		expectedMatchingKeywords.add("vietnam");
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, null);
 
 		assertEquals(1, keywordSearchResult.getResult().size());
 		assertEquals("Forrest Gump", keywordSearchResult.getResult().get(0).getMovieTitle());
@@ -327,7 +417,7 @@ public class MovieTest {
 
 		keywords.add("No Actor");
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, null);
 
 		assertEquals(0, keywordSearchResult.getResult().size());
 
@@ -338,7 +428,7 @@ public class MovieTest {
 
 		String sentence = null;
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(sentence, store);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(sentence, store, null);
 
 		assertEquals(0, keywordSearchResult.getResult().size());
 
@@ -349,7 +439,7 @@ public class MovieTest {
 
 		String sentence = "    ";
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(sentence, store);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(sentence, store, null);
 
 		assertEquals(0, keywordSearchResult.getResult().size());
 
@@ -360,7 +450,7 @@ public class MovieTest {
 
 		String sentence = "NoKeyword";
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(sentence, store);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(sentence, store, null);
 
 		assertEquals(0, keywordSearchResult.getResult().size());
 
@@ -371,7 +461,7 @@ public class MovieTest {
 
 		Set<String> keywords = null;
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, null);
 
 		assertEquals(0, keywordSearchResult.getResult().size());
 
@@ -382,7 +472,7 @@ public class MovieTest {
 
 		Set<String> keywords = new HashSet<>();
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, null);
 
 		assertEquals(0, keywordSearchResult.getResult().size());
 	}
@@ -395,7 +485,7 @@ public class MovieTest {
 		keywords.add("Titanic");
 		keywords.add("Forrest Gump");
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, null);
 
 		assertEquals(1, keywordSearchResult.getResult().size());
 	}
@@ -410,7 +500,7 @@ public class MovieTest {
 		List<Condition> preConditions = new LinkedList<>();
 		preConditions.add(new Condition("movieTitle", Operator.EQUAL, "Titanic"));
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, preConditions);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, preConditions, null);
 
 		assertEquals(1, keywordSearchResult.getResult().size());
 		assertEquals("Titanic", keywordSearchResult.getResult().get(0).getMovieTitle());
@@ -426,7 +516,7 @@ public class MovieTest {
 		List<Condition> preConditions = new LinkedList<>();
 		preConditions.add(new Condition("actors", Operator.CONTAINS_EITHER, "Kate Winslet"));
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, preConditions);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, preConditions, null);
 
 		assertEquals(1, keywordSearchResult.getResult().size());
 		assertEquals("Titanic", keywordSearchResult.getResult().get(0).getMovieTitle());
@@ -442,7 +532,7 @@ public class MovieTest {
 		List<Condition> preConditions = new LinkedList<>();
 		preConditions.add(new Condition("actors", Operator.CONTAINS_EITHER, "Kate Winslet"));
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, preConditions);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, preConditions, null);
 
 		assertEquals(1, keywordSearchResult.getResult().size());
 		assertEquals("Titanic", keywordSearchResult.getResult().get(0).getMovieTitle());
@@ -455,7 +545,7 @@ public class MovieTest {
 		List<Condition> preConditions = new LinkedList<>();
 		preConditions.add(new Condition("plotKeywords", Operator.CONTAINS_EITHER, "magic"));
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch("magic", store, preConditions);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch("magic", store, preConditions, null);
 
 		assertEquals(31, keywordSearchResult.getResult().size());
 	}
@@ -469,7 +559,7 @@ public class MovieTest {
 		Set<String> keywords = new HashSet<>();
 		keywords.add("sister love");
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, preConditions);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, preConditions, null);
 
 		assertEquals(1, keywordSearchResult.getResult().size());
 		assertEquals("Frozen", keywordSearchResult.getResult().get(0).getMovieTitle());
@@ -490,7 +580,7 @@ public class MovieTest {
 		expectedMatchingKeywords.add("iceland");
 	
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch("Crime Drama iceland Color", store, preConditions);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch("Crime Drama iceland Color", store, preConditions, null);
 		assertEquals(1, keywordSearchResult.getResult().size());
 		assertEquals("Trapped", keywordSearchResult.getResult().get(0).getMovieTitle());
 		assertEquals(expectedMatchingKeywords,keywordSearchResult.getKeywords());
@@ -513,7 +603,7 @@ public class MovieTest {
 		expectedMatchingKeywords.add("Carlos");
 	
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch("Crime Drama iceland Color Biography Carlos", store, preConditions);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch("Crime Drama iceland Color Biography Carlos", store, preConditions, null);
 		assertEquals(1, keywordSearchResult.getResult().size());
 		assertEquals("Carlos", keywordSearchResult.getResult().get(0).getMovieTitle());
 		assertEquals(expectedMatchingKeywords,keywordSearchResult.getKeywords());
@@ -533,7 +623,7 @@ public class MovieTest {
 		expectedMatchingKeywords.add("Fantasy");
 		expectedMatchingKeywords.add("Mystery");
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch("Mystery Thriller Fantasy Horror Action", store, preConditions);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch("Mystery Thriller Fantasy Horror Action", store, preConditions, null);
 		
 		assertEquals(2, keywordSearchResult.getResult().size());
 		assertEquals(expectedMatchingKeywords,keywordSearchResult.getKeywords());
@@ -556,7 +646,7 @@ public class MovieTest {
 		expectedMatchingKeywords.add("Mystery");
 		expectedMatchingKeywords.add("Comedy");
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch("Mystery Thriller Fantasy Horror Action Comedy", store, preConditions);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch("Mystery Thriller Fantasy Horror Action Comedy", store, preConditions, null);
 		
 		assertEquals(1, keywordSearchResult.getResult().size());
 		assertEquals(expectedMatchingKeywords,keywordSearchResult.getKeywords());

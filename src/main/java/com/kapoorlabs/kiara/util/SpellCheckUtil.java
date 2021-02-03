@@ -153,11 +153,11 @@ public class SpellCheckUtil {
 
 			for (char key : bfsNode.spellCheckNode.getChildren().keySet()) {
 
-				if (key == '*') {
+				if (key == '*' && result.size() < maxResultSize) {
+					result.add(bfsNode.strSoFar);
 					if (result.size() >= maxResultSize) {
 						return result;
 					}
-					result.add(bfsNode.strSoFar);
 				} else {
 					SpellCheckNode bfsSpellCheckNode = bfsNode.spellCheckNode.getChildren().get(key);
 					bfsQueue.add(new BfsNode(bfsSpellCheckNode, bfsNode.strSoFar + key));

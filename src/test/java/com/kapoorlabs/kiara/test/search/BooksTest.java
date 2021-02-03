@@ -435,7 +435,7 @@ public class BooksTest {
 		keywords.add("The Diary of a Young Girl");
 		
 
-		KeywordSearchResult<BooksTestObject> result = keywordSearch.getBestMatch( keywords, store);
+		KeywordSearchResult<BooksTestObject> result = keywordSearch.getBestMatch( keywords, store, null);
 
 		assertEquals(1, result.getKeywords().size());
 		assertEquals("The Diary of a Young Girl", result.getResult().get(0).getTitle());

@@ -118,14 +118,16 @@ public class KeywordSearch {
 	 * searched and returns the best match keyword result. Keywords in the String
 	 * are separated by spaces.
 	 * 
-	 * @param sentence - A String containing words that could individually has a
-	 *                 match in store.
-	 * @param store    - Data store that is being searched
+	 * @param sentence    - A String containing words that could individually has a
+	 *                    match in store.
+	 * @param store       - Data store that is being searched
+	 * @param resultLimit This integer argument will limit your search results to
+	 *                    this upper limit
 	 * @return It returns a set of keywords that best matched and List of results.
 	 */
-	public <T> KeywordSearchResult<T> getBestMatch(String sentence, Store<T> store) {
+	public <T> KeywordSearchResult<T> getBestMatch(String sentence, Store<T> store, Integer resultLimit) {
 
-		return getBestMatch(sentence, store, null);
+		return getBestMatch(sentence, store, null, resultLimit);
 
 	}
 
@@ -133,13 +135,15 @@ public class KeywordSearch {
 	 * This public method takes in a Set of keywords or phrases and the Data Store
 	 * that should be searched and returns the best match keyword/phrase result.
 	 * 
-	 * @param keywords - A set of keywords/phrases.
-	 * @param store    - Data store that is being searched
+	 * @param keywords    - A set of keywords/phrases.
+	 * @param store       - Data store that is being searched
+	 * @param resultLimit This integer argument will limit your search results to
+	 *                    this upper limit
 	 * @return It returns a set of keywords that best matched and List of results.
 	 */
-	public <T> KeywordSearchResult<T> getBestMatch(Set<String> keywords, Store<T> store) {
+	public <T> KeywordSearchResult<T> getBestMatch(Set<String> keywords, Store<T> store, Integer resultLimit) {
 
-		return getBestMatch(keywords, store, null);
+		return getBestMatch(keywords, store, null, resultLimit);
 	}
 
 	/**
@@ -151,9 +155,12 @@ public class KeywordSearch {
 	 *                      a match in store.
 	 * @param store         - Data store that is being searched
 	 * @param preConditions - preconditions that should apply to keyword search
+	 * @param resultLimit   This integer argument will limit your search results to
+	 *                      this upper limit
 	 * @return It returns a set of keywords that best matched and List of results.
 	 */
-	public <T> KeywordSearchResult<T> getBestMatch(String sentence, Store<T> store, List<Condition> preConditions) {
+	public <T> KeywordSearchResult<T> getBestMatch(String sentence, Store<T> store, List<Condition> preConditions,
+			Integer resultLimit) {
 
 		if (sentence == null || sentence.trim().isEmpty()) {
 			return new KeywordSearchResult<T>(new HashSet<>(), new LinkedList<>());
@@ -162,7 +169,7 @@ public class KeywordSearch {
 		sentence = SpellCheckUtil.removeStopWords(sentence);
 		Set<String> keywords = new HashSet<>(Arrays.asList(sentence.split(" ")));
 
-		return getBestMatch(keywords, store, preConditions);
+		return getBestMatch(keywords, store, preConditions, resultLimit);
 
 	}
 
@@ -173,10 +180,12 @@ public class KeywordSearch {
 	 * @param keywords      - A set of keywords/phrases.
 	 * @param store         - Data store that is being searched
 	 * @param preConditions - preconditions that should apply to keyword search
+	 * @param resultLimit   This integer argument will limit your search results to
+	 *                      this upper limit
 	 * @return It returns a set of keywords that best matched and List of results.
 	 */
-	public <T> KeywordSearchResult<T> getBestMatch(Set<String> keywords, Store<T> store,
-			List<Condition> preConditions) {
+	public <T> KeywordSearchResult<T> getBestMatch(Set<String> keywords, Store<T> store, List<Condition> preConditions,
+			Integer resultLimit) {
 
 		KeywordSearchResult<T> keywordSearchResult = new KeywordSearchResult<T>(new HashSet<>(), new LinkedList<>());
 
@@ -193,13 +202,14 @@ public class KeywordSearch {
 		long[] maxQueryCount = new long[totalKeywords];
 
 		KeywordSearchResult<T> searchResult = getBestMatchHelper(matchesForKeywords, store, 0, new HashMap<>(),
-				new HashSet<>(), totalKeywords, maxQueryCount, processedQueryCount, queryStack, preConditions);
+				new HashSet<>(), totalKeywords, maxQueryCount, processedQueryCount, queryStack, preConditions,
+				resultLimit);
 
 		if (searchResult != null) {
 			keywordSearchResult = searchResult;
 		} else {
 			for (int i = totalKeywords; i >= 1; i--) {
-				searchResult = processQueryStack(i - 1, store, queryStack);
+				searchResult = processQueryStack(i - 1, store, queryStack, resultLimit);
 				if (searchResult != null) {
 					keywordSearchResult = searchResult;
 					break;
@@ -214,7 +224,7 @@ public class KeywordSearch {
 	private <T> KeywordSearchResult<T> getBestMatchHelper(ArrayList<MatchesForKeyword> matchesForKeywords,
 			Store<T> store, int keywordPos, HashMap<Integer, Set<String>> combination, Set<String> keywords,
 			int bestPossibleMatchScore, long[] maxQueryCount, long[] processedQueryCount,
-			Stack<KeywordConditionsPair>[] queryStack, List<Condition> preConditions) {
+			Stack<KeywordConditionsPair>[] queryStack, List<Condition> preConditions, Integer resultLimit) {
 
 		KeywordSearchResult<T> result = null;
 
@@ -236,7 +246,7 @@ public class KeywordSearch {
 			processedQueryCount[keywordClone.size() - 1]++;
 
 			if (keywordClone.size() == bestPossibleMatchScore) {
-				result = processQueryStack(bestPossibleMatchScore - 1, store, queryStack);
+				result = processQueryStack(bestPossibleMatchScore - 1, store, queryStack, resultLimit);
 				long maxQueryNumber = maxQueryCount[bestPossibleMatchScore - 1];
 
 				if (maxQueryNumber == 0) {
@@ -264,7 +274,7 @@ public class KeywordSearch {
 			keywords.add(matchesForKeywords.get(keywordPos).getKeyword());
 
 			result = getBestMatchHelper(matchesForKeywords, store, keywordPos + 1, combination, keywords,
-					bestPossibleMatchScore, maxQueryCount, processedQueryCount, queryStack, preConditions);
+					bestPossibleMatchScore, maxQueryCount, processedQueryCount, queryStack, preConditions, resultLimit);
 
 			if (result != null) {
 				return result;
@@ -281,7 +291,7 @@ public class KeywordSearch {
 		}
 
 		return getBestMatchHelper(matchesForKeywords, store, keywordPos + 1, combination, keywords,
-				bestPossibleMatchScore, maxQueryCount, processedQueryCount, queryStack, preConditions);
+				bestPossibleMatchScore, maxQueryCount, processedQueryCount, queryStack, preConditions, resultLimit);
 
 	}
 
@@ -323,16 +333,18 @@ public class KeywordSearch {
 	 * call this method to process all queries that matches exactly 3 keywords, This
 	 * method will process all queries that could match 3 keywords.
 	 * 
-	 * @param <T>        Type of store
-	 * @param index      index of stack, which represents the number of keywords
-	 * @param store      Store to search
-	 * @param queryStack List of query stack, the index in the list matches the
-	 *                   number of keywords and the stack has all the queries for
-	 *                   that number of keywords
+	 * @param <T>         Type of store
+	 * @param index       index of stack, which represents the number of keywords
+	 * @param store       Store to search
+	 * @param queryStack  List of query stack, the index in the list matches the
+	 *                    number of keywords and the stack has all the queries for
+	 *                    that number of keywords
+	 * @param resultLimit This integer argument will limit your search results to
+	 *                    this upper limit
 	 * @return Returns result if found, else null.
 	 */
 	private <T> KeywordSearchResult<T> processQueryStack(int index, Store<T> store,
-			Stack<KeywordConditionsPair>[] queryStack) {
+			Stack<KeywordConditionsPair>[] queryStack, Integer resultLimit) {
 
 		Stack<KeywordConditionsPair> stack = queryStack[index];
 		KeywordSearchResult<T> result = null;
@@ -341,7 +353,7 @@ public class KeywordSearch {
 
 		while (!stack.isEmpty()) {
 			KeywordConditionsPair keywordConditionsPair = stack.pop();
-			List<T> serchResults = storeSearch.query(store, keywordConditionsPair.getConditions());
+			List<T> serchResults = storeSearch.query(store, keywordConditionsPair.getConditions(), resultLimit);
 			if (serchResults.size() > 0) {
 				result = new KeywordSearchResult<>(keywordConditionsPair.getKeywords(), serchResults);
 				break;
