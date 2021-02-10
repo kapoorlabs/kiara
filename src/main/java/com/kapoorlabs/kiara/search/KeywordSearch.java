@@ -163,7 +163,7 @@ public class KeywordSearch {
 			Integer resultLimit) {
 
 		if (sentence == null || sentence.trim().isEmpty()) {
-			return new KeywordSearchResult<T>(new HashSet<>(), new LinkedList<>());
+			return new KeywordSearchResult<T>(new HashSet<>(), new ArrayList<>());
 		}
 
 		sentence = SpellCheckUtil.removeStopWords(sentence);
@@ -187,7 +187,7 @@ public class KeywordSearch {
 	public <T> KeywordSearchResult<T> getBestMatch(Set<String> keywords, Store<T> store, List<Condition> preConditions,
 			Integer resultLimit) {
 
-		KeywordSearchResult<T> keywordSearchResult = new KeywordSearchResult<T>(new HashSet<>(), new LinkedList<>());
+		KeywordSearchResult<T> keywordSearchResult = new KeywordSearchResult<T>(new HashSet<>(), new ArrayList<>());
 
 		ArrayList<MatchesForKeyword> matchesForKeywords = getMatchesForKeyword(keywords, store);
 

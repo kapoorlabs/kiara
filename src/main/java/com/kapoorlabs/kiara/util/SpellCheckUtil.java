@@ -1,14 +1,16 @@
 package com.kapoorlabs.kiara.util;
 
-import com.kapoorlabs.kiara.domain.SpellCheckNode;
-import com.kapoorlabs.kiara.domain.SpellCheckTrie;
-import lombok.AllArgsConstructor;
-
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
+
+import com.kapoorlabs.kiara.domain.SpellCheckNode;
+import com.kapoorlabs.kiara.domain.SpellCheckTrie;
+
+import lombok.AllArgsConstructor;
 
 public class SpellCheckUtil {
 
@@ -127,7 +129,7 @@ public class SpellCheckUtil {
 	 */
 	public static List<String> getTextPredictions(String inpStr, SpellCheckTrie spellCheckTrie, int maxResultSize) {
 
-		List<String> result = new LinkedList<>();
+		List<String> result = new ArrayList<>();
 
 		if (inpStr == null || inpStr.trim().isEmpty()) {
 			return result;

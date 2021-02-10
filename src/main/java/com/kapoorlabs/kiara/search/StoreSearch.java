@@ -121,7 +121,7 @@ public class StoreSearch {
 	@SuppressWarnings("unchecked")
 	public <T> List<T> query(Store<T> store, List<Condition> conditions, Integer resultLimit) {
 
-		List<Object> pojoList = new LinkedList<>();
+		List<Object> pojoList = new ArrayList<>();
 
 		checkIfSearchIsValid(store, conditions);
 
@@ -223,7 +223,7 @@ public class StoreSearch {
 	public <T> List<Map<String, String>> query(Store<T> store, List<Condition> conditions, Set<String> filterSet,
 			Integer resultLimit) {
 
-		List<Map<String, String>> result = new LinkedList<>();
+		List<Map<String, String>> result = new ArrayList<>();
 
 		checkIfSearchIsValid(store, conditions);
 
