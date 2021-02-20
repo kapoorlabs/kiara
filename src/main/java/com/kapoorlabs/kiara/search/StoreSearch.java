@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
@@ -790,10 +789,16 @@ public class StoreSearch {
 
 					while (conditionValueIterator.hasNext()) {
 						String value = conditionValueIterator.next().trim();
+						
 						if (store.getSdqlColumns()[colIndex].isStemmedIndex()) {
 							SnowballStemmer stemmer = new SnowballStemmer(SnowballStemmer.ALGORITHM.ENGLISH);
 							value = stemmer.stem(value).toString();
 						}
+						
+						if (store.getSdqlColumns()[colIndex].isCaseSensitive()) {
+							value = value.toLowerCase();
+						}
+						
 						conditionValueIterator.set(value);
 					}
 				} else if (condition.getLowerValue() != null && condition.getUpperValue() != null) {

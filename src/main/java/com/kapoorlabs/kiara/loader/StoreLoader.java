@@ -178,6 +178,10 @@ public class StoreLoader<T> {
 			Object value = store.getSdqlColumns()[level].getGetter().invoke(pojo);
 			stringValue = value != null && !value.toString().trim().isEmpty() ? value.toString().trim()
 					: SdqlConstants.NULL;
+			
+			if (store.getSdqlColumns()[level].isCaseSensitive()) {
+				stringValue = stringValue.toLowerCase();
+			}
 		}
 
 		SdqlNode sdqlNode = new SdqlNode(stringValue, numericValue);

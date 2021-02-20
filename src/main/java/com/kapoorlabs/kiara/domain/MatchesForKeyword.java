@@ -13,12 +13,11 @@ public class MatchesForKeyword {
 	
 	private String keyword;
 	
-	private ArrayList<Integer> colMatches;
+	private ArrayList<Integer> colMatches = new ArrayList<>();
 	
 	public MatchesForKeyword(String keyword) {
 		
 		this.keyword = keyword;
-		this.colMatches = new ArrayList<>();
 		
 	}
 

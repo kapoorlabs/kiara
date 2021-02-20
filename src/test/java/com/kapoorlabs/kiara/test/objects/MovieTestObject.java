@@ -1,5 +1,6 @@
 package com.kapoorlabs.kiara.test.objects;
 
+import com.kapoorlabs.kiara.domain.annotations.CaseInsensitive;
 import com.kapoorlabs.kiara.domain.annotations.CommaSeperatedStrings;
 import com.kapoorlabs.kiara.domain.annotations.OneEditAway;
 import com.kapoorlabs.kiara.domain.annotations.StemmedIndex;
@@ -41,6 +42,7 @@ public class MovieTestObject {
 	private String movieTitle;
 	
 	
+	@CaseInsensitive
 	@OneEditAway
 	@StemmedIndex
 	@CommaSeperatedStrings

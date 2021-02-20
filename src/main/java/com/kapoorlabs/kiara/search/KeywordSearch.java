@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 
+import com.kapoorlabs.kiara.constants.SdqlConstants;
 import com.kapoorlabs.kiara.domain.Condition;
 import com.kapoorlabs.kiara.domain.KeywordConditionsPair;
 import com.kapoorlabs.kiara.domain.KeywordSearchResult;
@@ -48,17 +49,25 @@ public class KeywordSearch {
 		}
 
 		for (String keyword : keywords) {
+			
+			keyword = keyword == null ? SdqlConstants.NULL : keyword;
 
 			keyword = keyword.trim();
 
-			MatchesForKeyword matchesForKeyword = new MatchesForKeyword(keyword);
+			MatchesForKeyword matchesForKeyword = new MatchesForKeyword();
+			String searchKeyword = keyword;
 
-			for (int i = 0; i < store.getInvertedIndex().size(); i++) {
+			for (int i = 0; i < store.getInvertedIndex().size(); i++) { 
+				
+				if (store.getSdqlColumns()[i].isCaseSensitive()) {		
+					searchKeyword = searchKeyword.toLowerCase();
+				}
+				
 
 				if (store.getSdqlColumns()[i].isStemmedIndex()) {
 
 					SnowballStemmer stemmer = new SnowballStemmer(SnowballStemmer.ALGORITHM.ENGLISH);
-					String stemmedKey = stemmer.stem(keyword).toString();
+					String stemmedKey = stemmer.stem(searchKeyword).toString();
 
 					if (store.getInvertedIndex().get(i).containsKey(stemmedKey)) {
 						matchesForKeyword.getColMatches().add(i);
@@ -67,8 +76,9 @@ public class KeywordSearch {
 
 				} else {
 
-					if (store.getInvertedIndex().get(i).containsKey(keyword)) {
+					if (store.getInvertedIndex().get(i).containsKey(searchKeyword)) {
 						matchesForKeyword.getColMatches().add(i);
+						matchesForKeyword.setKeyword(searchKeyword);
 					}
 
 				}

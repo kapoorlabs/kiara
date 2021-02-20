@@ -26,6 +26,8 @@ public class SdqlColumn {
 	private boolean isOneEditCapable;
 	
 	private boolean isStemmedIndex;
+	
+	private boolean isCaseSensitive;
 
 	private Method getter;
 	

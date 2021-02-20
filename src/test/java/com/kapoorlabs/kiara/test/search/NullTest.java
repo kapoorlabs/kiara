@@ -12,6 +12,7 @@ import org.junit.Test;
 import com.kapoorlabs.kiara.domain.Condition;
 import com.kapoorlabs.kiara.domain.Operator;
 import com.kapoorlabs.kiara.domain.Store;
+import com.kapoorlabs.kiara.domain.annotations.CaseInsensitive;
 import com.kapoorlabs.kiara.domain.annotations.CommaSeperatedDateRanges;
 import com.kapoorlabs.kiara.domain.annotations.CommaSeperatedDates;
 import com.kapoorlabs.kiara.domain.annotations.CommaSeperatedNumbers;
@@ -32,6 +33,7 @@ public class NullTest {
 	@Data
 	public static class TestObject {
 		
+		@CaseInsensitive
 		String name;
 		
 		Long age;
@@ -48,6 +50,7 @@ public class NullTest {
 		@NumericRange
 		String salaryRange;
 		
+		@CaseInsensitive
 		@CommaSeperatedStrings
 		String otherNames;
 		
@@ -71,13 +74,14 @@ public class NullTest {
 		storeLoader.prepareForSearch();
 		
 		StoreSearch storeSearch = new StoreSearch();
-		
+		String otherName = null;
 		List<Condition> conditions = new LinkedList<>();
-		conditions.add(new Condition("name", Operator.EQUAL, "John"));
+		conditions.add(new Condition("name", Operator.EQUAL, "JoHn"));
+		conditions.add(new Condition("OTHERNAMES", Operator.EQUAL, otherName));
 
 		List<Map<String,String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		
-		assertEquals("John", result.get(0).get("NAME"));
+		assertEquals("john", result.get(0).get("NAME"));
 		assertEquals("200-250", result.get(0).get("SALARYRANGE"));
 		assertEquals(null, result.get(0).get("AGE"));
 		assertEquals(null, result.get(0).get("DOB"));
@@ -110,7 +114,7 @@ public class NullTest {
 
 		List<Map<String,String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		
-		assertEquals("John", result.get(0).get("NAME"));
+		assertEquals("john", result.get(0).get("NAME"));
 		assertEquals("200-250", result.get(0).get("SALARYRANGE"));
 		assertEquals(null, result.get(0).get("AGE"));
 		assertEquals(null, result.get(0).get("DOB"));
@@ -143,7 +147,7 @@ public class NullTest {
 
 		List<Map<String,String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		
-		assertEquals("John", result.get(0).get("NAME"));
+		assertEquals("john", result.get(0).get("NAME"));
 		assertEquals("200-250", result.get(0).get("SALARYRANGE"));
 		assertEquals(null, result.get(0).get("AGE"));
 		assertEquals(null, result.get(0).get("DOB"));

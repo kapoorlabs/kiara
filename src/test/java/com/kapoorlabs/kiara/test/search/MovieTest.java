@@ -87,7 +87,7 @@ public class MovieTest {
 		Set<String> keywords = new HashSet<>();
 
 		keywords.add("Kate Winslet");
-		keywords.add("ship");
+		keywords.add("sHIP");
 
 		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, null);
 
@@ -576,11 +576,10 @@ public class MovieTest {
 		Set<String> expectedMatchingKeywords = new HashSet<>();
 		expectedMatchingKeywords.add("Drama");
 		expectedMatchingKeywords.add("Crime");
-		expectedMatchingKeywords.add("Color");
 		expectedMatchingKeywords.add("iceland");
 	
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch("Crime Drama iceland Color", store, preConditions, null);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch("Crime Drama iceland", store, preConditions, null);
 		assertEquals(1, keywordSearchResult.getResult().size());
 		assertEquals("Trapped", keywordSearchResult.getResult().get(0).getMovieTitle());
 		assertEquals(expectedMatchingKeywords,keywordSearchResult.getKeywords());
@@ -598,12 +597,11 @@ public class MovieTest {
 		Set<String> expectedMatchingKeywords = new HashSet<>();
 		expectedMatchingKeywords.add("Drama");
 		expectedMatchingKeywords.add("Crime");
-		expectedMatchingKeywords.add("Color");
 		expectedMatchingKeywords.add("Biography");
 		expectedMatchingKeywords.add("Carlos");
 	
 
-		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch("Crime Drama iceland Color Biography Carlos", store, preConditions, null);
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch("Crime Drama iceland Biography Carlos", store, preConditions, null);
 		assertEquals(1, keywordSearchResult.getResult().size());
 		assertEquals("Carlos", keywordSearchResult.getResult().get(0).getMovieTitle());
 		assertEquals(expectedMatchingKeywords,keywordSearchResult.getKeywords());
@@ -653,6 +651,39 @@ public class MovieTest {
 		assertEquals("Dylan Dog: Dead of Night",keywordSearchResult.getResult().get(0).getMovieTitle());
 		
 	}
+	
+	@Test
+	//Case insensitive doesn't work with spelling forgiveness
+	public void movieTest_28() {
+
+		keywordSearch = new KeywordSearch(1);
+		Set<String> keywords = new HashSet<>();
+		keywords.add("SHIPP");
+		
+		List<Condition> preConditions = new LinkedList<>();
+		preConditions.add(new Condition("actors", Operator.CONTAINS_EITHER, "Kate Winslet"));
+
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, preConditions, null);
+
+		assertEquals(0, keywordSearchResult.getResult().size());
+	}
+	
+	@Test
+	public void movieTest_29() {
+
+		keywordSearch = new KeywordSearch(1);
+		Set<String> keywords = new HashSet<>();
+		keywords.add("ships");
+		
+		List<Condition> preConditions = new LinkedList<>();
+		preConditions.add(new Condition("actors", Operator.CONTAINS_EITHER, "Kate Winslet"));
+
+		KeywordSearchResult<MovieTestObject> keywordSearchResult = keywordSearch.getBestMatch(keywords, store, preConditions, null);
+
+		assertEquals(1, keywordSearchResult.getResult().size());
+		assertEquals("Titanic", keywordSearchResult.getResult().get(0).getMovieTitle());
+	}
+	
 
 
 

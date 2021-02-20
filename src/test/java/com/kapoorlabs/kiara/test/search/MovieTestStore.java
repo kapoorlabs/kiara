@@ -94,6 +94,38 @@ public class MovieTestStore {
 	}
 	
 	@Test
+	public void movieTest_1_1() {
+
+		StoreSearch storeSearch = new StoreSearch();
+		List<Condition> conditions = new LinkedList<>();
+		
+		conditions.add(new Condition("movieTitle", Operator.EQUAL, "Titanic"));
+		conditions.add(new Condition("plotKeywords", Operator.EQUAL, "SHIP"));
+		List<MovieTestObject> movieResults = storeSearch.query(store, conditions);
+	
+		assertEquals(1, movieResults.size());
+		assertEquals("Titanic", movieResults.get(0).getMovieTitle());
+		assertEquals("Leonardo DiCaprio,Kate Winslet,Gloria Stuart", movieResults.get(0).getActors());
+		assertEquals("Color", movieResults.get(0).getColor());
+		assertEquals("James Cameron", movieResults.get(0).getDirectorName());
+		assertEquals("Drama,Romance", movieResults.get(0).getGenres());
+		assertEquals("artist,love,ship,titanic,wet", movieResults.get(0).getPlotKeywords());
+	}
+	
+	@Test
+	public void movieTest_1_2() {
+
+		StoreSearch storeSearch = new StoreSearch();
+		List<Condition> conditions = new LinkedList<>();
+		
+		conditions.add(new Condition("movieTitle", Operator.EQUAL, "TitaniC"));
+		conditions.add(new Condition("plotKeywords", Operator.EQUAL, "SHIP"));
+		List<MovieTestObject> movieResults = storeSearch.query(store, conditions);
+	
+		assertEquals(0, movieResults.size());
+	}
+	
+	@Test
 	public void movieTest_2() {
 
 		StoreSearch storeSearch = new StoreSearch();

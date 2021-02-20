@@ -14,6 +14,7 @@ import com.kapoorlabs.kiara.domain.SdqlColumn;
 import com.kapoorlabs.kiara.domain.SecondaryCollectionDataType;
 import com.kapoorlabs.kiara.domain.SecondarySingleDataType;
 import com.kapoorlabs.kiara.domain.SecondaryType;
+import com.kapoorlabs.kiara.domain.annotations.CaseInsensitive;
 import com.kapoorlabs.kiara.domain.annotations.CommaSeperatedDateRanges;
 import com.kapoorlabs.kiara.domain.annotations.CommaSeperatedDateTimeRanges;
 import com.kapoorlabs.kiara.domain.annotations.CommaSeperatedDateTimes;
@@ -228,6 +229,10 @@ public class PojoAdapter {
 
 				if (anno.annotationType().equals(StemmedIndex.class)) {
 					sdqlColumn.setStemmedIndex(true);
+				}
+				
+				if (anno.annotationType().equals(CaseInsensitive.class)) {
+					sdqlColumn.setCaseSensitive(true);
 				}
 			}
 
