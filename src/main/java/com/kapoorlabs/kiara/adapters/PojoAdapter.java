@@ -29,6 +29,7 @@ import com.kapoorlabs.kiara.domain.annotations.DateTimeRange;
 import com.kapoorlabs.kiara.domain.annotations.IgnoreIndex;
 import com.kapoorlabs.kiara.domain.annotations.NumericRange;
 import com.kapoorlabs.kiara.domain.annotations.OneEditAway;
+import com.kapoorlabs.kiara.domain.annotations.Predictable;
 import com.kapoorlabs.kiara.domain.annotations.StemmedIndex;
 import com.kapoorlabs.kiara.exception.NoDefaultConstructorException;
 
@@ -223,7 +224,7 @@ public class PojoAdapter {
 					sdqlColumn.setIndexed(false);
 				}
 
-				if (anno.annotationType().equals(OneEditAway.class)) {
+				if (anno.annotationType().equals(OneEditAway.class) || anno.annotationType().equals(Predictable.class)) {
 					sdqlColumn.setOneEditCapable(true);
 				}
 
