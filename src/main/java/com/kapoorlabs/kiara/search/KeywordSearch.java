@@ -1,5 +1,6 @@
 package com.kapoorlabs.kiara.search;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -9,13 +10,16 @@ import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 
+import com.kapoorlabs.kiara.constants.ExceptionConstants;
 import com.kapoorlabs.kiara.constants.SdqlConstants;
 import com.kapoorlabs.kiara.domain.Condition;
 import com.kapoorlabs.kiara.domain.KeywordConditionsPair;
 import com.kapoorlabs.kiara.domain.KeywordSearchResult;
 import com.kapoorlabs.kiara.domain.MatchesForKeyword;
 import com.kapoorlabs.kiara.domain.Operator;
+import com.kapoorlabs.kiara.domain.SdqlColumn;
 import com.kapoorlabs.kiara.domain.Store;
+import com.kapoorlabs.kiara.exception.InsufficientDataException;
 import com.kapoorlabs.kiara.util.SpellCheckUtil;
 
 import lombok.extern.slf4j.Slf4j;
@@ -47,9 +51,13 @@ public class KeywordSearch {
 		if (keywords == null || keywords.isEmpty()) {
 			return matchesForKeywords;
 		}
+		
+		if (store == null || store.getSdqlColumns().length == 0) {
+			throw new InsufficientDataException(ExceptionConstants.EMPTY_STORE_SEARCH);
+		}
 
 		for (String keyword : keywords) {
-			
+
 			keyword = keyword == null ? SdqlConstants.NULL : keyword;
 
 			keyword = keyword.trim();
@@ -57,12 +65,11 @@ public class KeywordSearch {
 			MatchesForKeyword matchesForKeyword = new MatchesForKeyword();
 			String searchKeyword = keyword;
 
-			for (int i = 0; i < store.getInvertedIndex().size(); i++) { 
-				
-				if (store.getSdqlColumns()[i].isCaseSensitive()) {		
+			for (int i = 0; i < store.getInvertedIndex().size(); i++) {
+
+				if (store.getSdqlColumns()[i].isCaseSensitive()) {
 					searchKeyword = searchKeyword.toLowerCase();
 				}
-				
 
 				if (store.getSdqlColumns()[i].isStemmedIndex()) {
 
@@ -228,6 +235,59 @@ public class KeywordSearch {
 		}
 
 		return keywordSearchResult;
+
+	}
+
+	/**
+	 * This public method takes in a Strings and the Data Store that should be
+	 * searched and returns the minimum match keyword result. Keywords in the String
+	 * are separated by spaces. By minimum match it means that the result has only the keywords entered and nothing more.
+	 * 
+	 * @param sentence - A String containing words that could individually has a
+	 *                 match in store.
+	 * @param store    - Data store that is being searched
+	 * @return Minimum matched results.
+	 */
+	public <T> KeywordSearchResult<T> getMinimumMatch(String sentence, Store<T> store) {
+
+		KeywordSearchResult<T> minimumMatches = new KeywordSearchResult<>(new HashSet<>(), new LinkedList<>());
+
+		KeywordSearchResult<T> searchresults = getBestMatch(sentence, store, null);
+
+		for (T searchResult : searchresults.getResult()) {
+			Set<String> valueSet = new HashSet<>();
+
+			for (SdqlColumn sdqlColumn : store.getSdqlColumns()) {
+
+				if (sdqlColumn.isNumeric()) {
+					continue;
+				}
+
+				try {
+					Object value = sdqlColumn.getGetter().invoke(searchResult);
+					if (value != null) {
+						valueSet.add(value.toString());
+					}
+				} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
+					log.error("Insufficient access to POJO field", ex);
+					throw new RuntimeException("Insufficient access to POJO field");
+				}
+
+			}
+
+			if (searchresults.getKeywords().size() == valueSet.size()) {
+				minimumMatches.getResult().add(searchResult);
+			}
+
+		}
+
+		if (!minimumMatches.getResult().isEmpty()) {
+
+			minimumMatches.setKeywords(searchresults.getKeywords());
+
+		}
+
+		return minimumMatches;
 
 	}
 

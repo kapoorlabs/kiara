@@ -263,8 +263,8 @@ public class StoreSearch {
 					try {
 						resultPojo = pojoClass.newInstance();
 					} catch (InstantiationException | IllegalAccessException e) {
-						e.printStackTrace();
-						throw new RuntimeException(e);
+						log.error("Insufficient access to POJO field", e);
+						throw new RuntimeException("Insufficient access to POJO field");
 					}
 				} else {
 					resultObject = new HashMap<>();
@@ -910,8 +910,8 @@ public class StoreSearch {
 			}
 
 		} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-			e.printStackTrace();
-			throw new RuntimeException();
+			log.error("Insufficient access to POJO field", e);
+			throw new RuntimeException("Insufficient Access to Pojo fields");
 		}
 
 	}
@@ -957,8 +957,8 @@ public class StoreSearch {
 			}
 		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
 				| InvocationTargetException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
+			log.error("Insufficient access to POJO field", e);
+			throw new RuntimeException("Insufficient access to POJO field");
 		}
 
 		return pojoCopy;
