@@ -27,4 +27,7 @@
 [How Kiara stands out](https://www.youtube.com/watch?time_continue=1&v=-AL6TrOgdKI&feature=emb_logo) <br> <br>
 [Sample query walkthrough](https://www.youtube.com/watch?time_continue=2&v=-T-Bwu0WQAI&feature=emb_logo)
 
+##### Join our Community Facebook Page:- 
+[Click here to visit our facebook Page.](https://www.facebook.com/Kiara-DB-102798921952191)
+
 
