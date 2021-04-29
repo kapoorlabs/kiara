@@ -2,6 +2,7 @@
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -56,26 +57,11 @@ public class SdqlNode {
 		if (!(obj instanceof SdqlNode))
 			return false;
 		SdqlNode other = (SdqlNode) obj;
-		if (doubleValue == null) {
-			if (other.doubleValue != null)
-				return false;
-		} else if (!doubleValue.equals(other.doubleValue))
-			return false;
-		if (lowerBound != other.lowerBound)
-			return false;
-		if (parent == null) {
-			if (other.parent != null)
-				return false;
-		} else if (parent != other.parent)
-			return false;
-		if (stringValue == null) {
-			if (other.stringValue != null)
-				return false;
-		} else if (!stringValue.equals(other.stringValue))
-			return false;
-		if (upperBound != other.upperBound)
-			return false;
-		return true;
+		return Objects.equals(doubleValue, other.doubleValue) &&
+		       Objects.equals(lowerBound, other.lowerBound) &&
+		       Objects.equals(parent, other.parent) &&
+		       Objects.equals(stringValue, other.stringValue) &&
+		       Objects.equals(upperBound, other.upperBound);
 	}
 
 }
