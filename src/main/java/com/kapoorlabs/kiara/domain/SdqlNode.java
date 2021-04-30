@@ -57,9 +57,9 @@ public class SdqlNode {
 		if (!(obj instanceof SdqlNode))
 			return false;
 		SdqlNode other = (SdqlNode) obj;
-		return Objects.equals(doubleValue, other.doubleValue) &&
+		return parent == other.parent &&
+		       Objects.equals(doubleValue, other.doubleValue) &&
 		       Objects.equals(lowerBound, other.lowerBound) &&
-		       Objects.equals(parent, other.parent) &&
 		       Objects.equals(stringValue, other.stringValue) &&
 		       Objects.equals(upperBound, other.upperBound);
 	}
