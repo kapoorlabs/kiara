@@ -2,6 +2,8 @@ package com.kapoorlabs.kiara.domain;
 
 import com.kapoorlabs.kiara.constants.SdqlConstants;
 
+import java.util.Objects;
+
 /**
  * This class represents a wrapper built on top of a String, in which Null
  * values are ordered in the lowest position.
@@ -54,12 +56,7 @@ public class NullableOrderedString implements Comparable<NullableOrderedString> 
 		if (!(obj instanceof NullableOrderedString))
 			return false;
 		NullableOrderedString other = (NullableOrderedString) obj;
-		if (value == null) {
-			if (other.value != null)
-				return false;
-		} else if (!value.equals(other.value))
-			return false;
-		return true;
+		return Objects.equals(value, other.value);
 	}
 	
 	
