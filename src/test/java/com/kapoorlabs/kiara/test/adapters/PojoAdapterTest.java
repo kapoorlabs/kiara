@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import com.kapoorlabs.kiara.test.objects.*;
 import org.junit.Test;
 
 import com.kapoorlabs.kiara.adapters.PojoAdapter;
@@ -14,10 +15,6 @@ import com.kapoorlabs.kiara.domain.SdqlColumn;
 import com.kapoorlabs.kiara.domain.SecondaryCollectionDataType;
 import com.kapoorlabs.kiara.domain.SecondarySingleDataType;
 import com.kapoorlabs.kiara.exception.NoDefaultConstructorException;
-import com.kapoorlabs.kiara.test.objects.DummyTestObject;
-import com.kapoorlabs.kiara.test.objects.PartialGetterObject;
-import com.kapoorlabs.kiara.test.objects.PoiTestObject;
-import com.kapoorlabs.kiara.test.objects.TempRangeTestObject;
 
 public class PojoAdapterTest {
 	
@@ -98,7 +95,7 @@ public class PojoAdapterTest {
 	@Test
 	public void dummyObjectTest() {
 		List<SdqlColumn> sdqlColumns = dummyTestColumns;
-		assertEquals(37,sdqlColumns.size());
+		assertEquals(38,sdqlColumns.size());
 		
 		assertEquals(true,sdqlColumns.get(0).isNumeric());
 		assertEquals(true,sdqlColumns.get(1).isNumeric());
@@ -137,6 +134,9 @@ public class PojoAdapterTest {
 		assertEquals(true,sdqlColumns.get(34).isNumeric());
 		assertEquals(true,sdqlColumns.get(35).isNumeric());
 		assertEquals(true,sdqlColumns.get(36).isNumeric());
+		assertEquals(false,sdqlColumns.get(37).isNumeric());
+		assertEquals(true,sdqlColumns.get(37).isEnum());
+		assertEquals(EnumField.class,sdqlColumns.get(37).getEnumClass());
 	
 	}
 	

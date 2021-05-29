@@ -29,6 +29,10 @@ public class SdqlColumn {
 	
 	private boolean isCaseSensitive;
 
+	private boolean isEnum;
+
+	private Class<Enum> enumClass;
+
 	private Method getter;
 	
 	private Method setter;

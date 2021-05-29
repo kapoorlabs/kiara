@@ -527,7 +527,7 @@ public class CreateNodeTest {
 		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
 		DummyTestObject dummyTestObject = new DummyTestObject();
 		@SuppressWarnings("unused")
-		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 37);
+		SdqlNode sdQlNode = storeLoader.createNode(dummyTestObject, 38);
 	
 	}
 }
