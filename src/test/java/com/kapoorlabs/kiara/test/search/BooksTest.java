@@ -56,7 +56,11 @@ public class BooksTest {
 				Double year = words[3] != null && !words[3].isEmpty() ? Double.parseDouble(words[3]) : null;
 				books.setYear(year != null ? year.intValue() : null);
 				books.setTitle(words[4]);
-				books.setLanguage(words[5]);
+				try {
+					books.setLanguage(BooksTestObject.Language.valueOf(words[5]));
+				} catch (Exception ex) {
+					books.setLanguage(null);
+				}
 				books.setRating(Double.parseDouble(words[6]));
 				
 				try {
@@ -97,16 +101,16 @@ public class BooksTest {
 		assertEquals("618260307", result.get(0).get("ISBN"));
 		assertEquals("J.R.R. Tolkien", result.get(0).get("AUTHORS"));
 		assertEquals("1937", result.get(0).get("YEAR"));
-		assertEquals("en-US", result.get(0).get("LANGUAGE"));
+		assertEquals("eng", result.get(0).get("LANGUAGE"));
 		assertEquals("4.25", result.get(0).get("RATING"));
 		
 		assertEquals(1, boosResult.size());
 		assertEquals(7, boosResult.get(0).getId());
 		assertEquals("618260307", boosResult.get(0).getIsbn());
 		assertEquals("J.R.R. Tolkien", boosResult.get(0).getAuthors());
-		assertEquals(new Integer(1937), boosResult.get(0).getYear());
-		assertEquals("en-US", boosResult.get(0).getLanguage());
-		assertEquals(new Double(4.25), boosResult.get(0).getRating());
+		assertEquals(Integer.valueOf(1937), boosResult.get(0).getYear());
+		assertEquals(BooksTestObject.Language.eng, boosResult.get(0).getLanguage());
+		assertEquals(Double.valueOf(4.25), boosResult.get(0).getRating());
 
 	}
 
@@ -235,9 +239,8 @@ public class BooksTest {
 		StoreSearch storeSearch = new StoreSearch();
 
 		List<Condition> conditions = new LinkedList<>();
-		List<String> values = new LinkedList<String>();
+		List<String> values = new LinkedList<>();
 		values.add("eng");
-		values.add("en-US");
 
 		conditions.add(new Condition("rating", Operator.GREATER_THAN_EQUAL, "4"));
 		conditions.add(new Condition("language", Operator.CONTAINS_EITHER, values));
@@ -245,8 +248,8 @@ public class BooksTest {
 		List<Map<String, String>> result = storeSearch.query(store, conditions, NULL_FILTER_SET);
 		List<BooksTestObject> boosResult = storeSearch.query(store, conditions);
 
-		assertEquals(466, result.size());
-		assertEquals(466, boosResult.size());
+		assertEquals(488, result.size());
+		assertEquals(488, boosResult.size());
 		
 
 	}
@@ -257,9 +260,9 @@ public class BooksTest {
 		StoreSearch storeSearch = new StoreSearch();
 
 		List<Condition> conditions = new LinkedList<>();
-		List<String> values = new LinkedList<String>();
+		List<String> values = new LinkedList<>();
 		values.add("eng");
-		values.add("en-US");
+
 
 		conditions.add(new Condition("rating", Operator.GREATER_THAN_EQUAL, "4"));
 		conditions.add(new Condition("language", Operator.CONTAINS_EITHER, values));
@@ -273,15 +276,17 @@ public class BooksTest {
 		resultId.add("295");
 		resultId.add("1576");
 		resultId.add("2412");
+		resultId.add("2093");
 
-		assertEquals(3, result.size());
+		assertEquals(4, result.size());
 		for (int i = 0; i < result.size(); i++) {
 			assertTrue(resultId.contains(result.get(i).get("ID")));
 		}
 		
 		assertEquals(295, boosResult.get(0).getId());
 		assertEquals(1576, boosResult.get(1).getId());
-		assertEquals(2412, boosResult.get(2).getId());
+		assertEquals(2093, boosResult.get(2).getId());
+		assertEquals(2412, boosResult.get(3).getId());
 		
 
 	}
@@ -294,7 +299,6 @@ public class BooksTest {
 		List<Condition> conditions = new LinkedList<>();
 		List<String> values = new LinkedList<String>();
 		values.add("eng");
-		values.add("en-US");
 		
 		List<String> authors = new LinkedList<String>();
 		authors.add("Stephen King");
@@ -318,18 +322,21 @@ public class BooksTest {
 		resultId.add("2149");
 		resultId.add("3282");
 		resultId.add("5344");
+		resultId.add("2093");
 
-		assertEquals(7, result.size());
+		assertEquals(8, result.size());
 		for (int i = 0; i < result.size(); i++) {
 			assertTrue(resultId.contains(result.get(i).get("ID")));
 		}
 		assertEquals(295, boosResult.get(0).getId());
 		assertEquals(1576, boosResult.get(1).getId());
-		assertEquals(2412, boosResult.get(2).getId());
-		assertEquals(188, boosResult.get(3).getId());
-		assertEquals(2149, boosResult.get(4).getId());
-		assertEquals(3282, boosResult.get(5).getId());
-		assertEquals(5344, boosResult.get(6).getId());
+		assertEquals(2093, boosResult.get(2).getId());
+		assertEquals(2412, boosResult.get(3).getId());
+		assertEquals(188, boosResult.get(4).getId());
+		assertEquals(2149, boosResult.get(5).getId());
+		assertEquals(3282, boosResult.get(6).getId());
+		assertEquals(5344, boosResult.get(7).getId());
+		assertEquals(BooksTestObject.Language.eng, boosResult.get(7).getLanguage());
 		
 
 	}
@@ -340,11 +347,10 @@ public class BooksTest {
 		StoreSearch storeSearch = new StoreSearch();
 
 		List<Condition> conditions = new LinkedList<>();
-		List<String> values = new LinkedList<String>();
+		List<String> values = new LinkedList<>();
 		values.add("eng");
-		values.add("en-US");
 		
-		List<String> authors = new LinkedList<String>();
+		List<String> authors = new LinkedList<>();
 		authors.add("Stephen King");
 		authors.add("George R.R. Martin");
 		
@@ -362,13 +368,15 @@ public class BooksTest {
 		
 		resultId.add("1576");
 		resultId.add("2412");
+		resultId.add("2093");
 
-		assertEquals(2, result.size());
+		assertEquals(3, result.size());
 		for (int i = 0; i < result.size(); i++) {
 			assertTrue(resultId.contains(result.get(i).get("ID")));
 		}
 		assertEquals(1576, boosResult.get(0).getId());
-		assertEquals(2412, boosResult.get(1).getId());
+		assertEquals(2093, boosResult.get(1).getId());
+		assertEquals(2412, boosResult.get(2).getId());
 		
 
 	}

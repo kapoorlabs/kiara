@@ -2,6 +2,8 @@ package com.kapoorlabs.kiara.domain;
 
 import lombok.Data;
 
+import java.util.Objects;
+
 
 /**
  * This class represents a single range. In case of alphanumeric ranges, prefix
@@ -63,22 +65,9 @@ public class Range implements Comparable<Range> {
 		if (!(obj instanceof Range))
 			return false;
 		Range other = (Range) obj;
-		if (lowerLimit == null) {
-			if (other.lowerLimit != null)
-				return false;
-		} else if (!lowerLimit.equals(other.lowerLimit))
-			return false;
-		if (prefix == null) {
-			if (other.prefix != null)
-				return false;
-		} else if (!prefix.equals(other.prefix))
-			return false;
-		if (upperLimit == null) {
-			if (other.upperLimit != null)
-				return false;
-		} else if (!upperLimit.equals(other.upperLimit))
-			return false;
-		return true;
+		return Objects.equals(lowerLimit, other.lowerLimit) &&
+		       Objects.equals(prefix, other.prefix) &&
+		       Objects.equals(upperLimit, other.upperLimit);
 	}
 
 	@Override

@@ -8,22 +8,40 @@ import lombok.Data;
 @Data
 public class BooksTestObject {
 
-	@IgnoreIndex
-	private int id;
+    public enum Language {
+        eng,
+        spa,
+        fre,
+        nl,
+        ara,
+        por,
+        ger,
+        nor,
+        jpn,
+        vie,
+        ind,
+        pol,
+        tur,
+        dan,
+        fil,
+        ita
+    }
 
-	private String isbn;
-	
-	@CommaSeperatedStrings
-	private String authors;
-	
-	private Integer year;
-	
-	private String title;
-	
-	private String language;
-	
-	private Double rating;
-	
-	
+    @IgnoreIndex
+    private int id;
+
+    private String isbn;
+
+    @CommaSeperatedStrings
+    private String authors;
+
+    private Integer year;
+
+    private String title;
+
+    private Language language;
+
+    private Double rating;
+
 
 }

@@ -2,6 +2,7 @@ package com.kapoorlabs.kiara.loader;
 
 import static org.junit.Assert.assertEquals;
 
+import com.kapoorlabs.kiara.test.objects.EnumField;
 import org.junit.Test;
 
 import com.kapoorlabs.kiara.domain.Store;
@@ -21,7 +22,7 @@ public class LoadTableTest {
 
 		storeLoader.loadTable(dummyTestObject);
 
-		String expectedTrie = "-1#root~0#0.00~1#0.00~2#0.00~3#null~4#0.00~5#false~6#null~7#null~8#null~9#null~10#null~11#null~12#null~13#null~14#null~15#null~16#null~17#null~18#null~19#null~20#null~21#null~22#null~23#null~24#null~25#null~26#null~27#null~28#null~29#null~30#null~31#null~32#null~33#0.00~34#0.00~35#null~36#null";
+		String expectedTrie = "-1#root~0#0.00~1#0.00~2#0.00~3#null~4#0.00~5#false~6#null~7#null~8#null~9#null~10#null~11#null~12#null~13#null~14#null~15#null~16#null~17#null~18#null~19#null~20#null~21#null~22#null~23#null~24#null~25#null~26#null~27#null~28#null~29#null~30#null~31#null~32#null~33#0.00~34#0.00~35#null~36#null~37#null";
 
 		assertEquals(expectedTrie, storeLoader.serializeTrie());
 	}
@@ -42,7 +43,7 @@ public class LoadTableTest {
 		storeLoader.loadTable(dummyTestObject);
 		storeLoader.loadTable(dummyTestObject);
 
-		String expectedTrie = "-1#root~0#0.00~1#0.00~2#0.00~3#null~4#0.00~5#false~6#null~7#null~8#null~9#null~10#null~11#null~12#null~13#null~14#null~15#null~16#null~17#null~18#null~19#null~20#null~21#null~22#null~23#null~24#null~25#null~26#sampleString~27#null~28#null~29#null~30#null~31#null~32#null~33#0.00~34#0.00~35#null~36#null";
+		String expectedTrie = "-1#root~0#0.00~1#0.00~2#0.00~3#null~4#0.00~5#false~6#null~7#null~8#null~9#null~10#null~11#null~12#null~13#null~14#null~15#null~16#null~17#null~18#null~19#null~20#null~21#null~22#null~23#null~24#null~25#null~26#sampleString~27#null~28#null~29#null~30#null~31#null~32#null~33#0.00~34#0.00~35#null~36#null~37#null";
 
 		assertEquals(expectedTrie, storeLoader.serializeTrie());
 	}
@@ -67,7 +68,7 @@ public class LoadTableTest {
 		storeLoader.loadTable(dummyTestObject);
 		storeLoader.loadTable(dummyTestObject);
 
-		String expectedTrie = "-1#root~0#0.00~1#0.00~2#0.00~3#null~4#0.00~5#false~6#null~7#null~8#null~9#null~10#null~11#null~12#null~13#null~14#null~15#null~16#null~17#null~18#null~19#null~20#null~21#null~22#null~23#null~24#null~25#null~26#sampleString~26#sampleString2~26#sampleString3~27#null~28#null~29#null~30#null~31#null~32#null~33#null~34#null~35#null~36#null~37#null~38#null~39#null~40#null~41#null~42#null~43#null~44#null~45#0.00~46#0.00~47#0.00~48#0.00~49#0.00~50#0.00~51#null~52#null~53#null~54#null~55#null~56#null";
+		String expectedTrie = "-1#root~0#0.00~1#0.00~2#0.00~3#null~4#0.00~5#false~6#null~7#null~8#null~9#null~10#null~11#null~12#null~13#null~14#null~15#null~16#null~17#null~18#null~19#null~20#null~21#null~22#null~23#null~24#null~25#null~26#sampleString~26#sampleString2~26#sampleString3~27#null~28#null~29#null~30#null~31#null~32#null~33#null~34#null~35#null~36#null~37#null~38#null~39#null~40#null~41#null~42#null~43#null~44#null~45#0.00~46#0.00~47#0.00~48#0.00~49#0.00~50#0.00~51#null~52#null~53#null~54#null~55#null~56#null~57#null~58#null~59#null";
 
 		assertEquals(expectedTrie, storeLoader.serializeTrie());
 	}
@@ -94,7 +95,7 @@ public class LoadTableTest {
 		storeLoader.loadTable(dummyTestObject);
 		storeLoader.loadTable(dummyTestObject);
 
-		String expectedTrie = "-1#root~0#0.00~1#0.00~2#0.00~3#null~4#0.00~5#false~6#null~7#null~8#null~9#null~10#null~11#null~12#null~13#null~14#null~15#null~16#null~17#null~18#null~19#null~20#null~21#null~22#null~23#null~24#null~25#null~26#sampleString~26#sampleString2~26#sampleString3~27#null~28#null~29#null~30#null~31#null~32#null~33#null~34#null~35#null~36#null~37#null~38#null~39#null~40#null~41#null~42#null~43#null~44#null~45#0.00~46#0.00~47#0.00~48#0.00~49#0.00~50#0.00~51#null~52#null~53#null~54#null~55#11.30~56#12.30";
+		String expectedTrie = "-1#root~0#0.00~1#0.00~2#0.00~3#null~4#0.00~5#false~6#null~7#null~8#null~9#null~10#null~11#null~12#null~13#null~14#null~15#null~16#null~17#null~18#null~19#null~20#null~21#null~22#null~23#null~24#null~25#null~26#sampleString~26#sampleString2~26#sampleString3~27#null~28#null~29#null~30#null~31#null~32#null~33#null~34#null~35#null~36#null~37#null~38#null~39#null~40#null~41#null~42#null~43#null~44#null~45#0.00~46#0.00~47#0.00~48#0.00~49#0.00~50#0.00~51#null~52#null~53#null~54#null~55#11.30~56#12.30~57#null~58#null~59#null";
 
 		assertEquals(expectedTrie, storeLoader.serializeTrie());
 	}
@@ -109,7 +110,7 @@ public class LoadTableTest {
 
 		storeLoader.loadTable(dummyTestObject);
 
-		String expectedTrie = "-1#root~0#0.00~1#0.00~2#0.00~3#null~4#0.00~5#false~6#null~7#null~8#null~9#null~10#null~11#null~12#null~13#null~14#null~15#null~16#null~17#null~18#null~19#null~20#null~21#null~22#null~23#null~24#null~25#null~26#null~27#null~28#null~29#null~30#null~31#null~32#null~33#0.00~34#0.00~35#null~36#null";
+		String expectedTrie = "-1#root~0#0.00~1#0.00~2#0.00~3#null~4#0.00~5#false~6#null~7#null~8#null~9#null~10#null~11#null~12#null~13#null~14#null~15#null~16#null~17#null~18#null~19#null~20#null~21#null~22#null~23#null~24#null~25#null~26#null~27#null~28#null~29#null~30#null~31#null~32#null~33#0.00~34#0.00~35#null~36#null~37#null";
 
 		assertEquals(expectedTrie, storeLoader.serializeTrie());
 	}
@@ -124,7 +125,7 @@ public class LoadTableTest {
 
 		storeLoader.loadTable(dummyTestObject);
 
-		String expectedTrie = "-1#root~0#0.00~1#0.00~2#0.00~3#null~4#0.00~5#false~6#null~7#null~8#null~9#null~10#null~11#null~12#null~13#null~14#null~15#null~16#null~17#null~18#null~19#null~20#null~21#null~22#null~23#null~24#null~25#null~26#null~27#null~28#null~29#null~30#null~31#null~32#null~33#0.00~34#0.00~35#null~36#null";
+		String expectedTrie = "-1#root~0#0.00~1#0.00~2#0.00~3#null~4#0.00~5#false~6#null~7#null~8#null~9#null~10#null~11#null~12#null~13#null~14#null~15#null~16#null~17#null~18#null~19#null~20#null~21#null~22#null~23#null~24#null~25#null~26#null~27#null~28#null~29#null~30#null~31#null~32#null~33#0.00~34#0.00~35#null~36#null~37#null";
 
 		assertEquals(expectedTrie, storeLoader.serializeTrie());
 	}
@@ -140,9 +141,27 @@ public class LoadTableTest {
 
 		storeLoader.loadTable(dummyTestObject);
 
-		String expectedTrie = "-1#root~0#0.00~1#0.00~2#0.00~3#null~4#0.00~5#false~6#null~7#null~8#null~9#null~10#null~11#null~12#null~13#null~14#null~15#null~16#null~17#null~18#null~19#null~20#null~21#null~22#null~23#null~24#null~25#null~26#null~27#null~28#null~29#null~30#null~31#null~32#null~33#0.00~34#null~35#null~36#null";
+		String expectedTrie = "-1#root~0#0.00~1#0.00~2#0.00~3#null~4#0.00~5#false~6#null~7#null~8#null~9#null~10#null~11#null~12#null~13#null~14#null~15#null~16#null~17#null~18#null~19#null~20#null~21#null~22#null~23#null~24#null~25#null~26#null~27#null~28#null~29#null~30#null~31#null~32#null~33#0.00~34#null~35#null~36#null~37#null";
 
 		assertEquals(expectedTrie, storeLoader.serializeTrie());
 	}
+
+	@Test
+	public void getLoadTableTests_9() throws LoadDataException {
+
+		StoreLoader<DummyTestObject> storeLoader = new StoreLoader<>(store);
+
+		DummyTestObject dummyTestObject = new DummyTestObject();
+		dummyTestObject.setStringField("  ");
+		dummyTestObject.setDoubleField(Double.NaN);
+		dummyTestObject.setEnumField(EnumField.VALUE1);
+
+		storeLoader.loadTable(dummyTestObject);
+
+		String expectedTrie = "-1#root~0#0.00~1#0.00~2#0.00~3#null~4#0.00~5#false~6#null~7#null~8#null~9#null~10#null~11#null~12#null~13#null~14#null~15#null~16#null~17#null~18#null~19#null~20#null~21#null~22#null~23#null~24#null~25#null~26#null~27#null~28#null~29#null~30#null~31#null~32#null~33#0.00~34#null~35#null~36#null~37#VALUE1";
+
+		assertEquals(expectedTrie, storeLoader.serializeTrie());
+	}
+
 
 }
