@@ -140,6 +140,8 @@ public class DummyTestObject {
 	Float floatObject;
 	//36
 	Double doubleObject;
+
+	EnumField enumField;
 	
 
 }

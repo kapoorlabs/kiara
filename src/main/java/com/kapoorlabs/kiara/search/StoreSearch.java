@@ -227,7 +227,7 @@ public class StoreSearch {
 		checkIfSearchIsValid(store, conditions);
 
 		if (filterSet == null) {
-			filterSet = new HashSet<String>();
+			filterSet = new HashSet<>();
 		}
 
 		Condition[] sortedConditions = sortConditions(store, conditions);
@@ -243,11 +243,11 @@ public class StoreSearch {
 	}
 
 	private <T> void buidResult(List<Map<String, String>> result, List<Object> pojoResult, Store<T> store,
-			Condition[] sortedConditions, ArrayList<ArrayList<SdqlNode>> prevColumnNodesCollection,
-			TreeSet<Integer> filterColPos, boolean buildPojo, Class<? extends Object> pojoClass, Integer resultLimit) {
+								Condition[] sortedConditions, ArrayList<ArrayList<SdqlNode>> prevColumnNodesCollection,
+								TreeSet<Integer> filterColPos, boolean buildPojo, Class<?> pojoClass, Integer resultLimit) {
 		int lastConditionColPos = sortedConditions[sortedConditions.length - 1].getColumnIndex();
 
-		Set<SdqlNode> resultNodeSet = new HashSet<SdqlNode>();
+		Set<SdqlNode> resultNodeSet = new HashSet<>();
 
 		for (ArrayList<SdqlNode> prevColumnNodes : prevColumnNodesCollection) {
 			for (SdqlNode resultNode : prevColumnNodes) {
@@ -261,8 +261,8 @@ public class StoreSearch {
 
 				if (buildPojo && pojoClass != null) {
 					try {
-						resultPojo = pojoClass.newInstance();
-					} catch (InstantiationException | IllegalAccessException e) {
+						resultPojo = pojoClass.getDeclaredConstructor().newInstance();
+					} catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
 						log.error("Insufficient access to POJO field", e);
 						throw new RuntimeException("Insufficient access to POJO field");
 					}
@@ -899,6 +899,13 @@ public class StoreSearch {
 				} else if (columnType == java.lang.Double.TYPE || columnType == Double.class) {
 					sdqlColumn.getSetter().invoke(resultPojo, Double.parseDouble(value));
 				}
+			} else if (sdqlColumn.isEnum()) {
+				try {
+					Enum enumValue = Enum.valueOf(sdqlColumn.getEnumClass(), value);
+					sdqlColumn.getSetter().invoke(resultPojo, enumValue);
+				} catch (Exception ex) {
+					sdqlColumn.getSetter().invoke(resultPojo,(Object) null);
+				}
 			} else {
 				if (columnType == java.lang.Character.TYPE || columnType == Character.class) {
 					sdqlColumn.getSetter().invoke(resultPojo, value.charAt(0));
@@ -951,12 +958,11 @@ public class StoreSearch {
 
 		Object pojoCopy;
 		try {
-			pojoCopy = resultPojo.getClass().newInstance();
+			pojoCopy = resultPojo.getClass().getDeclaredConstructor().newInstance();
 			for (SdqlColumn sdqlColumn : store.getSdqlColumns()) {
 				sdqlColumn.getSetter().invoke(pojoCopy, sdqlColumn.getGetter().invoke(resultPojo));
 			}
-		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
-				| InvocationTargetException e) {
+		} catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException e) {
 			log.error("Insufficient access to POJO field", e);
 			throw new RuntimeException("Insufficient access to POJO field");
 		}

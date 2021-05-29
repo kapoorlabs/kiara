@@ -31,12 +31,12 @@ public class IndexKeys1_30Test {
 
 		storeLoader.prepareForSearch();
 
-		assertEquals(37, storeLoader.getStore().getColumnIndex().size());
-		assertEquals(37, storeLoader.getStore().getInvertedIndex().size());
-		assertEquals(37, storeLoader.getStore().getInvertedNumericIndex().size());
-		assertEquals(37, storeLoader.getStore().getRanges().size());
-		assertEquals(37, storeLoader.getStore().getInvertedIndexKeys().size());
-		assertEquals(37, storeLoader.getStore().getInvertedNumericIndexKeys().size());
+		assertEquals(38, storeLoader.getStore().getColumnIndex().size());
+		assertEquals(38, storeLoader.getStore().getInvertedIndex().size());
+		assertEquals(38, storeLoader.getStore().getInvertedNumericIndex().size());
+		assertEquals(38, storeLoader.getStore().getRanges().size());
+		assertEquals(38, storeLoader.getStore().getInvertedIndexKeys().size());
+		assertEquals(38, storeLoader.getStore().getInvertedNumericIndexKeys().size());
 	}
 
 	@Test
@@ -50,7 +50,7 @@ public class IndexKeys1_30Test {
 
 		storeLoader.prepareForSearch();
 
-		assertEquals(37, storeLoader.getStore().getInvertedIndexKeys().size());
+		assertEquals(38, storeLoader.getStore().getInvertedIndexKeys().size());
 		assertEquals(0, storeLoader.getStore().getInvertedIndexKeys().get(0).getKeyList().size());
 		assertEquals(0, storeLoader.getStore().getInvertedIndexKeys().get(1).getKeyList().size());
 		assertEquals(0, storeLoader.getStore().getInvertedIndexKeys().get(2).getKeyList().size());
@@ -96,7 +96,7 @@ public class IndexKeys1_30Test {
 
 		storeLoader.prepareForSearch();
 
-		assertEquals(37, storeLoader.getStore().getInvertedIndexKeys().size());
+		assertEquals(38, storeLoader.getStore().getInvertedIndexKeys().size());
 		assertEquals(0, storeLoader.getStore().getInvertedNumericIndexKeys().get(3).getKeyList().size());
 		assertEquals(0, storeLoader.getStore().getInvertedNumericIndexKeys().get(5).getKeyList().size());
 		assertEquals(0, storeLoader.getStore().getInvertedNumericIndexKeys().get(15).getKeyList().size());

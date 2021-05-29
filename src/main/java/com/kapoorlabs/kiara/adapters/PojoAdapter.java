@@ -106,7 +106,7 @@ public class PojoAdapter {
 
 		for (Field field : pojoClass.getDeclaredFields()) {
 
-			if (!allowedTypes.contains(field.getType().getSimpleName().toUpperCase())) {
+			if (!field.getType().isEnum() && !allowedTypes.contains(field.getType().getSimpleName().toUpperCase())) {
 				logIgnoredWarning(field.getName(),
 						"Data type:- " + field.getType().getSimpleName() + " is not supported");
 				continue;
@@ -137,6 +137,11 @@ public class PojoAdapter {
 				logIgnoredWarning(field.getName(),
 						"No setter function found for this field. Setter should follow setFieldName naming convention");
 				continue;
+			}
+
+			if (field.getType().isEnum()) {
+				sdqlColumn.setEnumClass((Class<Enum>) field.getType());
+				sdqlColumn.setEnum(true);
 			}
 
 			if (isNumeric(field.getType().getSimpleName())) {
@@ -277,7 +282,7 @@ public class PojoAdapter {
 	 */
 	private static void logIgnoredWarning(String name, String reason) {
 
-		log.error(name + " field was ignored, reason: " + reason);
+		log.warn(name + " field was ignored, reason: " + reason);
 
 	}
 	
