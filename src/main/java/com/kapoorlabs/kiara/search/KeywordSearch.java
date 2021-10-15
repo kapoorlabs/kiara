@@ -101,6 +101,9 @@ public class KeywordSearch {
                 matchesForKeywords.add(matchesForKeyword);
             } else {
                 String autoCorrectedWord = SpellCheckUtil.getOneEditKeyword(keyword, store.getSpellCheckTrie());
+                if (keywords.contains(autoCorrectedWord)) {
+                    continue;
+                }
                 if (autoCorrectedWord != null) {
 
                     matchesForKeyword.setKeyword(autoCorrectedWord);
