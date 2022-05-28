@@ -44,7 +44,7 @@ import lombok.extern.slf4j.Slf4j;
  * @since 1.0
  */
 
-@Slf4j
+
 public class PojoAdapter {
 
 	public static Set<String> allowedTypes;
@@ -282,7 +282,7 @@ public class PojoAdapter {
 	 */
 	private static void logIgnoredWarning(String name, String reason) {
 
-		log.warn(name + " field was ignored, reason: " + reason);
+		System.out.println(name + " field was ignored, reason: " + reason);
 
 	}
 	

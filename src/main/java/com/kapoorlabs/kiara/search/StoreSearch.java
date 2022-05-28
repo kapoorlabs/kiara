@@ -34,7 +34,6 @@ import com.kapoorlabs.kiara.util.NumericUtil;
 import lombok.extern.slf4j.Slf4j;
 import opennlp.tools.stemmer.snowball.SnowballStemmer;
 
-@Slf4j
 public class StoreSearch {
 
     /**
@@ -252,7 +251,7 @@ public class StoreSearch {
                     try {
                         resultPojo = pojoClass.getDeclaredConstructor().newInstance();
                     } catch (InstantiationException | IllegalAccessException | NoSuchMethodException | InvocationTargetException e) {
-                        log.error("Insufficient access to POJO field", e);
+                        System.err.println("Insufficient access to POJO field" + e.toString());
                         throw new RuntimeException("Insufficient access to POJO field");
                     }
                 } else {
@@ -487,7 +486,7 @@ public class StoreSearch {
 
                 String message = "Not_Contains operator is not supported for single data types. It is only supported for collections"
                         + condition;
-                log.error(message);
+                System.err.println(message);
                 throw new NonSupportedOperationException(message);
 
             }
@@ -583,7 +582,7 @@ public class StoreSearch {
 
             if (LogicalUtil.isRangeType(store, condition)) {
                 String message = "Less than operator not supported for ranges, Condition: " + condition;
-                log.error(message);
+                System.err.println(message);
                 throw new NonSupportedOperationException(message);
             }
 
@@ -632,7 +631,7 @@ public class StoreSearch {
 
             if (LogicalUtil.isRangeType(store, condition)) {
                 String message = "Greater than operator not supported for ranges, Condition: " + condition;
-                log.error(message);
+                System.err.println(message);
                 throw new NonSupportedOperationException(message);
             }
 
@@ -676,7 +675,7 @@ public class StoreSearch {
 
             if (LogicalUtil.isRangeType(store, condition)) {
                 String message = "Between operator not supported for ranges, Condition: " + condition;
-                log.error(message);
+                System.err.println(message);
                 throw new NonSupportedOperationException(message);
             }
 
@@ -766,7 +765,7 @@ public class StoreSearch {
             if (colIndex != null) {
                 if (!store.getSdqlColumns()[colIndex].isIndexed()) {
                     String message = condition.getColumnName() + " is restriced from being searched";
-                    log.error(message);
+                    System.err.println(message);
                     throw new NonSupportedOperationException(message);
                 }
 
@@ -797,7 +796,7 @@ public class StoreSearch {
 
             } else {
                 String message = condition.getColumnName() + " is not a valid column";
-                log.error(message);
+                System.err.println(message);
                 throw new ColumnNotFoundException(message);
             }
         }
@@ -906,7 +905,7 @@ public class StoreSearch {
             }
 
         } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-            log.error("Insufficient access to POJO field", e);
+            System.err.println("Insufficient access to POJO field " + e.toString());
             throw new RuntimeException("Insufficient Access to Pojo fields");
         }
 
@@ -952,7 +951,7 @@ public class StoreSearch {
                 sdqlColumn.getSetter().invoke(pojoCopy, sdqlColumn.getGetter().invoke(resultPojo));
             }
         } catch (InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException | NoSuchMethodException e) {
-            log.error("Insufficient access to POJO field", e);
+            System.err.println("Insufficient access to POJO field " + e.toString());
             throw new RuntimeException("Insufficient access to POJO field");
         }
 

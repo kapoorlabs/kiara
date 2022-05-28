@@ -25,7 +25,7 @@ import com.kapoorlabs.kiara.util.SpellCheckUtil;
 import lombok.extern.slf4j.Slf4j;
 import opennlp.tools.stemmer.snowball.SnowballStemmer;
 
-@Slf4j
+
 public class KeywordSearch {
 
     private long[] factorialMap;
@@ -93,9 +93,7 @@ public class KeywordSearch {
 
             if (!matchesForKeyword.getColMatches().isEmpty()) {
                 if (matchesForKeywords.size() >= factorialMap.length - 1) {
-                    log.error(
-                            "Given size of keywords exceeds maximum limit {}. Limiting the keywords search under maximum limit",
-                            factorialMap.length - 1);
+                    System.err.println("Given size of keywords exceeds maximum limit" + (factorialMap.length - 1) + ". Limiting the keywords search under maximum limit");
                     break;
                 }
                 matchesForKeywords.add(matchesForKeyword);
@@ -117,9 +115,7 @@ public class KeywordSearch {
 
                     if (!matchesForKeyword.getColMatches().isEmpty()) {
                         if (matchesForKeywords.size() >= factorialMap.length - 1) {
-                            log.error(
-                                    "Given size of keywords exceeds maximum limit {}. Limiting the keywords search under maximum limit",
-                                    factorialMap.length - 1);
+                            System.err.println("Given size of keywords exceeds maximum limit " + (factorialMap.length - 1) + ". Limiting the keywords search under maximum limit");
                             break;
                         }
                         matchesForKeywords.add(matchesForKeyword);
@@ -277,7 +273,7 @@ public class KeywordSearch {
                         valueSet.add(value.toString());
                     }
                 } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
-                    log.error("Insufficient access to POJO field", ex);
+                    System.err.println("Insufficient access to POJO field " + ex.toString());
                     throw new RuntimeException("Insufficient access to POJO field");
                 }
 
