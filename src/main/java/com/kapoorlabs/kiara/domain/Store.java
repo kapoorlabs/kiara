@@ -28,7 +28,6 @@ import lombok.extern.slf4j.Slf4j;
  * @version 1.0
  * @since 1.0
  */
-@Slf4j
 @Getter
 public class Store<T> {
 
@@ -88,7 +87,7 @@ public class Store<T> {
 		List<SdqlColumn> sdqlColumns = PojoAdapter.getSdqlColumns(pojoClass);
 
 		if (sdqlColumns == null || sdqlColumns.isEmpty()) {
-			log.error(ExceptionConstants.EMPTY_COLUMN_STORE);
+			System.err.println(ExceptionConstants.EMPTY_COLUMN_STORE);
 			throw new EmptyColumnException(ExceptionConstants.EMPTY_COLUMN_STORE);
 		}
 

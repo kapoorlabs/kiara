@@ -32,7 +32,6 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import opennlp.tools.stemmer.snowball.SnowballStemmer;
 
-@Slf4j
 public class StoreLoader<T> {
 
 	@Getter
@@ -82,7 +81,7 @@ public class StoreLoader<T> {
 			}
 		} catch (Exception e) {
 			String message = "Static data load failed for pojo: " + pojo;
-			log.error(message);
+			System.err.println(message);
 			e.printStackTrace();
 			throw new LoadDataException(message);
 		}
@@ -153,12 +152,12 @@ public class StoreLoader<T> {
 			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 
 		if (store == null || pojo == null) {
-			log.error("Store or POJO cannot be null, while loading");
+			System.err.println("Store or POJO cannot be null, while loading");
 			throw new EmptyColumnException();
 		}
 
 		if (level < 0 || store.getSdqlColumns().length == 0 || level >= store.getSdqlColumns().length) {
-			log.error("Column level is not in range");
+			System.err.println("Column level is not in range");
 			throw new EmptyColumnException();
 		}
 
@@ -213,7 +212,7 @@ public class StoreLoader<T> {
 
 		} catch (Exception e) {
 			String message = "Static data indexing failure";
-			log.error(message);
+			System.err.println(message);
 			e.printStackTrace();
 			throw new IndexingException(message);
 		}

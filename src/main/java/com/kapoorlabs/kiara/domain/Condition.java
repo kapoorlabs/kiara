@@ -20,7 +20,6 @@ import lombok.extern.slf4j.Slf4j;
  * @since 1.0
  */
 @Data
-@Slf4j
 public class Condition implements Comparable<Condition> {
 
 	String columnName;
@@ -55,7 +54,7 @@ public class Condition implements Comparable<Condition> {
 
 		if (operator != Operator.BETWEEN) {
 			String message = "Only BETWEEN operation is allowed on lower and upper values.";
-			log.error(message + "Column :" + columnName);
+			System.err.println(message + "Column :" + columnName);
 			throw new NonSupportedOperationException(message);
 		}
 
@@ -107,7 +106,7 @@ public class Condition implements Comparable<Condition> {
 
 		if (operator != Operator.BETWEEN) {
 			String message = "Only BETWEEN operation is allowed on lower and upper values.";
-			log.error(message + "Column :" + columnName);
+			System.err.println(message + "Column :" + columnName);
 			throw new NonSupportedOperationException(message);
 		}
 

@@ -22,7 +22,6 @@ import lombok.extern.slf4j.Slf4j;
  * @version 1.0
  * @since 1.0
  */
-@Slf4j
 public class RangeParser {
 
 	/**
@@ -145,13 +144,13 @@ public class RangeParser {
 	private static void throwRangeOutOfOrderException(String inputStr, long lowerRange, long upperRange) {
 		String message = "Higher range value is less than lower range for input: " + inputStr + " lower Range: "
 				+ lowerRange + " higher range: " + upperRange;
-		log.error(message);
+		System.err.println(message);
 		throw new RangeOutOfOrderException(message);
 	}
 
 	private static void throwFormatException(String inputStr, String format) {
 		String message = "Unsupported range format for value: " + inputStr + " with format: " + format;
-		log.error(message);
+		System.err.println(message);
 		throw new UnknownRangeFormatException(message);
 	}
 

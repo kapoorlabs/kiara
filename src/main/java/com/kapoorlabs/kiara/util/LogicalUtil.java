@@ -13,7 +13,6 @@ import com.kapoorlabs.kiara.domain.Store;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 public class LogicalUtil {
 	
 	/**
@@ -88,7 +87,7 @@ public class LogicalUtil {
 		try {
 			result = Long.parseLong(input);
 		} catch (Exception ex) {
-			log.error("Error while transforming, number expected, but got string for :" + input);
+			System.err.println("Error while transforming, number expected, but got string for :" + input);
 			result = null;
 		}
 		return result;
@@ -102,7 +101,7 @@ public class LogicalUtil {
 		try {
 			result = Integer.parseInt(input);
 		} catch (Exception ex) {
-			log.error("Error while transforming, number expected, but got string for :" + input);
+			System.err.println("Error while transforming, number expected, but got string for :" + input);
 			result = null;
 		}
 		return result;
@@ -116,7 +115,7 @@ public class LogicalUtil {
 		try {
 			result = Double.parseDouble(input);
 		} catch (Exception ex) {
-			log.error("Error while transforming, double expected, but got string for :" + input);
+			System.err.println("Error while transforming, double expected, but got string for :" + input);
 			result = null;
 		}
 		return result;
@@ -138,7 +137,7 @@ public class LogicalUtil {
 		try {
 			result = Boolean.parseBoolean(input);
 		} catch (Exception ex) {
-			log.error("Error while transforming, boolean expected, but got string for :" + input);
+			System.err.println("Error while transforming, boolean expected, but got string for :" + input);
 			result = null;
 		}
 		return result;
