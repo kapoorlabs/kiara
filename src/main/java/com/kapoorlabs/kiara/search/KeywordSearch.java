@@ -21,9 +21,9 @@ import com.kapoorlabs.kiara.domain.SdqlColumn;
 import com.kapoorlabs.kiara.domain.Store;
 import com.kapoorlabs.kiara.exception.InsufficientDataException;
 import com.kapoorlabs.kiara.util.SpellCheckUtil;
+import com.kapoorlabs.kiara.util.StemmerUtil;
 
 import lombok.extern.slf4j.Slf4j;
-import opennlp.tools.stemmer.snowball.SnowballStemmer;
 
 
 public class KeywordSearch {
@@ -73,8 +73,7 @@ public class KeywordSearch {
 
                 if (store.getSdqlColumns()[i].isStemmedIndex()) {
 
-                    SnowballStemmer stemmer = new SnowballStemmer(SnowballStemmer.ALGORITHM.ENGLISH);
-                    String stemmedKey = stemmer.stem(searchKeyword).toString();
+                    String stemmedKey = StemmerUtil.stemEnglish(searchKeyword);
 
                     if (store.getInvertedIndex().get(i).containsKey(stemmedKey)) {
                         matchesForKeyword.getColMatches().add(i);
