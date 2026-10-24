@@ -25,6 +25,7 @@ import com.kapoorlabs.kiara.search.KeywordSearch;
 import com.kapoorlabs.kiara.search.StoreSearch;
 import com.kapoorlabs.kiara.test.objects.BooksTestObject;
 import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
 
 public class BooksTest {
 
@@ -72,8 +73,8 @@ public class BooksTest {
 			}
 
 			storeLoader.prepareForSearch();
-		} catch (IOException e) {
-			throw new RuntimeException();
+		} catch (IOException | CsvValidationException e) {
+			throw new RuntimeException("Unable to load books.csv", e);
 		} finally {
 			if (csvReader != null) {
 				try {

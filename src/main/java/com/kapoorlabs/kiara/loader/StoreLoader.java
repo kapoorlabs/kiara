@@ -27,10 +27,10 @@ import com.kapoorlabs.kiara.exception.EmptyColumnException;
 import com.kapoorlabs.kiara.exception.IndexingException;
 import com.kapoorlabs.kiara.exception.LoadDataException;
 import com.kapoorlabs.kiara.parser.RangeParser;
+import com.kapoorlabs.kiara.util.StemmerUtil;
 
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import opennlp.tools.stemmer.snowball.SnowballStemmer;
 
 public class StoreLoader<T> {
 
@@ -462,8 +462,7 @@ public class StoreLoader<T> {
 							}
 
 							if (store.getSdqlColumns()[level].isStemmedIndex()) {
-								SnowballStemmer stemmer = new SnowballStemmer(SnowballStemmer.ALGORITHM.ENGLISH);
-								key = stemmer.stem(key).toString();
+								key = StemmerUtil.stemEnglish(key);
 							}
 							if (uniqueKey.contains(key)) {
 								continue;

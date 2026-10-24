@@ -30,9 +30,9 @@ import com.kapoorlabs.kiara.exception.RangeOutOfOrderException;
 import com.kapoorlabs.kiara.parser.RangeParser;
 import com.kapoorlabs.kiara.util.LogicalUtil;
 import com.kapoorlabs.kiara.util.NumericUtil;
+import com.kapoorlabs.kiara.util.StemmerUtil;
 
 import lombok.extern.slf4j.Slf4j;
-import opennlp.tools.stemmer.snowball.SnowballStemmer;
 
 public class StoreSearch {
 
@@ -779,8 +779,7 @@ public class StoreSearch {
                         String value = conditionValueIterator.next().trim();
 
                         if (store.getSdqlColumns()[colIndex].isStemmedIndex()) {
-                            SnowballStemmer stemmer = new SnowballStemmer(SnowballStemmer.ALGORITHM.ENGLISH);
-                            value = stemmer.stem(value).toString();
+                            value = StemmerUtil.stemEnglish(value);
                         }
 
                         if (store.getSdqlColumns()[colIndex].isCaseSensitive()) {

@@ -19,6 +19,7 @@ import com.kapoorlabs.kiara.loader.StoreLoader;
 import com.kapoorlabs.kiara.search.StoreSearch;
 import com.kapoorlabs.kiara.test.objects.DeathRecordsTestObject;
 import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
 
 public class DeathYearTest {
 
@@ -57,8 +58,8 @@ public class DeathYearTest {
 			
 			storeLoader.prepareForSearch();
 
-		} catch (IOException e) {
-			throw new RuntimeException();
+		} catch (IOException | CsvValidationException e) {
+			throw new RuntimeException("Unable to load death-records.csv", e);
 		} finally {
 			if (csvReader != null) {
 				try {
