@@ -90,13 +90,41 @@ uploads, and automatically publishes the artifacts after Central validation.
 Supply GPG credentials through your local agent or the Maven GPG plugin's
 supported environment variables, not command-line passphrase arguments.
 
+### Prepared patch release: 2.0.16
+
+Version **2.0.16** is prepared locally; this does not mean it has been published
+to Maven Central. Version **2.0.15** remains the dependency example below until
+the new release is published.
+
+- Fixes `Range.compareTo` to compare numeric lower bounds rather than boxed
+  `Long` identities. Repeated date, date-time, or numeric range starts can
+  otherwise cause `Comparison method violates its general contract!` during
+  interval-index preparation.
+- Preserves lower-bound-only ordering, inclusive interval searches, duplicate
+  ranges, and existing behavior for uninitialized bounds.
+- Adds regression coverage for separately boxed equal bounds, comparator
+  ordering laws, extreme values, large repeated-start sorts, and interval
+  queries checked against an independent linear scan.
+
+Release preparation was validated on JDK 21 with Java 8 bytecode: all **461
+tests passed**, and the binary, source, and Javadoc JARs were generated. Using
+the fixed JAR with the Java-versus-Lucene benchmark fixtures, both previously
+failing schedule datasets (10,000 and 100,000 rows) indexed successfully and
+passed all **23 query correctness scenarios each**. This was a correctness
+check, not a new comparative latency benchmark.
+
+Run `bash mvnw -B -ntp verify` (or `.\mvnw.cmd -B -ntp verify` on Windows)
+before publishing. This builds and tests locally, producing the binary, source,
+and Javadoc JARs without signing, committing, tagging, pushing, or deploying.
+Publishing remains a separate, explicit step using the instructions above.
+
 ## 3.2 Add dependency
 
 ```xml
 <dependency>
   <groupId>com.kapoorlabs</groupId>
   <artifactId>kiara</artifactId>
-  <version>2.0.10</version>
+  <version>2.0.15</version>
 </dependency>
 ```
 

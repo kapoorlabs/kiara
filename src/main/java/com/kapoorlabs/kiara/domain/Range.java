@@ -27,14 +27,7 @@ public class Range implements Comparable<Range> {
 
 	@Override
 	public int compareTo(Range o) {
-
-		if (this.lowerLimit == o.lowerLimit) {
-			return 0;
-		} else if (this.lowerLimit > o.lowerLimit) {
-			return 1;
-		} else {
-			return -1;
-		}
+		return Objects.compare(this.lowerLimit, o.lowerLimit, Long::compare);
 	}
 
 	public Range() {
