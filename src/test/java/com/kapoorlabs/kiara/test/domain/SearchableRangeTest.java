@@ -2,8 +2,12 @@ package com.kapoorlabs.kiara.test.domain;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 
 import org.junit.Test;
@@ -12,6 +16,60 @@ import com.kapoorlabs.kiara.domain.Range;
 import com.kapoorlabs.kiara.domain.SearchableRange;
 
 public class SearchableRangeTest {
+
+	@Test
+	public void preservesDuplicateStartsAndDuplicateRangesAtInclusiveBoundaries() {
+		SearchableRange searchableRange = new SearchableRange();
+		Range first = new Range(1000L, 1100L);
+		Range duplicate = new Range(1000L, 1100L);
+		Range longer = new Range(1000L, 1200L);
+		searchableRange.insert(first);
+		searchableRange.insert(duplicate);
+		searchableRange.insert(longer);
+		searchableRange.prepareForSearch();
+
+		assertEquals(3, searchableRange.getInRange(1000L).size());
+		assertEquals(3, searchableRange.getInRange(1100L).size());
+		assertEquals(2, occurrences(searchableRange.getInRange(1100L)).get(first).intValue());
+		assertEquals(1, searchableRange.getInRange(1200L).size());
+		assertTrue(searchableRange.getInRange(999L).isEmpty());
+		assertTrue(searchableRange.getInRange(1201L).isEmpty());
+	}
+
+	@Test
+	public void repeatedStartIndexesMatchIndependentLinearScan() {
+		for (long base : new long[] { -10000L, 20000L, 1700000000L }) {
+			Random random = new Random(20261028L);
+			List<Range> ranges = new ArrayList<>();
+			SearchableRange searchableRange = new SearchableRange();
+			for (int i = 0; i < 3000; i++) {
+				long lower = base + random.nextInt(365);
+				Range range = new Range(lower, lower + random.nextInt(121));
+				ranges.add(range);
+				searchableRange.insert(range);
+			}
+			searchableRange.prepareForSearch();
+
+			for (long point = base - 1; point <= base + 490; point += 7) {
+				List<Range> expected = new ArrayList<>();
+				for (Range range : ranges) {
+					if (point >= range.getLowerLimit() && point <= range.getUpperLimit()) {
+						expected.add(range);
+					}
+				}
+				assertEquals("Unexpected ranges at " + point, occurrences(expected),
+						occurrences(searchableRange.getInRange(point)));
+			}
+		}
+	}
+
+	private static Map<Range, Integer> occurrences(List<Range> ranges) {
+		Map<Range, Integer> counts = new HashMap<>();
+		for (Range range : ranges) {
+			counts.put(range, counts.getOrDefault(range, 0) + 1);
+		}
+		return counts;
+	}
 
 	@Test
 	public void SearchableRangeTest_1() {
