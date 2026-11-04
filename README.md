@@ -1,4 +1,27 @@
-# Kiara DB: Beginner-Friendly Guide + Detailed Feature Reference
+# Kiara DB
+
+Search in-memory Java data by any combination of fields, with typo correction and
+type-ahead. No composite indexes to design. Java 8+, Apache 2.0.
+
+[![Maven Central](https://img.shields.io/maven-central/v/com.kapoorlabs/kiara)](https://central.sonatype.com/artifact/com.kapoorlabs/kiara)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue)](./LICENSE)
+
+```xml
+<dependency>
+  <groupId>com.kapoorlabs</groupId>
+  <artifactId>kiara</artifactId>
+  <version>2.0.16</version>
+</dependency>
+```
+
+- Live demo (TypeScript port, runs in the browser): https://kapoor-labs.github.io/kiara-demo/
+- TypeScript / npm: https://github.com/kapoorlabs/kiara-ts
+- Spring Boot example: https://github.com/kapoorlabs/kiara-demo
+- Paper: [Efficient Storage and Retrieval of In-Memory Static Data](https://doi.org/10.22059/jac.2020.76227)
+
+[![Typo correction and combined filters in the live demo](./doc/images/demo.gif)](https://kapoor-labs.github.io/kiara-demo/)
+
+## Guide
 
 This README explains how to use Kiara DB from scratch, then walks through its advanced capabilities.
 
@@ -62,61 +85,7 @@ Kiara DB is a Java in-memory, read-only NoSQL data store built around trie-based
 ## 3.1 Prerequisites
 - Java 8 or later (Maven shown below).
 
-### Building this repository
-
-Use the Maven Wrapper to run the pinned Maven version (3.9.16):
-
-```sh
-bash mvnw -B -ntp verify
-```
-
-On Windows, run `.\mvnw.cmd -B -ntp verify`. Set `JAVA_HOME` to your JDK.
-CI builds and tests on Java 8, 11, 17, 21, and 25; published classes target Java 8.
-
-Lombok is a provided, explicitly configured annotation processor; it is not a
-runtime dependency. The lightweight standalone Snowball English stemmer replaces
-OpenNLP, avoiding its unused model-loading APIs and their vulnerabilities.
-JUnit and OpenCSV (including its BeanUtils dependency) are test-only.
-
-### Publishing
-
-Releases use the Sonatype Central Publisher Portal rather than the retired OSSRH
-staging service. Configure a `central` server in your local Maven `settings.xml`
-with a Portal user token; never put credentials in the repository. Snapshot
-deployments use the Central snapshot repository with the same server ID.
-Releases must also be signed with GPG (`-DperformRelease=true` activates signing).
-For a non-SNAPSHOT release version, `bash mvnw -DperformRelease=true deploy` signs,
-uploads, and automatically publishes the artifacts after Central validation.
-Supply GPG credentials through your local agent or the Maven GPG plugin's
-supported environment variables, not command-line passphrase arguments.
-
-### Prepared patch release: 2.0.16
-
-Version **2.0.16** is prepared locally; this does not mean it has been published
-to Maven Central. Version **2.0.15** remains the dependency example below until
-the new release is published.
-
-- Fixes `Range.compareTo` to compare numeric lower bounds rather than boxed
-  `Long` identities. Repeated date, date-time, or numeric range starts can
-  otherwise cause `Comparison method violates its general contract!` during
-  interval-index preparation.
-- Preserves lower-bound-only ordering, inclusive interval searches, duplicate
-  ranges, and existing behavior for uninitialized bounds.
-- Adds regression coverage for separately boxed equal bounds, comparator
-  ordering laws, extreme values, large repeated-start sorts, and interval
-  queries checked against an independent linear scan.
-
-Release preparation was validated on JDK 21 with Java 8 bytecode: all **461
-tests passed**, and the binary, source, and Javadoc JARs were generated. Using
-the fixed JAR with the Java-versus-Lucene benchmark fixtures, both previously
-failing schedule datasets (10,000 and 100,000 rows) indexed successfully and
-passed all **23 query correctness scenarios each**. This was a correctness
-check, not a new comparative latency benchmark.
-
-Run `bash mvnw -B -ntp verify` (or `.\mvnw.cmd -B -ntp verify` on Windows)
-before publishing. This builds and tests locally, producing the binary, source,
-and Javadoc JARs without signing, committing, tagging, pushing, or deploying.
-Publishing remains a separate, explicit step using the instructions above.
+See [CONTRIBUTING.md](./CONTRIBUTING.md) to build the project or cut a release.
 
 ## 3.2 Add dependency
 
@@ -124,12 +93,11 @@ Publishing remains a separate, explicit step using the instructions above.
 <dependency>
   <groupId>com.kapoorlabs</groupId>
   <artifactId>kiara</artifactId>
-  <version>2.0.15</version>
+  <version>2.0.16</version>
 </dependency>
 ```
 
 Notes:
-- Documentation examples also show versions like 2.0.6 and 2.0.9.
 - Prefer the latest stable available in Maven Central for your project.
 
 ## 3.3 Define a POJO schema
